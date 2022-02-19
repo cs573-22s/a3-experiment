@@ -1,0 +1,62 @@
+{
+	"Datasets": [
+		{
+			"One": [
+				{
+					"Region": "A",
+					"Condition": "Easy",
+					"Signal": 2.5
+				},
+				{
+					"Region": "A",
+					"Condition": "Medium",
+					"Signal": 1.5
+				},
+				{
+					"Region": "B",
+					"Condition": "Easy",
+					"Signal": 2.1
+				},
+				{
+					"Region": "B",
+					"Condition": "Medium",
+					"Signal": 1.1
+				}
+			]
+		},
+		{
+			"Two": [
+				{
+					"Region": "A",
+					"Condition": "Easy",
+					"Signal": 1.1
+				},
+				{
+					"Region": "A",
+					"Condition": "Medium",
+					"Signal": 1.2
+				},
+				{
+					"Region": "B",
+					"Condition": "Easy",
+					"Signal": 2.4
+				},
+				{
+					"Region": "B",
+					"Condition": "Medium",
+					"Signal": 2.6
+				},
+				{
+					"Region": "C",
+					"Condition": "Easy",
+					"Signal": 0.9
+				},
+				{
+					"Region": "C",
+					"Condition": "Medium",
+					"Signal": 0.8
+				}
+			]
+		}
+	]
+}
