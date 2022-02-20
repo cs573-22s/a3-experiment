@@ -36,7 +36,7 @@ function Home () {
             Sit amet justo donec enim diam vulputate ut. Vitae congue eu consequat ac felis.
           </Typography>
           <Typography variant="subtitle1" component="div" gutterBottom>
-            To start the survey, click the button below.
+            <strong>To start the survey, click the button below.</strong>
           </Typography>
           <Button variant="contained" color="success">
             Start Survey
