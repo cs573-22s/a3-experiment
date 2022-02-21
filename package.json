@@ -1,7 +1,7 @@
 {
-  "name": "Assingment 3",
+  "name": "Assingment3",
   "version": "1.0.0",
-  "description": "d3 Assignment 1",
+  "description": "Assignment 3",
   "author": "alpecorale",
   "scripts": {
     "start": "node server.js"
