@@ -6,7 +6,7 @@ import { Button, Container, Typography } from '@mui/material'
 function Home () {
   return (
     <>
-      <TopMenuBar />
+      <TopMenuBar back/>
       <Container fixed sx = { { padding: 2, width: '90vw' } }>
         <Paper elevation={5} sx = { { padding: 3 } }>
           <Typography variant="h1" component="div" gutterBottom>
