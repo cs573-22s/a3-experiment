@@ -19,7 +19,8 @@
 <button onclick="update(data3)">Hard Condition</button>
 
 <!-- Create a div where the graph will take place -->
-<div id="my_dataviz"></div>
+<svg width=460 height=400>
+</svg>
 
 <script>
 
@@ -43,20 +44,17 @@ const data3 = [
 ];
 
 // set the dimensions and margins of the graph
-const margin = {top: 30, right: 30, bottom: 70, left: 60},
-    width = 460 - margin.left - margin.right,
-    height = 400 - margin.top - margin.bottom;
-
-// append the svg object to the body of the page
-const svg = d3.select("#my_dataviz")
-  .append("svg")
-    .attr("width", width + margin.left + margin.right)
-    .attr("height", height + margin.top + margin.bottom)
-  .append("g")
-    .attr("transform", `translate(${margin.left},${margin.top})`);
+var linscale = d3.scaleLinear()
+  .domain([0, 100]) // unit data
+  .range([0,1000]); // unit pixels
 
 // draw brain
 // make comments of coordinates for brain signal
+d3.select('svg')
+  .append('path')
+  .attr('d', 'M 100 200 C 150 900, 850 900, 900 200 L 800 75 L 750 200 C 650 150, 350 150, 250 200 L 200 75 Z')
+  .attr('stroke', 'black')
+  .attr('fill', 'orange');
 
 // A function that create / update the plot for a given variable:
 // turn into circles with x and y related to the region coordinates
@@ -67,18 +65,11 @@ function update(data) {
     .data(data)
 
   u
-    .join("rect")
-    .transition()
-    .duration(1000)
-      .attr("x", d => x(d.Region))
-      .attr("y", d => y(d.Signal))
-      .attr("width", x.bandwidth())
-      .attr("height", d => height - y(d.Signal))
-      .attr("stroke", "#69b3a2")
-}
+    .join("rect");
+  }
+    
 
 // Initialize the plot with the first dataset
 update(data1)
-
 
 </script>
