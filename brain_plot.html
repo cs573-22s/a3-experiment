@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+          
+<!-- Load d3.js -->
+<script src="https://d3js.org/d3.v6.js"></script>
+
+<script>
+  console.log(d3); // test if d3 is loaded
+</script>
+
+<body>
+  <h1> Experiment </h1>
+</body>
+
+<!-- Add 2 buttons -->
+<!-- Need to dynamically name buttons based on num regions/conditions -->
+<button onclick="update(data1)">Easy Condition</button>
+<button onclick="update(data2)">Medium Condition</button>
+<button onclick="update(data3)">Hard Condition</button>
+
+<!-- Create a div where the graph will take place -->
+<svg width=460 height=400>
+</svg>
+
+<script>
+
+// replace with .json call
+const data1 = [
+   {Region: "A", Signal: 4},
+   {Region: "B", Signal: 16},
+   {Region: "C", Signal: 8}
+];
+
+const data2 = [
+   {Region: "A", Signal: 7},
+   {Region: "B", Signal: 1},
+   {Region: "C", Signal: 20}
+];
+
+const data3 = [
+   {Region: "A", Signal: 2},
+   {Region: "B", Signal: 5},
+   {Region: "C", Signal: 14}
+];
+
+// set the dimensions and margins of the graph
+var linscale = d3.scaleLinear()
+  .domain([0, 100]) // unit data
+  .range([0,1000]); // unit pixels
+
+// draw brain
+// make comments of coordinates for brain signal
+d3.select('svg')
+  .append('path')
+  .attr('d', 'M 230 200 C 240 210 290 250 300 260 C 290 270 270 300 260 290 C 200 250 190 240 130 250 C 110 240 110 250 90 260 C 130 130 260 130 360 260 C 330 280 330 280 300 260 Z')
+  .attr('stroke', 'black')
+
+// A function that create / update the plot for a given variable:
+// turn into circles with x and y related to the region coordinates
+// color saturation related to signal? yea.... yea
+function update(data) {
+
+  var u = svg.selectAll("circle")
+    .data(data)
+
+  u
+    .join("circle");
+  //  .transition()
+  //  .duration(1000)
+  //    .attr("cx", d => cx(d.Region))
+  //    .attr("cy", d => cy(d.Signal))
+  }
+    
+
+// Initialize the plot with the first dataset
+update(data1)
+
+</script>
