@@ -61,13 +61,13 @@ export default function SurveyForm (props: SurveyFormProps) {
   }
 
   const [formData, dispatch] = useReducer(reducer, [])
-  const [completed, setCompleted] = useState([false, false, false, false])
+  const [completed, setCompleteArray] = useState([false, false, false, false])
 
   const setComplete = (id: number) => {
     return (state: boolean) => {
       const completedCopy = completed.slice()
       completedCopy[id - 1] = state
-      setCompleted(completedCopy)
+      setCompleteArray(completedCopy)
     }
   }
 
@@ -78,7 +78,7 @@ export default function SurveyForm (props: SurveyFormProps) {
   // When moving to a new quesiton or going back, delete the entry
   useEffect(() => {
     dispatch({ type: 'delete' })
-    setCompleted([false, false, false, false])
+    setCompleteArray([false, false, false, false])
     console.log(formData)
   }, [props.questionNum])
 

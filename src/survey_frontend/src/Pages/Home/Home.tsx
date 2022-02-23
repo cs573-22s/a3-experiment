@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import Paper from '@mui/material/Paper'
 import TopMenuBar from 'Components/TopMenuBar'
 import { Button, Container, Typography } from '@mui/material'
@@ -6,6 +6,10 @@ import { useNavigate } from 'react-router-dom'
 
 function Home () {
   const navigate = useNavigate()
+
+  useEffect(() => {
+    fetch('/api').then(res => res.json()).then(data => console.log(data))
+  }, [])
 
   return (
     <>
