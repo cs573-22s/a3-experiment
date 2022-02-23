@@ -104,3 +104,7 @@ GitHub Details
 ```
 a3-FirstLastnameMember1-FirstLastnameMember2-FirstLastnameMember3-...
 ```
+
+
+used this website for small margins code reference: d3-graph-gallery.com/graph/line_smallmultiple.html
+used this for bar chart reference: https://www.d3-graph-gallery.com/graph/barplot_button_data_simple.html
