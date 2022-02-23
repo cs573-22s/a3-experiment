@@ -1,12 +1,15 @@
 import React from 'react'
 import Paper from '@mui/material/Paper'
-import TopMenuBar from '../../Components/TopMenuBar'
+import TopMenuBar from 'Components/TopMenuBar'
 import { Button, Container, Typography } from '@mui/material'
+import { useNavigate } from 'react-router-dom'
 
 function Home () {
+  const navigate = useNavigate()
+
   return (
     <>
-      <TopMenuBar back/>
+      <TopMenuBar />
       <Container fixed sx = { { padding: 2, width: '90vw' } }>
         <Paper elevation={5} sx = { { padding: 3 } }>
           <Typography variant="h1" component="div" gutterBottom>
@@ -38,7 +41,7 @@ function Home () {
           <Typography variant="subtitle1" component="div" gutterBottom>
             <strong>To start the survey, click the button below.</strong>
           </Typography>
-          <Button variant="contained" color="success">
+          <Button variant="contained" color="success" onClick={ () => navigate('/survey') }>
             Start Survey
           </Button>
         </Paper>

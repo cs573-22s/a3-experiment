@@ -7,7 +7,7 @@ import Button from '@mui/material/Button'
 import ArrowBackIcon from '@mui/icons-material/ArrowBack'
 import { IconButton } from '@mui/material'
 
-import AboutMenu from './AboutMenu'
+import AboutMenu from 'Components/AboutMenu'
 
 type ButtonAppBarProps = {
   back?: boolean

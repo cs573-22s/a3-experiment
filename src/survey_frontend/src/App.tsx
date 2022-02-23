@@ -1,3 +1,4 @@
+import SurveyPage from 'Pages/SurveyPage/SurveyPage'
 import React from 'react'
 import { Routes, Route, BrowserRouter } from 'react-router-dom'
 import './App.css'
@@ -12,6 +13,7 @@ function App () {
     <BrowserRouter>
       <Routes>
         <Route path='/' element={<Home />} />
+        <Route path='/survey' element={<SurveyPage />} />
         <Route path='*' element={<NotFound/>} />
       </Routes>
     </BrowserRouter>
