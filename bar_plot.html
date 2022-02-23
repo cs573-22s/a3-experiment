@@ -1,4 +1,8 @@
-<script src="https://d3js.org/d3.v4.min.js"></script>
+<!DOCTYPE html>
+<meta charset="utf-8">
+          
+<!-- Load d3.js -->
+<script src="https://d3js.org/d3.v6.js"></script>
 
 <script>
   console.log(d3); // test if d3 is loaded
@@ -8,6 +12,9 @@
   <h1> Experiment </h1>
 </body>
 
+
+<!-- Code from d3 graph gallery -->
+
 <!-- Add 2 buttons -->
 <button onclick="update(data1)">Easy Condition</button>
 <button onclick="update(data2)">Medium Condition</button>
@@ -16,10 +23,9 @@
 <!-- Create a div where the graph will take place -->
 <div id="my_dataviz"></div>
 
-<!-- Code from d3 graph gallery -->
 <script>
 
-// test datasets - replace with json call
+// create 2 data_set
 const data1 = [
    {Region: "A", Signal: 4},
    {Region: "B", Signal: 16},
@@ -33,10 +39,11 @@ const data2 = [
 ];
 
 const data3 = [
-   {Region: "A", Signal: 2},
-   {Region: "B", Signal: 10},
-   {Region: "C", Signal: 5}
+   {Region: "A", Signal: 7},
+   {Region: "B", Signal: 1},
+   {Region: "C", Signal: 20}
 ];
+
 
 // set the dimensions and margins of the graph
 const margin = {top: 30, right: 30, bottom: 70, left: 60},
@@ -65,7 +72,7 @@ const y = d3.scaleLinear()
   .domain([0, 20])
   .range([ height, 0]);
 svg.append("g")
-  .attr("class", "myYaxis")
+  .attr("class", "Signal")
   .call(d3.axisLeft(y));
 
 // A function that create / update the plot for a given variable:
@@ -82,7 +89,7 @@ function update(data) {
       .attr("y", d => y(d.Signal))
       .attr("width", x.bandwidth())
       .attr("height", d => height - y(d.Signal))
-      .attr("fill", "#69b3a2")
+      .attr("stroke", "#69b3a2")
 }
 
 // Initialize the plot with the first dataset
