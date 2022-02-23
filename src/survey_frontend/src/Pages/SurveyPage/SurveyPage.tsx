@@ -9,7 +9,7 @@ import { Typography } from '@mui/material'
 
 export default function SurveyPage () {
   const navigate = useNavigate()
-  const [questionNum, setQuestionNum] = useState(0)
+  const [questionNum, setQuestionNum] = useState(1)
 
   return (
     <>

@@ -1,6 +1,6 @@
 import { Button, ButtonGroup, Container, Paper, Stack } from '@mui/material'
 import SurveyQuestion from 'Components/SurveyQuestion'
-import React, { useEffect, useReducer } from 'react'
+import React, { useState, useEffect, useReducer } from 'react'
 
 type Response = { response: string }
 
@@ -61,42 +61,62 @@ export default function SurveyForm (props: SurveyFormProps) {
   }
 
   const [formData, dispatch] = useReducer(reducer, [])
+  const [completed, setCompleted] = useState([false, false, false, false])
 
+  const setComplete = (id: number) => {
+    return (state: boolean) => {
+      const completedCopy = completed.slice()
+      completedCopy[id - 1] = state
+      setCompleted(completedCopy)
+    }
+  }
+
+  const isQuestionComplete = () : boolean => {
+    return completed.reduce((prev, curr) => prev && curr, true as boolean)
+  }
+
+  // When moving to a new quesiton or going back, delete the entry
   useEffect(() => {
+    dispatch({ type: 'delete' })
+    setCompleted([false, false, false, false])
     console.log(formData)
-  }, [formData])
+  }, [props.questionNum])
 
   return (
     <Container fixed sx = { { padding: 2, width: '100vw', height: '100%' } }>
       <Paper elevation={5} sx = { { margin: 1, padding: 3 } }>
         <Stack spacing={3}>
           <SurveyQuestion
-            id='question1'
-            taskNum={0}
+            id={`Question ${props.questionNum} Task 1`}
+            taskNum={1}
             prompt='Which region-condition combination is most active?'
             dispatch={dispatch}
+            setComplete={setComplete(1)}
           />
           <SurveyQuestion
-            id='question2'
-            taskNum={1}
+            id={`Question ${props.questionNum} Task 2`}
+            taskNum={2}
             prompt='Which region-condition combination is least active?'
             dispatch={dispatch}
+            setComplete={setComplete(2)}
           />
           <SurveyQuestion
-            id='question3'
-            taskNum={2}
+            id={`Question ${props.questionNum} Task 3`}
+            taskNum={3}
             prompt='Which regions have similar activation, regardless of condition?'
             dispatch={dispatch}
+            setComplete={setComplete(3)}
           />
           <SurveyQuestion
-            id='question4'
-            taskNum={3}
+            id={`Question ${props.questionNum} Task 4`}
+            taskNum={4}
             prompt='Which conditions have similar activation, regardless of region?'
             dispatch={dispatch}
+            setComplete={setComplete(4)}
           />
           <ButtonGroup>
-            <Button variant='contained' disabled={props.questionNum <= 0} onClick={props.onPrevious}>Previous Question</Button>
-            <Button variant='contained' onClick={props.onNext}>Next Question</Button>
+            <Button variant='contained' disabled={props.questionNum <= 1} onClick={props.onPrevious}>Previous Question</Button>
+            <Button variant='contained' onClick={props.onNext} disabled={!isQuestionComplete()}>Next Question</Button>
           </ButtonGroup>
         </Stack>
       </Paper>
