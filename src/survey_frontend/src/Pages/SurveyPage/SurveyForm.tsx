@@ -26,8 +26,10 @@ type DeleteAction = {
 type FormAction = UpdateAction | DeleteAction
 
 type SurveyFormProps = {
-  questionNum : number,
-  questionType : QuestionType,
+  questionNum: number,
+  onPrevious: () => void,
+  onNext: () => void,
+  questionType: QuestionType,
   datasetID: string
 }
 
@@ -93,8 +95,8 @@ export default function SurveyForm (props: SurveyFormProps) {
             dispatch={dispatch}
           />
           <ButtonGroup>
-            <Button variant='contained'>Previous Question</Button>
-            <Button variant='contained'>Next Question</Button>
+            <Button variant='contained' disabled={props.questionNum <= 0} onClick={props.onPrevious}>Previous Question</Button>
+            <Button variant='contained' onClick={props.onNext}>Next Question</Button>
           </ButtonGroup>
         </Stack>
       </Paper>
