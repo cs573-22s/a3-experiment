@@ -1,0 +1,1162 @@
+[
+  {
+    "id": "2R-2C",
+    "data": [
+      {
+        "Region": "A",
+        "Condition": "Easy",
+        "Signal": 2.5
+      },
+      {
+        "Region": "A",
+        "Condition": "Medium",
+        "Signal": 1.5
+      },
+      {
+        "Region": "B",
+        "Condition": "Easy",
+        "Signal": 2.1
+      },
+      {
+        "Region": "B",
+        "Condition": "Medium",
+        "Signal": 1.1
+      }
+    ]
+  },
+  {
+    "id": "3R-2C",
+    "data": [
+      {
+        "Region": "A",
+        "Condition": "Easy",
+        "Signal": 1.1
+      },
+      {
+        "Region": "A",
+        "Condition": "Medium",
+        "Signal": 1.2
+      },
+      {
+        "Region": "B",
+        "Condition": "Easy",
+        "Signal": 2.4
+      },
+      {
+        "Region": "B",
+        "Condition": "Medium",
+        "Signal": 2.6
+      },
+      {
+        "Region": "C",
+        "Condition": "Easy",
+        "Signal": 0.9
+      },
+      {
+        "Region": "C",
+        "Condition": "Medium",
+        "Signal": 0.8
+      }
+    ]
+  },
+  {
+    "id": "3R-3C",
+    "data": [
+      {
+        "Region": "A",
+        "Condition": "Easy",
+        "Signal": 5
+      },
+      {
+        "Region": "A",
+        "Condition": "Medium",
+        "Signal": 0
+      },
+      {
+        "Region": "A",
+        "Condition": "Hard",
+        "Signal": 5
+      },
+      {
+        "Region": "B",
+        "Condition": "Easy",
+        "Signal": 0
+      },
+      {
+        "Region": "B",
+        "Condition": "Medium",
+        "Signal": 5
+      },
+      {
+        "Region": "B",
+        "Condition": "Hard",
+        "Signal": 0
+      },
+      {
+        "Region": "C",
+        "Condition": "Easy",
+        "Signal": 5
+      },
+      {
+        "Region": "C",
+        "Condition": "Medium",
+        "Signal": 0
+      },
+      {
+        "Region": "C",
+        "Condition": "Hard",
+        "Signal": 5
+      }
+    ]
+  },
+  {
+    "id": "4R-2C",
+    "data": [
+      {
+        "Region": "A",
+        "Condition": "Easy",
+        "Signal": 5
+      },
+      {
+        "Region": "A",
+        "Condition": "Medium",
+        "Signal": 0
+      },
+      {
+        "Region": "B",
+        "Condition": "Easy",
+        "Signal": 5
+      },
+      {
+        "Region": "B",
+        "Condition": "Medium",
+        "Signal": 0
+      },
+      {
+        "Region": "C",
+        "Condition": "Easy",
+        "Signal": 5
+      },
+      {
+        "Region": "C",
+        "Condition": "Medium",
+        "Signal": 0
+      },
+      {
+        "Region": "D",
+        "Condition": "Easy",
+        "Signal": 5
+      },
+      {
+        "Region": "D",
+        "Condition": "Medium",
+        "Signal": 0
+      }
+    ]
+  },
+  {
+    "id": "4R-3C",
+    "data": [
+      {
+        "Region": "A",
+        "Condition": "Easy",
+        "Signal": 5
+      },
+      {
+        "Region": "A",
+        "Condition": "Medium",
+        "Signal": 0
+      },
+      {
+        "Region": "A",
+        "Condition": "Hard",
+        "Signal": 5
+      },
+      {
+        "Region": "B",
+        "Condition": "Easy",
+        "Signal": 0
+      },
+      {
+        "Region": "B",
+        "Condition": "Medium",
+        "Signal": 5
+      },
+      {
+        "Region": "B",
+        "Condition": "Hard",
+        "Signal": 0
+      },
+      {
+        "Region": "C",
+        "Condition": "Easy",
+        "Signal": 5
+      },
+      {
+        "Region": "C",
+        "Condition": "Medium",
+        "Signal": 0
+      },
+      {
+        "Region": "C",
+        "Condition": "Hard",
+        "Signal": 5
+      },
+      {
+        "Region": "D",
+        "Condition": "Easy",
+        "Signal": 0
+      },
+      {
+        "Region": "D",
+        "Condition": "Medium",
+        "Signal": 5
+      },
+      {
+        "Region": "D",
+        "Condition": "Hard",
+        "Signal": 0
+      }
+    ]
+  },
+  {
+    "id": "4R-4C",
+    "data": [
+      {
+        "Region": "A",
+        "Condition": "Easy",
+        "Signal": 5
+      },
+      {
+        "Region": "A",
+        "Condition": "Medium",
+        "Signal": 0
+      },
+      {
+        "Region": "A",
+        "Condition": "Hard",
+        "Signal": 5
+      },
+      {
+        "Region": "A",
+        "Condition": "Very Hard",
+        "Signal": 0
+      },
+      {
+        "Region": "B",
+        "Condition": "Easy",
+        "Signal": 5
+      },
+      {
+        "Region": "B",
+        "Condition": "Medium",
+        "Signal": 0
+      },
+      {
+        "Region": "B",
+        "Condition": "Easy",
+        "Signal": 5
+      },
+      {
+        "Region": "B",
+        "Condition": "Very Hard",
+        "Signal": 0
+      },
+      {
+        "Region": "C",
+        "Condition": "Easy",
+        "Signal": 5
+      },
+      {
+        "Region": "C",
+        "Condition": "Medium",
+        "Signal": 0
+      },
+      {
+        "Region": "C",
+        "Condition": "Hard",
+        "Signal": 5
+      },
+      {
+        "Region": "C",
+        "Condition": "Very Hard",
+        "Signal": 0
+      },
+      {
+        "Region": "D",
+        "Condition": "Easy",
+        "Signal": 5
+      },
+      {
+        "Region": "D",
+        "Condition": "Medium",
+        "Signal": 0
+      },
+      {
+        "Region": "D",
+        "Condition": "Hard",
+        "Signal": 5
+      },
+      {
+        "Region": "D",
+        "Condition": "Very Hard",
+        "Signal": 0
+      }
+    ]
+  },
+  {
+    "id": "5R-3C",
+    "data": [
+      {
+        "Region": "A",
+        "Condition": "Easy",
+        "Signal": 5
+      },
+      {
+        "Region": "A",
+        "Condition": "Medium",
+        "Signal": 0
+      },
+      {
+        "Region": "A",
+        "Condition": "Hard",
+        "Signal": 5
+      },
+      {
+        "Region": "B",
+        "Condition": "Easy",
+        "Signal": 0
+      },
+      {
+        "Region": "B",
+        "Condition": "Medium",
+        "Signal": 5
+      },
+      {
+        "Region": "B",
+        "Condition": "Hard",
+        "Signal": 0
+      },
+      {
+        "Region": "C",
+        "Condition": "Easy",
+        "Signal": 5
+      },
+      {
+        "Region": "C",
+        "Condition": "Medium",
+        "Signal": 0
+      },
+      {
+        "Region": "C",
+        "Condition": "Hard",
+        "Signal": 5
+      },
+      {
+        "Region": "D",
+        "Condition": "Easy",
+        "Signal": 0
+      },
+      {
+        "Region": "D",
+        "Condition": "Medium",
+        "Signal": 5
+      },
+      {
+        "Region": "D",
+        "Condition": "Hard",
+        "Signal": 0
+      },
+      {
+        "Region": "E",
+        "Condition": "Easy",
+        "Signal": 5
+      },
+      {
+        "Region": "E",
+        "Condition": "Medium",
+        "Signal": 0
+      },
+      {
+        "Region": "E",
+        "Condition": "Hard",
+        "Signal": 5
+      }
+    ]
+  },
+  {
+    "id": "5R-2C",
+    "data": [
+      {
+        "Region": "A",
+        "Condition": "Easy",
+        "Signal": 5
+      },
+      {
+        "Region": "A",
+        "Condition": "Medium",
+        "Signal": 0
+      },
+      {
+        "Region": "B",
+        "Condition": "Easy",
+        "Signal": 5
+      },
+      {
+        "Region": "B",
+        "Condition": "Medium",
+        "Signal": 0
+      },
+      {
+        "Region": "C",
+        "Condition": "Easy",
+        "Signal": 5
+      },
+      {
+        "Region": "C",
+        "Condition": "Medium",
+        "Signal": 0
+      },
+      {
+        "Region": "D",
+        "Condition": "Easy",
+        "Signal": 5
+      },
+      {
+        "Region": "D",
+        "Condition": "Medium",
+        "Signal": 0
+      },
+      {
+        "Region": "E",
+        "Condition": "Easy",
+        "Signal": 5
+      },
+      {
+        "Region": "E",
+        "Condition": "Medium",
+        "Signal": 0
+      }
+    ]
+  },
+  {
+    "id": "5R-4C",
+    "data": [
+      {
+        "Region": "A",
+        "Condition": "Easy",
+        "Signal": 5
+      },
+      {
+        "Region": "A",
+        "Condition": "Medium",
+        "Signal": 0
+      },
+      {
+        "Region": "A",
+        "Condition": "Hard",
+        "Signal": 5
+      },
+      {
+        "Region": "A",
+        "Condition": "Very Hard",
+        "Signal": 0
+      },
+      {
+        "Region": "B",
+        "Condition": "Easy",
+        "Signal": 5
+      },
+      {
+        "Region": "B",
+        "Condition": "Medium",
+        "Signal": 0
+      },
+      {
+        "Region": "B",
+        "Condition": "Hard",
+        "Signal": 5
+      },
+      {
+        "Region": "B",
+        "Condition": "Very Hard",
+        "Signal": 0
+      },
+      {
+        "Region": "C",
+        "Condition": "Easy",
+        "Signal": 5
+      },
+      {
+        "Region": "C",
+        "Condition": "Medium",
+        "Signal": 0
+      },
+      {
+        "Region": "C",
+        "Condition": "Hard",
+        "Signal": 5
+      },
+      {
+        "Region": "C",
+        "Condition": "Very Hard",
+        "Signal": 0
+      },
+      {
+        "Region": "D",
+        "Condition": "Easy",
+        "Signal": 5
+      },
+      {
+        "Region": "D",
+        "Condition": "Medium",
+        "Signal": 0
+      },
+      {
+        "Region": "D",
+        "Condition": "Hard",
+        "Signal": 5
+      },
+      {
+        "Region": "D",
+        "Condition": "Very Hard",
+        "Signal": 0
+      },
+      {
+        "Region": "E",
+        "Condition": "Easy",
+        "Signal": 5
+      },
+      {
+        "Region": "E",
+        "Condition": "Medium",
+        "Signal": 0
+      },
+      {
+        "Region": "E",
+        "Condition": "Hard",
+        "Signal": 5
+      },
+      {
+        "Region": "Easy",
+        "Condition": "Very Hard",
+        "Signal": 0
+      }
+    ]
+  },
+  {
+    "id": "2R-3C",
+    "data": [
+      {
+        "Region": "A",
+        "Condition": "Easy",
+        "Signal": 5
+      },
+      {
+        "Region": "A",
+        "Condition": "Medium",
+        "Signal": 0
+      },
+      {
+        "Region": "A",
+        "Condition": "Hard",
+        "Signal": 5
+      },
+      {
+        "Region": "B",
+        "Condition": "Easy",
+        "Signal": 0
+      },
+      {
+        "Region": "B",
+        "Condition": "Medium",
+        "Signal": 5
+      },
+      {
+        "Region": "B",
+        "Condition": "Hard",
+        "Signal": 0
+      }
+    ]
+  },
+  {
+    "id": "2R-2C",
+    "data": [
+      {
+        "Region": "A",
+        "Condition": "Easy",
+        "Signal": 2.5
+      },
+      {
+        "Region": "A",
+        "Condition": "Medium",
+        "Signal": 1.5
+      },
+      {
+        "Region": "B",
+        "Condition": "Easy",
+        "Signal": 2.1
+      },
+      {
+        "Region": "B",
+        "Condition": "Medium",
+        "Signal": 1.1
+      }
+    ]
+  },
+  {
+    "id": "3R-2C",
+    "data": [
+      {
+        "Region": "A",
+        "Condition": "Easy",
+        "Signal": 1.1
+      },
+      {
+        "Region": "A",
+        "Condition": "Medium",
+        "Signal": 1.2
+      },
+      {
+        "Region": "B",
+        "Condition": "Easy",
+        "Signal": 2.4
+      },
+      {
+        "Region": "B",
+        "Condition": "Medium",
+        "Signal": 2.6
+      },
+      {
+        "Region": "C",
+        "Condition": "Easy",
+        "Signal": 0.9
+      },
+      {
+        "Region": "C",
+        "Condition": "Medium",
+        "Signal": 0.8
+      }
+    ]
+  },
+  {
+    "id": "3R-3C",
+    "data": [
+      {
+        "Region": "A",
+        "Condition": "Easy",
+        "Signal": 5
+      },
+      {
+        "Region": "A",
+        "Condition": "Medium",
+        "Signal": 0
+      },
+      {
+        "Region": "A",
+        "Condition": "Hard",
+        "Signal": 5
+      },
+      {
+        "Region": "B",
+        "Condition": "Easy",
+        "Signal": 0
+      },
+      {
+        "Region": "B",
+        "Condition": "Medium",
+        "Signal": 5
+      },
+      {
+        "Region": "B",
+        "Condition": "Hard",
+        "Signal": 0
+      },
+      {
+        "Region": "C",
+        "Condition": "Easy",
+        "Signal": 5
+      },
+      {
+        "Region": "C",
+        "Condition": "Medium",
+        "Signal": 0
+      },
+      {
+        "Region": "C",
+        "Condition": "Hard",
+        "Signal": 5
+      }
+    ]
+  },
+  {
+    "id": "4R-2C",
+    "data": [
+      {
+        "Region": "A",
+        "Condition": "Easy",
+        "Signal": 5
+      },
+      {
+        "Region": "A",
+        "Condition": "Medium",
+        "Signal": 0
+      },
+      {
+        "Region": "B",
+        "Condition": "Easy",
+        "Signal": 5
+      },
+      {
+        "Region": "B",
+        "Condition": "Medium",
+        "Signal": 0
+      },
+      {
+        "Region": "C",
+        "Condition": "Easy",
+        "Signal": 5
+      },
+      {
+        "Region": "C",
+        "Condition": "Medium",
+        "Signal": 0
+      },
+      {
+        "Region": "D",
+        "Condition": "Easy",
+        "Signal": 5
+      },
+      {
+        "Region": "D",
+        "Condition": "Medium",
+        "Signal": 0
+      }
+    ]
+  },
+  {
+    "id": "4R-3C",
+    "data": [
+      {
+        "Region": "A",
+        "Condition": "Easy",
+        "Signal": 5
+      },
+      {
+        "Region": "A",
+        "Condition": "Medium",
+        "Signal": 0
+      },
+      {
+        "Region": "A",
+        "Condition": "Hard",
+        "Signal": 5
+      },
+      {
+        "Region": "B",
+        "Condition": "Easy",
+        "Signal": 0
+      },
+      {
+        "Region": "B",
+        "Condition": "Medium",
+        "Signal": 5
+      },
+      {
+        "Region": "B",
+        "Condition": "Hard",
+        "Signal": 0
+      },
+      {
+        "Region": "C",
+        "Condition": "Easy",
+        "Signal": 5
+      },
+      {
+        "Region": "C",
+        "Condition": "Medium",
+        "Signal": 0
+      },
+      {
+        "Region": "C",
+        "Condition": "Hard",
+        "Signal": 5
+      },
+      {
+        "Region": "D",
+        "Condition": "Easy",
+        "Signal": 0
+      },
+      {
+        "Region": "D",
+        "Condition": "Medium",
+        "Signal": 5
+      },
+      {
+        "Region": "D",
+        "Condition": "Hard",
+        "Signal": 0
+      }
+    ]
+  },
+  {
+    "id": "4R-4C",
+    "data": [
+      {
+        "Region": "A",
+        "Condition": "Easy",
+        "Signal": 5
+      },
+      {
+        "Region": "A",
+        "Condition": "Medium",
+        "Signal": 0
+      },
+      {
+        "Region": "A",
+        "Condition": "Hard",
+        "Signal": 5
+      },
+      {
+        "Region": "A",
+        "Condition": "Very Hard",
+        "Signal": 0
+      },
+      {
+        "Region": "B",
+        "Condition": "Easy",
+        "Signal": 5
+      },
+      {
+        "Region": "B",
+        "Condition": "Medium",
+        "Signal": 0
+      },
+      {
+        "Region": "B",
+        "Condition": "Easy",
+        "Signal": 5
+      },
+      {
+        "Region": "B",
+        "Condition": "Very Hard",
+        "Signal": 0
+      },
+      {
+        "Region": "C",
+        "Condition": "Easy",
+        "Signal": 5
+      },
+      {
+        "Region": "C",
+        "Condition": "Medium",
+        "Signal": 0
+      },
+      {
+        "Region": "C",
+        "Condition": "Hard",
+        "Signal": 5
+      },
+      {
+        "Region": "C",
+        "Condition": "Very Hard",
+        "Signal": 0
+      },
+      {
+        "Region": "D",
+        "Condition": "Easy",
+        "Signal": 5
+      },
+      {
+        "Region": "D",
+        "Condition": "Medium",
+        "Signal": 0
+      },
+      {
+        "Region": "D",
+        "Condition": "Hard",
+        "Signal": 5
+      },
+      {
+        "Region": "D",
+        "Condition": "Very Hard",
+        "Signal": 0
+      }
+    ]
+  },
+  {
+    "id": "5R-3C",
+    "data": [
+      {
+        "Region": "A",
+        "Condition": "Easy",
+        "Signal": 5
+      },
+      {
+        "Region": "A",
+        "Condition": "Medium",
+        "Signal": 0
+      },
+      {
+        "Region": "A",
+        "Condition": "Hard",
+        "Signal": 5
+      },
+      {
+        "Region": "B",
+        "Condition": "Easy",
+        "Signal": 0
+      },
+      {
+        "Region": "B",
+        "Condition": "Medium",
+        "Signal": 5
+      },
+      {
+        "Region": "B",
+        "Condition": "Hard",
+        "Signal": 0
+      },
+      {
+        "Region": "C",
+        "Condition": "Easy",
+        "Signal": 5
+      },
+      {
+        "Region": "C",
+        "Condition": "Medium",
+        "Signal": 0
+      },
+      {
+        "Region": "C",
+        "Condition": "Hard",
+        "Signal": 5
+      },
+      {
+        "Region": "D",
+        "Condition": "Easy",
+        "Signal": 0
+      },
+      {
+        "Region": "D",
+        "Condition": "Medium",
+        "Signal": 5
+      },
+      {
+        "Region": "D",
+        "Condition": "Hard",
+        "Signal": 0
+      },
+      {
+        "Region": "E",
+        "Condition": "Easy",
+        "Signal": 5
+      },
+      {
+        "Region": "E",
+        "Condition": "Medium",
+        "Signal": 0
+      },
+      {
+        "Region": "E",
+        "Condition": "Hard",
+        "Signal": 5
+      }
+    ]
+  },
+  {
+    "id": "5R-2C",
+    "data": [
+      {
+        "Region": "A",
+        "Condition": "Easy",
+        "Signal": 5
+      },
+      {
+        "Region": "A",
+        "Condition": "Medium",
+        "Signal": 0
+      },
+      {
+        "Region": "B",
+        "Condition": "Easy",
+        "Signal": 5
+      },
+      {
+        "Region": "B",
+        "Condition": "Medium",
+        "Signal": 0
+      },
+      {
+        "Region": "C",
+        "Condition": "Easy",
+        "Signal": 5
+      },
+      {
+        "Region": "C",
+        "Condition": "Medium",
+        "Signal": 0
+      },
+      {
+        "Region": "D",
+        "Condition": "Easy",
+        "Signal": 5
+      },
+      {
+        "Region": "D",
+        "Condition": "Medium",
+        "Signal": 0
+      },
+      {
+        "Region": "E",
+        "Condition": "Easy",
+        "Signal": 5
+      },
+      {
+        "Region": "E",
+        "Condition": "Medium",
+        "Signal": 0
+      }
+    ]
+  },
+  {
+    "id": "5R-4C",
+    "data": [
+      {
+        "Region": "A",
+        "Condition": "Easy",
+        "Signal": 5
+      },
+      {
+        "Region": "A",
+        "Condition": "Medium",
+        "Signal": 0
+      },
+      {
+        "Region": "A",
+        "Condition": "Hard",
+        "Signal": 5
+      },
+      {
+        "Region": "A",
+        "Condition": "Very Hard",
+        "Signal": 0
+      },
+      {
+        "Region": "B",
+        "Condition": "Easy",
+        "Signal": 5
+      },
+      {
+        "Region": "B",
+        "Condition": "Medium",
+        "Signal": 0
+      },
+      {
+        "Region": "B",
+        "Condition": "Hard",
+        "Signal": 5
+      },
+      {
+        "Region": "B",
+        "Condition": "Very Hard",
+        "Signal": 0
+      },
+      {
+        "Region": "C",
+        "Condition": "Easy",
+        "Signal": 5
+      },
+      {
+        "Region": "C",
+        "Condition": "Medium",
+        "Signal": 0
+      },
+      {
+        "Region": "C",
+        "Condition": "Hard",
+        "Signal": 5
+      },
+      {
+        "Region": "C",
+        "Condition": "Very Hard",
+        "Signal": 0
+      },
+      {
+        "Region": "D",
+        "Condition": "Easy",
+        "Signal": 5
+      },
+      {
+        "Region": "D",
+        "Condition": "Medium",
+        "Signal": 0
+      },
+      {
+        "Region": "D",
+        "Condition": "Hard",
+        "Signal": 5
+      },
+      {
+        "Region": "D",
+        "Condition": "Very Hard",
+        "Signal": 0
+      },
+      {
+        "Region": "E",
+        "Condition": "Easy",
+        "Signal": 5
+      },
+      {
+        "Region": "E",
+        "Condition": "Medium",
+        "Signal": 0
+      },
+      {
+        "Region": "E",
+        "Condition": "Hard",
+        "Signal": 5
+      },
+      {
+        "Region": "Easy",
+        "Condition": "Very Hard",
+        "Signal": 0
+      }
+    ]
+  },
+  {
+    "id": "2R-3C",
+    "data": [
+      {
+        "Region": "A",
+        "Condition": "Easy",
+        "Signal": 5
+      },
+      {
+        "Region": "A",
+        "Condition": "Medium",
+        "Signal": 0
+      },
+      {
+        "Region": "A",
+        "Condition": "Hard",
+        "Signal": 5
+      },
+      {
+        "Region": "B",
+        "Condition": "Easy",
+        "Signal": 0
+      },
+      {
+        "Region": "B",
+        "Condition": "Medium",
+        "Signal": 5
+      },
+      {
+        "Region": "B",
+        "Condition": "Hard",
+        "Signal": 0
+      }
+    ]
+  }
+]

@@ -8,8 +8,12 @@
  */
 const express = require('express'); 
 const path = require('path');
+const fs = require('fs');
 const app = express();
 const port = process.env.PORT || 5000; 
+
+// Read in the dataset for future API calls
+const dataset = JSON.parse(fs.readFileSync(path.join(__dirname, 'dataset.json'), {encoding:'utf8', flag:'r'} ));
 
 app.use('/static', express.static(path.join(__dirname, 'survey_frontend', 'build', 'static')));
 
@@ -23,4 +27,9 @@ app.get('/', function (req, res) {
 // create a GET route
 app.get('/api', (req, res) => { 
   res.send({ express: 'YOUR EXPRESS BACKEND IS CONNECTED TO REACT' }); 
+}); 
+
+// GET /dataset - send the full dataset
+app.get('/api/dataset', (req, res) => { 
+  res.send(dataset); 
 }); 

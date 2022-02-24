@@ -8,7 +8,7 @@ function Home () {
   const navigate = useNavigate()
 
   useEffect(() => {
-    fetch('/api').then(res => res.json()).then(data => console.log(data))
+    fetch('/api/dataset').then(res => res.json()).then(data => console.log(data))
   }, [])
 
   return (
