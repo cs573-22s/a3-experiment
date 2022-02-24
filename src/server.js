@@ -6,14 +6,28 @@
  * https://www.freecodecamp.org/news/how-to-create-a-react-app-with-a-node-backend-the-complete-guide/
  * https://stackoverflow.com/a/51227868
  */
-const express = require('express'); 
-const path = require('path');
-const fs = require('fs');
+import express from 'express';
+import path from 'path';
+import fs from 'fs';
+import { fileURLToPath } from 'url';
+import cookieParser from 'cookie-parser';
+import session from 'express-session';
+import { dirname } from 'path';
+
+const __dirname = dirname(fileURLToPath(import.meta.url))
 const app = express();
 const port = process.env.PORT || 5000; 
 
 // Read in the dataset for future API calls
 const dataset = JSON.parse(fs.readFileSync(path.join(__dirname, 'dataset.json'), {encoding:'utf8', flag:'r'} ));
+
+app.use(cookieParser())
+app.use(session({
+  secret:"whatever",
+  resave: false,
+  saveUninitialized: true
+}))
+
 
 app.use('/static', express.static(path.join(__dirname, 'survey_frontend', 'build', 'static')));
 
@@ -21,6 +35,7 @@ app.use('/static', express.static(path.join(__dirname, 'survey_frontend', 'build
 app.listen(port, () => console.log(`Listening on port ${port}`));
 
 app.get('/', function (req, res) {
+  console.log(req.sessionID)
   res.sendFile('index.html', {root:path.join(__dirname, 'survey_frontend', 'build/')});
 });
 
@@ -31,5 +46,31 @@ app.get('/api', (req, res) => {
 
 // GET /dataset - send the full dataset
 app.get('/api/dataset', (req, res) => { 
-  res.send(dataset); 
+
+  // function that returns a shuffled array
+  // reimplementation of the Fisher Yates Shuffle algorithm: https://en.wikipedia.org/wiki/Fisher%E2%80%93Yates_shuffle
+  function shuffle(arr) {
+
+    // Swaps two integers in an array
+    function swap(arr, i, j) {
+      const temp = arr[i];
+      arr[i] = arr[j];
+      arr[j] = temp;
+    }
+
+    const copy = arr.slice();
+    for (let i = copy.length - 1; i >= 0; i--)  {
+      // Get a random index
+      const j = Math.floor(Math.random() * copy.length)
+      swap(copy, i, j);
+    }
+    return copy;
+  }
+  
+  let finalDataset = [];
+  for (const trial of ['bar', 'topographic', 'brain']) {
+    const randomizedDataset = shuffle(dataset);
+    finalDataset = [...finalDataset, ...randomizedDataset.map(elt => { return {...elt, type: trial} } )]
+  }
+  res.send(finalDataset); 
 }); 
