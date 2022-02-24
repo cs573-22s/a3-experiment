@@ -1,13 +1,54 @@
 <script src="https://d3js.org/d3.v4.min.js"></script>
 
-
 <style>
+  svg {
+    background-color: rgb(121, 173, 173);
+    display: block;
+    margin-bottom: 5px;
+  }
+  body {
+    font-family: Tahoma, sans-serif;
+  }
+
 </style>
 
 <body>
+  
   <h1> Experiment </h1>
+  <p> Description/Intro </p> <br>
+
+  <h3> Graph 1 </h3>
+  <svg id="svg1"></svg>
+  <p> Questions </p> <br>
+
+  <h3> Graph 2 </h3>
+  <svg id="svg2"></svg>
+  <p> Questions </p> <br>
+
+  <h3> Graph 3 </h3>
+  <svg id="svg3"></svg>
+  <p> Questions </p> <br>
 </body>
 
 <script>
   console.log(d3); // test if d3 is loaded
+
+  var width = 600;
+  var height = 1200;
+
+  var svg1 = d3
+    .select("svg1")
+    .attr("viewBox", [0, 0, width, height])
+    .property("value", []);
+
+  var svg2 = d3
+    .select("svg2")
+    .attr("viewBox", [0, 0, width, height])
+    .property("value", []);
+
+  var svg3 = d3
+    .select("svg3")
+    .attr("viewBox", [0, 0, width, height])
+    .property("value", []);
+
 </script>
