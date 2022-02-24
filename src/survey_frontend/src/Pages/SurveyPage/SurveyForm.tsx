@@ -27,8 +27,10 @@ type FormAction = UpdateAction | DeleteAction
 
 type SurveyFormProps = {
   questionNum: number,
+  lastQuestion?: boolean,
   onPrevious: () => void,
   onNext: () => void,
+  onSubmit?: () => void,
   questionType: QuestionType,
   datasetID: string
 }
@@ -116,7 +118,11 @@ export default function SurveyForm (props: SurveyFormProps) {
           />
           <ButtonGroup>
             <Button variant='contained' disabled={props.questionNum <= 1} onClick={props.onPrevious}>Previous Question</Button>
-            <Button variant='contained' onClick={props.onNext} disabled={!isQuestionComplete()}>Next Question</Button>
+            {
+              (props.lastQuestion)
+                ? <Button variant='contained' color='success' onClick={props.onSubmit} disabled={!isQuestionComplete()}>Submit</Button>
+                : <Button variant='contained' onClick={props.onNext} disabled={!isQuestionComplete()}>Next Question</Button>
+            }
           </ButtonGroup>
         </Stack>
       </Paper>
