@@ -52,23 +52,37 @@ var linscale = d3.scaleLinear()
 // make comments of coordinates for brain signal
 d3.select('svg')
   .append('path')
-  .attr('d', 'M 230 200 C 240 210 290 250 300 260 C 290 270 270 300 260 290 C 200 250 190 240 130 250 C 110 240 110 250 90 260 C 130 130 260 130 360 260 C 330 280 330 280 300 260 Z')
+  .attr('d', 'M 220 230 C 240 210 290 250 300 260 C 290 270 270 300 260 290 C 200 270 190 280 130 280 C 120 290 110 290 80 270 C 100 80 320 80 360 260 C 330 280 330 280 300 260 C 290 250 240 210 220 230 Z')
   .attr('stroke', 'black')
+  .attr('fill', 'white')
+
+//Region A: (300,200)
+//Region B: (240,160)
+//Region C: (120,220)
+//Region D: (260,260)
+//Region E: (220,210)
+
+d3.select("svg")
+  .append("circle")
+  .attr("cx", 220)
+  .attr("cy", 210)
+  .attr('r', 10)
+  .attr('fill', 'black')
+  .attr('opacity', 0.5) //set to signal strength, Signal/10?
 
 // A function that create / update the plot for a given variable:
 // turn into circles with x and y related to the region coordinates
 // color saturation related to signal? yea.... yea
 function update(data) {
 
-  var u = svg.selectAll("circle")
-    .data(data)
-
-  u
-    .join("circle");
-  //  .transition()
-  //  .duration(1000)
-  //    .attr("cx", d => cx(d.Region))
-  //    .attr("cy", d => cy(d.Signal))
+  d3.select("svg")
+    //.data(data)
+    d3.selectAll('circle')
+      .append("circle")
+        .attr("cx", 100)
+        .attr("cy", 100)
+        .attr('r', 10)
+        .attr('fill', 'black');
   }
     
 
