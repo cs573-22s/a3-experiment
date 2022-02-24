@@ -113,11 +113,70 @@ const data3D = [
         renderer.setSize(window.innerWidth, window.innerHeight);
         renderer.render(scene, camera);
 
+
+
         document.getElementById('webGL-container').append(renderer.domElement)
         //$("#webGL-container").append(renderer.domElement);
+        controls = new THREE.OrbitControls (camera, renderer.domElement);
+
+        // var gridXZ = new THREE.GridHelper(100, 10);
+        // gridXZ.setColors( new THREE.Color(0xff0000), new THREE.Color(0xffffff) );
+        // scene.add(gridXZ);
+
+        let gXY = new THREE.PlaneGeometry(3, 10, 1, 10);
+        ToQuads(gXY);
+        let mXY = new THREE.LineBasicMaterial({color: "purple"});
+        let grXY = new THREE.LineSegments(gXY, mXY);
+        grXY.scale.set(10, 8, 1);
+        grXY.position.set(6, 40, -27.5);
+        scene.add(grXY);
+
+        // let gXZ = new THREE.PlaneGeometry(1, 1, 3, 10);
+        // ToQuads(gXZ);
+        // let mXZ = new THREE.LineBasicMaterial({color: "black"});
+        // let grXZ = new THREE.LineSegments(gXZ, mXZ);
+        // grXZ.scale.set(10, 4, 1);
+        // grXZ.rotation.x = Math.PI * -0.5;
+        // grXZ.position.set(0, 0, 0);
+        // scene.add(grXZ);
+
+        let gYZ = new THREE.PlaneGeometry(10, 3, 10, 1);
+        ToQuads(gYZ);
+        let mYZ = new THREE.LineBasicMaterial({color: "green"});
+        let grYZ = new THREE.LineSegments(gYZ, mYZ);
+        grYZ.scale.set(8, 10, 1);
+        grYZ.rotation.x = Math.PI * -0.5;
+        grYZ.rotation.y = Math.PI / 2;
+        grYZ.position.set(21, 40, -12.5);
+        scene.add(grYZ);
 
         init3DElements();
     }
+
+function ToQuads(g) {
+    let p = g.parameters;
+    let segmentsX = (g.type == "TorusBufferGeometry" ? p.tubularSegments : p.radialSegments) || p.widthSegments || p.thetaSegments || (p.points.length - 1) || 1;
+    let segmentsY = (g.type == "TorusBufferGeometry" ? p.radialSegments : p.tubularSegments) || p.heightSegments || p.phiSegments || p.segments || 1;
+    let indices = [];
+    for (let i = 0; i < segmentsY + 1; i++) {
+        let index11 = 0;
+        let index12 = 0;
+        for (let j = 0; j < segmentsX; j++) {
+            index11 = (segmentsX + 1) * i + j;
+            index12 = index11 + 1;
+            let index21 = index11;
+            let index22 = index11 + (segmentsX + 1);
+            indices.push(index11, index12);
+            if (index22 < ((segmentsX + 1) * (segmentsY + 1) - 1)) {
+                indices.push(index21, index22);
+            }
+        }
+        if ((index12 + segmentsX + 1) <= ((segmentsX + 1) * (segmentsY + 1) - 1)) {
+            indices.push(index12, index12 + segmentsX + 1);
+        }
+    }
+    g.setIndex(indices);
+}
 
     function init3DElements() {
 
@@ -234,5 +293,17 @@ const data3D = [
         renderer.render(scene, camera);
     };
 
-    render();
+function animate() {
+    controls.update();
+    requestAnimationFrame( animate );
+    renderer.render( scene, camera );
+}
 
+
+setInterval(function(){
+    // scene.rotation.x += 0.001;
+    scene.rotation.y += 0.001;
+}, 5);
+
+    render();
+animate();
