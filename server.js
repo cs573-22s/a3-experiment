@@ -36,6 +36,10 @@ app.get('/index', async (req, res) => {
 
 });
 
+app.get('/experiment', async (req, res) => {
+    res.render('experiment');
+});
+
 // 404 page
 app.use((req,res) => {
     res.status(404).render('404',{title: '404'})
