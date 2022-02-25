@@ -12,16 +12,29 @@ import fs from 'fs';
 import { fileURLToPath } from 'url';
 import cookieParser from 'cookie-parser';
 import session from 'express-session';
-import { dirname } from 'path';
+import { dirname, join } from 'path';
+import { JSONFile, Low }  from 'lowdb';
 
 const __dirname = dirname(fileURLToPath(import.meta.url))
 const app = express();
 const port = process.env.PORT || 5000; 
 
+// Database (lowdb)
+const file = join(__dirname, 'db.json');
+const adapter = new JSONFile(file);
+const db = new Low(adapter);
+
+// Initialize the 'responses' table
+db.data ||= {
+  responses: []
+}
+
 // Read in the dataset for future API calls
 const dataset = JSON.parse(fs.readFileSync(path.join(__dirname, 'dataset.json'), {encoding:'utf8', flag:'r'} ));
 
-app.use(cookieParser())
+app.use(cookieParser());
+app.use(express.json());
+
 app.use(session({
   secret:"whatever",
   resave: false,
@@ -74,3 +87,19 @@ app.get('/api/dataset', (req, res) => {
   }
   res.send(finalDataset); 
 }); 
+
+app.post('/api/submit', (req, res) => {
+  console.log("Submitting form...")
+  const body = req.body;
+  db.data.responses.push({id: req.sessionID, ...body});
+  db.write().then(
+    () => {
+      res.writeHead(201, "Form submitted!");
+      res.end();
+    },
+    (reason) => {
+      res.writeHead(400, "Unable to submit");
+      res.end(reason)
+    }
+  )
+})

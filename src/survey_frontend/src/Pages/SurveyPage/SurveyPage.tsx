@@ -1,5 +1,5 @@
 import TopMenuBar from 'Components/TopMenuBar'
-import SurveyForm from 'Pages/SurveyPage/SurveyForm'
+import SurveyForm, { FormAnswer } from 'Pages/SurveyPage/SurveyForm'
 import React, { useEffect, useRef, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import Box from '@mui/material/Box'
@@ -37,6 +37,32 @@ export default function SurveyPage () {
       })
   }, [])
 
+  // Handler to submit the form
+  const handleSubmit = (formData : FormAnswer[]) => {
+    console.log('Submitting form...')
+
+    // We need to make each response map an Object
+    const submitResponses = formData.map((question) => {
+      const { questionNum, questionType, datasetID, answers } = question
+      return { questionNum, questionType, datasetID, answers: Object.fromEntries(answers) }
+    })
+
+    fetch('/api/submit', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(submitResponses)
+    })
+      .then(() => {
+        console.log('Form submitted!')
+        navigate('/')
+      })
+      .catch((err) => {
+        console.error('Unable to submit for reason:', err)
+      })
+  }
+
   return (
     <>
       <TopMenuBar back onBack = { () => navigate('/') }/>
@@ -58,7 +84,15 @@ export default function SurveyPage () {
                   </Paper>
                 </Box>
                 <Box sx= { { width: '100%', height: '100%', overflow: 'auto' } } >
-                  <SurveyForm questionNum={questionNum} lastQuestion onPrevious={() => setQuestionNum(questionNum - 1)} onNext={() => setQuestionNum(questionNum + 1)} questionType={'bar'} datasetID={'foo'} />
+                  <SurveyForm
+                    questionNum={questionNum}
+                    lastQuestion={questionNum === 2}
+                    onPrevious={() => setQuestionNum(questionNum - 1)}
+                    onNext={() => setQuestionNum(questionNum + 1)}
+                    onSubmit={ handleSubmit }
+                    questionType={ dataset.current[questionNum - 1].type }
+                    datasetID={ dataset.current[questionNum - 1].id }
+                  />
                 </ Box>
               </Splitter>
             </Box>

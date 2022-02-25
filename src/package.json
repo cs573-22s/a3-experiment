@@ -1,8 +1,8 @@
 {
-  "name": "src",
+  "name": "surveyserver",
   "version": "1.0.0",
-  "description": "",
-  "type" : "module",
+  "description": "Survey server for the CS573 Assignment 3",
+  "type": "module",
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",

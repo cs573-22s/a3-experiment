@@ -4,11 +4,9 @@ import React, { useState, useEffect, useReducer } from 'react'
 
 type Response = { response: string }
 
-type QuestionType = 'bar' | 'topogrpah' | 'brain'
-
-type FormAnswer = {
+export type FormAnswer = {
     questionNum: number,
-    questionType: QuestionType,
+    questionType: string,
     datasetID: string,
     answers: Map<number, Response>
 }
@@ -30,8 +28,8 @@ type SurveyFormProps = {
   lastQuestion?: boolean,
   onPrevious: () => void,
   onNext: () => void,
-  onSubmit?: () => void,
-  questionType: QuestionType,
+  onSubmit?: (response : FormAnswer[]) => void,
+  questionType: string,
   datasetID: string
 }
 
@@ -64,6 +62,7 @@ export default function SurveyForm (props: SurveyFormProps) {
 
   const [formData, dispatch] = useReducer(reducer, [])
   const [completed, setCompleteArray] = useState([false, false, false, false])
+  const [submitting, setSubmitting] = useState(false)
 
   const setComplete = (id: number) => {
     return (state: boolean) => {
@@ -75,6 +74,13 @@ export default function SurveyForm (props: SurveyFormProps) {
 
   const isQuestionComplete = () : boolean => {
     return completed.reduce((prev, curr) => prev && curr, true as boolean)
+  }
+
+  const submitForm = () => {
+    setSubmitting(true)
+    if (props.onSubmit) {
+      props.onSubmit(formData)
+    }
   }
 
   // When moving to a new quesiton or going back, delete the entry
@@ -120,7 +126,7 @@ export default function SurveyForm (props: SurveyFormProps) {
             <Button variant='contained' disabled={props.questionNum <= 1} onClick={props.onPrevious}>Previous Question</Button>
             {
               (props.lastQuestion)
-                ? <Button variant='contained' color='success' onClick={props.onSubmit} disabled={!isQuestionComplete()}>Submit</Button>
+                ? <Button variant='contained' color='success' onClick={submitForm} disabled={!isQuestionComplete() || submitting}>{(submitting) ? 'Submitting' : 'Submit'}</Button>
                 : <Button variant='contained' onClick={props.onNext} disabled={!isQuestionComplete()}>Next Question</Button>
             }
           </ButtonGroup>
