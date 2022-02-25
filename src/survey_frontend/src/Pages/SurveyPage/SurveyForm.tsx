@@ -2,6 +2,12 @@ import { Button, ButtonGroup, Container, Paper, Stack } from '@mui/material'
 import SurveyQuestion from 'Components/SurveyQuestion'
 import React, { useState, useEffect, useReducer } from 'react'
 
+/**
+ * Survey Form component and related types
+ * James Plante (jplante@wpi.edu)
+ */
+
+// Types
 type Response = { response: string }
 
 export type FormAnswer = {
@@ -33,6 +39,15 @@ type SurveyFormProps = {
   datasetID: string
 }
 
+// Questions
+const tasks = [
+  'Which region-condition combination is most active?',
+  'Which region-condition combination is least active?',
+  'Which regions have similar activation, regardless of condition?',
+  'Which conditions have similar activation, regardless of region?',
+  'Summarize the activation patterns in this set of data.'
+]
+
 export default function SurveyForm (props: SurveyFormProps) {
   /**
    * Updates the current state based on the provided action
@@ -60,10 +75,14 @@ export default function SurveyForm (props: SurveyFormProps) {
     }
   }
 
+  // Contains responses from users
   const [formData, dispatch] = useReducer(reducer, [])
-  const [completed, setCompleteArray] = useState([false, false, false, false])
+  // State to indicate which question is complete
+  const [completed, setCompleteArray] = useState(tasks.map(_ => false))
+  // State for when the survey has finished
   const [submitting, setSubmitting] = useState(false)
 
+  // Callback to submit the form and update UI
   const setComplete = (id: number) => {
     return (state: boolean) => {
       const completedCopy = completed.slice()
@@ -72,6 +91,7 @@ export default function SurveyForm (props: SurveyFormProps) {
     }
   }
 
+  // Function to check whether a question is "completed"
   const isQuestionComplete = () : boolean => {
     return completed.reduce((prev, curr) => prev && curr, true as boolean)
   }
@@ -86,7 +106,7 @@ export default function SurveyForm (props: SurveyFormProps) {
   // When moving to a new quesiton or going back, delete the entry
   useEffect(() => {
     dispatch({ type: 'delete' })
-    setCompleteArray([false, false, false, false])
+    setCompleteArray([false, false, false, false, false])
     console.log(formData)
   }, [props.questionNum])
 
@@ -94,34 +114,19 @@ export default function SurveyForm (props: SurveyFormProps) {
     <Container fixed sx = { { padding: 2, width: '100vw', height: '100%' } }>
       <Paper elevation={5} sx = { { margin: 1, padding: 3 } }>
         <Stack spacing={3}>
-          <SurveyQuestion
-            id={`Question ${props.questionNum} Task 1`}
-            taskNum={1}
-            prompt='Which region-condition combination is most active?'
-            dispatch={dispatch}
-            setComplete={setComplete(1)}
-          />
-          <SurveyQuestion
-            id={`Question ${props.questionNum} Task 2`}
-            taskNum={2}
-            prompt='Which region-condition combination is least active?'
-            dispatch={dispatch}
-            setComplete={setComplete(2)}
-          />
-          <SurveyQuestion
-            id={`Question ${props.questionNum} Task 3`}
-            taskNum={3}
-            prompt='Which regions have similar activation, regardless of condition?'
-            dispatch={dispatch}
-            setComplete={setComplete(3)}
-          />
-          <SurveyQuestion
-            id={`Question ${props.questionNum} Task 4`}
-            taskNum={4}
-            prompt='Which conditions have similar activation, regardless of region?'
-            dispatch={dispatch}
-            setComplete={setComplete(4)}
-          />
+          {tasks.map((task, index) => {
+            const taskNum = index + 1
+            return (
+              <SurveyQuestion
+                key={taskNum}
+                id={`Question ${props.questionNum} Task ${taskNum}`}
+                taskNum={taskNum}
+                prompt={task}
+                dispatch={dispatch}
+                setComplete={setComplete(taskNum)}
+              />
+            )
+          })}
           <ButtonGroup>
             <Button variant='contained' disabled={props.questionNum <= 1} onClick={props.onPrevious}>Previous Question</Button>
             {

@@ -7,6 +7,11 @@ import Splitter, { SplitDirection } from '@devbookhq/splitter'
 import Paper from '@mui/material/Paper'
 import { Typography } from '@mui/material'
 
+/**
+ * Survey Page and related types
+ * James Plante (jplante@wpi.edu)
+ */
+
 export default function SurveyPage () {
   type DatasetRow = {
     Region: string,

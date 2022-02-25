@@ -4,6 +4,11 @@ import TopMenuBar from 'Components/TopMenuBar'
 import { Button, Container, Typography } from '@mui/material'
 import { useNavigate } from 'react-router-dom'
 
+/**
+ * Home Page
+ * James Plante (jplante@wpi.edu)
+ */
+
 function Home () {
   const navigate = useNavigate()
 

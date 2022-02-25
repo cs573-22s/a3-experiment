@@ -1,6 +1,11 @@
 import { TextField } from '@mui/material'
 import React, { useState, useEffect } from 'react'
 
+/**
+ * Task Textbox and related types
+ * James Plante (jplante@wpi.edu)
+ */
+
 type SurveyQuestionProps = {
   id : string, // ID of question
   taskNum : number, // Task number

@@ -6,6 +6,11 @@ import DialogContent from '@mui/material/DialogContent'
 import DialogContentText from '@mui/material/DialogContentText'
 import DialogTitle from '@mui/material/DialogTitle'
 
+/**
+ * About Menu modal and related types
+ * James Plante (jplante@wpi.edu)
+ */
+
 type AboutMenuProps = {
     open: boolean,
     onClose: () => void
