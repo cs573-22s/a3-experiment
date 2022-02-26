@@ -50,18 +50,13 @@ app.get("/experiment", async (req, res) => {
 });
 
 app.post("/api/experiments/:questionNumber", async (req, res) => {
-  const {questionNumber} = req.params;
-  const {trueAnswer, userAnswer, user} = req.body;
+  const { questionNumber } = req.params;
+  const { trueAnswer, userAnswer, user } = req.body;
 
   try {
     const res = await pool.query(
       "INSERT INTO response (question_no, true_answer, user_answer, user_id) VALUES ($1, $2, $3, $4)",
-      [
-        req.params.questionNumber,
-        req.body.trueAnswer,
-        req.body.userAnswer,
-        req.body.user,
-      ]
+      [questionNumber, trueAnswer, userAnswer, user]
     );
     console.log(res.rows);
   } catch (error) {
@@ -69,7 +64,9 @@ app.post("/api/experiments/:questionNumber", async (req, res) => {
   }
 
   res.setHeader("Content-Type", "application/json");
-  res.status(201).end(JSON.stringify({ msg: "ok" }));
+  res
+    .status(201)
+    .end(JSON.stringify({ msg: "Response saved successfully", status: 201 }));
 });
 
 // 404 page
