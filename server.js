@@ -55,7 +55,7 @@ app.post("/api/experiments/:questionNumber", async (req, res) => {
 
   try {
     const res = await pool.query(
-      "INSERT INTO response (question_no, actual_answer, user_answer, user_id) VALUES ($1, $2, $3, $4)",
+      "INSERT INTO response (question_no, true_answer, user_answer, user_id) VALUES ($1, $2, $3, $4)",
       [
         req.params.questionNumber,
         req.body.trueAnswer,
