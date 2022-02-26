@@ -1,3 +1,10 @@
+<!--https://www.d3-graph-gallery.com/graph/pie_basic.html-->
+
+
+<!DOCTYPE html>
+<meta charset="utf-8">
+
+<!-- Load d3.js -->
 <script src="https://d3js.org/d3.v4.min.js"></script>
 
 <style>
@@ -17,8 +24,8 @@
   <h1> Experiment </h1>
   <p> Description/Intro </p> <br>
 
-  <h3> Graph 1 </h3>
-  <svg id="svg1"></svg>
+  <h3> Graph 1: Pie Chart</h3>
+  <div id="pie_chart"></div>
   <p> Questions </p> <br>
 
   <h3> Graph 2 </h3>
@@ -40,6 +47,51 @@
     .select("svg1")
     .attr("viewBox", [0, 0, width, height])
     .property("value", []);
+
+  // margins
+  var width = 450
+      height = 450
+      margin = 40
+
+  // The radius = width/2 or height/2 (smallest one)
+  var radius = Math.min(width, height) / 2 - margin
+
+  // append svg to div
+  var svg = d3.select("#pie_chart")
+    .append("svg")
+      .attr("width", width)
+      .attr("height", height)
+    .append("g")
+      .attr("transform", "translate(" + width / 2 + "," + height / 2 + ")");
+
+  // Data Averages
+  var data = {total:13.56363636, female:9.531818182, male:17.6}
+
+  // Colors
+  var color = d3.scaleOrdinal()
+    .domain(data)
+    .range(["#98abc5", "#8a89a6", "#7b6888"])
+
+  // Individual group position
+  var pie = d3.pie()
+    .value(function(d) {return d.value; })
+  var data_ready = pie(d3.entries(data))
+
+  // Create chart: path using arc.
+  svg
+    .selectAll('whatever')
+    .data(data_ready)
+    .enter()
+    .append('path')
+    .attr('d', d3.arc()
+      .innerRadius(0)
+      .outerRadius(radius)
+    )
+    .attr('fill', function(d){ return(color(d.data.key)) })
+    .attr("stroke", "white")
+    .style("stroke-width", "4px")
+    .style("opacity", 0.5)
+
 
   var svg2 = d3
     .select("svg2")
