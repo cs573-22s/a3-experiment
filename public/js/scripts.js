@@ -11,6 +11,11 @@ const dataset = [73, 18, 56, 38, 4]
 const width = 500;
 const height = 500;
 
+var svg1 = d3
+    .select("svg")
+    .attr("viewBox", [0, 0, width, height])
+    .property("value", []);
+
 const linscale = d3.scaleLinear()
     .domain([0, 100]) // unit: km
     .range([0, width]); // unit: px
@@ -29,24 +34,151 @@ const axis = d3.axisLeft()
 
 // Add Rectangles
 
-d3.select('.svg1')
-    .append('g')
-    .selectAll('rect')
+ var rect =  svg1
+     .append('g')
+     .selectAll('rect')
+     .data(dataset)
+     .enter().append('rect')
+     .attr('width',50)
+     .attr('height', data => linscale(data))
+     .attr('stroke', 'black')
+     .attr('fill', data => colorScale(data))
+     .attr('x', function (d, i) { return (i * 75) + 50; })
+     .attr('y', data => 500 - linscale(data))
+     .attr('transform', 'translate(75,0)')
+     .on("mouseover",(e, d) => {    // event listener to show tooltip on hover
+         d3.select("#bubble-tip-"+d)
+             .style("display","block");
+     })
+     .on("mouseout", (e, d) => {    // event listener to hide tooltip after hover
+         if(!d.toolTipVisible){
+             d3.select("#bubble-tip-"+d)
+                 .style("display","none");
+         }
+     })
+     .on("click", (e, d) => {    // event listener to make tooltip remain visible on click
+         if(!d.toolTipVisible){
+             d3.select("#bubble-tip-"+d)
+                 .style("display", "block");
+             d.toolTipVisible = true;
+         }
+         else{
+             d3.select("#bubble-tip-"+d)
+                 .style("display", "none");
+             d.toolTipVisible = false;
+         }
+     })
+
+svg1.selectAll(".bubble-tip")
     .data(dataset)
-    .enter().append('rect')
-    .attr('width',50)
-    .attr('height', data => linscale(data))
-    .attr('stroke', 'black')
-    .attr('fill', data => colorScale(data))
-    .attr('x', function (d, i) { return (i * 75) + 50; })
-    .attr('y', data => 500 - linscale(data))
-    .attr('transform', 'translate(75,0)');
+    .join("g")
+    .attr("class", "bubble-tip")
+    .attr("id", (d)=> "bubble-tip-"+d)
+    .attr("transform", "translate(400 , 50)")
+    .style("display", "none")
+    .append("rect")
+    .attr("x",-5)
+    .attr("y",-20)
+    .attr("rx",5)
+    .attr("fill","gray")
+    .attr("fill-opacity", 0.9)
+    .attr("width",100)
+    .attr("height",50)
+
+
+svg1.selectAll(".bubble-tip")
+    .append("text")
+    .text(d => d)
+    .style("font-family", "sans-serif")
+    .style("font-size", 14)
+    .attr("stroke", "none")
+
 
 
 d3.select('.svg1')
     .append('g')
     .attr('transform', 'translate(50, 0)')
     .call(axis);
+
+// 2d pie chart
+
+// arc donut chart
+const svgPie = d3.select('.svgPie').append('svg');
+const groupPie = svgPie.append('g').attr('transform', 'translate(300, 300)');
+
+const r2 = 300;
+const color = d3.scaleOrdinal()
+    .range(['red', 'blue', 'yellow', 'green', 'orange'])
+
+const arc2 = d3.arc()
+    .innerRadius(0)
+    .outerRadius(r2)
+
+const pie = d3.pie()
+    .value(data => data)
+
+const arcs = groupPie.selectAll('.arc')
+    .data(pie(dataset))
+    .enter().append('g')
+    .attr('class', 'arc')
+
+
+arcs.append('path')
+    .attr('d', arc2)
+    .attr('fill', data => color(data.data))
+    .on("mouseover",(e, d) => {    // event listener to show tooltip on hover
+        d3.select("#arc-tip-"+d.value)
+            .style("display","block");
+    })
+    .on("mouseout", (e, d) => {    // event listener to hide tooltip after hover
+        if(!d.toolTipVisible){
+            d3.select("#arc-tip-"+d.value)
+                .style("display","none");
+        }
+    })
+    .on("click", (e, d) => {    // event listener to make tooltip remain visible on click
+        if(!d.toolTipVisible){
+            d3.select("#arc-tip-"+d.value)
+                .style("display", "block");
+            d.toolTipVisible = true;
+        }
+        else{
+            d3.select("#arc-tip-"+d.value)
+                .style("display", "none");
+            d.toolTipVisible = false;
+        }
+    })
+
+svgPie.selectAll(".arc-tip")
+    .data(pie(dataset))
+    .join("g")
+    .attr("class", "arc-tip")
+    .attr("id", (d)=> "arc-tip-"+d.value)
+    .attr("transform", "translate(500 , 50)")
+    .style("display", "none")
+    .append("rect")
+    .attr("x",-5)
+    .attr("y",-20)
+    .attr("rx",5)
+    .attr("fill","gray")
+    .attr("fill-opacity", 0.9)
+    .attr("width",100)
+    .attr("height",50)
+
+
+svgPie.selectAll(".arc-tip")
+    .append("text")
+    .text(d => d.value)
+    .style("font-family", "sans-serif")
+    .style("font-size", 14)
+    .attr("stroke", "none")
+// arcs.append('text')
+//     .attr('transform', data => 'translate(' + arc2.centroid(data) + ')')
+//     .attr('text-anchor', 'middle')
+//     .attr('font-size', '1.5em')
+//     .text(data => data.data)
+
+
 
 
 // three.js trial
@@ -125,7 +257,7 @@ const data3D = [
 
         let gXY = new THREE.PlaneGeometry(3, 10, 1, 10);
         ToQuads(gXY);
-        let mXY = new THREE.LineBasicMaterial({color: "purple"});
+        let mXY = new THREE.LineBasicMaterial({color: "black"});
         let grXY = new THREE.LineSegments(gXY, mXY);
         grXY.scale.set(10, 8, 1);
         grXY.position.set(6, 40, -27.5);
@@ -142,7 +274,7 @@ const data3D = [
 
         let gYZ = new THREE.PlaneGeometry(10, 3, 10, 1);
         ToQuads(gYZ);
-        let mYZ = new THREE.LineBasicMaterial({color: "green"});
+        let mYZ = new THREE.LineBasicMaterial({color: "black"});
         let grYZ = new THREE.LineSegments(gYZ, mYZ);
         grYZ.scale.set(8, 10, 1);
         grYZ.rotation.x = Math.PI * -0.5;
