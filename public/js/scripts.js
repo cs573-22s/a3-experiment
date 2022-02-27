@@ -1,12 +1,5 @@
 
-function reloadPage() {
-    window.location.reload()
-}
-
-console.log(d3); // test if d3 is loaded
-const dataset = [73, 18, 56, 38, 4]
-
-// d3.select('svg').append('circle').attr('cx', 50).attr('cy', 50).attr('r', 50);
+let dataset = [73, 18, 56, 38, 4]
 
 const width = 500;
 const height = 500;
@@ -100,6 +93,56 @@ d3.select('.svg1')
     .attr('transform', 'translate(50, 0)')
     .call(axis);
 
+
+ let ordered = false;
+ function orderBarGraph() {
+     let ogDataset = dataset.slice(0);
+
+     rect.remove()
+     if (!ordered) {
+         ogDataset.sort((a, b) => a - b)
+         ogDataset.reverse()
+     }
+     rect = svg1
+         .append('g')
+         .selectAll('rect')
+         .data(ogDataset)
+         .enter().append('rect')
+         .attr('width',50)
+         .attr('height', data => linscale(data))
+         .attr('stroke', 'black')
+         .attr('fill', data => colorScale(data))
+         .attr('x', function (d, i) { return (i * 75) + 50; })
+         .attr('y', data => 500 - linscale(data))
+         .attr('transform', 'translate(75,0)')
+         .on("mouseover",(e, d) => {    // event listener to show tooltip on hover
+             d3.select("#bubble-tip-"+d)
+                 .style("display","block");
+         })
+         .on("mouseout", (e, d) => {    // event listener to hide tooltip after hover
+             if(!d.toolTipVisible){
+                 d3.select("#bubble-tip-"+d)
+                     .style("display","none");
+             }
+         })
+         .on("click", (e, d) => {    // event listener to make tooltip remain visible on click
+             if(!d.toolTipVisible){
+                 d3.select("#bubble-tip-"+d)
+                     .style("display", "block");
+                 d.toolTipVisible = true;
+             }
+             else{
+                 d3.select("#bubble-tip-"+d)
+                     .style("display", "none");
+                 d.toolTipVisible = false;
+             }
+         })
+     ordered = !ordered;
+ }
+
+
+
+
 // 2d pie chart
 
 // arc donut chart
@@ -117,7 +160,7 @@ const arc2 = d3.arc()
 const pie = d3.pie()
     .value(data => data)
 
-const arcs = groupPie.selectAll('.arc')
+let arcs = groupPie.selectAll('.arc')
     .data(pie(dataset))
     .enter().append('g')
     .attr('class', 'arc')
@@ -178,6 +221,46 @@ svgPie.selectAll(".arc-tip")
 //     .attr('font-size', '1.5em')
 //     .text(data => data.data)
 
+/*let ordered2 = false;
+function orderPieGraph() {
+    let ogDataset = dataset.slice(0);
+    arcs.remove();
+    if (!ordered2) {
+        ogDataset.sort((a, b) => a - b)
+        ogDataset.reverse()
+    }
+    arcs = groupPie.selectAll('.arc')
+        .data(pie(ogDataset))
+        .enter().append('g')
+        .attr('class', 'arc')
+
+        arcs.append('path')
+        .attr('d', arc2)
+        .attr('fill', data => color(data.data))
+        .on("mouseover",(e, d) => {    // event listener to show tooltip on hover
+            d3.select("#arc-tip-"+d.value)
+                .style("display","block");
+        })
+        .on("mouseout", (e, d) => {    // event listener to hide tooltip after hover
+            if(!d.toolTipVisible){
+                d3.select("#arc-tip-"+d.value)
+                    .style("display","none");
+            }
+        })
+        .on("click", (e, d) => {    // event listener to make tooltip remain visible on click
+            if(!d.toolTipVisible){
+                d3.select("#arc-tip-"+d.value)
+                    .style("display", "block");
+                d.toolTipVisible = true;
+            }
+            else{
+                d3.select("#arc-tip-"+d.value)
+                    .style("display", "none");
+                d.toolTipVisible = false;
+            }
+        })
+
+}*/ // ordering pie charts but think they are already ordered with .pie fxn
 
 
 
@@ -439,3 +522,145 @@ setInterval(function(){
 
     render();
 animate();
+
+
+// three.js pie chart /////
+
+/*(function (_, THREE) {
+    var Pie = window.Pie = function (id, data) {
+        this.el = document.getElementById(id);
+        this.colors = data.colors;
+        this.divisions = data.divisions;
+
+        this.init();
+    };
+
+    Pie.prototype.init = function () {
+        var scene = this.scene = new THREE.Scene();
+        var fov = 45; // camera's field of view
+        var viewWidth = this.el.offsetWidth;
+        var viewHeight = this.el.offsetHeight;
+        var camera = this.camera = new THREE.PerspectiveCamera(
+            fov, viewWidth / viewHeight, 1, 1000
+        );
+
+        var renderer;
+        if (window.WebGLRenderingContext) {
+            renderer = new THREE.WebGLRenderer({ antialiasing: true });
+        } else {
+            renderer = new THREE.CanvasRenderer();
+        }
+        this.renderer = renderer;
+
+        renderer.setSize(viewWidth, viewHeight);
+        renderer.setClearColor(0xffffff, 1); // white bg
+        this.el.appendChild(renderer.domElement);
+
+        var pie = this.pie = this.build();
+        scene.add(pie);
+
+        pie.rotation.x = Math.PI * 0.6;
+
+        camera.lookAt(pie.position);
+
+        // dynamically calcuate the camera position in order to fit the pie in view
+        // http://stackoverflow.com/a/2866471
+        //camera.position.z = pie.scale.x / Math.tan(Math.PI * fov / 360);
+        camera.position.z = 6;
+
+        var render = function () {
+            window.requestAnimationFrame(render);
+
+            pie.rotation.z += 0.005;
+
+            renderer.render(scene, camera);
+        };
+        render();
+    };
+
+    Pie.prototype.build = function () {
+        var pie = new THREE.Group();
+        var total = 2 * Math.PI;
+        var reducer = function (memo, num) { return memo + num; };
+
+        // fill the first segment
+        pie.add(this.buildSegment(0, total * this.divisions[0], this.colors[0]));
+
+        for (var i = 1; i < this.divisions.length; i++) {
+            pie.add(this.buildSegment(
+                // get the sum of all radii before this
+                total * _.reduce(_.first(this.divisions, i), reducer, 0),
+                total * this.divisions[i],
+                this.colors[i]
+            ));
+        }
+
+        // fill the rest of the pie
+        var remainder = total * _.reduce(this.divisions, reducer, 0);
+        pie.add(this.buildSegment(remainder, total - remainder, _.last(this.colors)));
+        return pie;
+    };
+
+    Pie.prototype.buildSegment = function (start, end, color) {
+        var points = [];
+        points.push(new THREE.Vector3(0, 0, 0));
+        points.push(new THREE.Vector3(0, 2, 0));
+        points.push(new THREE.Vector3(0, 2, 1));
+        points.push(new THREE.Vector3(0, 0, 1));
+
+        var geometry = new THREE.LatheGeometry(points, 24, start, end);
+        var material = new THREE.MeshBasicMaterial({ color: color });
+        return new THREE.Mesh(geometry, material);
+    };
+
+})(window._, window.THREE);
+
+let yay = new Pie('Pie', {
+    divisions: [0.25, 0.6],
+    colors: [0xEEEEEE, 0xDDDDDD, 0xCCCCCC]
+});*/
+
+// 3d pie chart try 2
+
+// Create root and chart
+var root = am5.Root.new("chartdiv");
+
+root.setThemes([
+    am5themes_Animated.new(root)
+]);
+
+var chart = root.container.children.push(
+    am5percent.PieChart.new(root, {
+        layout: root.verticalLayout
+    })
+);
+
+// Define data
+var data = [{
+    country: "France",
+    sales: 100000
+}, {
+    country: "Spain",
+    sales: 160000
+}, {
+    country: "United Kingdom",
+    sales: 80000
+}];
+
+// Create series
+var series = chart.series.push(
+    am5percent.PieSeries.new(root, {
+        name: "Series",
+        valueField: "sales",
+        categoryField: "country"
+    })
+);
+series.data.setAll(data);
+
+// Add legend
+var legend = chart.children.push(am5.Legend.new(root, {
+    centerX: am5.percent(50),
+    x: am5.percent(50),
+    layout: root.horizontalLayout
+}));
+

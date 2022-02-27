@@ -7,15 +7,26 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js" integrity="sha512-dLxUelApnYxpLt6K2iomGngnHO83iUvZytA3YjDUCjT0HDOHKXnVYdf3hU4JjM8uEhxf9nD1/ey98U3t2vZ0qQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.module.js" integrity="sha512-tjnAmVGiveGgWkDgt8h8oqmOl3cnmQkTNUIFK2BjMz0SliBCm9l0ecN1fHiOG2mATHSYm/miXNX6tE0/5uYKMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js" integrity="sha512-H6cPm97FAsgIKmlBA4s774vqoN24V5gSQL4yBTDOY2su2DeXZVhQPxFK4P6GPdnZqM9fg1G3cMv5wD7e6cFLZQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/lodash.js/2.4.1/lodash.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/three@0.101.1/examples/js/controls/OrbitControls.js"></script>
 <script src="https://cdn.skypack.dev/pin/three@v0.137.5-HJEdoVYPhjkiJWkt6XIa/mode=imports/optimized/three.js"></script>
+
+<script src="https://cdn.amcharts.com/lib/5/index.js"></script>
+<script src="https://cdn.amcharts.com/lib/5/percent.js"></script>
+<script src="https://cdn.amcharts.com/lib/5/themes/Animated.js"></script>
+
+
 <script src="./js/scripts.js" defer></script>
 <%- include("./partials/nav.ejs") %>
 
 <svg class="svg1" width="600px" height="600px"></svg>
+<button onclick="orderBarGraph()">Order</button>
 <div id="webGL-container"></div>
 
 <svg class="svgPie" width="600px" height="600px"></svg>
+<button onclick="orderPieGraph()">Order</button>
+<!--<div id="Pie" style="width: 500px; height: 500px; margin: 0 auto;"></div>-->
+<div id="chartdiv" width="100%" height="500px"></div>
 
 
 
