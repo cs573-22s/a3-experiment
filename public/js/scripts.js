@@ -1,5 +1,5 @@
 
-let dataset = [73, 18, 56, 38, 4]
+let dataset =  [73, 18, 56, 38, 4]
 
 const width = 500;
 const height = 500;
@@ -17,9 +17,10 @@ const yAxisScale = d3.scaleLinear()
     .domain([100, 0]) // unit: km
     .range([0, width]); // unit: px
 
-const colorScale = d3.scaleLinear()
-    .domain([0, 100])
-    .range(['blue', 'red']);
+// const colorScale = d3.scaleLinear()
+//     .domain([0, 100])
+//     .range(['blue', 'red']);
+let colors = ['blue', 'red', 'blue', 'blue', 'red'] // color scheme for bars
 
 const axis = d3.axisLeft()
     .scale(yAxisScale)
@@ -35,7 +36,8 @@ const axis = d3.axisLeft()
      .attr('width',50)
      .attr('height', data => linscale(data))
      .attr('stroke', 'black')
-     .attr('fill', data => colorScale(data))
+     // .attr('fill', data => colorScale(data))
+     .attr('fill', (d, i) => colors[i])
      .attr('x', function (d, i) { return (i * 75) + 50; })
      .attr('y', data => 500 - linscale(data))
      .attr('transform', 'translate(75,0)')
@@ -310,14 +312,6 @@ legend.data.setAll(series.dataItems);
 
 
 // three.js trial
-
-const data3D = [
-    [3, 2, 1],
-    [6, 5, 4],
-    [5, 7, 6]
-]
-
-
     ///////////////////////
     // Initial Variables //
     ///////////////////////
@@ -340,10 +334,10 @@ const data3D = [
     // Initial Setup     //
     ///////////////////////
 
-    init();
+    init3D(2);
 
-    function init() {
-        init3DScene();
+    function init3D(dimensions) {
+        init3DScene(dimensions);
         initListeners();
 
     }
@@ -353,7 +347,7 @@ const data3D = [
         //(window).resize(onWindowResize);
     }
 
-    function init3DScene() {
+    function init3DScene(dimensions) {
 
         // Setup Scene / Camera
         scene = new THREE.Scene();
@@ -410,7 +404,12 @@ const data3D = [
         grYZ.position.set(21, 40, -12.5);
         scene.add(grYZ);
 
-        init3DElements();
+        if (dimensions === 2) {
+            init3DElementBar()
+        } else {
+            init3DElements();
+        }
+
     }
 
 function ToQuads(g) {
@@ -451,6 +450,19 @@ function ToQuads(g) {
 
         createLight();
     }
+function init3DElementBar() {
+
+    createFloor();
+
+    createBar(5, -25, red);
+    // createBar(5, -20, red);
+    // createBar(5, -15, white);
+    // createBar(5, -10, white);
+    // createBar(5, -5, blue);
+    // createBar(5, 0, blue);
+
+    createLight();
+}
 
     ///////////////////////
     // Interactions      //
