@@ -14,7 +14,10 @@
 
   </head>
   <body>
-
+  <script defer>
+    let dataset1 = [10, 20, 30, 40, 50];
+    let 3dDataset = [[0,0,0],[0,0,0],[0,0,0]]
+  </script>
 
     <div class="header d-flex align-items-center">
       <div class="container-fluid d-flex flex-row align-items-center">
@@ -46,7 +49,7 @@
       <div class="experiment experiment--1">
         <div class="experiment__viz">
           <p><strong>Experiment 1</strong></p>
-
+          <%-include("2dBarChart.ejs", {dataset: 'dataset1', bar1: 'bar1Int', bar2: 'bar2Int'}) %>
           <button onclick="orderBarGraph()">Order</button>
         </div>
         <div class="experiment__qa">
