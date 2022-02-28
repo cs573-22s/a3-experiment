@@ -60,7 +60,6 @@
   var height = 1200;
 
   // PART 1 //
-
   var svg1 = d3
     .select("svg1")
     .attr("viewBox", [0, 0, width, height])
@@ -83,7 +82,7 @@
       .attr("transform", "translate(" + width / 2 + "," + height / 2 + ")");
 
   // Data Averages
-  var data = {total:13.56363636, female:9.531818182, male:17.6}
+  var data = {Total:13.56363636, Female:9.531818182, Male:17.6}
 
   // Colors
   var color = d3.scaleOrdinal()
@@ -94,6 +93,10 @@
   var pie = d3.pie()
     .value(function(d) {return d.value; })
   var data_ready = pie(d3.entries(data))
+
+  var arcGenerator = d3.arc()
+    .innerRadius(0)
+    .outerRadius(radius)
 
   // Create chart: path using arc.
   svg
@@ -110,7 +113,7 @@
     .style("stroke-width", "4px")
     .style("opacity", 0.5)
 
-      // Annotate Slices
+    // Annotate Slices
   svg
     .selectAll('slices')
     .data(data_ready)
@@ -120,22 +123,6 @@
     .attr("transform", function(d) { return "translate(" + arcGenerator.centroid(d) + ")";  })
     .style("text-anchor", "middle")
     .style("font-size", 25)
-
-
-    // text.transition().duration(1000)
-    // .attrTween("transform", function(d) {
-    //   this._current = this._current || d;
-    //   var interpolate = d3.interpolate(this._current, d);
-    //   this._current = interpolate(0);
-    //   return function(t) {
-    //     var d2 = interpolate(t);
-    //     var pos = outerArc.centroid(d2);
-    //     pos[0] = radius * (midAngle(d2) < Math.PI ? 1 : -1);
-    //     return "translate("+ pos +")";
-    //   };
-    // })
-  
-  
   // PART 2 //
 
   var svg2 = d3.select("#svg2")
