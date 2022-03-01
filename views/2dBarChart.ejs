@@ -1,9 +1,10 @@
 <script src="https://d3js.org/d3.v7.min.js"></script>
 <svg class="svg1" width="450px" height="450px"></svg>
+<!--<button onclick="orderBarGraph()">Order</button>-->
 <script defer>
     //let dataset =  [73, 18, 56, 38, 4]
     let dataset = dataset1;
-    let colors = ['blue', 'red', 'blue', 'blue', 'red'] // color scheme for bars
+    let colors = ['grey', 'grey', 'grey', 'grey', 'grey'] // color scheme for bars
 
     const width = 500;
     const height = 500;
@@ -21,6 +22,11 @@
         .domain([100, 0]) // unit: km
         .range([0, width]); // unit: px
 
+    function setColors(index1, index2) {
+        colors[index1] = 'blue';
+        colors[index2] = 'red';
+    }
+    setColors(bar1, bar2);
     // const colorScale = d3.scaleLinear()
     //     .domain([0, 100])
     //     .range(['blue', 'red']);
@@ -45,7 +51,7 @@
         .attr('x', function (d, i) { return (i * 75) + 50; })
         .attr('y', data => 500 - linscale(data))
         .attr('transform', 'translate(75,0)')
-        .on("mouseover",(e, d) => {    // event listener to show tooltip on hover
+        /*.on("mouseover",(e, d) => {    // event listener to show tooltip on hover
             d3.select("#bubble-tip-"+d)
                 .style("display","block");
         })
@@ -66,9 +72,9 @@
                     .style("display", "none");
                 d.toolTipVisible = false;
             }
-        })
+        })*/
 
-    svg1.selectAll(".bubble-tip")
+    /*svg1.selectAll(".bubble-tip")
         .data(dataset)
         .join("g")
         .attr("class", "bubble-tip")
@@ -90,7 +96,7 @@
         .text(d => d)
         .style("font-family", "sans-serif")
         .style("font-size", 14)
-        .attr("stroke", "none")
+        .attr("stroke", "none")*/
 
 
 
@@ -100,7 +106,7 @@
         .call(axis);
 
 
-    let ordered = false;
+    /*let ordered = false;
     function orderBarGraph() {
         let ogDataset = dataset.slice(0);
 
@@ -144,5 +150,6 @@
                 }
             })
         ordered = !ordered;
-    }
+    }*/
+
 </script>

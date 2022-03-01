@@ -14,9 +14,17 @@
 
   </head>
   <body>
+  <script
+          src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"
+          integrity="sha512-dLxUelApnYxpLt6K2iomGngnHO83iUvZytA3YjDUCjT0HDOHKXnVYdf3hU4JjM8uEhxf9nD1/ey98U3t2vZ0qQ=="
+          crossorigin="anonymous"
+          referrerpolicy="no-referrer"
+  ></script>
   <script defer>
     let dataset1 = [10, 20, 30, 40, 50];
-    let 3dDataset = [[0,0,0],[0,0,0],[0,0,0]]
+    let bar1 = 0;
+    let bar2 = 3;
+    let dataset3d = [[0,0,0],[0,0,0],[0,0,0]];
   </script>
 
     <div class="header d-flex align-items-center">
@@ -49,8 +57,7 @@
       <div class="experiment experiment--1">
         <div class="experiment__viz">
           <p><strong>Experiment 1</strong></p>
-          <%-include("2dBarChart.ejs", {dataset: 'dataset1', bar1: 'bar1Int', bar2: 'bar2Int'}) %>
-          <button onclick="orderBarGraph()">Order</button>
+          <%-include("3dBarChart.ejs", {dataset: 'dataset1', bar1: 'bar1Int', bar2: 'bar2Int'}) %>
         </div>
         <div class="experiment__qa">
           <p>Experiment 1 Questions</p>
@@ -112,12 +119,7 @@
     <script src="https://d3js.org/d3.v7.min.js"></script>
     <script src="/js/api.js"></script>
     <script src="/js/navigator.js"></script>
-    <script
-      src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"
-      integrity="sha512-dLxUelApnYxpLt6K2iomGngnHO83iUvZytA3YjDUCjT0HDOHKXnVYdf3hU4JjM8uEhxf9nD1/ey98U3t2vZ0qQ=="
-      crossorigin="anonymous"
-      referrerpolicy="no-referrer"
-    ></script>
+
     <script>
       document.addEventListener("DOMContentLoaded", function () {
         console.log("everthing is ready");

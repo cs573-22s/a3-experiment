@@ -334,10 +334,10 @@ legend.data.setAll(series.dataItems);
     // Initial Setup     //
     ///////////////////////
 
-    init3D(2);
+    init3D();
 
-    function init3D(dimensions) {
-        init3DScene(dimensions);
+    function init3D() {
+        init3DScene();
         initListeners();
 
     }
@@ -347,7 +347,7 @@ legend.data.setAll(series.dataItems);
         //(window).resize(onWindowResize);
     }
 
-    function init3DScene(dimensions) {
+    function init3DScene() {
 
         // Setup Scene / Camera
         scene = new THREE.Scene();
@@ -404,11 +404,8 @@ legend.data.setAll(series.dataItems);
         grYZ.position.set(21, 40, -12.5);
         scene.add(grYZ);
 
-        if (dimensions === 2) {
-            init3DElementBar()
-        } else {
-            init3DElements();
-        }
+        init3DElements()
+
 
     }
 
