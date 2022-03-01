@@ -11,21 +11,26 @@
       crossorigin="anonymous"
     />
     <link rel="stylesheet" href="/css/style.css" />
-
   </head>
   <body>
-  <script
-          src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"
-          integrity="sha512-dLxUelApnYxpLt6K2iomGngnHO83iUvZytA3YjDUCjT0HDOHKXnVYdf3hU4JjM8uEhxf9nD1/ey98U3t2vZ0qQ=="
-          crossorigin="anonymous"
-          referrerpolicy="no-referrer"
-  ></script>
-  <script defer>
-    let dataset1 = [10, 20, 30, 40, 23];
-    let bar1 = 0;
-    let bar2 = 3;
-    let dataset3d = [[10, 20, 15, 12, 10], [11, 14, 17, 14, 11], [20 , 22, 23, 10, 12], [21 , 19, 17, 11, 12], [13 , 16, 20, 21, 18]];
-  </script>
+
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"
+      integrity="sha512-dLxUelApnYxpLt6K2iomGngnHO83iUvZytA3YjDUCjT0HDOHKXnVYdf3hU4JjM8uEhxf9nD1/ey98U3t2vZ0qQ=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+    <script defer>
+      let dataset1 = [10, 20, 30, 40, 50];
+      let bar1 = 0;
+      let bar2 = 3;
+      let dataset3d = [[0,0,0],[0,0,0],[0,0,0]];
+      // let dataset1 = [10, 20, 30, 40, 50];
+      const datasets = <%= JSON.stringify(datasets) %>;
+      const answers = <%= JSON.stringify(answers) %>;
+      const userId = (Math.random() + 1).toString(36).substring(2) + (Math.random() + 1).toString(36).substring(2);
+    </script>
+
 
     <div class="header d-flex align-items-center">
       <div class="container-fluid d-flex flex-row align-items-center">
@@ -57,60 +62,58 @@
       <div class="experiment experiment--1">
         <div class="experiment__viz">
           <p><strong>Experiment 1</strong></p>
-          <%-include("3dHeat.ejs", {dataset: 'dataset3d'}) %>
+
+          <%-include("2dBarChart.ejs", {dataset: datasets[0], bar1: 'bar1Int',
+          bar2: 'bar2Int'}) %>
+
         </div>
         <div class="experiment__qa">
-          <p>Experiment 1 Questions</p>
+          <h4>Question 1</h4>
+          <p>What percent is blue bar of red bar?</p>
+          <input type="number" id="input-1" class="form-control mb-1" />
           <button class="btn btn-primary experiment__btn-next">Next</button>
         </div>
       </div>
       <div class="experiment experiment--2">
         <div class="experiment__viz">
           <p><strong>Experiment 2</strong></p>
-          <%-include("3dBarChart.ejs", {dataset: 'dataset1', bar1: 'bar1Int', bar2: 'bar2Int'}) %>
+
+          <%-include("2dBarChart.ejs", {dataset: datasets[1], bar1: 'bar1Int',
+          bar2: 'bar2Int'}) %>
+
         </div>
         <div class="experiment__qa">
-          <p>Experiment 2 Questions</p>
+          <h4>Question 2</h4>
+          <p>What percent is blue bar of red bar?</p>
+          <input type="number" id="input-2" class="form-control mb-1" />
           <button class="btn btn-primary experiment__btn-next">Next</button>
         </div>
       </div>
       <div class="experiment experiment--3">
         <div class="experiment__viz">
           <p><strong>Experiment 3</strong></p>
-          <%-include("2dHeat.ejs", {dataset: 'dataset3d'}) %>
+
+          <%-include("2dPie.ejs", {dataset: datasets[2], bar1: 'bar1Int', bar2:
+          'bar2Int'}) %>
+
         </div>
         <div class="experiment__qa">
-          Experiment 3 Questions
+          <h4>Question 3</h4>
+          <p>What percent is blue area of red area?</p>
+          <input type="number" id="input-3" class="form-control mb-1" />
           <button class="btn btn-primary experiment__btn-next">Next</button>
         </div>
       </div>
       <div class="experiment experiment--4">
         <div class="experiment__viz">
-          <p>Experiment 4</p>
-
+          <p><strong>Experiment 4</strong></p>
+          <%-include("2dPie.ejs", {dataset: datasets[3], bar1: 'bar1Int', bar2:
+          'bar2Int'}) %>
         </div>
         <div class="experiment__qa">
-          Experiment 4 Questions
-          <button class="btn btn-primary experiment__btn-next">Next</button>
-        </div>
-      </div>
-      <div class="experiment experiment--5">
-        <div class="experiment__viz">
-          <p><strong>Experiment 5</strong></p>
-          <svg class="svgPie" width="600px" height="600px"></svg>
-        </div>
-        <div class="experiment__qa">
-          Experiment 5 Questions
-          <button class="btn btn-primary experiment__btn-next">Next</button>
-        </div>
-      </div>
-      <div class="experiment experiment--6">
-        <div class="experiment__viz">
-          <p><strong>Experiment 6</strong></p>
-
-        </div>
-        <div class="experiment__qa">
-          Experiment 6 Questions
+          <h4>Question 4</h4>
+          <p>What percent is blue area of red area?</p>
+          <input type="number" id="input-3" class="form-control mb-1" />
           <button class="btn btn-primary experiment__btn-next">Next</button>
         </div>
       </div>

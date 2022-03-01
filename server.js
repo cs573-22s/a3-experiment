@@ -46,7 +46,7 @@ app.get("/index", async (req, res) => {
 });
 
 app.get("/experiment", async (req, res) => {
-  res.render("experiment");
+  res.render("experiment", { datasets: [[1, 2, 3, 4, 5]], answers: [10, 20] });
 });
 
 app.post("/api/experiments/:questionNumber", async (req, res) => {

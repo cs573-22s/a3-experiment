@@ -2,56 +2,59 @@
 <svg class="svg1" width="450px" height="450px"></svg>
 <!--<button onclick="orderBarGraph()">Order</button>-->
 <script defer>
+  (() => {
     //let dataset =  [73, 18, 56, 38, 4]
     let dataset = dataset1;
-    let colors = ['grey', 'grey', 'grey', 'grey', 'grey'] // color scheme for bars
+    let colors = ["grey", "grey", "grey", "grey", "grey"]; // color scheme for bars
 
     const width = 500;
     const height = 500;
 
     var svg1 = d3
-        .select("svg")
-        .attr("viewBox", [0, 0, width, height])
-        .property("value", []);
+      .select("svg")
+      .attr("viewBox", [0, 0, width, height])
+      .property("value", []);
 
-    const linscale = d3.scaleLinear()
-        .domain([0, 100]) // unit: km
-        .range([0, width]); // unit: px
+    const linscale = d3
+      .scaleLinear()
+      .domain([0, 100]) // unit: km
+      .range([0, width]); // unit: px
 
-    const yAxisScale = d3.scaleLinear()
-        .domain([100, 0]) // unit: km
-        .range([0, width]); // unit: px
+    const yAxisScale = d3
+      .scaleLinear()
+      .domain([100, 0]) // unit: km
+      .range([0, width]); // unit: px
 
     function setColors(index1, index2) {
-        colors[index1] = 'blue';
-        colors[index2] = 'red';
+      colors[index1] = "blue";
+      colors[index2] = "red";
     }
     setColors(bar1, bar2);
     // const colorScale = d3.scaleLinear()
     //     .domain([0, 100])
     //     .range(['blue', 'red']);
 
-
-    const axis = d3.axisLeft()
-        .scale(yAxisScale)
-        .ticks(20);
+    const axis = d3.axisLeft().scale(yAxisScale).ticks(20);
 
     // Add Rectangles
 
-    var rect =  svg1
-        .append('g')
-        .selectAll('rect')
-        .data(dataset)
-        .enter().append('rect')
-        .attr('width',50)
-        .attr('height', data => linscale(data))
-        .attr('stroke', 'black')
-        // .attr('fill', data => colorScale(data))
-        .attr('fill', (d, i) => colors[i])
-        .attr('x', function (d, i) { return (i * 75) + 50; })
-        .attr('y', data => 500 - linscale(data))
-        .attr('transform', 'translate(75,0)')
-        /*.on("mouseover",(e, d) => {    // event listener to show tooltip on hover
+    var rect = svg1
+      .append("g")
+      .selectAll("rect")
+      .data(dataset)
+      .enter()
+      .append("rect")
+      .attr("width", 50)
+      .attr("height", (data) => linscale(data))
+      .attr("stroke", "black")
+      // .attr('fill', data => colorScale(data))
+      .attr("fill", (d, i) => colors[i])
+      .attr("x", function (d, i) {
+        return i * 75 + 50;
+      })
+      .attr("y", (data) => 500 - linscale(data))
+      .attr("transform", "translate(75,0)");
+    /*.on("mouseover",(e, d) => {    // event listener to show tooltip on hover
             d3.select("#bubble-tip-"+d)
                 .style("display","block");
         })
@@ -98,13 +101,10 @@
         .style("font-size", 14)
         .attr("stroke", "none")*/
 
-
-
-    d3.select('.svg1')
-        .append('g')
-        .attr('transform', 'translate(50, 0)')
-        .call(axis);
-
+    d3.select(".svg1")
+      .append("g")
+      .attr("transform", "translate(50, 0)")
+      .call(axis);
 
     /*let ordered = false;
     function orderBarGraph() {
@@ -151,5 +151,5 @@
             })
         ordered = !ordered;
     }*/
-
+  })();
 </script>

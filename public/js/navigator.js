@@ -4,7 +4,8 @@
 
   const recordUserResponse = async () => {
     if (activeExperiment !== 0) {
-      const r = await postUserResponse(activeExperiment, 2, 3, "userid");
+      const userAnswer = $(`#input-${activeExperiment}`).val()
+      const r = await postUserResponse(activeExperiment, +userAnswer, answers[activeExperiment], userId);
       console.log("response", r);
     }
   };
