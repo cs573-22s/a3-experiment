@@ -21,10 +21,10 @@
           referrerpolicy="no-referrer"
   ></script>
   <script defer>
-    let dataset1 = [10, 20, 30, 40, 50];
+    let dataset1 = [10, 20, 30, 40, 23];
     let bar1 = 0;
     let bar2 = 3;
-    let dataset3d = [[0,0,0],[0,0,0],[0,0,0]];
+    let dataset3d = [[10, 20, 15, 12, 10], [11, 14, 17, 14, 11], [20 , 22, 23, 10, 12], [21 , 19, 17, 11, 12], [13 , 16, 20, 21, 18]];
   </script>
 
     <div class="header d-flex align-items-center">
@@ -57,7 +57,7 @@
       <div class="experiment experiment--1">
         <div class="experiment__viz">
           <p><strong>Experiment 1</strong></p>
-          <%-include("2dHeat.ejs", {dataset: 'dataset3d'}) %>
+          <%-include("3dHeat.ejs", {dataset: 'dataset3d'}) %>
         </div>
         <div class="experiment__qa">
           <p>Experiment 1 Questions</p>
@@ -77,7 +77,7 @@
       <div class="experiment experiment--3">
         <div class="experiment__viz">
           <p><strong>Experiment 3</strong></p>
-
+          <%-include("2dHeat.ejs", {dataset: 'dataset3d'}) %>
         </div>
         <div class="experiment__qa">
           Experiment 3 Questions

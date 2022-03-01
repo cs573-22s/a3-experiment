@@ -12,7 +12,7 @@
 <script defer>
 
     // set the dimensions and margins of the graph
-    var margin = {top: 80, right: 25, bottom: 30, left: 40},
+    var margin = {top: 5, right: 5, bottom: 5, left: 5},
       width = 450 - margin.left - margin.right,
       height = 450 - margin.top - margin.bottom;
     
@@ -70,7 +70,7 @@
         .style("padding", "5px")
     
       // Three function that change the tooltip when user hover / move / leave a cell
-      var mouseover = function(d) {
+      /*var mouseover = function(d) {
         tooltip
          // .style("opacity", 1)
         d3.select(this)
@@ -89,7 +89,7 @@
         d3.select(this)
           .style("stroke", "none")
           .style("opacity", 0.8)
-      }
+      }*/
     
       // add the squares
       svg.selectAll()
@@ -102,6 +102,8 @@
           .attr("ry", 4)
           .attr("width", x.bandwidth() )
           .attr("height", y.bandwidth() )
+          // .attr("width", 10 )
+          // .attr("height", 10 )
           .style("fill", function(d) { return myColor(d.value)} )
           .style("stroke-width", 4)
           .style("stroke", "none")
