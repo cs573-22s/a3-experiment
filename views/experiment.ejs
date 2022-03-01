@@ -57,7 +57,7 @@
       <div class="experiment experiment--1">
         <div class="experiment__viz">
           <p><strong>Experiment 1</strong></p>
-          <%-include("3dBarChart.ejs", {dataset: 'dataset1', bar1: 'bar1Int', bar2: 'bar2Int'}) %>
+          <%-include("2dHeat.ejs", {dataset: 'dataset3d'}) %>
         </div>
         <div class="experiment__qa">
           <p>Experiment 1 Questions</p>
@@ -67,7 +67,7 @@
       <div class="experiment experiment--2">
         <div class="experiment__viz">
           <p><strong>Experiment 2</strong></p>
-
+          <%-include("3dBarChart.ejs", {dataset: 'dataset1', bar1: 'bar1Int', bar2: 'bar2Int'}) %>
         </div>
         <div class="experiment__qa">
           <p>Experiment 2 Questions</p>

@@ -57,7 +57,7 @@
         scene = new THREE.Scene();
         camera = new THREE.PerspectiveCamera(35, window.innerWidth / window.innerHeight, 0.1, 2000);
 
-        camera.position.set(100, 100, 100);
+        camera.position.set(100, 100, 300);
         camera.lookAt(new THREE.Vector3(20, 40, 0));
 
         // Setup Renderer
@@ -86,7 +86,7 @@
         let mXY = new THREE.LineBasicMaterial({color: "black"});
         let grXY = new THREE.LineSegments(gXY, mXY);
         grXY.scale.set(10, 8, 1);
-        grXY.position.set(6, 40, -27.5);
+        grXY.position.set(6, 40, -2.5);
         scene.add(grXY);
 
         // let gXZ = new THREE.PlaneGeometry(1, 1, 3, 10);
@@ -98,15 +98,15 @@
         // grXZ.position.set(0, 0, 0);
         // scene.add(grXZ);
 
-        let gYZ = new THREE.PlaneGeometry(10, 3, 10, 1);
-        ToQuads(gYZ);
-        let mYZ = new THREE.LineBasicMaterial({color: "black"});
-        let grYZ = new THREE.LineSegments(gYZ, mYZ);
-        grYZ.scale.set(8, 10, 1);
-        grYZ.rotation.x = Math.PI * -0.5;
-        grYZ.rotation.y = Math.PI / 2;
-        grYZ.position.set(21, 40, -12.5);
-        scene.add(grYZ);
+        // let gYZ = new THREE.PlaneGeometry(10, 3, 10, 1);
+        // ToQuads(gYZ);
+        // let mYZ = new THREE.LineBasicMaterial({color: "black"});
+        // let grYZ = new THREE.LineSegments(gYZ, mYZ);
+        // grYZ.scale.set(8, 10, 1);
+        // grYZ.rotation.x = Math.PI * -0.5;
+        // grYZ.rotation.y = Math.PI / 2;
+        // grYZ.position.set(21, 40, -12.5);
+        // scene.add(grYZ);
 
         init3DElementBar()
 
@@ -144,7 +144,7 @@
         createFloor();
 
         //createBar(5, -25, red);
-        createBar(-25)
+        createBar(0)
 
         createLight();
     }
@@ -260,8 +260,8 @@
 
 
     setInterval(function(){
-        // scene.rotation.x += 0.001;
-        scene.rotation.y += 0.001;
+
+        scene.rotation.y += 0.0003;
     }, 5);
 
     render();
