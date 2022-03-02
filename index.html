@@ -12,18 +12,17 @@
         background-image: linear-gradient(#f0dce8, #ec70b4);
         height:100%;
     }
-    /*
+    
     .div{
         flex-direction: column;
         margin: 0 auto;
-        background-color: rgb(255, 255, 255);
-        opacity: 0.99;
+        background-image: linear-gradient(#f0dce8);
         width: 550px;
         padding: 10px;
-        text-align: center;
+        text-align: left;
         margin-top: 10px;
     }
-    */
+  
     .header{
         margin-top: 30px;
         font-family: "Jokerman";
@@ -195,8 +194,12 @@
       var gender = form["gender"].value;
       var age = form["age"].value;
       console.log(!isNaN(age))
-      if ( gender == "blank" || isNaN(age) || age == ""){
-        alert("Please check your answers and fill out form.");
+      if ( gender == "blank"){
+        alert("Please check your gender and fill out form.");
+        return false;
+      }
+      else if (isNaN(age) || age == "" || age<0){
+        alert("Please check your age and fill out form.");
         return false;
       }
       show('bkgd-info','testing')
