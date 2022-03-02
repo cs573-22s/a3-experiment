@@ -81,23 +81,36 @@
         </div>
         <div class="div" id="instructions">
             <p>Thank you so much for participating in our study!</p>
-            <p> This is a group assignment for CS573 Data Visualization,
-                and is being conducted by Jasmine Duerk, Evelyn Tran,
-                Samantha Woodland, and Joseph Yuen.</p>
-            <p>You will be shown a series of data visualizations. 
-              For each one, approximate what percentage is the smaller of the larger. 
-              Make a quick judgement and move to the next question. For the best
-                experience, please use a laptop or computer instead of of a mobile device.</p>
-            <p>The test will take approximately 10 minutes. 
-              When you are ready, please click the start button. If you have any trouble when finishing this survey, please connect jwang21@wpi.edu</p>
-            <p></p>
-            <button class="button" id="start" onclick="return show('welcome-screen', 'bkgd-info')">Start</button>
+            <p>This is a group assignment for CS573 Data Visualization.</p>
+            <p>The test will take approximately 10 minutes. </p>
+            <p>We guarantee that all data will be used only for result analysis and will not be used anywhere outside the course </p>
+            <p>When you are ready, please click the start button. If you have any trouble when finishing this survey, please connect jwang21@wpi.edu</p>
+            <button class="button" id="start" onclick="return show('welcome-screen','introduction')">Start</button>
         </div>
     </div>
 
-    <div id="bkgd-info" style="display:none">
-      
-      
+    <div id="introduction" style="display:none">
+      <div class="div header">
+          <h2>CS573 Data Visualization</h2>
+          <h1>Introduction of the experiment</h1>
+      </div>
+      <div class="div" id="intro">
+          <p> This is a group assignment for CS573 Data Visualization,
+              and is being conducted by Jasmine Duerk, Evelyn Tran,
+              Samantha Woodland, and Joseph Yuen.</p>
+          <p>You will be shown a series of data visualizations. 
+            For each one, approximate what percentage is the smaller of the larger. 
+            Make a quick judgement and move to the next question. For the best
+              experience, please use a laptop or computer instead of of a mobile device.</p>
+          <p>The test will take approximately 10 minutes. 
+            When you are ready, please click the start button. If you have any trouble when finishing this survey, please connect jwang21@wpi.edu</p>
+          <p></p>
+          <button class="button" id="next" onclick="return show('introduction', 'bkgd-info')">Next</button>
+      </div>
+    </div>
+
+
+    <div id="bkgd-info" style="display:none">      
         <div class="div header">
             <h2>CS573 Data Visualization</h2>
             <h1>Background Survey</h1>
@@ -117,6 +130,8 @@
                 </select>
                 <p>Age</p>
                 <input id='age' name= "age">
+                <p>Country</p>
+                <input id='country' name= "country">
                 <p>Major</p>
                 <select id="major" name = "gender">
                   <option value="blank"> </option>
@@ -142,7 +157,7 @@
                 <p>Email</p>
                 <input id='email' name= "email">
             </form>
-            <button class="button" onclick="return checkForm()">Next</button>
+            <button class="button" onclick="return checkForm()">Submit</button>
         </div>
     </div>
 
