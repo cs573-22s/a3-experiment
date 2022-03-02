@@ -1,8 +1,10 @@
 <!--https://www.d3-graph-gallery.com/graph/pie_basic.html-->
 <!--https://www.d3-graph-gallery.com/graph/pie_annotation.html-->
 
+<!-- php -S localhost:8000 -t a3-experiment -->
 
 <!DOCTYPE html>
+<html>
 <meta charset="utf-8">
 
 <!-- Load d3.js -->
@@ -27,29 +29,43 @@
   <h1> Experiment </h1>
   <p> Description/Intro </p> <br>
 
-  <form action="/action_page.php">
+  <form method="post">
 
   <h3> Graph 1: Pie Chart</h3>
   <div id="pie_chart"></div>
-  <p> Questions </p> <br>
+  <p>Do you think this graph is misleading?</p>
+  <input type="radio" id="yes1" name="yes_no1" value="Yes">
+  <label for="yes1">Yes</label><br>
+  <input type="radio" id="no1" name="yes_no1" value="No">
+  <label for="no1">No</label><br><br>
+  <label for="explain1">Why or why not?:</label><br><br>
+  <input type="text" id="explain1" name="explain1" value="" size="100"><br>
+  <br><br>
 
   <h3> Graph 2: Bar Chart </h3>
   <svg id="svg2" width="600" height="500"></svg>
   <p>Do you think this graph is misleading?</p>
   <input type="radio" id="yes2" name="yes_no2" value="Yes">
   <label for="yes2">Yes</label><br>
-  <input type="radio" id="no2" name="yes_no1" value="No">
+  <input type="radio" id="no2" name="yes_no2" value="No">
   <label for="no2">No</label><br><br>
   <label for="explain2">Why or why not?:</label><br><br>
-  <input type="text" id="explain1" name="explain" value="" size="100"><br>
+  <input type="text" id="explain2" name="explain2" value="" size="100"><br>
   <br><br>
 
   <h3> Graph 3 </h3>
   <svg id="svg3"></svg>
-  <p> Questions </p> <br>
+  <p>Do you think this graph is misleading?</p>
+  <input type="radio" id="yes3" name="yes_no3" value="Yes">
+  <label for="yes3">Yes</label><br>
+  <input type="radio" id="no3" name="yes_no3" value="No">
+  <label for="no3">No</label><br><br>
+  <label for="explain3">Why or why not?:</label><br><br>
+  <input type="text" id="explain3" name="explain3" value="" size="100"><br>
+  <br><br><p> Questions </p> <br>
 
 
-  <input type="submit" value="Submit">
+  <input type="submit" name="submit" value="Submit">
   </form>
 
 </body>
@@ -124,6 +140,7 @@
     .attr("transform", function(d) { return "translate(" + arcGenerator.centroid(d) + ")";  })
     .style("text-anchor", "middle")
     .style("font-size", 25)
+
   // PART 2 //
 
   var svg2 = d3.select("#svg2")
@@ -191,4 +208,68 @@
     .property("value", []);
 
 </script>
+
+<?php
+
+$fp = fopen('data.txt', 'a');
+fwrite($fp, "\n");
+fclose($fp);
+
+if(isset($_POST['yes_no1']))
+{
+  $data = $_POST['yes_no1'];
+  $fp = fopen('data.txt', 'a');
+  fwrite($fp, $data);
+  fwrite($fp, " ");
+  fclose($fp);
+}
+
+if(isset($_POST['explain1']))
+{
+  $data = $_POST['explain1'];
+  $fp = fopen('data.txt', 'a');
+  fwrite($fp, $data);
+  fwrite($fp, " ");
+  fclose($fp);
+}
+
+if(isset($_POST['yes_no2']))
+{
+  $data = $_POST['yes_no2'];
+  $fp = fopen('data.txt', 'a');
+  fwrite($fp, $data);
+  fwrite($fp, " ");
+  fclose($fp);
+}
+
+if(isset($_POST['explain2']))
+{
+  $data = $_POST['explain2'];
+  $fp = fopen('data.txt', 'a');
+  fwrite($fp, $data);
+  fwrite($fp, " ");
+  fclose($fp);
+}
+
+if(isset($_POST['yes_no3']))
+{
+  $data = $_POST['yes_no3'];
+  $fp = fopen('data.txt', 'a');
+  fwrite($fp, $data);
+  fwrite($fp, " ");
+  fclose($fp);
+}
+
+if(isset($_POST['explain3']))
+{
+  $data = $_POST['explain3'];
+  $fp = fopen('data.txt', 'a');
+  fwrite($fp, $data);
+  fwrite($fp, " ");
+  fclose($fp);
+}
+
+?>
+
+</html>
 
