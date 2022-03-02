@@ -1,14 +1,14 @@
 <style>
-    #chartdiv {
+    #chartdiv3dPie {
       width: 100%;
       height: 500px;
     }
     
 </style>
-    
-<script src="https://cdn.amcharts.com/lib/4/core.js"></script>
-<script src="https://cdn.amcharts.com/lib/4/charts.js"></script>
-<script src="https://cdn.amcharts.com/lib/4/themes/animated.js"></script>
+
+<div id="chartdiv3dPie"></div>
+
+
     
 <script>
 am4core.ready(function() {
@@ -17,7 +17,7 @@ am4core.ready(function() {
     am4core.useTheme(am4themes_animated);
     // Themes end
     
-    var chart = am4core.create("chartdiv", am4charts.PieChart3D);
+    var chart = am4core.create("chartdiv3dPie", am4charts.PieChart3D);
     // chart.hiddenState.properties.opacity = 0; // this creates initial fade-in
     
     chart.data = [
@@ -63,6 +63,4 @@ am4core.ready(function() {
 }); // end am4core.ready()
     
 </script>
-    
-<div id="chartdiv"></div>
     
