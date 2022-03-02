@@ -117,7 +117,7 @@
 
   // Create chart: path using arc.
   svg
-    .selectAll('whatever')
+    .selectAll('slices')
     .data(data_ready)
     .enter()
     .append('path')
