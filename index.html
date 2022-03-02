@@ -163,13 +163,15 @@
     <div id="end-screen" style="display:none">
         <div class="div header">
             <h2>CS573 Data Visualization</h2>
-            <h1>Thank You</h1>
+            <h1>Thank You!</h1>
         </div>
         <div class="div" id="instructions">
             <p>You have successfully completed the experiment, and we have recorded your results.</p>
-            <p>Please download your results and email it to jlduerk@wpi.edu</p>
+            <p>Please download your results and email it to jwang21@wpi.edu</p>
             <p>When you press Get Results, your browser may ask you to print the current page. Simply press cancel to continue the download process.</p>
-            <button class="button" id="get-results" onclick="getResults()">Get Results</button>
+            <p>Team: MadMen</p>
+            <p>Member: Ziyang Xu, Jiani Wang, Yujun Mao, Yan Zhang</p>
+            <button class="button" id="get-results" onclick="getResults()">Download</button>
         </div>
     </div>
 
@@ -271,7 +273,9 @@
       let bargraphCount = 0;
       let circularbarplotCount = 0;
 
-      while (order.length < 60) {
+      while (order.length < 60) 
+      //while (order.length < 3)
+      {
         let randomNum = Math.floor(Math.random()*3)
 
         if (randomNum == 0) {
@@ -528,8 +532,11 @@
     var trialCount = 0 // will iterate after each press of the submission button except the first
     var results = []
     var data = null
+    var name = null
     var gender = null
     var age = null
+    var major = null
+    var email = null
     var percentActual = null
 
     // press button to start program
@@ -599,7 +606,8 @@
 
       trialCount = trialCount + 1
       console.log(trialCount)
-      if (trialCount == 60) {
+      //if (trialCount == 60) 
+      if (trialCount == 3) {
         show('testing','end-screen')
       } else {
         generateNextTrial(trialCount)
