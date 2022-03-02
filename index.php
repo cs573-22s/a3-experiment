@@ -32,6 +32,7 @@
   <form method="post">
 
   <h3> Graph 1: Pie Chart</h3>
+  <p>This pie chart is comparing the deaths per 100,000 between genders as well as showning the total.</p>
   <div id="pie_chart"></div>
   <p>Do you think this graph is misleading?</p>
   <input type="radio" id="yes1" name="yes_no1" value="Yes">
