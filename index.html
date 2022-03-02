@@ -95,20 +95,10 @@
           <h1>Introduction of the experiment</h1>
       </div>
       <div class="div" id="intro">
-          <p> This is a group assignment for CS573 Data Visualization,
-              and is being conducted by Jasmine Duerk, Evelyn Tran,
-              Samantha Woodland, and Joseph Yuen.</p>
-          <p>You will be shown a series of data visualizations. 
-            For each one, approximate what percentage is the smaller of the larger. 
-            Make a quick judgement and move to the next question. For the best
-              experience, please use a laptop or computer instead of of a mobile device.</p>
-          <p>The test will take approximately 10 minutes. 
-            When you are ready, please click the start button. If you have any trouble when finishing this survey, please connect jwang21@wpi.edu</p>
-          <p></p>
+          <p> 补充实验介绍</p>
           <button class="button" id="next" onclick="return show('introduction', 'bkgd-info')">Next</button>
       </div>
     </div>
-
 
     <div id="bkgd-info" style="display:none">      
         <div class="div header">
@@ -279,7 +269,7 @@
 </script>
 
 <script>
-
+    //生成测试题的类型的顺序
     function generateVisOrder() {
       // 60 visualizations
       // 20 per visualization type
@@ -287,27 +277,40 @@
       let radarCount = 0;
       let bargraphCount = 0;
       let circularbarplotCount = 0;
+      let bubblechartCount = 0;
 
       while (order.length < 60) 
       //while (order.length < 3)
       {
-        let randomNum = Math.floor(Math.random()*3)
+        let randomNum = Math.floor(Math.random()*4)
 
-        if (randomNum == 0) {
-          if (radarCount >= 20)
+        if (randomNum == 0) 
+        {
+          if (radarCount >= 15)
             continue;
           else
             radarCount++
-        } else if (randomNum == 1) {
-          if (bargraphCount >=20)
+        } 
+        else if (randomNum == 1) 
+        {
+          if (bargraphCount >=15)
             continue;
           else
             bargraphCount++
-        } else {
-          if (circularbarplotCount >= 20)
+        } 
+        else if(randomNum == 2)
+        {
+          if (circularbarplotCount >= 15)
             continue;
           else
             circularbarplotCount++
+        }
+        else if(randomNum == 3)
+        {
+          if (bubblechartCount >= 15)
+            continue;
+          else
+          bubblechartCount++
         }
         order.push(randomNum)
       }
@@ -543,6 +546,82 @@
 </script>
 
 <script>
+  function buildBubbleChart(data){
+
+    // establishing variables
+    var margin = 50,
+    width = 500 - 2 * margin,
+    height = 500 - 2 * margin;
+
+    // creating svg
+    var svg = d3.select("div#vis").append('svg')
+    .attr("width", width + 2 * margin)
+    .attr("height", height + 2 * margin)
+    .attr("transform", "translate(" + margin + ", " + margin + ")")
+
+    var d = data.dataset,
+    mark1 = data.mark1,
+    mark2 = data.mark2;
+    //console.log(d);
+
+    // scaling
+    var xscale = d3.scaleBand()
+      .domain(d.map(function(d){ return (d.letter) }))
+      .range( [0, width])
+      .padding(0.4);
+
+    var yscale = d3.scaleLinear()
+      .domain([0, 105])    //d3.max(d, function(d){return d.frequency;}
+      .range( [height, 0] );
+    console.log(d3.max(d, d.frequency));
+
+    // Add X axis
+    var x_axis = d3.axisBottom()
+    .scale(xscale)
+    svg.append("g")
+      .attr("transform", "translate(" + margin + "," + height + ")")
+      .call(x_axis)
+      .attr("class", "xAxis")
+
+    // Add Y axis
+    var y_axis = d3.axisLeft()
+      .scale(yscale)
+      .tickValues([])
+    svg.append("g")
+      .attr("transform", "translate(" + margin + ", 0 )")
+      .call(y_axis)
+      .attr("class", "yAxis")
+
+    // Add X axis label
+    svg.append("text")
+      .attr("text-anchor", "middle")
+      .attr("x", width/2 + margin)
+      .attr("y", height + 40)
+      .text("Letter");
+
+    // Add Y axis label
+    svg.append("text")
+      .attr("text-anchor", "middle")
+      .attr("x", -(height/2))
+      .attr("y", 0)
+      .attr("dy", ".75em")
+      .attr("transform", "rotate(-90)")
+      .text("Frequency");
+
+    // Add Bars
+    var bars = svg.selectAll(".bar")
+      .data(d)
+      .enter().append("circle")
+      .attr("class", "circle")
+      .attr("cx", function(d){ return xscale(d.letter) + margin })
+      .attr("cy", function(d){ return yscale(d.frequency) })
+      .attr("r", function(d){ return (height - yscale(d.frequency))/2 })
+      //.style("fill", colorPicker)
+		  .style("opacity", .30)
+  }
+</script>
+
+<script>
     var visOrder = []
     var trialCount = 0 // will iterate after each press of the submission button except the first
     var results = []
@@ -572,9 +651,12 @@
         generateRadar(data.dataset)
       } else if (visType == 1) { // bargraph
         buildBarChart(data)
-      } else { // circular barplot
+      } else if (visType == 2){ // circular barplot
         generateCircularBarplot(data.dataset)
+      } else if (visType == 3){ // bubble chart
+        buildBubbleChart(data)
       }
+
 
     let smallerLetter = ""
     let biggerLetter = ""
@@ -621,8 +703,8 @@
 
       trialCount = trialCount + 1
       console.log(trialCount)
-      //if (trialCount == 60) 
-      if (trialCount == 3) {
+      if (trialCount == 60) {
+      //if (trialCount == 3) {
         show('testing','end-screen')
       } else {
         generateNextTrial(trialCount)
