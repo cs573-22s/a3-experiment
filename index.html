@@ -17,6 +17,7 @@
         flex-direction: column;
         margin: 0 auto;
         background-color: rgb(255, 255, 255);
+        opacity: 0.99;
         width: 550px;
         padding: 10px;
         text-align: center;
@@ -96,12 +97,17 @@
     </div>
 
     <div id="bkgd-info" style="display:none">
+      
+      
         <div class="div header">
             <h2>CS573 Data Visualization</h2>
-            <h1>Background Information</h1>
+            <h1>Background Survey</h1>
         </div>
         <div class="div" id="form">
             <form name="bkgd-form">
+                <p>These information will be only use to do the data analysis, we will keep it strictly confidential </p>
+                <p>Name</p>
+                <input id='name' name= "name">
                 <p>Gender</p>
                 <select id="gender" name = "gender">
                     <option value="blank"> </option>
@@ -112,6 +118,28 @@
                 </select>
                 <p>Age</p>
                 <input id='age' name= "age">
+                <p>Major</p>
+                <select id="major" name = "gender">
+                  <option value="blank"> </option>
+                  <option value="Aerospace Engineering">Aerospace Engineering</option>
+                  <option value="Biology & Biotechnology">Biology & Biotechnology</option>
+                  <option value="Biomedical Engineering">Biomedical Engineering</option>
+                  <option value="Business">Business</option>
+                  <option value="Chemical Engineering">Chemical Engineering</option>
+                  <option value="Chemistry & Biochemistry">Chemistry & Biochemistry</option>
+                  <option value="Civil, Environmental, & Architectural Engineering">Civil, Environmental, & Architectural Engineering</option>
+                  <option value="Computer Science">Computer Science</option>
+                  <option value="Electrical & Computer Engineering">Electrical & Computer Engineering</option>
+                  <option value="Fire Protection Engineering">Fire Protection Engineering</option>
+                  <option value="Humanities & Arts">Humanities & Arts</option>
+                  <option value="Integrative & Global Studies">Integrative & Global Studies</option>
+                  <option value="Mathematical Sciences">Mathematical Sciences</option>
+                  <option value="Mechanical & Materials Engineering">Mechanical & Materials Engineering</option>
+                  <option value="Physical Education">Physical Education</option>
+                  <option value="Physics">Physics</option>
+                  <option value="Robotics Engineering">Robotics Engineering</option>
+                  <option value="Social Science & Policy Studies">Social Science & Policy Studies</option>
+              </select>
                 <p>Email</p>
                 <input id='email' name= "email">
             </form>
