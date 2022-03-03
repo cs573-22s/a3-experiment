@@ -19,56 +19,54 @@ Screenshots of experiment:
 Visualization 1: COVID-19 Article
 
 Correct Answer:
-<-- ![covid-19 correct word cloud](DataVizProj3/covid_a_processed.PNG) -->
-DataVizProj3/covid_a_processed.PNG
-https://github.com/johvanniperez/a3-experiment/blob/babab99b2a16af6fa3d5e5381688c4a67a07ee40/DataVizProj3/covid_a_processed.PNG
+![covid-19 correct word cloud](DataVizProj3/covid_a_processed.PNG =x250)
 
 Incorrect Answers:
-![covid-19 incorrect word cloud](img/covid_b_processed.PNG)
+![covid-19 incorrect word cloud](DataVizProj3/covid_b_processed.PNG)
 
-![covid-19 incorrect word cloud](img/covid_c_processed.PNG)
+![covid-19 incorrect word cloud](DataVizProj3/covid_c_processed.PNG)
 
 Visualization 2: Kardashian Drama Article
 
 Correct Answer:
-img/kanye_c_processed.PNG
+![kanye correct word cloud](DataVizProj3/kanye_c_processed.PNG)
 
 Incorrect Answers:
-![kanye incorrect word cloud](img/kanye_a_processed.PNG)
+![kanye incorrect word cloud](DataVizProj3/kanye_a_processed.PNG)
 
-![kanye incorrect word cloud](img/kanye_b_processed.PNG)
+![kanye incorrect word cloud](DataVizProj3/kanye_b_processed.PNG)
 
 Visualization 3: Music Industry Trends Article
 
 Correct Answer:
-![music correct word cloud](img/music_a_processed.PNG)
+![music correct word cloud](DataVizProj3/music_a_processed.PNG)
 
 Incorrect Answers:
-![music incorrect word cloud](img/music_b_processed.PNG)
+![music incorrect word cloud](DataVizProj3/music_b_processed.PNG)
 
-![music incorrect word cloud](img/music_c_processed.PNG)
+![music incorrect word cloud](DataVizProj3/music_c_processed.PNG)
 
 Visualization 4: Plant Based Drug Discovery Article
 
 Correct Answer:
-![plant correct word cloud](img/plant_c_processed.PNG)
+![plant correct word cloud](DataVizProj3/plant_c_processed.PNG)
 
 
 Incorrect Answers:
-![plant incorrect word cloud](img/plant_a_processed.PNG)
+![plant incorrect word cloud](DataVizProj3/plant_a_processed.PNG)
 
-![plant incorrect word cloud](img/plant_b_processed.PNG)
+![plant incorrect word cloud](DataVizProj3/plant_b_processed.PNG)
 
 
 Visualization 5: Travel Trends Article
 
 Correct Answer:
-![travel correct word cloud](img/travel_b_processed.PNG)
+![travel correct word cloud](DataVizProj3/travel_b_processed.PNG)
 
 Incorrect Answers:
-![travel incorrect word cloud](img/travel_a_processed.PNG)
+![travel incorrect word cloud](DataVizProj3/travel_a_processed.PNG)
 
-![travel incorrect word cloud](img/travel_c_processed.PNG)
+![travel incorrect word cloud](DataVizProj3/travel_c_processed.PNG)
 
 Results from Experiment:
 
