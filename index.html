@@ -458,7 +458,7 @@
         .attr("text-anchor", "middle")
         .attr("x", width/2 + margin)
         .attr("y", height + 40)
-        .text("Letter");
+        .text("X");
 
       // Add Y axis label
       svg.append("text")
@@ -467,7 +467,7 @@
         .attr("y", 0)
         .attr("dy", ".75em")
         .attr("transform", "rotate(-90)")
-        .text("Frequency");
+        .text("Y");
 
       // Add Bars
       var bars = svg.selectAll(".bar")
@@ -615,10 +615,10 @@
       .attr("text-anchor", "middle")
       .attr("x", width/2 + margin)
       .attr("y", height + 40)
-      .text("Letter");
+      .text("X");
 
     // Add Bubbles
-    var bars = svg.selectAll(".bar")
+    var bubbles = svg.selectAll(".bubble")
       .data(d)
       .enter().append("circle")
       .attr("class", "circle")
@@ -702,7 +702,50 @@
           .attr("dy", ".75em")
           .attr("transform", "rotate(-90)")
           .text("Frequency");
-        
+
+        /*  // Add Bubbles
+    var bars = svg.selectAll(".bar")
+      .data(d)
+      .enter().append("circle")
+      .attr("class", "circle")
+      .attr("cx", function(d){ return xscale(d.letter) + margin + 15 })
+      .attr("cy", height/2)
+      .attr("r", function(d){ return (height - yscale(d.frequency))/5 })
+      //.style("fill", 'black')
+		  //.style("opacity", .30)
+      .attr('fill', '#f0dce8')
+      .style("fill-opacity", .4)
+      //.attr("stroke", "black")*/
+
+      function getPathCoordinates(data_point){
+      let coordinates = [];
+      for (var i = 0; i < data_point.length; i++){
+        let point = data_point[i];
+        let ft_name = point.letter;
+        let angle = (Math.PI / 2) + (2 * Math.PI * i / data_point.length);
+        coordinates.push(angleToCoordinate(angle, (point.frequency / 10)));
+      }
+      return coordinates;
+    }
+
+      /*let line = d3.line()
+          .x(d => d.x)
+          .y(d => d.y);
+
+      let coordinates = getPathCoordinates(dataset);*/
+
+      var lines = svg.selectAll(".line")
+      .data(d)
+      .enter().append("line")
+      //.datum(coordinates)
+        .attr("x1", function(d){ return xscale(d.letter) + margin + 5 })
+        .attr("y1", function(d){ return (height - yscale(d.frequency))/5 })
+        .attr("x2", function(d){ return xscale(d.letter) + margin + 25 })
+        .attr("y2", function(d){ return (height - yscale(d.frequency))/5 })
+        .attr("stroke", "black")
+        //.attr("stroke-width", "3px");
+
+          /*
         svg.append("path")
         .datum(coordinates)
         .attr("d",line)
@@ -714,6 +757,7 @@
         .attr('fill', '#f0dce8')
         .style("fill-opacity", .7)
         //.attr("stroke", "black")
+        */
   }
   
   </script>
