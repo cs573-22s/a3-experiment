@@ -544,10 +544,10 @@
       .datum(coordinates)
       .attr("d",line)
       .attr("stroke-width", 3)
-      .attr("stroke", "black")
-      .attr("fill", "black")
+      .attr("stroke", "white")
+      .attr("fill", "white")
       .attr("stroke-opacity", 1)
-      .attr("opacity", .5);
+      .attr("fill-opacity", .5);
     }
 
 </script>
@@ -591,6 +591,7 @@
       .attr("class", "xAxis")
 
     // Add Y axis
+    /*
     var y_axis = d3.axisLeft()
       .scale(yscale)
       .tickValues([])
@@ -598,6 +599,7 @@
       .attr("transform", "translate(" + margin + ", 0 )")
       .call(y_axis)
       .attr("class", "yAxis")
+      */
 
     // Add X axis label
     svg.append("text")
@@ -607,6 +609,7 @@
       .text("Letter");
 
     // Add Y axis label
+    /*
     svg.append("text")
       .attr("text-anchor", "middle")
       .attr("x", -(height/2))
@@ -614,15 +617,15 @@
       .attr("dy", ".75em")
       .attr("transform", "rotate(-90)")
       .text("Frequency");
+      */
 
     // Add Bubbles
     var bars = svg.selectAll(".bar")
       .data(d)
       .enter().append("circle")
       .attr("class", "circle")
-      .attr("cx", function(d){ return xscale(d.letter) + margin })
-      //.attr("cy", function(d){ return yscale(d.frequency) })
-      .attr("cy", function(d){ return yscale(d.frequency) })
+      .attr("cx", function(d){ return xscale(d.letter) + margin + 15 })
+      .attr("cy", height/2)
       .attr("r", function(d){ return (height - yscale(d.frequency))/5 })
       //.style("fill", colorPicker)
 		  .style("opacity", .30)
