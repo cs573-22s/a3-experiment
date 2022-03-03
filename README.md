@@ -19,7 +19,7 @@ Screenshots of experiment:
 Visualization 1: COVID-19 Article
 
 Correct Answer:
-![covid-19 correct word cloud](DataVizProj3/covid_a_processed.PNG =30x30)
+![covid-19 correct word cloud](DataVizProj3/covid_a_processed.PNG)
 Incorrect Answers:
 ![covid-19 incorrect word cloud](DataVizProj3/covid_b_processed.PNG)
 
