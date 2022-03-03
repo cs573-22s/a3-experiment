@@ -142,16 +142,17 @@ app.post("/test1", bodyParser.json(), async (req, res) => {
 app.post("/test2", async (req, res) => {
 
   let blank = [];
-  blank.push(req.body.input1)
+  blank.push(req.body.input1);
+  blank.push(parseInt(req.body.time));
   // globalResponse[1] = blank;
   req.session.test1 = blank;
-
   res.render("test2");
 });
 
 app.post("/test3",  async (req, res) => {
   let blank = [];
-  blank.push(req.body.input1)
+  blank.push(req.body.input1);
+  blank.push(parseInt(req.body.time));
   req.session.test2 = blank;
   //globalResponse[2] = blank;
 
@@ -161,6 +162,7 @@ app.post("/test3",  async (req, res) => {
 app.post("/test4",  async (req, res) => {
   let blank = [];
   blank.push(req.body.input1)
+  blank.push(parseInt(req.body.time));
   req.session.test3 = blank;
   //globalResponse[3] = blank;
 
@@ -170,6 +172,7 @@ app.post("/test4",  async (req, res) => {
 app.post("/test5",  async (req, res) => {
   let blank = [];
   blank.push(req.body.input1)
+  blank.push(parseInt(req.body.time));
   req.session.test4 = blank;
   //globalResponse[4] = blank;
 
@@ -179,15 +182,17 @@ app.post("/test5",  async (req, res) => {
 app.post("/test6",  async (req, res) => {
   let blank = [];
   blank.push(req.body.input1)
+  blank.push(parseInt(req.body.time));
   req.session.test5 = blank;
   //globalResponse[5] = blank;
-
+  console.log(req.session)
   res.render("test6");
 });
 
 app.post("/test7",  async (req, res) => {
   let blank = [];
   blank.push(req.body.input1)
+  blank.push(parseInt(req.body.time));
   req.session.test6 = blank;
   //globalResponse[6] = blank;
 
@@ -197,6 +202,7 @@ app.post("/test7",  async (req, res) => {
 app.post("/test8",  async (req, res) => {
   let blank = [];
   blank.push(req.body.input1)
+  blank.push(parseInt(req.body.time));
   req.session.test7 = blank;
   //globalResponse[7] = blank;
 
@@ -206,6 +212,7 @@ app.post("/test8",  async (req, res) => {
 app.post("/test9",  async (req, res) => {
   let blank = [];
   blank.push(req.body.input1)
+  blank.push(parseInt(req.body.time));
 
   req.session.test8 = blank;
   //globalResponse[8] = blank;
@@ -216,6 +223,7 @@ app.post("/test9",  async (req, res) => {
 app.post("/test10",  async (req, res) => {
   let blank = [];
   blank.push(req.body.input1)
+  blank.push(parseInt(req.body.time));
 
   req.session.test9 = blank;
   //globalResponse[9] = blank;
@@ -226,6 +234,8 @@ app.post("/test10",  async (req, res) => {
 app.post("/test11",  async (req, res) => {
   let blank = [];
   blank.push(req.body.input1)
+  blank.push(parseInt(req.body.time));
+
   req.session.test10 = blank;
   //globalResponse[10] = blank;
 
@@ -235,6 +245,7 @@ app.post("/test11",  async (req, res) => {
 app.post("/test12",  async (req, res) => {
   let blank = [];
   blank.push(req.body.input1)
+  blank.push(parseInt(req.body.time));
   req.session.test11 = blank;
   //globalResponse[11] = blank;
 
@@ -244,6 +255,7 @@ app.post("/test12",  async (req, res) => {
 app.post("/endingSurvey",  async (req, res) => {
   let blank = [];
   blank.push(req.body.input1)
+  blank.push(parseInt(req.body.time));
   req.session.test12 = blank;
   //globalResponse[12] = blank;
 

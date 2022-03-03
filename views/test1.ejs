@@ -22,8 +22,8 @@
                 <form id="formExperiment" action='/test2' method='POST'>
                     <p>What percent is blue bar of red bar?</p>
                     <input type='number' name='input1' class="form-control mb-1">
-                    <input id="userId" type='text' name='userId' class="form-control mb-1">
-                    <input id="userTime" type='number' name='time' class="form-control mb-1">
+                    <!-- <input id="userId" type='text' name='userId' class="form-control mb-1"> -->
+                    <input id="userTime" type='hidden' name='time' class="form-control mb-1">
                     <br>
                     <br>
                     <input class="btn btn-primary experiment__btn-next" type='submit'>
@@ -112,35 +112,6 @@
 
                 })();
 
-
-            $(document).ready(() => {
-                function getCookie(cname) {
-                    let name = cname + "=";
-                    let decodedCookie = decodeURIComponent(document.cookie);
-                    let ca = decodedCookie.split(';');
-                    for (let i = 0; i < ca.length; i++) {
-                        let c = ca[i];
-                        while (c.charAt(0) == ' ') {
-                            c = c.substring(1);
-                        }
-                        if (c.indexOf(name) == 0) {
-                            return c.substring(name.length, c.length);
-                        }
-                    }
-                    return "";
-                }
-
-                const startTime = Date.now();
-
-
-                $('#formExperiment').submit(function () {
-                    const endTime = Date.now();
-                    console.log(endTime - startTime, getCookie('userId'))
-                    $('#userTime').val(endTime - startTime);
-                    $('#userId').val(getCookie('userId'));
-                    return true;
-                });
-            })
         </script>
 
 
