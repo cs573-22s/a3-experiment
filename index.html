@@ -462,6 +462,11 @@
         .attr("y", function(d){ return yscale(d.frequency) })
         .attr("height", function(d){ return height - yscale(d.frequency) })
         .attr("width", function(d){ return xscale.bandwidth() })
+        .attr('fill', '#f0dce8')
+        //.style("opacity", .10)
+        .attr("stroke", "black")
+        //.attr("stroke-width", "10px");
+        
     }
 </script>
 
@@ -608,12 +613,13 @@
       .attr("transform", "rotate(-90)")
       .text("Frequency");
 
-    // Add Bars
+    // Add Bubbles
     var bars = svg.selectAll(".bar")
       .data(d)
       .enter().append("circle")
       .attr("class", "circle")
       .attr("cx", function(d){ return xscale(d.letter) + margin })
+      //.attr("cy", function(d){ return yscale(d.frequency) })
       .attr("cy", function(d){ return yscale(d.frequency) })
       .attr("r", function(d){ return (height - yscale(d.frequency))/5 })
       //.style("fill", colorPicker)
