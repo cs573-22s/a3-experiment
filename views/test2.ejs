@@ -4,55 +4,30 @@
 
 <body>
 
-<div class="experiment experiment--1">
+<div class="experiment experiment--2">
     <div class="experiment__viz">
-        <p><strong>Experiment 1</strong></p>
+        <p><strong>Experiment 2</strong></p>
         <svg class="svg1" width="450px" height="450px"></svg>
 
     </div>
     <div class="experiment__qa">
-        <!--
-        <input type="number" id="input-1" class="form-control mb-1" />
-        <button class="btn btn-primary experiment__btn-next">Next</button>-->
-        <form action="/test2" id="test1Form" method="POST">
-            <h4>Question 1</h4>
+        <form action='/test3' method='POST'>
             <p>What percent is blue bar of red bar?</p>
-            <input type='number' id='input-1' class="form-control mb-1">
+            <input type='number' id='input1' class="form-control mb-1">
+            <p>Question 2</p>
+            <input type='number' id='input2' class="form-control mb-1">
             <br>
-            <input type="text" id="userId" style="display: none" value="<%userId%>">
-            <input id="submitBtn" type='submit'>
+            <br>
+            <input class="btn btn-primary experiment__btn-next" type='submit'>
         </form>
     </div>
 </div>
 
 
-<!--<script defer>
-    let question1Res = document.getElementById('input-1');
-    async function submitHandler() {
-
-        const json = {userId: userId,
-                test1: [question1Res.value]},
-            body = JSON.stringify(json);
-
-
-        // submit new value
-        fetch('/test2', {
-            method: 'POST',
-            body,
-            headers: {
-                "Content-Type": "application/json"
-            }
-        })
-            .then(res => res.json())
-            .then(json => console.log(json));
-        return;
-    }
-</script>-->
-
 <script defer>
     (() => {
-        let dataset =  [63, 23, 56, 38, 30]
-        let colors = ["red", "grey", "grey", "blue", "grey"]; // color scheme for bars
+        let dataset =  [23, 44, 36, 69, 52]
+        let colors = ["grey", "blue", "grey", "red", "grey"]; // color scheme for bars
 
         const width = 500;
         const height = 500;

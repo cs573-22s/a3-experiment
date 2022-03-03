@@ -53,6 +53,10 @@ const responseSchema = new Schema({
     test12: {
         type: [],
         required: true
+    },
+    endingSurvey: {
+        type: [],
+        required: true
     }
 }, {timestamps: true });
 

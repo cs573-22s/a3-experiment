@@ -27,6 +27,8 @@ app.set("view engine", "ejs");
 app.use(express.urlencoded({ extended: true }));
 app.use(morgan("dev"));
 
+let globalResponse = [];
+
 // serve up static files in the directory public
 app.use(express.static("public"));
 app.use((req, res, next) => {
@@ -35,20 +37,23 @@ app.use((req, res, next) => {
 });
 
 app.post('/postResponse', async (req, res) => {
+  globalResponse[13] = [req.body.input13, req.body.input14, req.body.input15, req.body.input16,, req.body.input17, , req.body.input18];
+
   const response = new ResponseEntry({
-    userId: req.body.userId,
-    test1: req.body.test1,
-    test2: req.body.test2,
-    test3: req.body.test3,
-    test4: req.body.test4,
-    test5: req.body.test5,
-    test6: req.body.test6,
-    test7: req.body.test7,
-    test8: req.body.test8,
-    test9: req.body.test9,
-    test10: req.body.test10,
-    test11: req.body.test11,
-    test12: req.body.test12
+    userId: globalResponse[0],
+    test1: globalResponse[1],
+    test2: globalResponse[2],
+    test3: globalResponse[3],
+    test4: globalResponse[4],
+    test5: globalResponse[5],
+    test6: globalResponse[6],
+    test7: globalResponse[7],
+    test8: globalResponse[8],
+    test9: globalResponse[9],
+    test10: globalResponse[10],
+    test11: globalResponse[11],
+    test12: globalResponse[12],
+    endingSurvey: globalResponse[13]
   })
   response.save()
       .then(result => {
@@ -81,11 +86,68 @@ app.get("/start", async (req, res) => {
 });
 
 app.post("/test1", async (req, res) => {
-  res.render("test1", {userId: req.body.userId});
+  globalResponse[0] = req.body.userId;
+  res.render("test1");
 });
 
-app.post("/test2", bodyParser.json(), async (req, res) => {
-  res.redirect("test2", {userId: req.body.userId, test1: req.body.input1});
+app.post("/test2",  async (req, res) => {
+  globalResponse[1] = [req.body.input1, req.body.input2];
+  res.render("test2");
+});
+
+app.post("/test3",  async (req, res) => {
+  globalResponse[2] = [req.body.input1, req.body.input2];
+  res.render("test3");
+});
+
+app.post("/test4",  async (req, res) => {
+  globalResponse[3] = [req.body.input1, req.body.input2];
+  res.render("test4");
+});
+
+app.post("/test5",  async (req, res) => {
+  globalResponse[4] = [req.body.input1, req.body.input2];
+  res.render("test5");
+});
+
+app.post("/test6",  async (req, res) => {
+  globalResponse[5] = [req.body.input1, req.body.input2];
+  res.render("test6");
+});
+
+app.post("/test7",  async (req, res) => {
+  globalResponse[6] = [req.body.input1, req.body.input2];
+  res.render("test7");
+});
+
+app.post("/test8",  async (req, res) => {
+  globalResponse[7] = [req.body.input1, req.body.input2];
+  res.render("test8");
+});
+
+app.post("/test9",  async (req, res) => {
+  globalResponse[8] = [req.body.input1, req.body.input2];
+  res.render("test9");
+});
+
+app.post("/test10",  async (req, res) => {
+  globalResponse[9] = [req.body.input1, req.body.input2];
+  res.render("test10");
+});
+
+app.post("/test11",  async (req, res) => {
+  globalResponse[10] = [req.body.input1, req.body.input2];
+  res.render("test11");
+});
+
+app.post("/test12",  async (req, res) => {
+  globalResponse[11] = [req.body.input1, req.body.input2];
+  res.render("test12");
+});
+
+app.post("/endingSurvey",  async (req, res) => {
+  globalResponse[12] = [req.body.input1, req.body.input2];
+  res.render("endingSurvey");
 });
 
 

@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include("./partials/head.ejs") %>
+
+<body>
+
+<div class="experiment experiment--4">
+    <div class="experiment__viz">
+        <p><strong>Experiment 4</strong></p>
+        <div id="webGL-container" ></div>
+
+    </div>
+    <div class="experiment__qa">
+        <form action='/test5' method='POST'>
+            <p>What percent is blue bar of red bar?</p>
+            <input type='number' id='input1' class="form-control mb-1">
+            <p>Question 2</p>
+            <input type='number' id='input2' class="form-control mb-1">
+            <br>
+            <br>
+            <input class="btn btn-primary experiment__btn-next" type='submit'>
+        </form>
+    </div>
+</div>
+<script defer>
+
+    (() => {
+        let dataset3dBar1 =  [47, 21, 15, 38, 53]
+        // let dataset3dBar1 = dataset1; // change to dataset you want to use
+
+
+
+        let colors = ['red', 'grey', 'grey', 'blue', 'grey'] // color scheme for bars
+
+
+
+        // Values
+        var tick = 0;
+        var size = 0.25;
+
+
+        // Arrays
+        var bar = new Array();
+
+        var camera;
+        // var scene;
+
+        ///////////////////////
+        // Initial Setup     //
+        ///////////////////////
+
+        init3D();
+
+        function init3D() {
+            init3DScene();
+            //initListeners();
+
+        }
+
+        function initListeners() {
+            //window.onWindowResize()
+            //(window).resize(onWindowResize);
+        }
+
+        function init3DScene() {
+
+            // Setup Scene / Camera
+            scene = new THREE.Scene();
+            camera = new THREE.PerspectiveCamera(35, window.innerWidth / window.innerHeight, 0.1, 2000);
+
+            camera.position.set(100, 100, 300);
+            camera.lookAt(new THREE.Vector3(20, 40, 0));
+
+            // Setup Renderer
+            renderer = new THREE.WebGLRenderer({
+                antialias: true
+            });
+
+            renderer.shadowMap.enabled = true;
+            renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+
+            renderer.setSize(500, window.innerHeight);
+            renderer.render(scene, camera);
+
+
+
+            document.getElementById('webGL-container').append(renderer.domElement)
+            //$("#webGL-container").append(renderer.domElement);
+            controls = new THREE.OrbitControls (camera, renderer.domElement);
+
+            // var gridXZ = new THREE.GridHelper(100, 10);
+            // gridXZ.setColors( new THREE.Color(0xff0000), new THREE.Color(0xffffff) );
+            // scene.add(gridXZ);
+
+            let gXY = new THREE.PlaneGeometry(3, 10, 1, 10);
+            ToQuads(gXY);
+            let mXY = new THREE.LineBasicMaterial({color: "black"});
+            let grXY = new THREE.LineSegments(gXY, mXY);
+            grXY.scale.set(10, 8, 1);
+            grXY.position.set(6, 40, -2.5);
+            scene.add(grXY);
+
+
+
+            init3DElementBar()
+
+
+        }
+
+        function ToQuads(g) {
+            let p = g.parameters;
+            let segmentsX = (g.type == "TorusBufferGeometry" ? p.tubularSegments : p.radialSegments) || p.widthSegments || p.thetaSegments || (p.points.length - 1) || 1;
+            let segmentsY = (g.type == "TorusBufferGeometry" ? p.radialSegments : p.tubularSegments) || p.heightSegments || p.phiSegments || p.segments || 1;
+            let indices = [];
+            for (let i = 0; i < segmentsY + 1; i++) {
+                let index11 = 0;
+                let index12 = 0;
+                for (let j = 0; j < segmentsX; j++) {
+                    index11 = (segmentsX + 1) * i + j;
+                    index12 = index11 + 1;
+                    let index21 = index11;
+                    let index22 = index11 + (segmentsX + 1);
+                    indices.push(index11, index12);
+                    if (index22 < ((segmentsX + 1) * (segmentsY + 1) - 1)) {
+                        indices.push(index21, index22);
+                    }
+                }
+                if ((index12 + segmentsX + 1) <= ((segmentsX + 1) * (segmentsY + 1) - 1)) {
+                    indices.push(index12, index12 + segmentsX + 1);
+                }
+            }
+            g.setIndex(indices);
+        }
+
+
+        function init3DElementBar() {
+
+            createFloor();
+
+            //createBar(5, -25, red);
+            createBar(0)
+
+            createLight();
+        }
+
+        ///////////////////////
+        // Interactions      //
+        ///////////////////////
+
+        function onWindowResize() {
+
+            windowHalfX = window.innerWidth / 2;
+            windowHalfY = window.innerHeight / 2;
+
+            camera.aspect = window.innerWidth / window.innerHeight;
+            camera.updateProjectionMatrix();
+            renderer.setSize(window.innerWidth, window.innerHeight);
+        }
+
+        ///////////////////////
+        // Create Elements   //
+        ///////////////////////
+
+        function createLight() {
+
+            var ambient = new THREE.AmbientLight(0x999999);
+            var spot = new THREE.SpotLight({
+                color: 0xffffff,
+                intensity: 0.1
+            });
+
+            spot.position.set(-50, 100, 100);
+            spot.castShadow = true;
+            //spot.shadowDarkness = 0.2;
+
+            scene.add(ambient, spot);
+        }
+
+        function createBar(z) {
+
+            for (var i = 0; i < dataset3dBar1.length; i += 1) {
+
+                var geometry = new THREE.BoxGeometry(2, 2, 2);
+                geometry.applyMatrix(new THREE.Matrix4().makeTranslation(0, 1, z));
+
+                var material = new THREE.MeshPhongMaterial({
+                    color: colors[i]
+                });
+
+                id = new THREE.Mesh(geometry, material);
+
+                id.position.x = i * 5;
+                id.name = "bar1-" + i;
+                id.castShadow = true;
+                id.receiveShadow = true;
+
+                scene.add(id);
+                bar.push(id);
+
+                selectedBar = bar[Math.floor(bar.length / 2)];
+            }
+
+            for (var i = 0; i < bar.length; i++) {
+
+                var tween = new TweenMax.to(bar[i].scale, 1, {
+
+                    ease: Elastic.easeOut.config(1, 1),
+
+                    y: dataset3dBar1[i] / 3, // might need to change scaling depending on data sent
+                    delay: i * 0.25
+
+                });
+            }
+
+
+        }
+
+        function createFloor() {
+
+            var geometry = new THREE.BoxGeometry(2000, 2000, 2000);
+            var material = new THREE.MeshPhongMaterial({
+                color: 0xcccccc,
+                shininess: 20
+            });
+            material.side = THREE.BackSide
+
+            floor = new THREE.Mesh(geometry, material);
+
+            floor.position.set(0, 1000, 0);
+            floor.rotation.x = THREE.Math.degToRad(-90);
+
+            floor.receiveShadow = true;
+
+            scene.add(floor);
+        }
+
+        ///////////////////////
+        // Render            //
+        ///////////////////////
+
+        function render() {
+
+            tick++;
+
+            requestAnimationFrame(render);
+            renderer.render(scene, camera);
+        };
+
+        function animate() {
+            controls.update();
+            requestAnimationFrame( animate );
+            renderer.render( scene, camera );
+        }
+
+
+        setInterval(function(){
+
+            scene.rotation.y += 0.0003;
+        }, 5);
+
+        render();
+        animate();
+    })();
+
+</script>
+
+</body>
+</html>

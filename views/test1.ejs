@@ -11,43 +11,50 @@
 
     </div>
     <div class="experiment__qa">
-        <!--
-        <input type="number" id="input-1" class="form-control mb-1" />
-        <button class="btn btn-primary experiment__btn-next">Next</button>-->
-        <form action="/test2" id="test1Form" method="POST">
+
+        <!--<form id="test1Form">
             <h4>Question 1</h4>
             <p>What percent is blue bar of red bar?</p>
             <input type='number' id='input1' class="form-control mb-1">
             <br>
-            <input id="submitBtn" type='submit'>
+            <input id="submitBtn" type='submit' onclick="submitHandler()">
+        </form>-->
+        <form action='/test2' method='POST'>
+            <p>What percent is blue bar of red bar?</p>
+            <input type='number' id='input1' class="form-control mb-1">
+            <p>Question 2</p>
+            <input type='number' id='input2' class="form-control mb-1">
+            <br>
+            <br>
+            <input class="btn btn-primary experiment__btn-next" type='submit'>
         </form>
     </div>
 </div>
 
-
+<!--
 <script defer>
     let question1Res = document.getElementById('input1');
     async function submitHandler() {
 
         const json = {userId: userId,
-                test1: [question1Res.value]
+                test1: question1Res.value
             },
             body = JSON.stringify(json);
 
 
         // submit new value
-        fetch('/test2', {
+        fetch('/test3', {
             method: 'POST',
             body,
             headers: {
                 "Content-Type": "application/json"
             }
         })
-            .then(res => res.json())
+            .then(res => console.log(response))
             .then(json => console.log(json));
         return;
     }
-</script>
+</script>-->
 
 <script defer>
     (() => {
