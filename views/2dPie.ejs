@@ -21,45 +21,40 @@
       {
         country: "Lithuania",
         litres: 501.9,
+        "color": am4core.color("#ED1C24")
       },
       {
-        country: "Czechia",
+        country: "Czech Republic",
         litres: 301.9,
+        "color": am4core.color("#00FF00")
       },
       {
         country: "Ireland",
         litres: 201.1,
+        "color": am4core.color("#ED1C24")
       },
       {
         country: "Germany",
         litres: 165.8,
+        "color": am4core.color("#ED1C24")
       },
       {
         country: "Australia",
         litres: 139.9,
+        "color": am4core.color("#ED1C24")
       },
       {
         country: "Austria",
-        litres: 128.3,
-      },
-      {
-        country: "UK",
-        litres: 99,
-      },
-      {
-        country: "Belgium",
-        litres: 60,
-      },
-      {
-        country: "The Netherlands",
-        litres: 50,
-      },
+        litres: 128.3
+      }
     ];
 
     // Add and configure Series
     var pieSeries = chart.series.push(new am4charts.PieSeries());
     pieSeries.dataFields.value = "litres";
     pieSeries.dataFields.category = "country";
+    pieSeries.slices.template.propertyFields.fill = "color";
+
 
     // Let's cut a hole in our Pie chart the size of 40% the radius
     // chart.innerRadius = am4core.percent(40);
