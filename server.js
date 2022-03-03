@@ -107,7 +107,7 @@ app.post("/test2", async (req, res) => {
 
   let blank = [];
   blank.push(req.body.input1)
-  blank.push(req.body.input2)
+
 
   globalResponse[1] = blank;
 
@@ -117,7 +117,6 @@ app.post("/test2", async (req, res) => {
 app.post("/test3",  async (req, res) => {
   let blank = [];
   blank.push(req.body.input1)
-  blank.push(req.body.input2)
 
   globalResponse[2] = blank;
 
@@ -127,7 +126,6 @@ app.post("/test3",  async (req, res) => {
 app.post("/test4",  async (req, res) => {
   let blank = [];
   blank.push(req.body.input1)
-  blank.push(req.body.input2)
 
   globalResponse[3] = blank;
 
@@ -137,7 +135,6 @@ app.post("/test4",  async (req, res) => {
 app.post("/test5",  async (req, res) => {
   let blank = [];
   blank.push(req.body.input1)
-  blank.push(req.body.input2)
 
   globalResponse[4] = blank;
 
@@ -147,7 +144,6 @@ app.post("/test5",  async (req, res) => {
 app.post("/test6",  async (req, res) => {
   let blank = [];
   blank.push(req.body.input1)
-  blank.push(req.body.input2)
 
   globalResponse[5] = blank;
 
@@ -157,7 +153,6 @@ app.post("/test6",  async (req, res) => {
 app.post("/test7",  async (req, res) => {
   let blank = [];
   blank.push(req.body.input1)
-  blank.push(req.body.input2)
 
   globalResponse[6] = blank;
 
@@ -167,7 +162,6 @@ app.post("/test7",  async (req, res) => {
 app.post("/test8",  async (req, res) => {
   let blank = [];
   blank.push(req.body.input1)
-  blank.push(req.body.input2)
 
   globalResponse[7] = blank;
 
@@ -177,7 +171,7 @@ app.post("/test8",  async (req, res) => {
 app.post("/test9",  async (req, res) => {
   let blank = [];
   blank.push(req.body.input1)
-  blank.push(req.body.input2)
+
 
   globalResponse[8] = blank;
 
@@ -187,7 +181,7 @@ app.post("/test9",  async (req, res) => {
 app.post("/test10",  async (req, res) => {
   let blank = [];
   blank.push(req.body.input1)
-  blank.push(req.body.input2)
+
 
   globalResponse[9] = blank;
 
@@ -197,7 +191,6 @@ app.post("/test10",  async (req, res) => {
 app.post("/test11",  async (req, res) => {
   let blank = [];
   blank.push(req.body.input1)
-  blank.push(req.body.input2)
 
   globalResponse[10] = blank;
 
@@ -207,7 +200,6 @@ app.post("/test11",  async (req, res) => {
 app.post("/test12",  async (req, res) => {
   let blank = [];
   blank.push(req.body.input1)
-  blank.push(req.body.input2)
 
   globalResponse[11] = blank;
 
@@ -217,7 +209,6 @@ app.post("/test12",  async (req, res) => {
 app.post("/endingSurvey",  async (req, res) => {
   let blank = [];
   blank.push(req.body.input1)
-  blank.push(req.body.input2)
 
   globalResponse[12] = blank;
 
