@@ -282,39 +282,47 @@
       let bargraphCount = 0;
       let circularbarplotCount = 0;
       let bubblechartCount = 0;
+      let linechartCount = 0;
 
       while (order.length < 60) 
       //while (order.length < 3)
       {
-        let randomNum = Math.floor(Math.random()*4)
+        let randomNum = Math.floor(Math.random()*5)
 
         if (randomNum == 0) 
         {
-          if (radarCount >= 15)
+          if (radarCount >= 12)
             continue;
           else
             radarCount++
         } 
         else if (randomNum == 1) 
         {
-          if (bargraphCount >=15)
+          if (bargraphCount >=12)
             continue;
           else
             bargraphCount++
         } 
         else if(randomNum == 2)
         {
-          if (circularbarplotCount >= 15)
+          if (circularbarplotCount >= 12)
             continue;
           else
             circularbarplotCount++
         }
         else if(randomNum == 3)
         {
-          if (bubblechartCount >= 15)
+          if (bubblechartCount >= 12)
             continue;
           else
           bubblechartCount++
+        }
+        else if(randomNum == 4)
+        {
+          if (linechartCount >= 12)
+            continue;
+          else
+          linechartCount++
         }
         order.push(randomNum)
       }
@@ -626,6 +634,91 @@
 </script>
 
 <script>
+
+  /*-----------------------Line Chart--------------------------
+  ** When you need to create a bar chart with a given data set, use
+  ** buildLineChart(d) where d is the data returned from generateDataset()
+  */
+  
+  function buildLineChart(data){
+  
+        // establishing variables
+        var margin = 50,
+        width = 500 - 2 * margin,
+        height = 500 - 2 * margin;
+  
+        // creating svg
+        var svg = d3.select("div#vis").append('svg')
+          .attr("width", width + 2 * margin)
+          .attr("height", height + 2 * margin)
+          .attr("transform", "translate(" + margin + ", " + margin + ")")
+  
+        var d = data.dataset,
+        mark1 = data.mark1,
+        mark2 = data.mark2;
+        //console.log(d);
+  
+        // scaling
+        var xscale = d3.scaleBand()
+          .domain(d.map(function(d){ return (d.letter) }))
+          .range( [0, width])
+          .padding(0.4);
+  
+        var yscale = d3.scaleLinear()
+          .domain([0, 105])    //d3.max(d, function(d){return d.frequency;}
+          .range( [height, 0] );
+        console.log(d3.max(d, d.frequency));
+  
+        // Add X axis
+        var x_axis = d3.axisBottom()
+          .scale(xscale)
+        svg.append("g")
+          .attr("transform", "translate(" + margin + "," + height + ")")
+          .call(x_axis)
+          .attr("class", "xAxis")
+  
+  
+        // Add Y axis
+        var y_axis = d3.axisLeft()
+          .scale(yscale)
+          .tickValues([])
+        svg.append("g")
+          .attr("transform", "translate(" + margin + ", 0 )")
+          .call(y_axis)
+          .attr("class", "yAxis")
+  
+        // Add X axis label
+        svg.append("text")
+          .attr("text-anchor", "middle")
+          .attr("x", width/2 + margin)
+          .attr("y", height + 40)
+          .text("Letter");
+  
+        // Add Y axis label
+        svg.append("text")
+          .attr("text-anchor", "middle")
+          .attr("x", -(height/2))
+          .attr("y", 0)
+          .attr("dy", ".75em")
+          .attr("transform", "rotate(-90)")
+          .text("Frequency");
+        
+        svg.append("path")
+        .datum(coordinates)
+        .attr("d",line)
+        //.attr("stroke-width", 3)
+        //.attr("stroke", "white")
+        //.attr("fill", "black")
+        //.attr("stroke-opacity", 1)
+        //.attr("fill-opacity", .5);
+        .attr('fill', '#f0dce8')
+        .style("fill-opacity", .7)
+        //.attr("stroke", "black")
+  }
+  
+  </script>
+
+<script>
     var visOrder = []
     var trialCount = 0 // will iterate after each press of the submission button except the first
     var results = []
@@ -659,6 +752,8 @@
         generateCircularBarplot(data.dataset)
       } else if (visType == 3){ // bubble chart
         buildBubbleChart(data)
+      } else if (visType == 4){ // line chart
+        buildLineChart(data)
       }
 
 
@@ -711,8 +806,8 @@
 
       trialCount = trialCount + 1
       console.log(trialCount)
-      //if (trialCount == 60) {
-      if (trialCount == 3) {
+      if (trialCount == 60) {
+      //if (trialCount == 3) {
         show('testing','end-screen')
       } else {
         generateNextTrial(trialCount)
