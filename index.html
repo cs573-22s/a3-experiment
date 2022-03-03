@@ -696,8 +696,12 @@
         'visType': visOrder[trialCount],
         'percentGuessed': guess,
         'percentActual': percentActual,
+        'name': document.getElementById("name").value,
         'gender': document.getElementById("gender").value,
-        'age': document.getElementById("age").value
+        'age': document.getElementById("age").value,
+        'country': document.getElementById("country").value,
+        'major': document.getElementById("major").value,
+        'email': document.getElementById("email").value
       }
       results.push(tempResult)
 
@@ -707,8 +711,8 @@
 
       trialCount = trialCount + 1
       console.log(trialCount)
-      if (trialCount == 60) {
-      //if (trialCount == 3) {
+      //if (trialCount == 60) {
+      if (trialCount == 3) {
         show('testing','end-screen')
       } else {
         generateNextTrial(trialCount)
@@ -761,8 +765,8 @@
     function exportData(dataStructsArray) {
         var rows = [];
         for (var i = 0; i < dataStructsArray.length; i++) {
-          rows[i] = [dataStructsArray[i].trialNum, dataStructsArray[i].gender, dataStructsArray[i].age,
-            dataStructsArray[i].visType, dataStructsArray[i].percentGuessed, dataStructsArray[i].percentActual]
+          rows[i] = [dataStructsArray[i].trialNum, dataStructsArray[i].name, dataStructsArray[i].gender, dataStructsArray[i].age, dataStructsArray[i].country, 
+          dataStructsArray[i].major, dataStructsArray[i].visType, dataStructsArray[i].percentGuessed, dataStructsArray[i].percentActual, dataStructsArray[i].email,]
         }
         print(rows);
         exportToCsv('data.csv', rows);
@@ -778,7 +782,7 @@
   TO DO:
   1）增加折线图
   2）介绍页补充内容
-  3）介绍页增加back键
+  3）介绍页增加back键 DONE
   4）首页修改文案
   5）尾页修改文案
 -->
