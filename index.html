@@ -355,7 +355,9 @@
         .data(data)
         .enter()
         .append("path")
-            .attr("fill", "black")
+            //.attr("fill", "black")
+            .attr('fill', '#f0dce8')
+            .attr("stroke", "black")
             .attr("d", d3.arc()     
                 .innerRadius(innerRadius)
                 .outerRadius(function(d) {
