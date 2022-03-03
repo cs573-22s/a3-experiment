@@ -105,7 +105,7 @@
   // Colors
   var color = d3.scaleOrdinal()
     .domain(data)
-    .range(["#af7aa1","#edc949","#e15759"])
+    .range("Grey")
 
   // Individual group position
   var pie = d3.pie()
