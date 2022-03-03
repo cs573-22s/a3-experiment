@@ -39,7 +39,10 @@ Results from Experiment:
 
 Technical Achievements: 
 - utilized D3 to create word clouds presented in Qualtrics Survey
-- utilized word processing software to create CSV files for word clouds 
+- utilized word processing software in Python to create CSV files for word clouds 
 
 Design Achievements: 
-- 
+- small multiple to portray the differences in the accuracies for different topics
+
+potential idea: ? 
+- accuracy based on number of texts or words in a word cloud
