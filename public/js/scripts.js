@@ -368,7 +368,7 @@
     renderer.setSize(window.innerWidth, window.innerHeight);
     renderer.render(scene, camera);
 
-    document.getElementById("webGL-container").append(renderer.domElement);
+    document.getElementById("webGL-container0").append(renderer.domElement);
     //$("#webGL-container").append(renderer.domElement);
     controls = new THREE.OrbitControls(camera, renderer.domElement);
 

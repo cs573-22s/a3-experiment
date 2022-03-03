@@ -40,9 +40,10 @@
 
     <script defer>
       let dataset1 = [10, 20, 30, 40, 50];
+      let dataset2 = [50, 40, 30, 20, 10];
       let bar1 = 0;
       let bar2 = 3;
-      let dataset3d = [[0,0,0],[0,0,0],[0,0,0]];
+      let dataset3d = [[5,7,6,4,7],[2,2,9,4,7],[3,8,3,9,1]];
       // let dataset1 = [10, 20, 30, 40, 50];
       const datasets = <%= JSON.stringify(datasets) %>;
       const answers = <%= JSON.stringify(answers) %>;
@@ -80,9 +81,9 @@
       <div class="experiment experiment--1">
         <div class="experiment__viz">
           <p><strong>Experiment 1</strong></p>
-
-          <%-include("2dBarChart.ejs", {dataset: datasets[0], bar1: 'bar1Int',
+          <%-include("2dBarChart.ejs", {dataset: datasets[1], bar1: 'bar1Int',
           bar2: 'bar2Int'}) %>
+
 
         </div>
         <div class="experiment__qa">
@@ -144,8 +145,7 @@
       <div class="experiment experiment--5">
         <div class="experiment__viz">
           <p><strong>Experiment 5</strong></p>
-          <%-include("2dPie.ejs", {dataset: datasets[2], bar1: 'bar1Int', bar2:
-          'bar2Int'}) %>
+
         </div>
         <div class="experiment__qa">
           <h4>Question 5</h4>
@@ -158,8 +158,7 @@
       <div class="experiment experiment--6">
         <div class="experiment__viz">
           <p><strong>Experiment 6</strong></p>
-          <%-include("2dPie.ejs", {dataset: datasets[3], bar1: 'bar1Int', bar2:
-          'bar2Int'}) %>
+
         </div>
         <div class="experiment__qa">
           <h4>Question 6</h4>
