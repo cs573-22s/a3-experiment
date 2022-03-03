@@ -10,7 +10,7 @@ const morgan = require("morgan");
 const app = express();
 
 
-const uri = 'mongodb+srv://'+process.env.ACCOUNT+':'+process.env.PASS+'@'+process.env.HOST
+const uri = 'mongodb+srv://'+process.env.USER+':'+process.env.PASS+'@'+process.env.HOST
 
 mongoose.connect(uri, {useNewUrlParser: true, useUnifiedTopology: true})
     .then(result => app.listen(process.env.PORT || port))
