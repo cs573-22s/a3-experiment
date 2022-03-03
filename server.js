@@ -10,14 +10,14 @@ const morgan = require("morgan");
 const app = express();
 
 
-const uri = 'mongodb+srv://'+process.env.USER+':'+process.env.PASS+'@'+process.env.HOST
+const uri = 'mongodb+srv://'+process.env.ACT+':'+process.env.PASS+'@'+process.env.HOST
 
 mongoose.connect(uri, {useNewUrlParser: true, useUnifiedTopology: true})
     .then(result => app.listen(process.env.PORT || port))
     .catch(err => console.log(err));
 
 
-app.listen(process.env.PORT || port);
+//app.listen(process.env.PORT || port);
 app.use(bodyParser.json());
 
 //register view engine
@@ -37,7 +37,16 @@ app.use((req, res, next) => {
 });
 
 app.post('/postResponse', async (req, res) => {
-  globalResponse[13] = [req.body.input13, req.body.input14, req.body.input15, req.body.input16,, req.body.input17, , req.body.input18];
+
+  let blank = [];
+  blank.push(req.body.input13)
+  blank.push(req.body.input14)
+  blank.push(req.body.input15)
+  blank.push(req.body.input16)
+  blank.push(req.body.input17)
+  blank.push(req.body.input18)
+
+  globalResponse[13] = blank;
 
   const response = new ResponseEntry({
     userId: globalResponse[0],
@@ -85,68 +94,129 @@ app.get("/start", async (req, res) => {
   res.render("start");
 });
 
-app.post("/test1", async (req, res) => {
+app.post("/test1", bodyParser.json(), async (req, res) => {
   globalResponse[0] = req.body.userId;
   res.render("test1");
 });
 
-app.post("/test2",  async (req, res) => {
-  globalResponse[1] = [req.body.input1, req.body.input2];
+app.post("/test2", async (req, res) => {
+
+  let blank = [];
+  blank.push(req.body.input1)
+  blank.push(req.body.input2)
+
+  globalResponse[1] = blank;
+
   res.render("test2");
 });
 
 app.post("/test3",  async (req, res) => {
-  globalResponse[2] = [req.body.input1, req.body.input2];
+  let blank = [];
+  blank.push(req.body.input1)
+  blank.push(req.body.input2)
+
+  globalResponse[2] = blank;
+
   res.render("test3");
 });
 
 app.post("/test4",  async (req, res) => {
-  globalResponse[3] = [req.body.input1, req.body.input2];
+  let blank = [];
+  blank.push(req.body.input1)
+  blank.push(req.body.input2)
+
+  globalResponse[3] = blank;
+
   res.render("test4");
 });
 
 app.post("/test5",  async (req, res) => {
-  globalResponse[4] = [req.body.input1, req.body.input2];
+  let blank = [];
+  blank.push(req.body.input1)
+  blank.push(req.body.input2)
+
+  globalResponse[4] = blank;
+
   res.render("test5");
 });
 
 app.post("/test6",  async (req, res) => {
-  globalResponse[5] = [req.body.input1, req.body.input2];
+  let blank = [];
+  blank.push(req.body.input1)
+  blank.push(req.body.input2)
+
+  globalResponse[5] = blank;
+
   res.render("test6");
 });
 
 app.post("/test7",  async (req, res) => {
-  globalResponse[6] = [req.body.input1, req.body.input2];
+  let blank = [];
+  blank.push(req.body.input1)
+  blank.push(req.body.input2)
+
+  globalResponse[6] = blank;
+
   res.render("test7");
 });
 
 app.post("/test8",  async (req, res) => {
-  globalResponse[7] = [req.body.input1, req.body.input2];
+  let blank = [];
+  blank.push(req.body.input1)
+  blank.push(req.body.input2)
+
+  globalResponse[7] = blank;
+
   res.render("test8");
 });
 
 app.post("/test9",  async (req, res) => {
-  globalResponse[8] = [req.body.input1, req.body.input2];
+  let blank = [];
+  blank.push(req.body.input1)
+  blank.push(req.body.input2)
+
+  globalResponse[8] = blank;
+
   res.render("test9");
 });
 
 app.post("/test10",  async (req, res) => {
-  globalResponse[9] = [req.body.input1, req.body.input2];
+  let blank = [];
+  blank.push(req.body.input1)
+  blank.push(req.body.input2)
+
+  globalResponse[9] = blank;
+
   res.render("test10");
 });
 
 app.post("/test11",  async (req, res) => {
-  globalResponse[10] = [req.body.input1, req.body.input2];
+  let blank = [];
+  blank.push(req.body.input1)
+  blank.push(req.body.input2)
+
+  globalResponse[10] = blank;
+
   res.render("test11");
 });
 
 app.post("/test12",  async (req, res) => {
-  globalResponse[11] = [req.body.input1, req.body.input2];
+  let blank = [];
+  blank.push(req.body.input1)
+  blank.push(req.body.input2)
+
+  globalResponse[11] = blank;
+
   res.render("test12");
 });
 
 app.post("/endingSurvey",  async (req, res) => {
-  globalResponse[12] = [req.body.input1, req.body.input2];
+  let blank = [];
+  blank.push(req.body.input1)
+  blank.push(req.body.input2)
+
+  globalResponse[12] = blank;
+
   res.render("endingSurvey");
 });
 
