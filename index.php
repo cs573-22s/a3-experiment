@@ -19,7 +19,7 @@
     font-family: Tahoma, sans-serif;
   }
   .bar {
-            fill: rgb(223, 82, 17);
+            fill: greyscale(0);
         }
 
 </style>
