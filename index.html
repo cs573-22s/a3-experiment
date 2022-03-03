@@ -357,7 +357,9 @@
         .append("path")
             //.attr("fill", "black")
             .attr('fill', '#f0dce8')
+            .style("fill-opacity", .6)
             .attr("stroke", "black")
+            .style('fill-stroke', .4)
             .attr("d", d3.arc()     
                 .innerRadius(innerRadius)
                 .outerRadius(function(d) {
@@ -465,8 +467,9 @@
         .attr("height", function(d){ return height - yscale(d.frequency) })
         .attr("width", function(d){ return xscale.bandwidth() })
         .attr('fill', '#f0dce8')
-        //.style("opacity", .10)
+        .style("fill-opacity", .6)
         .attr("stroke", "black")
+        .style('fill-stroke', .4)
         //.attr("stroke-width", "10px");
         
     }
@@ -509,6 +512,7 @@
             .attr("cy", 250)
             .attr("fill", "none")
             .attr("stroke", "black")
+            .style("stroke-opacity", 0.3)
             .attr("r", radialScale(t))
       );
 
@@ -524,7 +528,8 @@
         .attr("y1", 250)
         .attr("x2", line_coordinate.x)
         .attr("y2", line_coordinate.y)
-        .attr("stroke","black");
+        .attr("stroke","black")
+        .style("stroke-opacity", 0.3);
 
         //draw axis label
         svg.append("text")
@@ -543,11 +548,14 @@
       svg.append("path")
       .datum(coordinates)
       .attr("d",line)
-      .attr("stroke-width", 3)
-      .attr("stroke", "white")
-      .attr("fill", "white")
-      .attr("stroke-opacity", 1)
-      .attr("fill-opacity", .5);
+      //.attr("stroke-width", 3)
+      //.attr("stroke", "white")
+      //.attr("fill", "black")
+      //.attr("stroke-opacity", 1)
+      //.attr("fill-opacity", .5);
+      .attr('fill', '#f0dce8')
+      .style("fill-opacity", .7)
+      //.attr("stroke", "black")
     }
 
 </script>
@@ -590,34 +598,12 @@
       .call(x_axis)
       .attr("class", "xAxis")
 
-    // Add Y axis
-    /*
-    var y_axis = d3.axisLeft()
-      .scale(yscale)
-      .tickValues([])
-    svg.append("g")
-      .attr("transform", "translate(" + margin + ", 0 )")
-      .call(y_axis)
-      .attr("class", "yAxis")
-      */
-
     // Add X axis label
     svg.append("text")
       .attr("text-anchor", "middle")
       .attr("x", width/2 + margin)
       .attr("y", height + 40)
       .text("Letter");
-
-    // Add Y axis label
-    /*
-    svg.append("text")
-      .attr("text-anchor", "middle")
-      .attr("x", -(height/2))
-      .attr("y", 0)
-      .attr("dy", ".75em")
-      .attr("transform", "rotate(-90)")
-      .text("Frequency");
-      */
 
     // Add Bubbles
     var bars = svg.selectAll(".bar")
@@ -627,8 +613,11 @@
       .attr("cx", function(d){ return xscale(d.letter) + margin + 15 })
       .attr("cy", height/2)
       .attr("r", function(d){ return (height - yscale(d.frequency))/5 })
-      //.style("fill", colorPicker)
-		  .style("opacity", .30)
+      //.style("fill", 'black')
+		  //.style("opacity", .30)
+      .attr('fill', '#f0dce8')
+      .style("fill-opacity", .4)
+      //.attr("stroke", "black")
   }
 </script>
 
@@ -781,3 +770,11 @@
     }
 
 </script>
+<!--
+  TO DO:
+  1）增加折线图
+  2）介绍页补充内容
+  3）介绍页增加back键
+  4）首页修改文案
+  5）尾页修改文案
+-->
