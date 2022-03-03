@@ -66,7 +66,7 @@
         renderer.shadowMap.enabled = true;
         renderer.shadowMap.type = THREE.PCFSoftShadowMap;
 
-        renderer.setSize(window.innerWidth, window.innerHeight);
+        renderer.setSize(window.innerWidth / 2, window.innerHeight);
         renderer.render(scene, camera);
 
 
@@ -74,6 +74,7 @@
         document.getElementById('webGL-container1').append(renderer.domElement)
         //$("#webGL-container").append(renderer.domElement);
         controls = new THREE.OrbitControls (camera, renderer.domElement);
+        controls.noPan = true;
 
         // var gridXZ = new THREE.GridHelper(100, 10);
         // gridXZ.setColors( new THREE.Color(0xff0000), new THREE.Color(0xffffff) );

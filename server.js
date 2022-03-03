@@ -45,7 +45,6 @@ app.use(cookie({
   test11: 'test11',
   test12: 'test12',
   test13: 'test13',
-
 }))
 
 let globalResponse = [];
@@ -185,7 +184,6 @@ app.post("/test6",  async (req, res) => {
   blank.push(parseInt(req.body.time));
   req.session.test5 = blank;
   //globalResponse[5] = blank;
-  console.log(req.session)
   res.render("test6");
 });
 

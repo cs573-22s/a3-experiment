@@ -73,7 +73,7 @@
         camera.position.set(10, 5, 15);
 
         const renderer = new THREE.WebGLRenderer({antialias: true, alpha: 1});
-        renderer.setSize(500, window.innerHeight)
+        renderer.setSize(window.innerWidth / 2, window.innerHeight)
         document.getElementById('here').appendChild(renderer.domElement)
 
         // Create a color material
@@ -81,6 +81,8 @@
 
         // Add controls to move the camera
         const controls = new THREE.OrbitControls( camera, document.getElementById('here').appendChild(renderer.domElement ));
+        controls.noPan = true;
+
         controls.target.set(0,0,0);
         controls.update();
 
