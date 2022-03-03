@@ -18,21 +18,55 @@ Screenshots of experiment:
 
 Visualization 1: COVID-19 Article
 
+Correct Answer:
+![covid-19 correct word cloud](img/covid_a_processed.PNG)
+
+Incorrect Answers:
+![covid-19 incorrect word cloud](img/covid_b_processed.PNG)
+
+![covid-19 incorrect word cloud](img/covid_c_processed.PNG)
 
 Visualization 2: Kardashian Drama Article
 
+Correct Answer:
+![kanye correct word cloud](img/kanye_c_processed.PNG)
+
+Incorrect Answers:
+![kanye incorrect word cloud](img/kanye_a_processed.PNG)
+
+![kanye incorrect word cloud](img/kanye_b_processed.PNG)
 
 Visualization 3: Music Industry Trends Article
 
+Correct Answer:
+![music correct word cloud](img/music_a_processed.PNG)
+
+Incorrect Answers:
+![music incorrect word cloud](img/music_b_processed.PNG)
+
+![music incorrect word cloud](img/music_c_processed.PNG)
 
 Visualization 4: Plant Based Drug Discovery Article
+
+Correct Answer:
+![plant correct word cloud](img/plant_c_processed.PNG)
+
+
+Incorrect Answers:
+![plant incorrect word cloud](img/plant_a_processed.PNG)
+
+![plant incorrect word cloud](img/plant_b_processed.PNG)
 
 
 Visualization 5: Travel Trends Article
 
+Correct Answer:
+![travel correct word cloud](img/travel_b_processed.PNG)
 
-Visualization for How Word Clouds for Scientific Topics Differ from Pop Culture Topics:
+Incorrect Answers:
+![travel incorrect word cloud](img/travel_a_processed.PNG)
 
+![travel incorrect word cloud](img/travel_c_processed.PNG)
 
 Results from Experiment:
 
