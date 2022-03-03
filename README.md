@@ -10,7 +10,7 @@ Here is the [link](https://mnorales.github.io/a3-experiment/) to our project sit
 
 ### Graph 1: Pie Chart
 
-(screenshot here)
+![Pie Chart](pie_chart.PNG)
 
 **Description:**
 
@@ -24,8 +24,13 @@ Here is the [link](https://mnorales.github.io/a3-experiment/) to our project sit
 ![Bar Chart](bar_chart.PNG)
 
 **Description:**
+This pie chart compares deaths per 100,000 for males and females and shows the total.
 
-(include questions asked)
+
+Questions Asked:
+Do you think the graph is misleading? 
+Why? or Why not?
+
 
 **Hypothesis:**
 
