@@ -90,6 +90,10 @@ app.get("/", (req, res) => {
   res.redirect("/start");
 });
 
+app.get("/dataAnalysis", async (req, res) => {
+  res.render("dataAnalysis")
+});
+
 app.get("/start", async (req, res) => {
   res.render("start");
 });
