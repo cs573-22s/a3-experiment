@@ -14,7 +14,7 @@
     </div>
     <div class="experiment__qa">
         <form action='/test11' method='POST'>
-            <p>What percent is "I v3" of "E v5"?</p>
+            <p>What percent is "H4" of "F6"?</p>
             <input type='number' name='input1' class="form-control mb-1">
             <input id="userTime" type='hidden' name='time' class="form-control mb-1">
             <br>
@@ -41,7 +41,8 @@
             "translate(" + margin.left + "," + margin.top + ")");
 
     //Read the data
-    d3.csv("https://raw.githubusercontent.com/holtzy/D3-graph-gallery/master/DATA/heatmap_data.csv", function(data) {
+    // d3.csv("https://raw.githubusercontent.com/holtzy/D3-graph-gallery/master/DATA/heatmap_data.csv", function(data) {
+    d3.csv("/csv/heat.csv", function(data) {
 
         // Labels of row and columns -> unique identifier of the column called 'group' and 'variable'
         var myGroups = d3.map(data, function(d){return d.group;}).keys()
@@ -92,8 +93,8 @@
             .append("rect")
             .attr("x", function(d) { return x(d.group) })
             .attr("y", function(d) { return y(d.variable) })
-            .attr("rx", 4)
-            .attr("ry", 4)
+            // .attr("rx", 4)
+            // .attr("ry", 4)
             .attr("width", x.bandwidth() )
             .attr("height", y.bandwidth() )
 
