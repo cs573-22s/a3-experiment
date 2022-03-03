@@ -74,7 +74,7 @@
     </style>
 </head>
 <body>
-    <div id="welcome-screen">
+    <div id="welcome-screen" style="display:block">
         <div class="div header">
             <h2>CS573 Data Visualization</h2>
             <h1>Welcome</h1>
@@ -96,7 +96,9 @@
       </div>
       <div class="div" id="intro">
           <p> 补充实验介绍</p>
+          <button class="button" id="back2wel" onclick="return show('introduction', 'welcome-screen')">Back</button>
           <button class="button" id="next" onclick="return show('introduction', 'bkgd-info')">Next</button>
+          
       </div>
     </div>
 
@@ -147,7 +149,9 @@
                 <p>Email</p>
                 <input id='email' name= "email">
             </form>
+            <button class="button" id="back2intro" onclick="return show('bkgd-info', 'introduction')">Back</button>
             <button class="button" onclick="return checkForm()">Submit</button>
+            
         </div>
     </div>
 
