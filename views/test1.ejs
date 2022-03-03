@@ -2,34 +2,36 @@
 <html lang="en">
 <%- include("./partials/head.ejs") %>
 
-<body>
+    <body>
 
-<div class="experiment experiment--1">
-    <div class="experiment__viz">
-        <p><strong>Experiment 1</strong></p>
-        <svg class="svg1" width="450px" height="450px"></svg>
+        <div class="experiment experiment--1">
+            <div class="experiment__viz">
+                <p><strong>Experiment 1</strong></p>
+                <svg class="svg1" width="450px" height="450px"></svg>
 
-    </div>
-    <div class="experiment__qa">
+            </div>
+            <div class="experiment__qa">
 
-        <!--<form id="test1Form">
+                <!--<form id="test1Form">
             <h4>Question 1</h4>
             <p>What percent is blue bar of red bar?</p>
             <input type='number' id='input1' class="form-control mb-1">
             <br>
             <input id="submitBtn" type='submit' onclick="submitHandler()">
         </form>-->
-        <form action='/test2' method='POST'>
-            <p>What percent is blue bar of red bar?</p>
-            <input type='number' name='input1' class="form-control mb-1">
-            <br>
-            <br>
-            <input class="btn btn-primary experiment__btn-next" type='submit'>
-        </form>
-    </div>
-</div>
+                <form id="formExperiment" action='/test2' method='POST'>
+                    <p>What percent is blue bar of red bar?</p>
+                    <input type='number' name='input1' class="form-control mb-1">
+                    <input id="userId" type='text' name='userId' class="form-control mb-1">
+                    <input id="userTime" type='number' name='time' class="form-control mb-1">
+                    <br>
+                    <br>
+                    <input class="btn btn-primary experiment__btn-next" type='submit'>
+                </form>
+            </div>
+        </div>
 
-<!--
+        <!--
 <script defer>
     let question1Res = document.getElementById('input1');
     async function submitHandler() {
@@ -54,61 +56,94 @@
     }
 </script>-->
 
-<script defer>
-    (() => {
-        let dataset =  [63, 23, 56, 38, 30]
-        let colors = ["red", "grey", "grey", "blue", "grey"]; // color scheme for bars
-
-        const width = 500;
-        const height = 500;
-
-        var svg1 = d3
-            .select("svg")
-            .attr("viewBox", [0, 0, width, height])
-            .property("value", []);
-
-        const linscale = d3
-            .scaleLinear()
-            .domain([0, 100]) // unit: km
-            .range([0, width]); // unit: px
-
-        const yAxisScale = d3
-            .scaleLinear()
-            .domain([100, 0]) // unit: km
-            .range([0, width]); // unit: px
+        <script>
 
 
-        const axis = d3.axisLeft().scale(yAxisScale).ticks(20);
+                (() => {
+                    let dataset = [63, 23, 56, 38, 30]
+                    let colors = ["red", "grey", "grey", "blue", "grey"]; // color scheme for bars
 
-        // Add Rectangles
+                    const width = 500;
+                    const height = 500;
 
-        var rect = svg1
-            .append("g")
-            .selectAll("rect")
-            .data(dataset)
-            .enter()
-            .append("rect")
-            .attr("width", 50)
-            .attr("height", (data) => linscale(data))
-            .attr("stroke", "black")
-            // .attr('fill', data => colorScale(data))
-            .attr("fill", (d, i) => colors[i])
-            .attr("x", function (d, i) {
-                return i * 75 + 50;
+                    var svg1 = d3
+                        .select("svg")
+                        .attr("viewBox", [0, 0, width, height])
+                        .property("value", []);
+
+                    const linscale = d3
+                        .scaleLinear()
+                        .domain([0, 100]) // unit: km
+                        .range([0, width]); // unit: px
+
+                    const yAxisScale = d3
+                        .scaleLinear()
+                        .domain([100, 0]) // unit: km
+                        .range([0, width]); // unit: px
+
+
+                    const axis = d3.axisLeft().scale(yAxisScale).ticks(20);
+
+                    // Add Rectangles
+
+                    var rect = svg1
+                        .append("g")
+                        .selectAll("rect")
+                        .data(dataset)
+                        .enter()
+                        .append("rect")
+                        .attr("width", 50)
+                        .attr("height", (data) => linscale(data))
+                        .attr("stroke", "black")
+                        // .attr('fill', data => colorScale(data))
+                        .attr("fill", (d, i) => colors[i])
+                        .attr("x", function (d, i) {
+                            return i * 75 + 50;
+                        })
+                        .attr("y", (data) => 500 - linscale(data))
+                        .attr("transform", "translate(75,0)");
+
+
+                    d3.select(".svg1")
+                        .append("g")
+                        .attr("transform", "translate(50, 0)")
+                        .call(axis);
+
+
+                })();
+
+
+            $(document).ready(() => {
+                function getCookie(cname) {
+                    let name = cname + "=";
+                    let decodedCookie = decodeURIComponent(document.cookie);
+                    let ca = decodedCookie.split(';');
+                    for (let i = 0; i < ca.length; i++) {
+                        let c = ca[i];
+                        while (c.charAt(0) == ' ') {
+                            c = c.substring(1);
+                        }
+                        if (c.indexOf(name) == 0) {
+                            return c.substring(name.length, c.length);
+                        }
+                    }
+                    return "";
+                }
+
+                const startTime = Date.now();
+
+
+                $('#formExperiment').submit(function () {
+                    const endTime = Date.now();
+                    console.log(endTime - startTime, getCookie('userId'))
+                    $('#userTime').val(endTime - startTime);
+                    $('#userId').val(getCookie('userId'));
+                    return true;
+                });
             })
-            .attr("y", (data) => 500 - linscale(data))
-            .attr("transform", "translate(75,0)");
+        </script>
 
 
-        d3.select(".svg1")
-            .append("g")
-            .attr("transform", "translate(50, 0)")
-            .call(axis);
+    </body>
 
-
-    })();
-</script>
-
-
-</body>
 </html>

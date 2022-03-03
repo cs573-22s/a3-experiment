@@ -19,18 +19,43 @@
                     We won't record any information except your answers. Click "Submit"
                     to begin the experiment.
                 </p>
-                <form action='/test1' method='POST'>
-                    <input type='text' name='userId' placeholder="Username">
+                <form id="formExperiment" action='/test1' method='POST'>
+                    <!-- <input type='text' name='userId' placeholder="Username"> -->
                     <br>
                     <br>
-                    <input class="btn btn-primary experiment__btn-next" type='submit'>
+                    <input class="btn btn-primary experiment__btn-next" type='submit' value="Next">
                 </form>
             </div>
         </div>
     </div>
 </div>
 
+<script>
+    function getCookie(cname) {
+        let name = cname + "=";
+        let decodedCookie = decodeURIComponent(document.cookie);
+        let ca = decodedCookie.split(';');
+        for (let i = 0; i < ca.length; i++) {
+            let c = ca[i];
+            while (c.charAt(0) == ' ') {
+                c = c.substring(1);
+            }
+            if (c.indexOf(name) == 0) {
+                return c.substring(name.length, c.length);
+            }
+        }
+        return "";
+    }
 
+    $('#formExperiment').submit(function() {
+
+        const userId = (Math.random() + 1).toString(36).substring(2) + (Math.random() + 1).toString(36).substring(2);
+        document.cookie = "userId=" + userId;
+
+        return true;
+    });
+    
+</script>
 
 </body>
 </html>
