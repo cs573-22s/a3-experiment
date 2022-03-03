@@ -17,7 +17,7 @@
     </div>
     <div class="experiment__qa">
         <form action='/test7' method='POST'>
-            <p>What percent is lightest blue slice of pink slice?</p>
+            <p>What percent is blue slice of the red slice?</p>
             <input type='number' name='input1' class="form-control mb-1">
             <input id="userTime" type='hidden' name='time' class="form-control mb-1">
             <br>
@@ -38,26 +38,32 @@
             {
                 country: "Germany",
                 litres: 89.8,
+                color: am4core.color("#555")
             },
             {
                 country: "Australia",
                 litres: 216.9,
+                color: am4core.color("#666")
             },
             {
                 country: "Austria",
                 litres: 79.3,
+                color: am4core.color("#777")
             },
             {
                 country: "UK",
                 litres: 79,
+                color: am4core.color("blue")
             },
             {
                 country: "Belgium",
                 litres: 124,
+                color: am4core.color("#999")
             },
             {
                 country: "The Netherlands",
                 litres: 177,
+                color: am4core.color("red")
             },
         ];
 
@@ -65,6 +71,7 @@
         var pieSeries = chart.series.push(new am4charts.PieSeries());
         pieSeries.dataFields.value = "litres";
         pieSeries.dataFields.category = "country";
+        pieSeries.slices.template.propertyFields.fill = "color";
 
         // Let's cut a hole in our Pie chart the size of 40% the radius
         // chart.innerRadius = am4core.percent(40);
