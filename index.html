@@ -27,10 +27,10 @@
   <h1> Experiment </h1>
   <p> Description/Intro </p> <br>
 
-  <form action="/action_page.php">
+  <form action="https://formspree.io/f/xgedyyry" method="POST">
 
   <h3> Graph 1: Pie Chart</h3>
-  <p>This pie chart is comparing the deaths per 100,000 between genders as well as showning the total.</p>
+  <p>This pie chart compares deaths per 100,000 for males and females and shows the total.</p>
   <div id="pie_chart"></div>
   <p>Do you think this graph is misleading?</p>
   <input type="radio" id="yes1" name="yes_no1" value="Yes">
@@ -42,14 +42,15 @@
   <br><br>
 
   <h3> Graph 2: Bar Chart </h3>
+  <p>This bar chart shows the number of overdose deaths for each age group.</p>
   <svg id="svg2" width="600" height="500"></svg>
   <p>Do you think this graph is misleading?</p>
   <input type="radio" id="yes2" name="yes_no2" value="Yes">
   <label for="yes2">Yes</label><br>
-  <input type="radio" id="no2" name="yes_no1" value="No">
+  <input type="radio" id="no2" name="yes_no2" value="No">
   <label for="no2">No</label><br><br>
   <label for="explain2">Why or why not?:</label><br><br>
-  <input type="text" id="explain1" name="explain" value="" size="100"><br>
+  <input type="text" id="explain2" name="explain2" value="" size="100"><br>
   <br><br>
 
   <h3> Graph 3 </h3>
@@ -64,16 +65,15 @@
     </select>
   </div>
   <p> Do you think this graph is misleading? </p> 
-  <input type="radio" id="yes2" name="yes_no2" value="Yes">
-  <label for="yes2">Yes</label><br>
-  <input type="radio" id="no2" name="yes_no1" value="No">
-  <label for="no2">No</label><br><br>
-  <label for="explain2">Can you understand the number of deaths in every year:</label><br><br>
-  <input type="text" id="explain1" name="explain" value="" size="100"><br>
+  <input type="radio" id="yes3" name="yes_no3" value="Yes">
+  <label for="yes3">Yes</label><br>
+  <input type="radio" id="no3" name="yes_no3" value="No">
+  <label for="no3">No</label><br><br>
+  <label for="explain3">Can you understand the number of deaths in every year?:</label><br><br>
+  <input type="text" id="explain3" name="explain3" value="" size="100"><br>
   <br><br>
-  <label for="explain2">Use the filter on y-axis and select Number and now 
-    can you understand the number of deaths in every year:</label><br><br>
-  <input type="text" id="explain1" name="explain" value="" size="100"><br>
+  <label for="explain4">Use the drop-down menu to select "Number" for the y-axis. Can you understand the number of deaths in every year?:</label><br><br>
+  <input type="text" id="explain4" name="explain4" value="" size="100"><br>
   <br><br>
 
 

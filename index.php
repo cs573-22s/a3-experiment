@@ -29,7 +29,7 @@
   <h1> Experiment </h1>
   <p> Description/Intro </p> <br>
 
-  <form method="post">
+  <form method="POST" action="https://formspree.io/f/xgedyyry">
 
   <h3> Graph 1: Pie Chart</h3>
   <p>This pie chart is comparing the deaths per 100,000 between genders as well as showning the total.</p>
