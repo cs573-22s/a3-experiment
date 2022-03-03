@@ -3,11 +3,46 @@
 <%- include("./partials/head.ejs") %>
 
 <body>
+<style>
+    /* VARIABLES */
+    /*****************************************************************************************/
 
+    :root {
+        --font-family: 'Comfortaa', cursive;
+        --color: #EBEBEE;
+        --background-color-inner: #3c3f4b; /* #494d5c;*/
+        --background-color-outer:  #000001; /*#252830*/
+    }
+
+    /* GLOBAL */
+    /*****************************************************************************************/
+
+    html,body{
+        height:100%;
+    }
+
+    body {
+
+        /* Layout */
+        height: 100%;
+        margin: 0;
+
+        /*Background*/
+        background-color: var(--background-color);
+        background: radial-gradient(circle,  var(--background-color-inner) 0%, var(--background-color-outer) 100%);
+
+
+        /*Font*/
+        color: var(--color);
+        font-family: var(--font-family);
+    }
+</style>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script src='https://s3-us-west-2.amazonaws.com/s.cdpn.io/2666677/OrbitControls.js'></script>
 <div class="experiment experiment--11">
     <div class="experiment__viz">
         <p><strong>Experiment 11</strong></p>
-        <div id="webGL-container3"></div>
+        <div id="here"></div>
 
     </div>
     <div class="experiment__qa">
@@ -24,264 +59,146 @@
 </div>
 <script defer>
 
-    // three.js trial
-    ///////////////////////
-    // Initial Variables //
-    ///////////////////////
-    let dataset3d = [
-        [1,3,4,6,3],
-        [5,8,7,3,2],
-        [9,5,6,5,2],
-        [7,8,4,5,1],
-        [4,5,3,7,2]
-    ]
+    function init(){
+        const barWidth = 1;
+        const barMargin = 1;
+        const barHeightMax = 10;
+        const colors = ["#431A42","#4E2453","#582E66","#613979","#68468D","#6D52A3","#6F60B8","#6F6ECE","#6A7DE5","#618DFB"]
 
-    let colors = [
-        ['grey', 'grey', 'grey', 'grey', 'grey'],
-        ['grey', 'red', 'grey', 'grey', 'grey'],
-        ['grey', 'grey', 'grey', 'grey', 'grey'],
-        ['grey', 'grey', 'blue', 'grey', 'grey'],
-        ['grey', 'grey', 'grey', 'grey', 'grey']] // color scheme for bars
+        const scene = new THREE.Scene();
 
+        // Create the cammera
+        const camera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight, near = 0.1, far = 1000 );
 
-    // Values
-    var tick = 0;
-    var size = 0.25;
+        // Adjust camera position to make the object visable
+        camera.position.set(10, 5, 15);
 
-    var red = 0xff0000;
-    var blue = 0x1176c5;
-    var white = 0xf9f9f9;
+        const renderer = new THREE.WebGLRenderer({antialias: true, alpha: 1});
+        renderer.setSize(500, window.innerHeight)
+        document.getElementById('here').appendChild(renderer.domElement)
 
-    // Arrays
-    var bar = new Array();
+        // Create a color material
+        const materials = colors.map(color => new THREE.MeshPhongMaterial( {color: color, shininess: 0}))
 
-    var camera;
-    // var scene;
-
-    ///////////////////////
-    // Initial Setup     //
-    ///////////////////////
-
-    init3D();
-
-    function init3D() {
-        init3DScene();
-       // initListeners();
-
-    }
-
-    function initListeners() {
-        window.onWindowResize()
-    }
-
-    function init3DScene() {
-
-        // Setup Scene / Camera
-        scene = new THREE.Scene();
-        camera = new THREE.PerspectiveCamera(35, window.innerWidth / window.innerHeight, 0.1, 2000);
-
-        camera.position.set(100, 100, 300);
-        camera.lookAt(new THREE.Vector3(20, 40, 0));
-
-        // Setup Renderer
-        renderer = new THREE.WebGLRenderer({
-            antialias: true
-        });
-
-        renderer.shadowMap.enabled = true;
-        renderer.shadowMap.type = THREE.PCFSoftShadowMap;
-
-        renderer.setSize(500, window.innerHeight);
-        renderer.render(scene, camera);
-
-
-
-        document.getElementById('webGL-container3').append(renderer.domElement)
-        //$("#webGL-container").append(renderer.domElement);
-        controls = new THREE.OrbitControls (camera, renderer.domElement);
-
-        // var gridXZ = new THREE.GridHelper(100, 10);
-        // gridXZ.setColors( new THREE.Color(0xff0000), new THREE.Color(0xffffff) );
-        // scene.add(gridXZ);
-
-        let gXY = new THREE.PlaneGeometry(3, 10, 1, 10);
-        ToQuads(gXY);
-        let mXY = new THREE.LineBasicMaterial({color: "black"});
-        let grXY = new THREE.LineSegments(gXY, mXY);
-        grXY.scale.set(10, 8, 1);
-        grXY.position.set(6, 40, -22.5);
-        scene.add(grXY);
-
-        let gYZ = new THREE.PlaneGeometry(10, 3, 10, 1);
-        ToQuads(gYZ);
-        let mYZ = new THREE.LineBasicMaterial({color: "black"});
-        let grYZ = new THREE.LineSegments(gYZ, mYZ);
-        grYZ.scale.set(8, 10, 1);
-        grYZ.rotation.x = Math.PI * -0.5;
-        grYZ.rotation.y = Math.PI / 2;
-        grYZ.position.set(21, 40, -7.5);
-        scene.add(grYZ);
-
-        init3DElements()
-
-    }
-
-    function ToQuads(g) {
-        let p = g.parameters;
-        let segmentsX = (g.type == "TorusBufferGeometry" ? p.tubularSegments : p.radialSegments) || p.widthSegments || p.thetaSegments || (p.points.length - 1) || 1;
-        let segmentsY = (g.type == "TorusBufferGeometry" ? p.radialSegments : p.tubularSegments) || p.heightSegments || p.phiSegments || p.segments || 1;
-        let indices = [];
-        for (let i = 0; i < segmentsY + 1; i++) {
-            let index11 = 0;
-            let index12 = 0;
-            for (let j = 0; j < segmentsX; j++) {
-                index11 = (segmentsX + 1) * i + j;
-                index12 = index11 + 1;
-                let index21 = index11;
-                let index22 = index11 + (segmentsX + 1);
-                indices.push(index11, index12);
-                if (index22 < ((segmentsX + 1) * (segmentsY + 1) - 1)) {
-                    indices.push(index21, index22);
-                }
-            }
-            if ((index12 + segmentsX + 1) <= ((segmentsX + 1) * (segmentsY + 1) - 1)) {
-                indices.push(index12, index12 + segmentsX + 1);
-            }
-        }
-        g.setIndex(indices);
-    }
-
-
-    function init3DElements() {
-
-        createFloor();
-
-        createBar(-20, dataset3d[4], colors[4]);
-        createBar(-15, dataset3d[3], colors[3]);
-        createBar(-10, dataset3d[2], colors[2]);
-        createBar(-5, dataset3d[1], colors[1]);
-        createBar(0, dataset3d[0], colors[0]);
-
-
-        createLight();
-    }
-
-    ///////////////////////
-    // Interactions      //
-    ///////////////////////
-
-    function onWindowResize() {
-
-        windowHalfX = window.innerWidth / 2;
-        windowHalfY = window.innerHeight / 2;
-
-        camera.aspect = window.innerWidth / window.innerHeight;
-        camera.updateProjectionMatrix();
-        renderer.setSize(window.innerWidth, window.innerHeight);
-    }
-
-    ///////////////////////
-    // Create Elements   //
-    ///////////////////////
-
-    function createLight() {
-
-        var ambient = new THREE.AmbientLight(0x999999);
-        var spot = new THREE.SpotLight({
-            color: 0xffffff,
-            intensity: 0.1
-        });
-
-        spot.position.set(-50, 100, 100);
-        spot.castShadow = true;
-
-        scene.add(ambient, spot);
-    }
-
-    function createBar(z, dataArray, colorsArray) {
-
-        for (var i = 0; i < dataArray.length; i += 1) {
-
-            var geometry = new THREE.BoxGeometry(2, 2, 2);
-            geometry.applyMatrix(new THREE.Matrix4().makeTranslation(0, 1, z));
-
-            var material = new THREE.MeshPhongMaterial({
-                // color: colors[i]
-                color: colorsArray[i]
-            });
-
-            id = new THREE.Mesh(geometry, material);
-
-            id.position.x = i * 5;
-            id.name = "bar-" + i ;
-            id.castShadow = true;
-            id.receiveShadow = true;
-
-            scene.add(id);
-            bar.push(id);
-
-            selectedBar = bar[Math.floor(bar.length / 2)];
-        }
-
-        for (let i = 0; i < bar.length; i++) {
-            console.log(dataArray[i]);
-            var tween = new TweenMax.to(bar[i].scale, 1, {
-
-                ease: Elastic.easeOut.config(1, 1),
-                y: dataArray[i] * 3, // might need to change scaling depending on data sent
-                delay: i * 0.25
-
-            });
-        }
-
-
-    }
-
-    function createFloor() {
-
-        var geometry = new THREE.BoxGeometry(2000, 2000, 2000);
-        var material = new THREE.MeshPhongMaterial({
-            color: 0xcccccc,
-            shininess: 20
-        });
-        material.side = THREE.BackSide
-
-        floor = new THREE.Mesh(geometry, material);
-
-        floor.position.set(0, 1000, 0);
-        floor.rotation.x = THREE.Math.degToRad(-90);
-
-        floor.receiveShadow = true;
-
-        scene.add(floor);
-    }
-
-    ///////////////////////
-    // Render            //
-    ///////////////////////
-
-    function render() {
-
-        tick++;
-
-        requestAnimationFrame(render);
-        renderer.render(scene, camera);
-    };
-
-    function animate() {
+        // Add controls to move the camera
+        const controls = new THREE.OrbitControls( camera, document.getElementById('here').appendChild(renderer.domElement ));
+        controls.target.set(0,0,0);
         controls.update();
-        requestAnimationFrame( animate );
-        renderer.render( scene, camera );
+
+        // ADD DATA
+        //======================================================================================================//
+
+        // Define Data
+        const data = [
+            {cat1: 1, cat2: 1, value: 1},
+            {cat1: 1, cat2: 2, value: 0.4},
+            {cat1: 1, cat2: 3, value: 0.1},
+            {cat1: 1,  cat2: 4, value: 0.6},
+            {cat1: 2, cat2: 1, value: 0.8},
+            {cat1: 2, cat2: 2, value: 0.3},
+            {cat1: 2, cat2: 3, value: 0.2},
+            {cat1: 2,  cat2: 4, value: 0.5},
+            {cat1: 3, cat2: 1, value: 0.9},
+            {cat1: 3, cat2: 2, value: 0.5},
+            {cat1: 3, cat2: 3, value: 0.7},
+            {cat1: 3,  cat2: 4, value: 0.4},
+            {cat1: 4, cat2: 1, value: 0.6},
+            {cat1: 4, cat2: 2, value: 1},
+            {cat1: 4, cat2: 3, value: 0.4},
+            {cat1: 4,  cat2: 4, value: 0.3}
+        ]
+
+        // Create Bar
+        function createBar(i, cat1, cat2, value, marteial) {
+            // Create a 3d bar
+            let geometry = new THREE.BoxGeometry(1,1,1);
+
+            // Create torus by combining its geometry with material and add it to the scene
+            let bar = new THREE.Mesh( geometry, marteial );
+            bar.castShadow = true; //default is false
+            scene.add( bar );
+
+            bar = scaleBar(bar, value)
+            bar = positionBar(bar, i, cat1, cat2, value)
+
+            return bar
+        }
+
+        function scaleBar(bar, value){
+            // Scale the bar accorting to the data and global settings
+            bar.scale.y = value * barHeightMax;
+            bar.scale.x = barWidth;
+
+            return bar;
+        }
+
+        function positionBar(bar, i, cat1, cat2, value){
+            // Position the bar on x axes by shifting it depending on the index in the data and the defined bar dimensions
+            bar.position.x = ((cat2-1) * (barWidth + barMargin)) - (data.length/8 * (barWidth + barMargin)) + (barWidth + barMargin)/2;
+            bar.position.y += (value * barHeightMax/2) - barHeightMax/2;
+            bar.position.z -= ((cat1-1) * (barWidth + barMargin)) - (data.length/8 * (barWidth + barMargin)) + (barWidth + barMargin)/2
+
+            return bar;
+        }
+
+        bars = []
+        data.forEach((d, i) => {
+            bar = {
+                geometry: createBar(i, d.cat1, d.cat2, d.value, materials[(d.value*10)-1]),
+                d: d,
+                i: i
+            }
+            bars.push(bar);
+            scene.add(bar.geometry);
+        })
+
+        // ADD LIGHT
+        //======================================================================================================//
+
+        // Create light and add it to the scene
+        const light = new THREE.DirectionalLight("grey", 1);
+        light.position.set(-1, 0, 1)
+        scene.add( light );
+
+        const lightAmbient = new THREE.AmbientLight("white")
+        scene.add( lightAmbient );
+
+        // ANIMATE
+        //======================================================================================================//
+
+        const animate = () => {
+
+            // Render the scene according to the camera settings
+            renderer.render(scene, camera)
+
+            // Set up endless repetition/ loop
+            requestAnimationFrame(animate)
+        }
+
+
+        // Render the scene according to the camera settings
+        renderer.render(scene, camera)
+
+        // Call function to animate in a loop (after 2 seconds)
+        setTimeout(function(){ animate(); }, 1000);
+
+
+        // REACT TO RESIZE
+        //======================================================================================================//
+
+        const onResize = () => {
+            camera.aspect = window.innerWidth / window.innerHeight;
+            camera.updateProjectionMatrix();
+            renderer.setSize( window.innerWidth, window.innerHeight );
+        }
+
+        // React to resizing of the browser
+        window.addEventListener( 'resize', onResize, false);
+
+
     }
 
-
-    setInterval(function(){
-
-        scene.rotation.y += 0.0003;
-    }, 5);
-
-    render();
-    animate();
+    window.addEventListener("load", init)
 
 </script>
 </body>
