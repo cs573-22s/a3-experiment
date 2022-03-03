@@ -210,7 +210,7 @@
 
 </script>
 
-  // PART 3 //
+
 <script src="https://d3js.org/d3.v6.min.js"></script>
 <script>
     let articleData = 
@@ -1101,68 +1101,6 @@
     })
 </script>
 
-
-<?php
-
-$fp = fopen('data.txt', 'a');
-fwrite($fp, "\n");
-fclose($fp);
-
-if(isset($_POST['yes_no1']))
-{
-  $data = $_POST['yes_no1'];
-  $fp = fopen('data.txt', 'a');
-  fwrite($fp, $data);
-  fwrite($fp, " ");
-  fclose($fp);
-}
-
-if(isset($_POST['explain1']))
-{
-  $data = $_POST['explain1'];
-  $fp = fopen('data.txt', 'a');
-  fwrite($fp, $data);
-  fwrite($fp, " ");
-  fclose($fp);
-}
-
-if(isset($_POST['yes_no2']))
-{
-  $data = $_POST['yes_no2'];
-  $fp = fopen('data.txt', 'a');
-  fwrite($fp, $data);
-  fwrite($fp, " ");
-  fclose($fp);
-}
-
-if(isset($_POST['explain2']))
-{
-  $data = $_POST['explain2'];
-  $fp = fopen('data.txt', 'a');
-  fwrite($fp, $data);
-  fwrite($fp, " ");
-  fclose($fp);
-}
-
-if(isset($_POST['yes_no3']))
-{
-  $data = $_POST['yes_no3'];
-  $fp = fopen('data.txt', 'a');
-  fwrite($fp, $data);
-  fwrite($fp, " ");
-  fclose($fp);
-}
-
-if(isset($_POST['explain3']))
-{
-  $data = $_POST['explain3'];
-  $fp = fopen('data.txt', 'a');
-  fwrite($fp, $data);
-  fwrite($fp, " ");
-  fclose($fp);
-}
-
-?>
 
 </html>
 
