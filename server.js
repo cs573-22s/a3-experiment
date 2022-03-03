@@ -8,6 +8,7 @@ const port = 3001;
 const express = require("express");
 const morgan = require("morgan");
 const app = express();
+const cookie = require('cookie-session');
 
 
 const uri = 'mongodb+srv://'+process.env.ACT+':'+process.env.PASS+'@'+process.env.HOST
@@ -27,6 +28,26 @@ app.set("view engine", "ejs");
 app.use(express.urlencoded({ extended: true }));
 app.use(morgan("dev"));
 
+app.use(cookie({
+  name:'session',
+  keys: ['key1', 'key2'],
+  username: 'username',
+  test1: 'test1',
+  test2: 'test2',
+  test3: 'test3',
+  test4: 'test4',
+  test5: 'test5',
+  test6: 'test6',
+  test7: 'test7',
+  test8: 'test8',
+  test9: 'test9',
+  test10: 'test10',
+  test11: 'test11',
+  test12: 'test12',
+  test13: 'test13',
+
+}))
+
 let globalResponse = [];
 
 // serve up static files in the directory public
@@ -45,24 +66,38 @@ app.post('/postResponse', async (req, res) => {
   blank.push(req.body.input16)
   blank.push(req.body.input17)
   blank.push(req.body.input18)
-
-  globalResponse[13] = blank;
+  req.session.test13 = blank;
+  //globalResponse[13] = blank;
 
   const response = new ResponseEntry({
-    userId: globalResponse[0],
-    test1: globalResponse[1],
-    test2: globalResponse[2],
-    test3: globalResponse[3],
-    test4: globalResponse[4],
-    test5: globalResponse[5],
-    test6: globalResponse[6],
-    test7: globalResponse[7],
-    test8: globalResponse[8],
-    test9: globalResponse[9],
-    test10: globalResponse[10],
-    test11: globalResponse[11],
-    test12: globalResponse[12],
-    endingSurvey: globalResponse[13]
+    userId: req.session.username,
+    test1: req.session.test1,
+    test2: req.session.test2,
+    test3: req.session.test3,
+    test4: req.session.test4,
+    test5: req.session.test5,
+    test6: req.session.test6,
+    test7: req.session.test7,
+    test8: req.session.test8,
+    test9: req.session.test9,
+    test10: req.session.test10,
+    test11: req.session.test11,
+    test12: req.session.test12,
+    endingSurvey: req.session.test13
+    // userId: globalResponse[0],
+    // test1: globalResponse[1],
+    // test2: globalResponse[2],
+    // test3: globalResponse[3],
+    // test4: globalResponse[4],
+    // test5: globalResponse[5],
+    // test6: globalResponse[6],
+    // test7: globalResponse[7],
+    // test8: globalResponse[8],
+    // test9: globalResponse[9],
+    // test10: globalResponse[10],
+    // test11: globalResponse[11],
+    // test12: globalResponse[12],
+    // endingSurvey: globalResponse[13]
   })
   response.save()
       .then(result => {
@@ -99,7 +134,8 @@ app.get("/start", async (req, res) => {
 });
 
 app.post("/test1", bodyParser.json(), async (req, res) => {
-  globalResponse[0] = req.body.userId;
+  // globalResponse[0] = req.body.userId;
+  req.session.username = req.body.userId;
   res.render("test1");
 });
 
@@ -107,9 +143,8 @@ app.post("/test2", async (req, res) => {
 
   let blank = [];
   blank.push(req.body.input1)
-
-
-  globalResponse[1] = blank;
+  // globalResponse[1] = blank;
+  req.session.test1 = blank;
 
   res.render("test2");
 });
@@ -117,8 +152,8 @@ app.post("/test2", async (req, res) => {
 app.post("/test3",  async (req, res) => {
   let blank = [];
   blank.push(req.body.input1)
-
-  globalResponse[2] = blank;
+  req.session.test2 = blank;
+  //globalResponse[2] = blank;
 
   res.render("test3");
 });
@@ -126,8 +161,8 @@ app.post("/test3",  async (req, res) => {
 app.post("/test4",  async (req, res) => {
   let blank = [];
   blank.push(req.body.input1)
-
-  globalResponse[3] = blank;
+  req.session.test3 = blank;
+  //globalResponse[3] = blank;
 
   res.render("test4");
 });
@@ -135,8 +170,8 @@ app.post("/test4",  async (req, res) => {
 app.post("/test5",  async (req, res) => {
   let blank = [];
   blank.push(req.body.input1)
-
-  globalResponse[4] = blank;
+  req.session.test4 = blank;
+  //globalResponse[4] = blank;
 
   res.render("test5");
 });
@@ -144,8 +179,8 @@ app.post("/test5",  async (req, res) => {
 app.post("/test6",  async (req, res) => {
   let blank = [];
   blank.push(req.body.input1)
-
-  globalResponse[5] = blank;
+  req.session.test5 = blank;
+  //globalResponse[5] = blank;
 
   res.render("test6");
 });
@@ -153,8 +188,8 @@ app.post("/test6",  async (req, res) => {
 app.post("/test7",  async (req, res) => {
   let blank = [];
   blank.push(req.body.input1)
-
-  globalResponse[6] = blank;
+  req.session.test6 = blank;
+  //globalResponse[6] = blank;
 
   res.render("test7");
 });
@@ -162,8 +197,8 @@ app.post("/test7",  async (req, res) => {
 app.post("/test8",  async (req, res) => {
   let blank = [];
   blank.push(req.body.input1)
-
-  globalResponse[7] = blank;
+  req.session.test7 = blank;
+  //globalResponse[7] = blank;
 
   res.render("test8");
 });
@@ -172,8 +207,8 @@ app.post("/test9",  async (req, res) => {
   let blank = [];
   blank.push(req.body.input1)
 
-
-  globalResponse[8] = blank;
+  req.session.test8 = blank;
+  //globalResponse[8] = blank;
 
   res.render("test9");
 });
@@ -182,8 +217,8 @@ app.post("/test10",  async (req, res) => {
   let blank = [];
   blank.push(req.body.input1)
 
-
-  globalResponse[9] = blank;
+  req.session.test9 = blank;
+  //globalResponse[9] = blank;
 
   res.render("test10");
 });
@@ -191,8 +226,8 @@ app.post("/test10",  async (req, res) => {
 app.post("/test11",  async (req, res) => {
   let blank = [];
   blank.push(req.body.input1)
-
-  globalResponse[10] = blank;
+  req.session.test10 = blank;
+  //globalResponse[10] = blank;
 
   res.render("test11");
 });
@@ -200,8 +235,8 @@ app.post("/test11",  async (req, res) => {
 app.post("/test12",  async (req, res) => {
   let blank = [];
   blank.push(req.body.input1)
-
-  globalResponse[11] = blank;
+  req.session.test11 = blank;
+  //globalResponse[11] = blank;
 
   res.render("test12");
 });
@@ -209,8 +244,8 @@ app.post("/test12",  async (req, res) => {
 app.post("/endingSurvey",  async (req, res) => {
   let blank = [];
   blank.push(req.body.input1)
-
-  globalResponse[12] = blank;
+  req.session.test12 = blank;
+  //globalResponse[12] = blank;
 
   res.render("endingSurvey");
 });
