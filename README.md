@@ -29,7 +29,7 @@ Incorrect Answers:
 Visualization 2: Kardashian Drama Article
 
 Correct Answer:
-![kanye correct word cloud](DataVizProj3/kanye_c_processed.PNG)
+![kanye correct word cloud](DataVizProj3/kanye_c_processed_wc.PNG)
 
 Incorrect Answers:
 ![kanye incorrect word cloud](DataVizProj3/kanye_a_processed.PNG)
