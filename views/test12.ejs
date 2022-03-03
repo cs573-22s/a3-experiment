@@ -65,7 +65,7 @@
 
     function init3D() {
         init3DScene();
-        initListeners();
+        //initListeners();
 
     }
 
@@ -213,7 +213,7 @@
             id = new THREE.Mesh(geometry, material);
 
             id.position.x = i * 5;
-            id.name = "bar2-" + i;
+            id.name = "bar-" + i;
             id.castShadow = true;
             id.receiveShadow = true;
 

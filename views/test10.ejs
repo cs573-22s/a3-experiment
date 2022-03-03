@@ -1,9 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
-<%- include("./partials/head.ejs") %>
 
 <body>
-
+<link rel="stylesheet" href="././css/style.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<script src="https://d3js.org/d3.v4.js"></script>
 <div class="experiment experiment--10">
     <div class="experiment__viz">
         <p><strong>Experiment 10</strong></p>
@@ -26,9 +28,9 @@
 <script defer>
 
     // set the dimensions and margins of the graph
-    var margin = {top: 5, right: 5, bottom: 5, left: 5},
-        width = 450 - margin.left - margin.right,
-        height = 450 - margin.top - margin.bottom;
+    var margin = {top: 5, right: 5, bottom: 15, left: 50},
+        width = 500 - margin.left - margin.right,
+        height = 500 - margin.top - margin.bottom;
 
     // append the svg object to the body of the page
     var svg = d3.select("#my_dataviz")
