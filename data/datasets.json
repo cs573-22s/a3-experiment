@@ -5,22 +5,22 @@
 				{
 					"Region": "A",
 					"Condition": "Easy",
-					"Signal": 2.5
+					"Signal": 23
 				},
 				{
 					"Region": "A",
 					"Condition": "Medium",
-					"Signal": 1.5
+					"Signal": 78
 				},
 				{
 					"Region": "B",
 					"Condition": "Easy",
-					"Signal": 2.1
+					"Signal": 33
 				},
 				{
 					"Region": "B",
 					"Condition": "Medium",
-					"Signal": 1.1
+					"Signal": 88
 				}
 			]
 		},
@@ -29,32 +29,32 @@
 				{
 					"Region": "A",
 					"Condition": "Easy",
-					"Signal": 1.1
+					"Signal": 22
 				},
 				{
 					"Region": "A",
 					"Condition": "Medium",
-					"Signal": 1.2
+					"Signal": 34
 				},
 				{
 					"Region": "B",
 					"Condition": "Easy",
-					"Signal": 2.4
+					"Signal": 50
 				},
 				{
 					"Region": "B",
 					"Condition": "Medium",
-					"Signal": 2.6
+					"Signal": 60
 				},
 				{
 					"Region": "C",
 					"Condition": "Easy",
-					"Signal": 0.9
+					"Signal": 78
 				},
 				{
 					"Region": "C",
 					"Condition": "Medium",
-					"Signal": 0.8
+					"Signal": 88
 				}
 			]
 		},
@@ -63,47 +63,47 @@
 				{
 					"Region": "A",
 					"Condition": "Easy",
-					"Signal": 5
+					"Signal": 29
 				},
 				{
 					"Region": "A",
 					"Condition": "Medium",
-					"Signal": 0
+					"Signal": 33
 				},
 				{
 					"Region": "A",
 					"Condition": "Hard",
-					"Signal": 5
+					"Signal": 41
 				},
 				{
 					"Region": "B",
 					"Condition": "Easy",
-					"Signal": 0
+					"Signal": 28
 				},
 				{
 					"Region": "B",
 					"Condition": "Medium",
-					"Signal": 5
+					"Signal": 45
 				},
 				{
 					"Region": "B",
 					"Condition": "Hard",
-					"Signal": 0
+					"Signal": 72
 				},
 				{
 					"Region": "C",
 					"Condition": "Easy",
-					"Signal": 5
+					"Signal": 34
 				},
 				{
 					"Region": "C",
 					"Condition": "Medium",
-					"Signal": 0
+					"Signal": 63
 				},
 				{
 					"Region": "C",
 					"Condition": "Hard",
-					"Signal": 5
+					"Signal": 92
 				}
 			]
 		},
@@ -112,42 +112,42 @@
 				{
 					"Region": "A",
 					"Condition": "Easy",
-					"Signal": 5
+					"Signal": 88
 				},
 				{
 					"Region": "A",
-					"Condition": "Medium",
-					"Signal": 0
+					"Condition": "Hard",
+					"Signal": 22
 				},
 				{
 					"Region": "B",
 					"Condition": "Easy",
-					"Signal": 5
+					"Signal": 67
 				},
 				{
 					"Region": "B",
-					"Condition": "Medium",
-					"Signal": 0
+					"Condition": "Hard",
+					"Signal": 14
 				},
 				{
 					"Region": "C",
 					"Condition": "Easy",
-					"Signal": 5
+					"Signal": 56
 				},
 				{
 					"Region": "C",
-					"Condition": "Medium",
-					"Signal": 0
+					"Condition": "Hard",
+					"Signal": 49
 				},
 				{
 					"Region": "D",
 					"Condition": "Easy",
-					"Signal": 5
+					"Signal": 78
 				},
 				{
 					"Region": "D",
-					"Condition": "Medium",
-					"Signal": 0
+					"Condition": "Hard",
+					"Signal": 63
 				}
 			]
 		},
@@ -156,62 +156,62 @@
 				{
 					"Region": "A",
 					"Condition": "Easy",
-					"Signal": 5
+					"Signal": 67
 				},
 				{
 					"Region": "A",
 					"Condition": "Medium",
-					"Signal": 0
+					"Signal": 32
 				},
 				{
 					"Region": "A",
 					"Condition": "Hard",
-					"Signal": 5
+					"Signal": 2
 				},
 				{
 					"Region": "B",
 					"Condition": "Easy",
-					"Signal": 0
+					"Signal": 98
 				},
 				{
 					"Region": "B",
 					"Condition": "Medium",
-					"Signal": 5
+					"Signal": 47
 				},
 				{
 					"Region": "B",
 					"Condition": "Hard",
-					"Signal": 0
+					"Signal": 33
 				},
 				{
 					"Region": "C",
 					"Condition": "Easy",
-					"Signal": 5
+					"Signal": 65
 				},
 				{
 					"Region": "C",
 					"Condition": "Medium",
-					"Signal": 0
+					"Signal": 14
 				},
 				{
 					"Region": "C",
 					"Condition": "Hard",
-					"Signal": 5
+					"Signal": 38
 				},
 				{
 					"Region": "D",
 					"Condition": "Easy",
-					"Signal": 0
+					"Signal": 63
 				},
 				{
 					"Region": "D",
 					"Condition": "Medium",
-					"Signal": 5
+					"Signal": 33
 				},
 				{
 					"Region": "D",
 					"Condition": "Hard",
-					"Signal": 0
+					"Signal": 78
 				}
 			]
 		},
@@ -220,82 +220,82 @@
 				{
 					"Region": "A",
 					"Condition": "Easy",
-					"Signal": 5
+					"Signal": 32
 				},
 				{
 					"Region": "A",
 					"Condition": "Medium",
-					"Signal": 0
+					"Signal": 18
 				},
 				{
 					"Region": "A",
 					"Condition": "Hard",
-					"Signal": 5
+					"Signal": 76
 				},
 				{
 					"Region": "A",
 					"Condition": "Very Hard",
-					"Signal": 0
+					"Signal": 65
 				},
 				{
 					"Region": "B",
 					"Condition": "Easy",
-					"Signal": 5
+					"Signal": 44
 				},
 				{
 					"Region": "B",
 					"Condition": "Medium",
-					"Signal": 0
+					"Signal": 38
 				},
 				{
 					"Region": "B",
-					"Condition": "Easy",
-					"Signal": 5
+					"Condition": "Hard",
+					"Signal": 42
 				},
 				{
 					"Region": "B",
 					"Condition": "Very Hard",
-					"Signal": 0
+					"Signal": 11
 				},
 				{
 					"Region": "C",
 					"Condition": "Easy",
-					"Signal": 5
+					"Signal": 78
 				},
 				{
 					"Region": "C",
 					"Condition": "Medium",
-					"Signal": 0
+					"Signal": 76
 				},
 				{
 					"Region": "C",
 					"Condition": "Hard",
-					"Signal": 5
+					"Signal": 67
 				},
 				{
 					"Region": "C",
 					"Condition": "Very Hard",
-					"Signal": 0
+					"Signal": 23
 				},
 				{
 					"Region": "D",
 					"Condition": "Easy",
-					"Signal": 5
+					"Signal": 90
 				},
 				{
 					"Region": "D",
 					"Condition": "Medium",
-					"Signal": 0
+					"Signal": 67
 				},
 				{
 					"Region": "D",
 					"Condition": "Hard",
-					"Signal": 5
+					"Signal": 34
 				},
 				{
 					"Region": "D",
 					"Condition": "Very Hard",
-					"Signal": 0
+					"Signal": 2
 				}
 			]
 		},
@@ -304,77 +304,77 @@
 				{
 					"Region": "A",
 					"Condition": "Easy",
-					"Signal": 5
+					"Signal": 33
 				},
 				{
 					"Region": "A",
 					"Condition": "Medium",
-					"Signal": 0
+					"Signal": 36
 				},
 				{
 					"Region": "A",
 					"Condition": "Hard",
-					"Signal": 5
+					"Signal": 39
 				},
 				{
 					"Region": "B",
 					"Condition": "Easy",
-					"Signal": 0
+					"Signal": 65
 				},
 				{
 					"Region": "B",
 					"Condition": "Medium",
-					"Signal": 5
+					"Signal": 63
 				},
 				{
 					"Region": "B",
 					"Condition": "Hard",
-					"Signal": 0
+					"Signal": 69
 				},
 				{
 					"Region": "C",
 					"Condition": "Easy",
-					"Signal": 5
+					"Signal": 11
 				},
 				{
 					"Region": "C",
 					"Condition": "Medium",
-					"Signal": 0
+					"Signal": 13
 				},
 				{
 					"Region": "C",
 					"Condition": "Hard",
-					"Signal": 5
+					"Signal": 9
 				},
 				{
 					"Region": "D",
 					"Condition": "Easy",
-					"Signal": 0
+					"Signal": 90
 				},
 				{
 					"Region": "D",
 					"Condition": "Medium",
-					"Signal": 5
+					"Signal": 97
 				},
 				{
 					"Region": "D",
 					"Condition": "Hard",
-					"Signal": 0
+					"Signal": 92
 				},
 				{
 					"Region": "E",
 					"Condition": "Easy",
-					"Signal": 5
+					"Signal": 45
 				},
 				{
 					"Region": "E",
 					"Condition": "Medium",
-					"Signal": 0
+					"Signal": 42
 				},
 				{
 					"Region": "E",
 					"Condition": "Hard",
-					"Signal": 5
+					"Signal": 49
 				}
 			]
 		},
@@ -383,52 +383,52 @@
 				{
 					"Region": "A",
 					"Condition": "Easy",
-					"Signal": 5
+					"Signal": 23
 				},
 				{
 					"Region": "A",
 					"Condition": "Medium",
-					"Signal": 0
+					"Signal": 24
 				},
 				{
 					"Region": "B",
 					"Condition": "Easy",
-					"Signal": 5
+					"Signal": 34
 				},
 				{
 					"Region": "B",
 					"Condition": "Medium",
-					"Signal": 0
+					"Signal": 43
 				},
 				{
 					"Region": "C",
 					"Condition": "Easy",
-					"Signal": 5
+					"Signal": 45
 				},
 				{
 					"Region": "C",
 					"Condition": "Medium",
-					"Signal": 0
+					"Signal": 54
 				},
 				{
 					"Region": "D",
 					"Condition": "Easy",
-					"Signal": 5
+					"Signal": 67
 				},
 				{
 					"Region": "D",
 					"Condition": "Medium",
-					"Signal": 0
+					"Signal": 76
 				},
 				{
 					"Region": "E",
 					"Condition": "Easy",
-					"Signal": 5
+					"Signal": 78
 				},
 				{
 					"Region": "E",
 					"Condition": "Medium",
-					"Signal": 0
+					"Signal": 84
 				}
 			]
 		},
@@ -437,102 +437,102 @@
 				{
 					"Region": "A",
 					"Condition": "Easy",
-					"Signal": 5
+					"Signal": 34
 				},
 				{
 					"Region": "A",
 					"Condition": "Medium",
-					"Signal": 0
+					"Signal": 30
 				},
 				{
 					"Region": "A",
 					"Condition": "Hard",
-					"Signal": 5
+					"Signal": 29
 				},
 				{
 					"Region": "A",
 					"Condition": "Very Hard",
-					"Signal": 0
+					"Signal": 40
 				},
 				{
 					"Region": "B",
 					"Condition": "Easy",
-					"Signal": 5
+					"Signal": 41
 				},
 				{
 					"Region": "B",
 					"Condition": "Medium",
-					"Signal": 0
+					"Signal": 32
 				},
 				{
 					"Region": "B",
 					"Condition": "Hard",
-					"Signal": 5
+					"Signal": 39
 				},
 				{
 					"Region": "B",
 					"Condition": "Very Hard",
-					"Signal": 0
+					"Signal": 27
 				},
 				{
 					"Region": "C",
 					"Condition": "Easy",
-					"Signal": 5
+					"Signal": 31
 				},
 				{
 					"Region": "C",
 					"Condition": "Medium",
-					"Signal": 0
+					"Signal": 34
 				},
 				{
 					"Region": "C",
 					"Condition": "Hard",
-					"Signal": 5
+					"Signal": 37
 				},
 				{
 					"Region": "C",
 					"Condition": "Very Hard",
-					"Signal": 0
+					"Signal": 42
 				},
 				{
 					"Region": "D",
 					"Condition": "Easy",
-					"Signal": 5
+					"Signal": 33
 				},
 				{
 					"Region": "D",
 					"Condition": "Medium",
-					"Signal": 0
+					"Signal": 39
 				},
 				{
 					"Region": "D",
 					"Condition": "Hard",
-					"Signal": 5
+					"Signal": 38
 				},
 				{
 					"Region": "D",
 					"Condition": "Very Hard",
-					"Signal": 0
+					"Signal": 50
 				},
 				{
 					"Region": "E",
 					"Condition": "Easy",
-					"Signal": 5
+					"Signal": 34
 				},
 				{
 					"Region": "E",
 					"Condition": "Medium",
-					"Signal": 0
+					"Signal": 31
 				},
 				{
 					"Region": "E",
 					"Condition": "Hard",
-					"Signal": 5
+					"Signal": 30
 				},
 				{
-					"Region": "Easy",
+					"Region": "E",
 					"Condition": "Very Hard",
-					"Signal": 0
+					"Signal": 29
 				}
 			]
 		},
@@ -541,32 +541,32 @@
 				{
 					"Region": "A",
 					"Condition": "Easy",
-					"Signal": 5
+					"Signal": 67
 				},
 				{
 					"Region": "A",
 					"Condition": "Medium",
-					"Signal": 0
+					"Signal": 89
 				},
 				{
 					"Region": "A",
 					"Condition": "Hard",
-					"Signal": 5
+					"Signal": 72
 				},
 				{
 					"Region": "B",
 					"Condition": "Easy",
-					"Signal": 0
+					"Signal": 45
 				},
 				{
 					"Region": "B",
 					"Condition": "Medium",
-					"Signal": 5
+					"Signal": 43
 				},
 				{
 					"Region": "B",
 					"Condition": "Hard",
-					"Signal": 0
+					"Signal": 40
 				}
 			]
 		},
@@ -575,22 +575,22 @@
 				{
 					"Region": "A",
 					"Condition": "Easy",
-					"Signal": 2.5
+					"Signal": 89
 				},
 				{
 					"Region": "A",
 					"Condition": "Medium",
-					"Signal": 1.5
+					"Signal": 79
 				},
 				{
 					"Region": "B",
 					"Condition": "Easy",
-					"Signal": 2.1
+					"Signal": 60
 				},
 				{
 					"Region": "B",
 					"Condition": "Medium",
-					"Signal": 1.1
+					"Signal": 65
 				}
 			]
 		},
@@ -599,32 +599,32 @@
 				{
 					"Region": "A",
 					"Condition": "Easy",
-					"Signal": 1.1
+					"Signal": 11
 				},
 				{
 					"Region": "A",
 					"Condition": "Medium",
-					"Signal": 1.2
+					"Signal": 22
 				},
 				{
 					"Region": "B",
 					"Condition": "Easy",
-					"Signal": 2.4
+					"Signal": 19
 				},
 				{
 					"Region": "B",
 					"Condition": "Medium",
-					"Signal": 2.6
+					"Signal": 21
 				},
 				{
 					"Region": "C",
 					"Condition": "Easy",
-					"Signal": 0.9
+					"Signal": 60
 				},
 				{
 					"Region": "C",
 					"Condition": "Medium",
-					"Signal": 0.8
+					"Signal": 67
 				}
 			]
 		},
@@ -633,47 +633,47 @@
 				{
 					"Region": "A",
 					"Condition": "Easy",
-					"Signal": 5
+					"Signal": 94
 				},
 				{
 					"Region": "A",
 					"Condition": "Medium",
-					"Signal": 0
+					"Signal": 82
 				},
 				{
 					"Region": "A",
 					"Condition": "Hard",
-					"Signal": 5
+					"Signal": 86
 				},
 				{
 					"Region": "B",
 					"Condition": "Easy",
-					"Signal": 0
+					"Signal": 56
 				},
 				{
 					"Region": "B",
 					"Condition": "Medium",
-					"Signal": 5
+					"Signal": 67
 				},
 				{
 					"Region": "B",
 					"Condition": "Hard",
-					"Signal": 0
+					"Signal": 50
 				},
 				{
 					"Region": "C",
 					"Condition": "Easy",
-					"Signal": 5
+					"Signal": 46
 				},
 				{
 					"Region": "C",
 					"Condition": "Medium",
-					"Signal": 0
+					"Signal": 30
 				},
 				{
 					"Region": "C",
 					"Condition": "Hard",
-					"Signal": 5
+					"Signal": 37
 				}
 			]
 		},
@@ -682,42 +682,42 @@
 				{
 					"Region": "A",
 					"Condition": "Easy",
-					"Signal": 5
+					"Signal": 52
 				},
 				{
 					"Region": "A",
 					"Condition": "Medium",
-					"Signal": 0
+					"Signal": 84
 				},
 				{
 					"Region": "B",
 					"Condition": "Easy",
-					"Signal": 5
+					"Signal": 3
 				},
 				{
 					"Region": "B",
 					"Condition": "Medium",
-					"Signal": 0
+					"Signal": 28
 				},
 				{
 					"Region": "C",
 					"Condition": "Easy",
-					"Signal": 5
+					"Signal": 56
 				},
 				{
 					"Region": "C",
 					"Condition": "Medium",
-					"Signal": 0
+					"Signal": 72
 				},
 				{
 					"Region": "D",
 					"Condition": "Easy",
-					"Signal": 5
+					"Signal": 12
 				},
 				{
 					"Region": "D",
 					"Condition": "Medium",
-					"Signal": 0
+					"Signal": 78
 				}
 			]
 		},
@@ -726,62 +726,62 @@
 				{
 					"Region": "A",
 					"Condition": "Easy",
-					"Signal": 5
+					"Signal": 48
 				},
 				{
 					"Region": "A",
 					"Condition": "Medium",
-					"Signal": 0
+					"Signal": 33
 				},
 				{
 					"Region": "A",
 					"Condition": "Hard",
-					"Signal": 5
+					"Signal": 45
 				},
 				{
 					"Region": "B",
 					"Condition": "Easy",
-					"Signal": 0
+					"Signal": 22
 				},
 				{
 					"Region": "B",
 					"Condition": "Medium",
-					"Signal": 5
+					"Signal": 12
 				},
 				{
 					"Region": "B",
 					"Condition": "Hard",
-					"Signal": 0
+					"Signal": 14
 				},
 				{
 					"Region": "C",
 					"Condition": "Easy",
-					"Signal": 5
+					"Signal": 67
 				},
 				{
 					"Region": "C",
 					"Condition": "Medium",
-					"Signal": 0
+					"Signal": 65
 				},
 				{
 					"Region": "C",
 					"Condition": "Hard",
-					"Signal": 5
+					"Signal": 69
 				},
 				{
 					"Region": "D",
 					"Condition": "Easy",
-					"Signal": 0
+					"Signal": 87
 				},
 				{
 					"Region": "D",
 					"Condition": "Medium",
-					"Signal": 5
+					"Signal": 97
 				},
 				{
 					"Region": "D",
 					"Condition": "Hard",
-					"Signal": 0
+					"Signal": 78
 				}
 			]
 		},
@@ -790,82 +790,82 @@
 				{
 					"Region": "A",
 					"Condition": "Easy",
-					"Signal": 5
+					"Signal": 23
 				},
 				{
 					"Region": "A",
 					"Condition": "Medium",
-					"Signal": 0
+					"Signal": 28
 				},
 				{
 					"Region": "A",
 					"Condition": "Hard",
-					"Signal": 5
+					"Signal": 87
 				},
 				{
 					"Region": "A",
 					"Condition": "Very Hard",
-					"Signal": 0
+					"Signal": 78
 				},
 				{
 					"Region": "B",
 					"Condition": "Easy",
-					"Signal": 5
+					"Signal": 45
 				},
 				{
 					"Region": "B",
 					"Condition": "Medium",
-					"Signal": 0
+					"Signal": 63
 				},
 				{
 					"Region": "B",
-					"Condition": "Easy",
-					"Signal": 5
+					"Condition": "Hard",
+					"Signal": 73
 				},
 				{
 					"Region": "B",
 					"Condition": "Very Hard",
-					"Signal": 0
+					"Signal": 67
 				},
 				{
 					"Region": "C",
 					"Condition": "Easy",
-					"Signal": 5
+					"Signal": 12
 				},
 				{
 					"Region": "C",
 					"Condition": "Medium",
-					"Signal": 0
+					"Signal": 28
 				},
 				{
 					"Region": "C",
 					"Condition": "Hard",
-					"Signal": 5
+					"Signal": 45
 				},
 				{
 					"Region": "C",
 					"Condition": "Very Hard",
-					"Signal": 0
+					"Signal": 31
 				},
 				{
 					"Region": "D",
 					"Condition": "Easy",
-					"Signal": 5
+					"Signal": 78
 				},
 				{
 					"Region": "D",
 					"Condition": "Medium",
-					"Signal": 0
+					"Signal": 70
 				},
 				{
 					"Region": "D",
 					"Condition": "Hard",
-					"Signal": 5
+					"Signal": 89
 				},
 				{
 					"Region": "D",
 					"Condition": "Very Hard",
-					"Signal": 0
+					"Signal": 74
 				}
 			]
 		},
@@ -874,77 +874,77 @@
 				{
 					"Region": "A",
 					"Condition": "Easy",
-					"Signal": 5
+					"Signal": 43
 				},
 				{
 					"Region": "A",
 					"Condition": "Medium",
-					"Signal": 0
+					"Signal": 36
 				},
 				{
 					"Region": "A",
 					"Condition": "Hard",
-					"Signal": 5
+					"Signal": 86
 				},
 				{
 					"Region": "B",
 					"Condition": "Easy",
-					"Signal": 0
+					"Signal": 24
 				},
 				{
 					"Region": "B",
 					"Condition": "Medium",
-					"Signal": 5
+					"Signal": 56
 				},
 				{
 					"Region": "B",
 					"Condition": "Hard",
-					"Signal": 0
+					"Signal": 89
 				},
 				{
 					"Region": "C",
 					"Condition": "Easy",
-					"Signal": 5
+					"Signal": 29
 				},
 				{
 					"Region": "C",
 					"Condition": "Medium",
-					"Signal": 0
+					"Signal": 67
 				},
 				{
 					"Region": "C",
 					"Condition": "Hard",
-					"Signal": 5
+					"Signal": 70
 				},
 				{
 					"Region": "D",
 					"Condition": "Easy",
-					"Signal": 0
+					"Signal": 22
 				},
 				{
 					"Region": "D",
 					"Condition": "Medium",
-					"Signal": 5
+					"Signal": 29
 				},
 				{
 					"Region": "D",
 					"Condition": "Hard",
-					"Signal": 0
+					"Signal": 90
 				},
 				{
 					"Region": "E",
 					"Condition": "Easy",
-					"Signal": 5
+					"Signal": 58
 				},
 				{
 					"Region": "E",
 					"Condition": "Medium",
-					"Signal": 0
+					"Signal": 62
 				},
 				{
 					"Region": "E",
 					"Condition": "Hard",
-					"Signal": 5
+					"Signal": 70
 				}
 			]
 		},
@@ -953,52 +953,52 @@
 				{
 					"Region": "A",
 					"Condition": "Easy",
-					"Signal": 5
+					"Signal": 51
 				},
 				{
 					"Region": "A",
 					"Condition": "Medium",
-					"Signal": 0
+					"Signal": 9
 				},
 				{
 					"Region": "B",
 					"Condition": "Easy",
-					"Signal": 5
+					"Signal": 58
 				},
 				{
 					"Region": "B",
 					"Condition": "Medium",
-					"Signal": 0
+					"Signal": 11
 				},
 				{
 					"Region": "C",
 					"Condition": "Easy",
-					"Signal": 5
+					"Signal": 63
 				},
 				{
 					"Region": "C",
 					"Condition": "Medium",
-					"Signal": 0
+					"Signal": 18
 				},
 				{
 					"Region": "D",
 					"Condition": "Easy",
-					"Signal": 5
+					"Signal": 47
 				},
 				{
 					"Region": "D",
 					"Condition": "Medium",
-					"Signal": 0
+					"Signal": 24
 				},
 				{
 					"Region": "E",
 					"Condition": "Easy",
-					"Signal": 5
+					"Signal": 39
 				},
 				{
 					"Region": "E",
 					"Condition": "Medium",
-					"Signal": 0
+					"Signal": 30
 				}
 			]
 		},
@@ -1007,102 +1007,102 @@
 				{
 					"Region": "A",
 					"Condition": "Easy",
-					"Signal": 5
+					"Signal": 23
 				},
 				{
 					"Region": "A",
 					"Condition": "Medium",
-					"Signal": 0
+					"Signal": 56
 				},
 				{
 					"Region": "A",
 					"Condition": "Hard",
-					"Signal": 5
+					"Signal": 78
 				},
 				{
 					"Region": "A",
 					"Condition": "Very Hard",
-					"Signal": 0
+					"Signal": 89
 				},
 				{
 					"Region": "B",
 					"Condition": "Easy",
-					"Signal": 5
+					"Signal": 54
 				},
 				{
 					"Region": "B",
 					"Condition": "Medium",
-					"Signal": 0
+					"Signal": 12
 				},
 				{
 					"Region": "B",
 					"Condition": "Hard",
-					"Signal": 5
+					"Signal": 35
 				},
 				{
 					"Region": "B",
 					"Condition": "Very Hard",
-					"Signal": 0
+					"Signal": 38
 				},
 				{
 					"Region": "C",
 					"Condition": "Easy",
-					"Signal": 5
+					"Signal": 49
 				},
 				{
 					"Region": "C",
 					"Condition": "Medium",
-					"Signal": 0
+					"Signal": 34
 				},
 				{
 					"Region": "C",
 					"Condition": "Hard",
-					"Signal": 5
+					"Signal": 67
 				},
 				{
 					"Region": "C",
 					"Condition": "Very Hard",
-					"Signal": 0
+					"Signal": 90
 				},
 				{
 					"Region": "D",
 					"Condition": "Easy",
-					"Signal": 5
+					"Signal": 67
 				},
 				{
 					"Region": "D",
 					"Condition": "Medium",
-					"Signal": 0
+					"Signal": 23
 				},
 				{
 					"Region": "D",
 					"Condition": "Hard",
-					"Signal": 5
+					"Signal": 56
 				},
 				{
 					"Region": "D",
 					"Condition": "Very Hard",
-					"Signal": 0
+					"Signal": 89
 				},
 				{
 					"Region": "E",
 					"Condition": "Easy",
-					"Signal": 5
+					"Signal": 15
 				},
 				{
 					"Region": "E",
 					"Condition": "Medium",
-					"Signal": 0
+					"Signal": 78
 				},
 				{
 					"Region": "E",
 					"Condition": "Hard",
-					"Signal": 5
+					"Signal": 34
 				},
 				{
-					"Region": "Easy",
+					"Region": "E",
 					"Condition": "Very Hard",
-					"Signal": 0
+					"Signal": 80
 				}
 			]
 		},
@@ -1111,32 +1111,32 @@
 				{
 					"Region": "A",
 					"Condition": "Easy",
-					"Signal": 5
+					"Signal": 20
 				},
 				{
 					"Region": "A",
 					"Condition": "Medium",
-					"Signal": 0
+					"Signal": 40
 				},
 				{
 					"Region": "A",
 					"Condition": "Hard",
-					"Signal": 5
+					"Signal": 80
 				},
 				{
 					"Region": "B",
 					"Condition": "Easy",
-					"Signal": 0
+					"Signal": 60
 				},
 				{
 					"Region": "B",
 					"Condition": "Medium",
-					"Signal": 5
+					"Signal": 80
 				},
 				{
 					"Region": "B",
 					"Condition": "Hard",
-					"Signal": 0
+					"Signal": 94
 				}
 			]
 		}
