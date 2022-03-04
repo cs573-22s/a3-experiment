@@ -24,9 +24,9 @@ Finally, quantitative analysis was most interesting as the 3D bar chart had the 
 ![logError](img/log2Error.png)
 
 ## Design and Technical Achievements
-Our biggest design and technical achievements involved the building of the 3D charts. Those were novel to our entire team, but came together to form the backbone of our experiment. 
+Our biggest design and technical achievements involved the building of the 3D charts. ThreeJs was used to build the 3d charts. Those were novel to our entire team, but came together to form the backbone of our experiment. 
 
-Another design and technical achievment was actually building the survey. We used Heroku and MongoDB to host and collect the data, respectively. 
+Another design and technical achievment was actually building the survey. We built the server using nodejs and was deployed to Heroku. MongoDB was used to store the collected data from the user. Additionally, we used cookies to store user data temporarily and store final data in the database once the survey is completed. This prevented incomplete data to be stored in the server.
 
 ## Visualizations Used for Experiment
 
