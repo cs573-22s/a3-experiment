@@ -40,16 +40,16 @@ We see in the Crowdsourced Results that T7 measures the radius of circles which 
 ## Other Pages
 
 ### Welcome Page
-<img src="https://github.com/ColdCode0214/a3-experiment/blob/main/img/welcome%20page.png" width = "250" height = "250" alt="" align=center />
+<img src="https://github.com/ColdCode0214/a3-experiment/blob/main/img/welcome%20page.png" width = "300" height = "250" alt="" align=center />
 
 ### Introduction Page
-<img src="https://github.com/ColdCode0214/a3-experiment/blob/main/img/Introduction%20Page.png" width = "250" height = "250" alt="" align=center />
+<img src="https://github.com/ColdCode0214/a3-experiment/blob/main/img/Introduction%20Page.png" width = "250" height = "400" alt="" align=center />
 
 ### Background Survey Page
-<img src="https://github.com/ColdCode0214/a3-experiment/blob/main/img/Survey%20Page.png" width = "250" height = "250" alt="" align=center />
+<img src="https://github.com/ColdCode0214/a3-experiment/blob/main/img/Survey%20Page.png" width = "250" height = "400" alt="" align=center />
 
 ### Thank you Page
-<img src="https://github.com/ColdCode0214/a3-experiment/blob/main/img/Thank%20You%20Page.png" width = "250" height = "250" alt="" align=center />
+<img src="https://github.com/ColdCode0214/a3-experiment/blob/main/img/Thank%20You%20Page.png" width = "250" height = "400" alt="" align=center />
 
 ### Opener
 ![Opener](img/opener.png)
