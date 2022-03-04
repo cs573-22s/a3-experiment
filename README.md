@@ -82,7 +82,7 @@ Our technical achievement is the mouseover tooltip found in the scatterplot. The
 
 ## Visual Achievements
 
-<img src="button.PNG" width="180" height="140">
+<img src="button.PNG" width="220" height="140">
 
 For our visual achievement, we used CSS to make a nice button with a moving gradient on hover. 
 
