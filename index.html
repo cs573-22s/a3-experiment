@@ -292,42 +292,42 @@
 
         if (randomNum == 0) 
         {
-          if (radarCount >= 1)
+          if (radarCount >= 0)
             continue;
           else
             radarCount++
         } 
         else if (randomNum == 1) 
         {
-          if (bargraphCount >=1)
+          if (bargraphCount >=0)
             continue;
           else
             bargraphCount++
         } 
         else if(randomNum == 2)
         {
-          if (circularbarplotCount >= 1)
+          if (circularbarplotCount >= 0)
             continue;
           else
             circularbarplotCount++
         }
         else if(randomNum == 3)
         {
-          if (bubblechartCount >= 1)
+          if (bubblechartCount >= 0)
             continue;
           else
           bubblechartCount++
         }
         else if(randomNum == 4)
         {
-          if (linechartCount >= 1)
+          if (linechartCount >= 0)
             continue;
           else
           linechartCount++
         }
         else if(randomNum == 5)
         {
-          if (bar2Count >= 1)
+          if (bar2Count >= 6)
             continue;
           else
           bar2Count++
@@ -816,9 +816,11 @@
       .attr("class", "bar")
       //.attr("x", function(d){ return xscale(d.letter) + margin })
       //.attr("y", function(d){ return yscale(d.frequency) })
-      .attr("height", function(d){ return height - yscale(d.frequency) })
-      .attr("width", function(d){ return xscale.bandwidth() })
-      .attr("x", function(d){ return xscale(d.letter) + margin })
+      //.attr("height", function(d){ return height - yscale(d.frequency) })
+      //.attr("width", function(d){ return xscale.bandwidth() })
+      .attr("width", function(d){ return height - yscale(d.frequency) })
+      .attr("height", function(d){ return xscale.bandwidth() })
+      .attr("x", function(d){ return yscale(d.frequency) - (height - yscale(d.frequency))/2  })
       .attr("y", function(d){ return yscale(d.frequency) - (height - yscale(d.frequency))/2  })
       .attr('fill', '#f0dce8')
       .style("fill-opacity", .6)
