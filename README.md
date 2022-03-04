@@ -27,3 +27,17 @@ Finally, quantitative analysis was most interesting as the 3D bar chart had the 
 Our biggest design and technical achievements involved the building of the 3D charts. Those were novel to our entire team, but came together to form the backbone of our experiment. 
 
 Another design and technical achievment was actually building the survey. We used Heroku and MongoDB to host and collect the data, respectively. 
+
+## Visualizations Used for Experiment
+
+## Bar Graphs
+![logError](https://github.com/alpecorale/a3-experiment/blob/main/img/2dBarGraph.png)
+![logError](https://github.com/alpecorale/a3-experiment/blob/main/img/3dBarGraph.png)
+
+## Pie Graphs
+![logError](https://github.com/alpecorale/a3-experiment/blob/main/img/2dPieGraph.png)
+![logError](https://github.com/alpecorale/a3-experiment/blob/main/img/3dPieGraph.png)
+
+## Heat Maps
+![logError](https://github.com/alpecorale/a3-experiment/blob/main/img/2dHeatGraph.png)
+![logError](https://github.com/alpecorale/a3-experiment/blob/main/img/3dHeatGraph.png)
