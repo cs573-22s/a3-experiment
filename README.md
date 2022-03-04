@@ -3,14 +3,14 @@ Assignment 3 - Replicating a Classic Experiment
 
 Authors
 ---
-- Jasmine Duerk
-- Evelyn Tran
-- Samantha Woodland
-- Joseph Yuen
+- Jiani Wang
+- Yujun Mao
+- Yan Zhang
+- Ziyang Xu
 
 Experiment
 ===
-Link to Experiment: https://jhyuen.github.io/03-experiment
+Link to Experiment: https://coldcode0214.github.io/a3-experiment/
 
 ## Error Barchart with 95% CIs
 ![Log Error](img/logError.png)
@@ -34,8 +34,8 @@ We see in the Crowdsourced Results that T7 measures the radius of circles which 
 
 ![Radar Chart](img/screencap4.PNG)
 
-### Circular Bar plot - Worst
-Of all the visualizations tested, circular bar plots performed the worst with a log error of 2.432067109. If we compare it to T7 in Crowdsourced Results as it compares the size of radial objects, we see that the circular bar plot scored slightly lower.
+### Bubble Chart - Worst
+
 
 ![Circular Bar Plot](img/screencap5.PNG)
 
@@ -50,24 +50,12 @@ Of all the visualizations tested, circular bar plots performed the worst with a 
 
 Achievements
 ===
-## Technical
-1.  **Protected Fields with Error Messages** - Upon submitting an answer, our system checks if the inputted values is valid. For example, when inputting a percentage guess, the system checks if the number is a decimal value. If it is, then the system generates the next screen. If not, then an alert is triggered which tells the user that their answer is invalid.
+## Technical Achievements
+1. **增加不合法数据校验** - 提交结果时如有不合法数据，例如‘-0.5’, 'abc'， ‘100’等，将  有弹窗提醒
 
-    ![Error message](img/error-message.png)
-
-2. **Button Animation** - When hovering over the button, it changes to a darker color to indicate what the mouse is selecting. When clicked, the button slightly moves down, as if a user was pushing the button.
-
-    ![Button Animation](img/buttonAnimation.gif)
-
-3. **Analyzed Gender and Age Distribution** - In addition to analyzing tester's guessing of percentages across the various visualizations, we also asked them for their age and gender in the hopes of additionally observing any significant trends or patterns. We found that between males and females in the analysis of radar charts, males had an average log error of 1.543975289 which was below the average, while females had an average log error of 2.152222824 which was above the average. For circular bar plots, males had an average log error of 2.183564587 which was below the average, while females had an average log error of 2.609568911 which was above the average. Lastly, for bar graphs, males scored an average log error of 1.195938747 which was below the average, while females scores an average log error of 1.500975974 which was above the average. Even though not statistically significant, we found it interesting that females had a higher log error than males on average for each of the visualizations.
 
 ## Design Achievements
 
-1. **Use of Color** - We chose to use pastel blues and green to add some color while not distracting from the graphs themselves. The graphs had to be black and white, so it was important that the colors were not too intense or eye-catching, such as using red. The button is a darker teal from the background to draw attention to it. There is also a slight shadow behind the buttons for a more modern feel.
-
-2. **Modern Font** - Open Sans and Raleway are both popular fonts for webpages because they're modern and minimal. The spacing between the letters in the main header adds to the minimal feel, but still stands out due to its larger font and slight shadow.
-
-3. **Centered Layout** - For an easier viewing experience, we opted for a centered layout. Everything is condensed in a given width to avoid long lines of text and unnecessary eye movements.
 
 References
 ===
