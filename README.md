@@ -23,9 +23,9 @@ Why? or Why not?
 **Hypothesis:**
 
 
-### Graph 2: Bar Chart
+### Graph 2: Histogram
 
-![Bar Chart](bar_chart.PNG)
+![Histogram](histogram.PNG)
 
 **Description:**
 
