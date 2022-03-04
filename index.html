@@ -283,46 +283,54 @@
       let circularbarplotCount = 0;
       let bubblechartCount = 0;
       let linechartCount = 0;
+      let bar2Count = 0;
 
-      while (order.length < 60) 
-      //while (order.length < 3)
+      //while (order.length < 60) 
+      while (order.length < 6)
       {
-        let randomNum = Math.floor(Math.random()*5)
+        let randomNum = Math.floor(Math.random()*6)
 
         if (randomNum == 0) 
         {
-          if (radarCount >= 12)
+          if (radarCount >= 1)
             continue;
           else
             radarCount++
         } 
         else if (randomNum == 1) 
         {
-          if (bargraphCount >=12)
+          if (bargraphCount >=1)
             continue;
           else
             bargraphCount++
         } 
         else if(randomNum == 2)
         {
-          if (circularbarplotCount >= 12)
+          if (circularbarplotCount >= 1)
             continue;
           else
             circularbarplotCount++
         }
         else if(randomNum == 3)
         {
-          if (bubblechartCount >= 12)
+          if (bubblechartCount >= 1)
             continue;
           else
           bubblechartCount++
         }
         else if(randomNum == 4)
         {
-          if (linechartCount >= 12)
+          if (linechartCount >= 1)
             continue;
           else
           linechartCount++
+        }
+        else if(randomNum == 5)
+        {
+          if (bar2Count >= 1)
+            continue;
+          else
+          bar2Count++
         }
         order.push(randomNum)
       }
@@ -573,6 +581,7 @@
 </script>
 
 <script>
+   /*-----------------------Bubble Chart--------------------------*/
   function buildBubbleChart(data){
 
     // establishing variables
@@ -692,7 +701,7 @@
           .attr("text-anchor", "middle")
           .attr("x", width/2 + margin)
           .attr("y", height + 40)
-          .text("Letter");
+          .text("X");
   
         // Add Y axis label
         svg.append("text")
@@ -701,7 +710,7 @@
           .attr("y", 0)
           .attr("dy", ".75em")
           .attr("transform", "rotate(-90)")
-          .text("Frequency");
+          .text("Y");
         
         //add lines
         var lines = svg.selectAll(".line")
@@ -709,9 +718,9 @@
           .enter().append("line")
           //.datum(coordinates)
           .attr("x1", function(d){ return xscale(d.letter) + margin })
-          .attr("y1", function(d){ return (height - yscale(d.frequency))/5 })
+          .attr("y1", function(d){ return (height + yscale(d.frequency))/5 })
           .attr("x2", function(d){ return xscale(d.letter) + margin + 30 })
-          .attr("y2", function(d){ return (height - yscale(d.frequency))/5 })
+          .attr("y2", function(d){ return (height + yscale(d.frequency))/5 })
           .attr("stroke", "black")
         
         //add circle
@@ -720,7 +729,7 @@
         .enter().append("circle")
         .attr("class", "circle")
         .attr("cx", function(d){ return xscale(d.letter) + margin + 15 })
-        .attr("cy", function(d){ return (height - yscale(d.frequency))/5 })
+        .attr("cy", function(d){ return (height + yscale(d.frequency))/5 })
         .attr("r",4)
         //.style("fill", 'black')
         //.style("opacity", .30)
@@ -729,6 +738,96 @@
   }
   
   </script>
+
+<script>
+
+  /*-----------------------Bar Chart2--------------------------
+  ** When you need to create a bar chart with a given data set, use
+  ** buildBarChart(d) where d is the data returned from generateDataset()
+  */
+  function buildBarChart2(data){
+
+    // establishing variables
+    var margin = 50,
+    width = 500 - 2 * margin,
+    height = 500 - 2 * margin;
+
+    // creating svg
+    var svg = d3.select("div#vis").append('svg')
+    .attr("width", width + 2 * margin)
+    .attr("height", height + 2 * margin)
+    .attr("transform", "translate(" + margin + ", " + margin + ")")
+
+    var d = data.dataset,
+    mark1 = data.mark1,
+    mark2 = data.mark2;
+    //console.log(d);
+
+    // scaling
+    var xscale = d3.scaleBand()
+      .domain(d.map(function(d){ return (d.letter) }))
+      .range( [0, width])
+      .padding(0.4);
+
+    var yscale = d3.scaleLinear()
+      .domain([0, 105])    //d3.max(d, function(d){return d.frequency;}
+      .range( [height, 0] );
+    console.log(d3.max(d, d.frequency));
+
+    // Add X axis
+    var x_axis = d3.axisBottom()
+    .scale(xscale)
+    svg.append("g")
+      .attr("transform", "translate(" + margin + "," + height + ")")
+      .call(x_axis)
+      .attr("class", "xAxis")
+
+
+    // Add Y axis
+    var y_axis = d3.axisLeft()
+      .scale(yscale)
+      .tickValues([])
+    svg.append("g")
+      .attr("transform", "translate(" + margin + ", 0 )")
+      .call(y_axis)
+      .attr("class", "yAxis")
+
+    // Add X axis label
+    svg.append("text")
+      .attr("text-anchor", "middle")
+      .attr("x", width/2 + margin)
+      .attr("y", height + 40)
+      //.attr("transform", "rotate(-90)")
+      .text("X");
+
+    // Add Y axis label
+    svg.append("text")
+      .attr("text-anchor", "middle")
+      .attr("x", -(height/2))
+      .attr("y", 0)
+      .attr("dy", ".75em")
+      .attr("transform", "rotate(-90)")
+      .text("Y");
+
+    // Add Bars
+    var bars = svg.selectAll(".bar")
+      .data(d)
+      .enter().append("rect")
+      .attr("class", "bar")
+      //.attr("x", function(d){ return xscale(d.letter) + margin })
+      //.attr("y", function(d){ return yscale(d.frequency) })
+      .attr("height", function(d){ return height - yscale(d.frequency) })
+      .attr("width", function(d){ return xscale.bandwidth() })
+      .attr("x", function(d){ return xscale(d.letter) + margin })
+      .attr("y", function(d){ return yscale(d.frequency) - (height - yscale(d.frequency))/2  })
+      .attr('fill', '#f0dce8')
+      .style("fill-opacity", .6)
+      .attr("stroke", "black")
+      .style('fill-stroke', .4)
+      //.attr("stroke-width", "10px");
+      
+  }
+</script>
 
 <script>
     var visOrder = []
@@ -766,6 +865,8 @@
         buildBubbleChart(data)
       } else if (visType == 4){ // line chart
         buildLineChart(data)
+      } else if (visType == 5){ // bar chart2
+        buildBarChart2(data)
       }
 
 
@@ -818,8 +919,8 @@
 
       trialCount = trialCount + 1
       console.log(trialCount)
-      if (trialCount == 60) {
-      //if (trialCount == 3) {
+      //if (trialCount == 60) {
+      if (trialCount == 6) {//测试时临时降低题量
         show('testing','end-screen')
       } else {
         generateNextTrial(trialCount)
