@@ -69,7 +69,7 @@
   <br><br>
 
 
-  <input type="submit" value="Submit">
+  <input id="button" type="submit" value="Submit">
   </form>
 
 </body>
@@ -315,6 +315,26 @@ div.tooltip {
 }
 
 .axis { font: 0px sans-serif; }
+
+button {
+  flex: 1 1 auto;
+  margin: 10px;
+  padding: 20px;
+  text-align: center;
+  transition: 0.5s;
+  background-size: 200% auto;
+  color: white;
+  box-shadow: 0 0 20px #eee;
+  border-radius: 10px;
+ }
+
+button:hover {
+  background-position: right center;
+}
+
+button {
+  background-image: linear-gradient(to right, #7b65f6 0%, #4191ec 51%, #5247b9 100%);
+}
 
 </style>
 
