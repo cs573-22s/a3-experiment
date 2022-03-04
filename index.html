@@ -231,7 +231,7 @@
 
     function buildScatter(data) {
      
-      x = d3.scaleLinear()
+      x = d3.scaleTime()
           .domain(d3.extent(data, d => d.year)).nice()
           .range([margin_s.left, width_s - margin_s.right]);
 
@@ -273,7 +273,7 @@
 
     const xAxis = (g) =>
         g.attr("transform", `translate(0,${height_s - margin_s.bottom})`)
-         .call(d3.axisBottom(x).tickSize(10).ticks(4))
+         .call(d3.axisBottom(x).tickSize(10).ticks(5).tickFormat(d3.format("d")))
          .call((g) =>
             g.append("text")
              .attr("x", width_s - margin_s.right)
