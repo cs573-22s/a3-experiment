@@ -1,106 +1,85 @@
 Assignment 3 - Replicating a Classic Experiment  
 ===
 
-For the scope of this project, assume the role of a scientist who runs experiments for a living.
+Working link to the experiment hosted:
+* https://meggitt.dev/ 
+* http://jcybul.github.io/a3-experiment/public/index.html
 
-Q: How do we know that bar charts are "better" than pie charts?  
-A: Controlled experiments!
+For our experiment, we wanted to test how immediate feedback would affect the user's response. We created two user groups, one serving as the control with no feedback, and one with immediate feedback after each response. We were interested to see if the immediate feedback would have a positive or negative effect on the user’s guesses. 
 
-In this assignment you'll implement a simple controlled experiment using some of the visualizations you’ve been building in this class. 
-You'll need to develop support code for the experiment sequence, results file output, and other experiment components. 
-(These are all simple with Javascript buttons and forms.)
-The main goals for you are to a) test three competing visualizations, b) implement data generation and error calculation functions inspired by Cleveland and McGill's 1984 paper, c) run the experiment with 10 participants (or a trial equivalent), and d) do some basic analysis and reporting of the results.
+The three data visualization types that were selected to experiment with were:
 
-For this assignment you should aim to write everything from scratch. For experimentation it is often necessary to control all elements of the chart.
-You should definitely *reference* demo programs from books or the web, and if you do please provide a References section with links at the end of your Readme.
+- Bar Chart
+- Stacked Area Chart
+- Bubble Chart
 
-Going Beyond Cleveland-McGill
+
+The bar chart was used in Cleveland and McGill's original experiment and proved to have an error on the smaller side, so it was included in this experiment as well. The stacked area chart was a more interesting way of comparing areas that were stacked on top of each other than a stacked bar chart. We also wanted to include a slightly more difficult chart to analyze and decided to include the bubble chart. Based on the results from Cleveland and McGill’s experiment and others similar to theirs, this kind of graph resulted in higher errors. 
+
+Screenshots
 ---
+![c](img/p1.png)
 
-Several have expressed interest in conducting surveys of various sorts. I encourage you go move beyond Cleveland and McGill if you can think of other interesting visualization experiment designs and corresponding analyses. 
+This is the first page that users are greeted with. At the top it displays the title of the experiment, which was kept simple, and the question, which persisted on each page. Beneath the instructions is where the svg is located, which displays the different graph types. The first three graphs, one of each type, have instructions displayed in order to help explain how they should be read. They also provide the correct answer so the user can get a better understanding of how they should read the graph. There is an input section for the guess, which can be submitted by clicking the “Enter” key or the “Enter” button. The user is also informed about how many total questions there are and which one they are currently on. The bar graph is shown first. 
 
-You might study how people interpret COVID visualizations, for example.
-If you decide to go in a custom route, simply contact staff so we can help you set acceptable parameters.
-Basically, we still want you to do a multi-trial study with each participant, to raise the chance that you get solid results.
-How you measure "error" and similar facets also matter. But you can't go wrong with finding a visualization study online to start from :)
+![c](img/p2.png)
 
-Requirements
+This is what the stacked area graph looked like. We selected only two area sections to make the comparison easier, and instructed the user to compare the areas at line “X”. The smaller area was always the lighter gray color. 
+
+
+![c](img/p3.png)
+
+This is what the instruction page for the bubble graph looks like. There were only two bubbles displayed and the user was given the correct answer. The bubbles are indicated by color where the lighter gray was also the smaller of the two. 
+
+![c](img/p4.png)
+
+This is an example of a random bar graph in which a user was supposed to compare B with A. 
+
+![c](img/p5.png)
+
+This is an example of a random stacked area chart at which the user was supposed to compare the lighter gray section with the darker gray. 
+
+![c](img/p6.png)
+
+This is an example of a random bubble chart where the user was supposed to compare the smaller bubble with the bigger one.
+
+
+![c](img/correcy_ans.PNG)
+![c](img/wrong_answer.png)
+
+Above are examples of the feedback messages that would be displayed for the second user group. One indicating if the user answered correctly and within 10% of the correct answer and one indicating if the answer was incorrect and farther than 10% of the correct answer. 
+
+![c](img/ThankYouMsg.JPG)
+
+This is the final message that the user is greeted with at the end of the experiment. It provides the final score of correct answers that the user got. Both user groups are able to see how well they performed. They are also able to click the "Copy Results!" button in order to copy a message including their score and a link to the experiment to their clipboard. The message copied for this experiment was "I guessed 13/60 correct! Link: https://meggitt.dev." This allows user to easy share their scores with friends and encourage others to participate. 
+
+Results
 ---
+As mentioned, before we hypothesized that providing feedback to the user would have a positive effect on their overall results, compared to no feedback at all. From the data we collected we can observe that for two of the three graphs our hypothesis was correct:
+- **Bar Chart**: when the users had feedback on what their answers was, they had an error value of 1.12 (log based to the absolute difference) from the right answer, compared to 1.60 when no feedback was provided. 
+- **Bubble Chart**: with feedback provided the user had an error value of 2.47, and with no feedback the error value was 2.73
+- **Area Chart**: the area chart was the only one that had better results when no feedback was provided 3.1 compared to 3.76 when feedback was provided, we believe that this happened because the area graph is somewhat confusing on its own, so providing feedback cause the user to be more confused and provide an incorrect answer. 
 
-- Look it over Cleveland and McGill's original experiment (see the section below) and [watch this video](experiment-example.mp4) to get a sense of the experiment structure and where your visualizations will go.
-- When viewing the example experiment video, note the following:
-    - Trials are in random order.  
-    - Each trial has a randomly generated set of 5-10 data points.  
-    - Two of these data points are marked.  
-    - (Note: the experiment UI and User Experience could be better. Plenty of design achievements here).
-- Implement the data generation code **as described in the Cleveland & McGill paper**. 
-    - The goal is to generate a set of random datapoints (usually 5 or 10, with values be between 0 and 100) and to mark two of them for comparison in the trial. 
-- Add 3 visualizations (i.e. conditions) to your experiment. When you are adding these visualizations, think about *why* these visualizations are interesting to test. In other words, keep in mind a *testable hypothesis* for each of the added visualization. Some good options include bar charts, pie charts, stacked-bar charts, and treemaps. You can also rotate your bar chart to be horizontal or upside-down as one of your conditions. You are encouraged to test unorthodox charts -- radar charts come to mind, but there are MANY possibilities here-- feel free to be creative!
-    - Follow the style from Cleveland and McGill closely (e.g. no color, simple lines) unless you are specifically testing a hypothesis (e.g. color versus no color). Pay attention to spacing between elements like bars. Do not mark bars for comparison using color-- this makes the perceptual task too easy.
-- After each trial, implement code that grades and stores participant’s responses.
-- At the end of the experiment, to get the data, one easy option use Javascript to show the data from the current experiment\* (i.e. a comma separated list in a text box) and copy it into your master datafile. See the Background section below for an example of what this file should look like. (\*Alternately implement a server, if you're experienced with that sort of thing.)
+Based on over 20 complete surveys, we have created a 95% confidence interval mean bootstrap based on graph type and feedback. Visually analyzing the difference between graphs and having feedback or not having feedback:
 
-- Figure out how to calculate "Error", the difference between the true percentage and the reported percentage.
-- Scale this error using Cleveland and McGill’s log-base-2 error equation. For details, see the background section (there’s a figure with the equation). This becomes your “Error” column in the output. Make sure you use whole percentages (not decimal) in the log-base-2 equation. Make sure you handle the case of when a person gets the exact percentage correct (log-base-2 of 1/8 is -3, it is better to set this to 0). 
-- Run your experiment with 10 or more participants, or-- make sure you get at least 200 trials **per visualization type** in total.  
-    - Grab friends or people in the class.   
-    - Run at least 20 trials per visualization type, per participant. This is to ensure that you cover the range of possible answers (e.g. 5%, 10%, ..., 95%)
-- Make sure to save the resulting CSV after each participant. Compile the results into a master csv file (all participants, all trials).
-- Produce a README with figures that shows the visualizations you tested and results, ordered by best performance to worst performance. Follow the modern Cleveland-McGill figure below -- though note that using names instead of icons is fine.
-- To obtain the ranking, calculate and report the average log2Error for each visualization across all trials and participants. This should be straightforward to do in a spreadsheet.
-- Use Bootstrapped 95\% confidence intervals for your error upper and lower bounds. Include these in your figures. Bootstrapped confidence intervals are easily implemented in R + ggplot2 using the `stat_summary` geom. You can also use Excel, Python, or many many other tools. Bootstrapped 95% CIs are **very** useful in modern experiment practice.
-- Include example images of each visualization as they appeared in your experiment (i.e. if you used a pie chart show the actual pie chart you used in the experiment along with the markings, not an example from Google Images).
+![c](confidence_intervals.png)
 
-## General Requirements
+![c](confidence_intervals_box.png)
 
-0. Your code should be forked from the GitHub repo and linked using GitHub pages.
-2. Your project should use d3 to build visualizations. 
-3. Your writeup (readme.md in the repo) should contain the following:
+The idea behind feedback improving scores is that it would allow the participant to improve their mistakes. As the participant proceeds with the survey, they should learn how better to estimate the differences in each graph. Without feedback, there's no way for the participant to realize they may be over or underestimating the value or answering the question entirely wrong. The complication in this hypothesis comes with the Area chart. The area chart is unbelievably complicated when compared to the others. Many participants reported questions, confusion, and in some cases, were genuinely overwhelmed and stressed out about the Area chart and how the reported answers didn't make any sense. This frustration could be what resulted in the loss of accuracy for reported participants as the actual value may have made them second guess themselves when they were actually on the right track.
 
-- Working link to the experiment hosted on gh-pages or some other site.
-- Concise description and screenshot of your experiment.
-- Description of the technical achievements you attempted with this project.
-- Description of the design achievements you attempted with this project.
-
-Background
+Technical Achievements
 ---
+There were several technical achievements that we were able to accomplish during this project. We created a tutorial for the users so that they would be able to understand the three types of visualizations we selected before beginning the scored part of the experiment. These were not counted towards the total score.
 
-In 1984, William Cleveland and Robert McGill published the results of several controlled experiments that pitted bar charts against pies and stacked-bar variants. 
-Their paper (http://www.cs.ubc.ca/~tmm/courses/cpsc533c-04-spr/readings/cleveland.pdf) (http://info.slis.indiana.edu/~katy/S637-S11/cleveland84.pdf) is considered a seminal paper in data visualization.
-In particular, they ran a psychology-style experiment where users were shown a series of randomly-generated charts with two graphical elements marked like this:
+Another technical achievement was that we gave users the option to share their score at the end of the survey. To allow users to copy text to their clipboards upon clicking the share button, we needed to supply the webpage through HTTPS to meet browser requirements. To do this we were required to set up our site under a domain with proper SSL certificates. To do this we switched from a plain NodeJS server to Express so that the server could be accessed with both https and http using a single listener. After setting up the domain (meggitt.dev) DNS configuration to direct to a digital ocean dropplet we spent a while to get our SSL certificates properly formatted so they would be accepted by NodeJS.
 
-![cleveland bar chart](img/cleveland-bar.png)
-
-Participants were then asked, "What percentage is the smaller of the larger?". 
-This was repeated hundreds of time with varying data and charts. 
-By the end of the study, Cleveland and McGill had amassed a large dataset that looked like this:
-
-![cleveland table](img/cleveland-table.png)
-
-__Log-base-2 or "cm-error"__: The true percent is the actual percentage of the smaller to the larger, while the reported percent is what participants reported. 
-Cleveland and McGill recognized that their analyses would be biased if they took `abs(ReportedPercent – TruePercent)` as their score for error. 
-To compensate, they came up with a logarithmic scale for error with this equation:
-
-![cleveland equation](img/cleveland-equation.png)
-
-You’ll be implementing this error score as part of the lab. 
-(Hint: it’s not a trick question, this is just to familiarize you with the experiment protocol). 
-With this Cleveland-McGill error score you can better compare the performance of the charts you test to figure out which one performs the best.
-
-As a baseline, compare your average Error scores to the following chart, which include both Cleveland and McGill’s results as well as more recent extensions of this experiment (lower error indicates better performance, and error bars are bootstrapped 95% confidence intervals (`http://en.wikipedia.org/wiki/Confidence_interval#Meaning_and_interpretation`)):
-
-![cleveland results](img/cleveland-results.png)
-
-GitHub Details
+Design Achievements
 ---
+In terms of design, we kept everything very simple for this project. The graphs were displayed in black and each area that we wanted the user to look at was colored in different shades of gray. To keep things consistent, we colored the smaller area with a light gray and the larger area with a darker gray. 
 
-- Fork the GitHub Repository. You now have a copy associated with your username.
-- Make changes to index.html to fulfill the project requirements. 
-- Make sure your "master" branch matches your "gh-pages" branch. See the GitHub Guides referenced above if you need help.
-- Edit this README.md with a link to your gh-pages site: e.g. http://YourUsernameGoesHere.github.io/Experiment/index.html
-- Replace this file (README.md) with your writeup and Design/Technical achievements.
-- To submit, make a [Pull Request](https://help.github.com/articles/using-pull-requests/) on the original repository.
-- Name your submission using the following scheme: 
-```
-a3-FirstLastnameMember1-FirstLastnameMember2-FirstLastnameMember3-...
-```
+We also made the background color a light blue to make the experiment slightly more visually appealing. We were worried that not many users would be interested in completing all 60 questions in the experiment if it was more simple with a white background and only black graphs. As long as the colors stayed consistent throughout the whole experiment, they should not have affected how user’s responded. Only the feedback messages should have had an effect. 
+
+
+
+
