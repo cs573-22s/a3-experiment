@@ -31,12 +31,12 @@ Another design and technical achievment was actually building the survey. We use
 ## Visualizations Used for Experiment
 
 ## Bar Graphs
-![logError](https://github.com/alpecorale/a3-experiment/blob/main/img/2dBarGraph.png)
-![logError](https://github.com/alpecorale/a3-experiment/blob/main/img/3dBarGraph.png)
+![logError](https://github.com/alpecorale/a3-experiment/blob/main/img/2dBarGraph.PNG)
+![logError](https://github.com/alpecorale/a3-experiment/blob/main/img/3dBarGraph.PNG)
 
 ## Pie Graphs
-![logError](https://github.com/alpecorale/a3-experiment/blob/main/img/2dPieGraph.png)
-![logError](https://github.com/alpecorale/a3-experiment/blob/main/img/3dPieGraph.png)
+![logError](https://github.com/alpecorale/a3-experiment/blob/main/img/2dPieGraph.PNG)
+![logError](https://github.com/alpecorale/a3-experiment/blob/main/img/3dPieGraph.PNG)
 
 ## Heat Maps
 ![logError](https://github.com/alpecorale/a3-experiment/blob/main/img/2dHeatGraph.png)
