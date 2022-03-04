@@ -13,15 +13,15 @@ We believe that users should be able to quantitatively read 2D charts easier tha
 ## Results
 Based on the end survey, about chart preference, people liked the 2D charts overall and ranked bar charts first, then pie charts and then heatmaps. Interestingly, as shown in Figure 1, 3D barcharts did rank better than 2D heatmaps. This was not explicitly expected, but does make sense as heatmaps are hard to quantitatively measure without values specified. 
 
-![Figure 1](https://github.com/alpecorale/a3-experiment/blob/main/img/chartRanking.png)
+![Figure 1](img/chartRanking.png)
 
 Looking at time next (Figure 2), the 2D bar charts took the longest for people to read and answer. This was unexpected and we believe that part of that time is just because this was the first figure listed and because the rest of the questions were formatted similarly with slight changes. Understanding this, this results does make sense. The second longest however, was the 3D heatmap, which was expected as this is a chart that most people have never experienced and would take time to quantify differences.  
 
-![Figure 2](https://github.com/alpecorale/a3-experiment/blob/main/img/timeAvg.png)
+![Figure 2](img/timeAvg.png)
 
 Finally, quantitative analysis was most interesting as the 3D bar chart had the least error with the 3D heatmap coming in second and our expected winner, the 2D bar chart pulling in third. We found this most interesting because even though people rated the 3D heatmaps low, they actually were able to be the most accurate.
 
-![logError](https://github.com/alpecorale/a3-experiment/blob/main/img/log2Error.png)
+![logError](img/log2Error.png)
 
 ## Design and Technical Achievements
 Our biggest design and technical achievements involved the building of the 3D charts. Those were novel to our entire team, but came together to form the backbone of our experiment. 
@@ -31,13 +31,13 @@ Another design and technical achievment was actually building the survey. We use
 ## Visualizations Used for Experiment
 
 ### Bar Graphs
-![logError](https://github.com/alpecorale/a3-experiment/blob/main/img/2dBarGraph.PNG)
-![logError](https://github.com/alpecorale/a3-experiment/blob/main/img/3dBarGraph.PNG)
+![logError](img/2dBarGraph.PNG)
+![logError](img/3dBarGraph.PNG)
 
 ### Pie Graphs
-![logError](https://github.com/alpecorale/a3-experiment/blob/main/img/2dPieGraph.PNG)
-![logError](https://github.com/alpecorale/a3-experiment/blob/main/img/3dPieGraph.PNG)
+![logError](img/2dPieGraph.PNG)
+![logError](img/3dPieGraph.PNG)
 
 ### Heat Maps
-![logError](https://github.com/alpecorale/a3-experiment/blob/main/img/2dHeatGraph.PNG)
-![logError](https://github.com/alpecorale/a3-experiment/blob/main/img/3dHeatGraph.PNG)
+![logError](img/2dHeatGraph.PNG)
+![logError](img/3dHeatGraph.PNG)
