@@ -2,6 +2,7 @@ Assignment 3 - Replicating a Classic Experiment
 ===
 
 Team Name: MadMen
+
 Team Member: Jiani Wang, Yujun Mao, Yan Zhang, Ziyang Xu
 
 Experiment
@@ -36,6 +37,17 @@ We see in the Crowdsourced Results that T7 measures the radius of circles which 
 ![Circular Bar Plot](img/screencap5.PNG)
 
 ## Additional Experiment Screenshots
+## Other Pages
+
+### Welcome Page
++图
+
+### Introduction Page
+
+### Background Survey Page
+
+### Thank you Page
+
 ### Opener
 ![Opener](img/opener.png)
 ### Get Results
@@ -51,7 +63,7 @@ Achievements
 
 
 ## Design Achievements
-
+1. **增加背景颜色**
 
 References
 ===
