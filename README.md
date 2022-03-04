@@ -70,8 +70,8 @@ Using Cleveland and McGill's logarithmic error function, we computed the log2Err
 
 The true value was 3.64385619; therefore, the pie chart was the least misleading and the scatterplot was the most misleading. This confirms our hypothesis that participants would find it most difficult to correctly interpret the scatterplot. 
 
-<img src="Bootstrap.PNG" width="400" height="400">
-<img src="Intervals.PNG" width="400" height="400">
+<img src="Bootstrap.PNG" width="500" height="500">
+<img src="Intervals.PNG" width="400" height="200">
 
 When participants were able to identify the graph as misleading, they generally had the correct explanation for as to why the graph was misleading. For example, one participant gave the following response for as to why the scatterplot was misleading:
 > "This graph doesn't show the severity of the impact on drug overdose deaths and it does not have a y -axis and needs one for better representation of the graph to look at the number of deaths instead of hovering over on them"
