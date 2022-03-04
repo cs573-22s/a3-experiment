@@ -51,13 +51,6 @@ We see in the Crowdsourced Results that T7 measures the radius of circles which 
 ### Thank you Page
 <img src="https://github.com/ColdCode0214/a3-experiment/blob/main/img/Thank%20You%20Page.png" width = "250" height = "400" alt="" align=center />
 
-### Opener
-![Opener](img/opener.png)
-### Get Results
-![Closer](img/closer.png)
-### All 3 Visualizations
-![Closer](img/screencapcombined.png)
-
 
 Achievements
 ===
