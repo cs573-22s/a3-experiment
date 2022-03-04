@@ -81,7 +81,7 @@ app.get('/api/dataset', (req, res) => {
   }
   
   let finalDataset = [];
-  for (const trial of ['bar', 'topographic', 'brain']) {
+  for (const trial of ['brain', 'topographic', 'bar']) {
     const randomizedDataset = shuffle(dataset);
     finalDataset = [...finalDataset, ...randomizedDataset.map(elt => { return {...elt, type: trial} } )]
   }

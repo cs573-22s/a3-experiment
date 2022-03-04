@@ -8,6 +8,7 @@ import Paper from '@mui/material/Paper'
 import { Typography } from '@mui/material'
 import { Dataset } from 'Types/Dataset'
 import BarChart from 'Components/Visualizations/BarChart'
+import BrainChart from 'Components/Visualizations/BrainChart'
 
 /**
  * Survey Page and related types
@@ -75,6 +76,8 @@ export default function SurveyPage () {
                     {(() => {
                       if (dataset.current[questionNum].type === 'bar') {
                         return <BarChart data={dataset.current[questionNum]} />
+                      } else if (dataset.current[questionNum].type === 'brain') {
+                        return <BrainChart data={dataset.current[questionNum]} />
                       } else {
                         return (
                           <Typography variant="h2" component="div" gutterBottom>
