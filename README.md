@@ -1,12 +1,8 @@
 Assignment 3 - Replicating a Classic Experiment  
 ===
 
-Authors
----
-- Jiani Wang
-- Yujun Mao
-- Yan Zhang
-- Ziyang Xu
+Team Name: MadMen
+Team Member: Jiani Wang, Yujun Mao, Yan Zhang, Ziyang Xu
 
 Experiment
 ===
