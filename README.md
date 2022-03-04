@@ -40,7 +40,7 @@ We see in the Crowdsourced Results that T7 measures the radius of circles which 
 ## Other Pages
 
 ### Welcome Page
-+图
+<img src="https://github.com/ColdCode0214/a3-experiment/blob/main/img/welcome%20page.png" width = "250" height = "250" alt="" align=center />
 
 ### Introduction Page
 
@@ -60,6 +60,11 @@ Achievements
 ===
 ## Technical Achievements
 1. **增加不合法数据校验** - 提交结果时如有不合法数据，例如‘-0.5’, 'abc'， ‘100’等，将  有弹窗提醒
+1.	Increase the charts number from 3 to 5, including: Bar Chart, Line Chart, Bubble chart, Radar chart, Circle bar chart
+
+2.	Data Validation – When inputting data, the system will check if the information format is legal and if it violates the not-null constrains.
+
+3.	Adding more attributes to analyze – We added new dimensions such as ages, majors and gender , in our analyze we can see our stats numbers from different dimensions.
 
 
 ## Design Achievements
