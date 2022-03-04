@@ -62,11 +62,18 @@ Participants will have difficulty understanding that the scatter plot is mislead
 
 ## Results
 
-(summary of results, include some example short answers)
+Using Cleveland and McGill's logarithmic error function, we computed the log2Error for each visualization. Because all of our graphs are misleading, the true percent was 100. The judged percent was determined by the number of "yes" answers for each visualization. The ranking of the visualizations is as follows: 
 
-(rank visualizations by performance using avg log2Error)
+1. Pie chart: 3.518849829
+2. Histogram: 2.64385619
+3. Scatterplot: 2.087462841
 
-(boostrapped 95% confidence intervals)
+The true value was 3.64385619; therefore, the pie chart was the least misleading and the scatterplot was the most misleading. This confirms our hypothesis that participants would find it most difficult to correctly interpret the scatterplot. 
+
+(PLOT with conf. intervals)
+
+When participants were able to identify the graph as misleading, they generally had the correct explanation for as to why the graph was misleading. For example, one participant gave the following response for as to why the scatterplot was misleading:
+> "This graph doesn't show the severity of the impact on drug overdose deaths and it does not have a y -axis and needs one for better representation of the graph to look at the number of deaths instead of hovering over on them"
 
 <br/>
 
