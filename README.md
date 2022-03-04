@@ -72,13 +72,13 @@ Incorrect Answers:
 
 Results from Experiment:
 
-![accuracy_gender](results/accuracy_gender.PNG)
-![accuracy_gender_distro](results/accuracy_gender_distro.PNG)
-![accuracy_major](results/accuracy_major.PNG)
-![accuracy_major_distro](results/accuracy_major_distro.PNG)
-![accuracy_major_text](results/accuracy_major_text.PNG)
-![accuracy_participants_text](results/accuracy_participants_text.PNG)
-![accuracy_word_count](results/accuracy_word_count.PNG)
+![accuracy_gender](results/accuracy_gender.png)
+![accuracy_gender_distro](results/accuracy_gender_distro.png)
+![accuracy_major](results/accuracy_major.png)
+![accuracy_major_distro](results/accuracy_major_distro.png)
+![accuracy_major_text](results/accuracy_major_text.png)
+![accuracy_participants_text](results/accuracy_participants_text.png)
+![accuracy_word_count](results/accuracy_word_count.png)
 
 Technical Achievements: 
 - utilized D3 to create word clouds presented in Qualtrics Survey
