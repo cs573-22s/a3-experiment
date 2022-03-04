@@ -183,9 +183,15 @@
             <h1>Thank You!</h1>
         </div>
         <div class="div" id="instructions">
-            <p>You have successfully completed the experiment, and we have recorded your results.</p>
-            <p>Please download your results and email it to jwang21@wpi.edu</p>
-            <p>When you press Get Results, your browser may ask you to print the current page. Simply press cancel to continue the download process.</p>
+            <p>Congratulations!</p>
+            <p>You have already finished all queations. Now, please download the result and send it to any of the following organizers:</p>
+            <p>jwang21@wpi.edu</p>
+            <p>yzhang41@wpi.edu</p>
+            <p>zxu9@wpi.edu</p>
+            <p>ymao4@wpi.edu</p>
+            <p></p>
+            <p>If a print prompt pops up after clicking the download button, please click Cancel, and the system will continue the download process</p>
+            <p>Thank again for your participation!</p>
             <p>Team: MadMen</p>
             <p>Member: Ziyang Xu, Jiani Wang, Yujun Mao, Yan Zhang</p>
             <button class="button" id="get-results" onclick="getResults()">Download</button>
@@ -227,16 +233,8 @@
 </script>
 
 <script>
-    console.log(d3); // test if d3 is loaded
+    console.log(d3);
 
-    /* - - - - - - - - Data Generation - - - - - - - -
-    ** Everytime you need a dataset, set a variable = to the generateDataset() function.
-    ** This creates a struct with all the dataset information.
-    ** For example, you can do: let data1 = generateDataset();
-    ** In this case, get the dataset array using data1.dataset
-    ** To get the indices for comparison, use data1.mark1 and data1.mark2
-    ** (mark1 and mark2 are just the index in the array of the chosen points.)
-    */
     function generateDataset() {
       //choose size of data set between 5-10
       let datasetCount = Math.floor(Math.random() * 6) + 5;
@@ -244,8 +242,8 @@
       //choose two random data points
       let chosenPoint1 = Math.floor(Math.random() * datasetCount);
       let chosenPoint2 = Math.floor(Math.random() * datasetCount);
-      while (chosenPoint1 == chosenPoint2) { //make sure we did not choose same one twice
-        chosenPoint2 = Math.floor(Math.random() * datasetCount);
+      while (chosenPoint1 == chosenPoint2) { 
+        chosenPoint2 = Math.floor(Math.random() * datasetCount);//保证选择标记数据时不会把同一个数据选择两次
       }
 
       //create dataset
@@ -264,7 +262,8 @@
           {letter: "J", frequency: myDataset[9]}
       ];
 
-      letterData.length = datasetCount; //Reduce array to correct size
+      //实际生成的数据是5-10之间任意的数量，故需要将实际使用的letter缩减至与实际数据量一致
+      letterData.length = datasetCount; 
 
       //create struct
       var data = {
@@ -276,8 +275,6 @@
       return data;
     }
 
-    //let data1 = generateDataset();
-    //console.log("mark1: " + data1.mark1 + " mark2: " + data1.mark2 + " dataset: " + data1.dataset);
 </script>
 
 <script>
@@ -291,7 +288,6 @@
       let circularbarplotCount = 0;
       let bubblechartCount = 0;
       let linechartCount = 0;
-      let bar2Count = 0;
 
       //while (order.length < 60) 
       while (order.length < 50)//一共五种图，每种图有10道题，一共50道题
@@ -347,11 +343,11 @@
       return order;
     }
 
-    // let orderArray = generateVisOrder()
 </script>
 
+<!--Circular bar chart-->
 <script>
-    // Circular bar plot
+
     console.log(d3);
 
     function generateCircularBarplot(data) {
@@ -384,7 +380,6 @@
         .data(data)
         .enter()
         .append("path")
-            //.attr("fill", "black")
             .attr('fill', '#f0dce8')
             .style("fill-opacity", .6)
             .attr("stroke", "black")
@@ -417,12 +412,9 @@
 
 </script>
 
+<!--Bar Chart-->
 <script>
 
-    /*-----------------------Bar Chart--------------------------
-    ** When you need to create a bar chart with a given data set, use
-    ** buildBarChart(d) where d is the data returned from generateDataset()
-    */
     function buildBarChart(data){
 
       // establishing variables
@@ -439,7 +431,6 @@
       var d = data.dataset,
       mark1 = data.mark1,
       mark2 = data.mark2;
-      //console.log(d);
 
       // scaling
       var xscale = d3.scaleBand()
@@ -448,7 +439,7 @@
         .padding(0.4);
 
       var yscale = d3.scaleLinear()
-        .domain([0, 105])    //d3.max(d, function(d){return d.frequency;}
+        .domain([0, 105])    
         .range( [height, 0] );
       console.log(d3.max(d, d.frequency));
 
@@ -459,7 +450,6 @@
         .attr("transform", "translate(" + margin + "," + height + ")")
         .call(x_axis)
         .attr("class", "xAxis")
-
 
       // Add Y axis
       var y_axis = d3.axisLeft()
@@ -498,15 +488,13 @@
         .attr('fill', '#f0dce8')
         .style("fill-opacity", .6)
         .attr("stroke", "black")
-        .style('fill-stroke', .4)
-        //.attr("stroke-width", "10px");
-        
+        .style('fill-stroke', .4)        
     }
 </script>
 
+<!--Radar Chart-->
 <script>
 
-    // radar chart
     let radialScale = d3.scaleLinear()
         .domain([0,11])
         .range([0,250]);
@@ -577,20 +565,15 @@
       svg.append("path")
       .datum(coordinates)
       .attr("d",line)
-      //.attr("stroke-width", 3)
-      //.attr("stroke", "white")
-      //.attr("fill", "black")
-      //.attr("stroke-opacity", 1)
-      //.attr("fill-opacity", .5);
       .attr('fill', '#f0dce8')
       .style("fill-opacity", .7)
-      //.attr("stroke", "black")
     }
 
 </script>
 
+<!--Bubble Chart-->
 <script>
-   /*-----------------------Bubble Chart--------------------------*/
+
   function buildBubbleChart(data){
 
     // establishing variables
@@ -607,7 +590,6 @@
     var d = data.dataset,
     mark1 = data.mark1,
     mark2 = data.mark2;
-    //console.log(d);
 
     // scaling
     var xscale = d3.scaleBand()
@@ -616,7 +598,7 @@
       .padding(0.4);
 
     var yscale = d3.scaleLinear()
-      .domain([0, 105])    //d3.max(d, function(d){return d.frequency;}
+      .domain([0, 105])   
       .range( [height, 0] );
     console.log(d3.max(d, d.frequency));
 
@@ -643,11 +625,8 @@
       .attr("cx", function(d){ return xscale(d.letter) + margin + 15 })
       .attr("cy", height/2)
       .attr("r", function(d){ return (height - yscale(d.frequency))/5 })
-      //.style("fill", 'black')
-		  //.style("opacity", .30)
       .attr('fill', '#f0dce8')
       .style("fill-opacity", .4)
-      //.attr("stroke", "black")
   }
 </script>
 
@@ -908,11 +887,3 @@
     }
 
 </script>
-<!--
-  TO DO:
-  1）增加折线图
-  2）介绍页补充内容
-  3）介绍页增加back键 DONE
-  4）首页修改文案
-  5）尾页修改文案
--->
