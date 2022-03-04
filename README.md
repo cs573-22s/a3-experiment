@@ -9,8 +9,8 @@ Here is the [link](https://mnorales.github.io/a3-experiment/) to our project sit
 The purpose of this experiment is to determine which method of manipulating a graph to make it misleading is the most effective. We test three different kinds of visualizations: the pie chart, the histogram, and the scatter plot. Each visualization is manipulated in a different way. For the pie chart, the data is inaccurately represented through the slices. For the histogram, the x-axis makes the interpretation of the data ambigous. For the scatter plot, the upward trend of deaths is flattened through the omission of the y-axis tick labels. We hypothesize that the scatter plot will be least likely to be identified as misleading, due to the fact that participants will have to mouseover the datapoints to interpret the data correctly. 
 
 Questions Asked:
-- Do you think the graph is misleading? 
-- Why or why not?
+- Do you think the graph is misleading? (yes/no)
+- Why or why not? (short answer)
 
 <br/>
 
@@ -72,7 +72,7 @@ Participants will have difficulty understanding that the scatter plot is mislead
 
 ## Technical Achievements 
 
-<img src="tooltip.PNG" width="500" height="300">
+<img src="tooltip.PNG" width="650" height="300">
 
 Our technical achievement is the mouseover tooltip found in the scatterplot. The tooltip shows the year and number of deaths for a datapoint when moused over, and is not shown otherwise. 
 
