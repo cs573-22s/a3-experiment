@@ -170,8 +170,8 @@
         </div>
         <div class="div" id="experiment">
             <div id="vis"></div>
-            <p id="question-text">What percent of the larger data point is the smaller data point?</p>
-            <p>ex: If B makes up 50% of A, input 0.5 as your response.</p>
+            <p id="question-text">Please enter the percentage of the smaller data point to the larger data point.</p>
+            <p>ex: If A is 50% of B, please enter 0.5 in the box.</p>
             <input type="text" id="guess" name="guess" value=""></input><br>
             <button class="button" id="submit-answer" onclick="submitAnswer()">Submit</button>
         </div>
@@ -786,7 +786,7 @@
     }
     
     document.getElementById('question-count-text').innerHTML = "Question " + (trialCount+1) + "/50"
-    document.getElementById('question-text').innerHTML = "What percentage of " + biggerLetter + " does " + smallerLetter + " make up?"
+    document.getElementById('question-text').innerHTML = "Please enter the percentage of " + smallerLetter + " to " + biggerLetter
     }
 
     async function submitAnswer() {
@@ -794,8 +794,12 @@
       // checks for valid answer
       console.log(guess)
       // checks if guess is valid
-      if (isNaN(guess) || guess>1 || guess=="" || guess<0){
-        alert("Please check your answer.");
+      if (guess>1 || guess<0){
+        alert("Please check the value of your answer.");
+        return false;
+      }
+      else if(isNaN(guess) || guess=="" ){
+        alert("The answer can't be null.");
         return false;
       }
 
