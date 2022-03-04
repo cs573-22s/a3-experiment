@@ -17,7 +17,7 @@ The goal of our experiment is to test the effectiveness of word clouds and their
 In order to produce word clouds uncluttered by commonly used words that are ultimately not relevant to any theme (= stopwords), such as “the” or “and”, we decided to preprocess the texts. We used NLTK to do so (Natural Language Toolkit), a widely used python package used for natural language processing. We used the basic stopword list from NLTK to remove these unnecessary words, along with other functions to remove all punctuation and numbers from the texts. This left us with a list of all relevant words for each text, outputted to a csv/text file for ease of use. Utlizing these csv files, we were able to use the D3 library to create the word clouds for each article. 
 
 
-Screenshots of experiment:
+Screenshots of Experiment:
 
 Visualization 1: COVID-19 Article
 
@@ -82,10 +82,13 @@ Results from Experiment:
 
 Technical Achievements: 
 - utilized D3 to create word clouds presented in Qualtrics Survey
-- utilized word processing software in Python to create CSV files for word clouds 
+- utilized word processing software in Python to create CSV files for word clouds
+- utilized python script to create results visualizations
+- utilized qualtrics to create survey and sent it out to students 
 
 Design Achievements: 
-- small multiple to portray the differences in the accuracies for different topics
-
-potential idea: ? 
-- accuracy based on number of texts or words in a word cloud
+- utilized D3 library to create word cloud that was only one color and created similar shapes so there wouldn't be alternative factors contributing to the effectiveness of the word cloud
+- D3 API generated random word clouds and utilized random positioning
+- D3 API caused styling all of the word clouds to be created in a similar manner
+- designed the experiment so that the user would be able to read an article and then identify the associated word cloud right after, so that they would have the most accurate memory of the article 
+- each results visualization is utilizing color to differentiate between the different variables, like the relationship between accuracy and gender or the relationship between accuracy and major
