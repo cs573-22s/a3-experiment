@@ -10,7 +10,7 @@ Here is the [link](https://mnorales.github.io/a3-experiment/) to our project sit
 
 ### Graph 1: Pie Chart
 
-![Pie Chart](pie_chart.PNG)
+![Pie Chart](PieChart.PNG)
 
 **Description:**
 
