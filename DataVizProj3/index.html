@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<!-- Load d3.js -->
+<script src="https://d3js.org/d3.v7.js"></script>
+
+<!-- Load d3-cloud -->
+<script src="https://cdn.jsdelivr.net/gh/holtzy/D3-graph-gallery@master/LIB/d3.layout.cloud.js"></script>
+
+<!-- Create a div where the graph will take place -->
+<div id="my_dataviz"></div>
+
+<script>
+var dataCSV = d3.csv("travel_b_processed.csv");
+
+var file_words = [];
+var unique_words = [];
+var dict = {};
+
+dataCSV.then(function (csv){
+  csv.map(function(d){
+    file_words.push(Object.values(d).toString());
+  })
+
+  for(var i = 0; i < file_words.length; i++){
+    var word = file_words[i];
+    if(dict[word] === undefined){
+      dict[word] = 1;
+    } else {
+      dict[word] += 1;
+    }
+  }
+
+  for(let key in dict){
+    const uniWord = {
+      word: key,
+      freq: dict[key]
+    }
+    unique_words.push(uniWord);
+  }
+  <!-- List containing unique words and their frequencies -->
+  console.log(unique_words);
+
+  <!-- Calls the D3 word cloud API and places the words in the svg -->
+  var layout = d3.layout.cloud()
+    .size([width, height])
+    .words(unique_words.map(function(d) { return {text: d.word, size: d.freq}; }))
+    .padding(5)
+    .rotate(function() { return ~~(Math.random() * 2) * 90; })
+    .fontSize(function(d) {return d.size*10})
+    .on("end", draw);
+  layout.start();
+
+  <!-- Function that controls the attributes of the words. DO NOT CHANGE. -->
+  function draw(words) {
+    svg
+      .append("g")
+      .attr("transform", "translate(" + layout.size()[0] / 2 + "," + layout.size()[1] / 2 + ")")
+      .selectAll("text")
+      .data(words)
+      .enter().append("text")
+      .style("font-size", function(d) { return d.size + "px"; })
+      .style("fill", "#69b3a2")
+      .attr("text-anchor", "middle")
+      .style("font-family", "Impact")
+      .attr("transform", function(d) {
+        return "translate(" + [d.x, d.y] + ")rotate(" + d.rotate + ")";
+      })
+      .text(function(d) { return d.text; });
+  }
+});
+
+<!-- Margin of the svg. Can be changed depending on the amount of words and the size of their frequencies -->
+var margin = {top: 10, right: 10, bottom: 10, left: 10},
+  width = 600 - margin.left - margin.right,
+  height = 600 - margin.top - margin.bottom;
+
+var svg = d3.select("#my_dataviz").append("svg")
+  .attr("width", width + margin.left + margin.right)
+  .attr("height", height + margin.top + margin.bottom)
+  .append("g")
+  .attr("transform",
+    "translate(" + margin.left + "," + margin.top + ")");
+</script>
+</body>
+</html>
