@@ -47,10 +47,11 @@ Participants will have difficulty understanding that the histogram is misleading
 
 ### Graph 3: Scatterplot
 
-<img src="scatter.PNG" width="500" height="400">
+<img src="scatter.PNG" width="550" height="400">
 
 **Description:**
 
+This scatter plot shows the number of overdose deaths from synthetic opioids over two decades.Participants can mouseover the datapoints to learn more about the graph. The scatter plot is misleading because we omit the y-axis labels and lengthen the axis to make the sharp upward trend in deaths look more flat. It is not obvious by looking at the graph that there were 730 deaths in 1999 and 56516 deaths in 2020; this information can only be found by mousing over the datapoints. A scatter plot that was not intentionally misleading would have a labeled y-axis of the correct scale. 
 
 **Hypothesis:**
 
@@ -61,7 +62,7 @@ Participants will have difficulty understanding that the scatter plot is mislead
 
 ## Results
 
-(summary of results)
+(summary of results, include some example short answers)
 
 (rank visualizations by performance using avg log2Error)
 
