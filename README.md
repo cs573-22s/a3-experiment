@@ -116,7 +116,7 @@ According to the graph, there is no significant difference of mean error rate in
 1. Increase the charts number from 3 to 5, including: Bar Chart, Line Chart, Bubble chart, Radar chart, Circle bar chart.
 
 over view of all the 5 charts
-<img src="https://github.com/ColdCode0214/a3-experiment/blob/main/img/Thank%20You%20Page.png" width = "250" height = "400" alt="" align=center />
+<img src="https://github.com/ColdCode0214/a3-experiment/blob/main/img/Overview%20of%20the%205%20charts.png" width = "250" height = "400" alt="" align=center />
 
 2.	Data Validation : When inputting data, the system will check if the information format is legal and if it violates the not-null constrains.
 
@@ -124,10 +124,19 @@ over view of all the 5 charts
 
 
 # Design Achievements
-1.  Use of Color : We use pink as main background color to add humor and funny elements for the whole website. 
-    In addition, we also use gradient pink as the color style in order to avoid monotonous color problem.
-2.	Modern Font : The font we are using is Jokerman, which adding the website more Halloween. 
-    Moreover, the font matches the pink background well.
+1. Adding friendly interactive prompt: we add the example in the testing page, so that the participants can easily take the experiment.
+
+2. Colored Background: We use pink as main background color to add humor and funny elements for the whole website. 
+   In addition, we also use gradient pink as the color style in order to avoid monotonous color problem.
+
+3. Artistic Font: The font we are using is Jokerman, which adding the website more Halloween and more artistic. 
+   Moreover, the font matches the pink background well.
+
+4. Adding the introduction page: the participations can know more about this experiment especially about its goal and aim.
+
+5. Provide the connection information: we provide the connection information and the email in case the participants may have some problems when they taking the experiment.
+
+6. Button: we make the button change the color when you move the mouse over it, in order to make it more attractive.
 
 
 # References
