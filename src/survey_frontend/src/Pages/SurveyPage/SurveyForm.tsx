@@ -55,7 +55,6 @@ export default function SurveyForm (props: SurveyFormProps) {
    * @param action Action to take
    */
   function reducer (state: FormAnswer[], action: FormAction) : FormAnswer[] {
-    console.log(state)
     if (action.type === 'update') {
       // If key already exists, just update the array
       const currentAnswer = state.find((answer) => answer.questionNum === props.questionNum)

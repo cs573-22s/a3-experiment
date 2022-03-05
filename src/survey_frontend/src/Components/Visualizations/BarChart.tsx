@@ -30,7 +30,6 @@ export default function BarChart ({ data } : BarChartProps) {
       return { Condition: row.Condition, Signal: row.Signal, Region: getRegionLabel(row.Region) } as DatasetRow
     })
 
-    console.log(filteredData)
     d3.select(rootDOM).selectAll('svg').remove()
 
     const margin = { top: 30, right: 30, bottom: 70, left: 60 }

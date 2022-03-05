@@ -10,6 +10,7 @@ import { Typography } from '@mui/material'
 import { Dataset } from 'Types/Dataset'
 import BarChart from 'Components/Visualizations/BarChart'
 import BrainChart from 'Components/Visualizations/BrainChart'
+import TopographicChart from 'Components/Visualizations/TopographicChart'
 
 /**
  * Survey Page and related types
@@ -79,6 +80,8 @@ export default function SurveyPage () {
                         return <BarChart data={dataset.current[questionNum]} />
                       } else if (dataset.current[questionNum].type === 'brain') {
                         return <BrainChart data={dataset.current[questionNum]} />
+                      } else if (dataset.current[questionNum].type === 'topographic') {
+                        return <TopographicChart data={dataset.current[questionNum]} />
                       } else {
                         return (
                           <Typography variant="h2" component="div" gutterBottom>
@@ -92,7 +95,7 @@ export default function SurveyPage () {
                 <Box sx= { { width: '100%', height: '100%', overflow: 'auto' } } >
                   <SurveyForm
                     questionNum={questionNum}
-                    lastQuestion={questionNum === 2}
+                    lastQuestion={questionNum >= dataset.current.length}
                     onPrevious={() => setQuestionNum(questionNum - 1)}
                     onNext={() => setQuestionNum(questionNum + 1)}
                     onSubmit={ handleSubmit }

@@ -53,7 +53,6 @@ export default function BrainChart ({ data } : BrainChartProps) {
       .join('circle')
       .attr('cx', d => {
         const xCoord = brainCoordinates.get(d.Region)
-        console.log(xCoord)
         if (xCoord) {
           return xCoord.x
         } else {
@@ -62,7 +61,6 @@ export default function BrainChart ({ data } : BrainChartProps) {
       })
       .attr('cy', d => {
         const xCoord = brainCoordinates.get(d.Region)
-        console.log(xCoord)
         if (xCoord) {
           return xCoord.y
         } else {

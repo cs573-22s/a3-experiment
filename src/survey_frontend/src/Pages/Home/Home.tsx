@@ -12,10 +12,6 @@ import { useNavigate } from 'react-router-dom'
 function Home () {
   const navigate = useNavigate()
 
-  useEffect(() => {
-    fetch('/api/dataset').then(res => res.json()).then(data => console.log(data))
-  }, [])
-
   return (
     <>
       <TopMenuBar />
