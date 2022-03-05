@@ -1,0 +1,179 @@
+---
+title: "a3 Results Analysis"
+output: html_notebook
+---
+
+To obtain the ranking, calculate and report the average log2Error for each visualization across all trials and participants. This should be straightforward to do in a spreadsheet.
+
+```{r}
+library(readxl)
+a3responses <- read_excel("a3responses.xlsx")
+
+df = data.frame(a3responses)
+
+# bar
+
+logError1 = df[,c(1,8)]
+colnames(logError1)[1] = "logError1"
+logError1$test = "bar2d_1"
+logError1 = logError1[,-2]
+
+logError2 = df[,c(5,8)]
+colnames(logError2)[1] = "logError2"
+logError2$test = "bar2d_2"
+logError2 = logError2[,-2]
+
+logError1$logError1 = replace(logError1$logError1, logError1$logError1==-3, 0)
+logError2$logError2 = replace(logError2$logError2, logError2$logError2==-3, 0)
+
+logErrorBar2d = cbind(logError1, logError2)
+logErrorBar2d$logError1 = as.numeric(logErrorBar2d$logError1)
+logErrorBar2d$logError2 = as.numeric(logErrorBar2d$logError2)
+logErrorBar2d = na.omit(logErrorBar2d)
+logErrorBar2d$mean <- rowMeans(logErrorBar2d[,c('logError1', 'logError2')], na.rm=TRUE)
+logErrorBar2d$test = "bar2d"
+logErrorBar2d = logErrorBar2d[,c(2,5)]
+
+logError3 = df[,c(9,8)]
+colnames(logError3)[1] = "logError3"
+logError3$test = "bar3d_1"
+logError3 = logError3[,-2]
+
+logError4 = df[,c(13,8)]
+colnames(logError4)[1] = "logError4"
+logError4$test = "bar3d_2"
+logError4 = logError4[,-2]
+
+logError3$logError3 = replace(logError3$logError3, logError3$logError3==-3, 0)
+logError4$logError4 = replace(logError4$logError4, logError4$logError4==-3, 0)
+
+logErrorBar3d = cbind(logError3, logError4)
+logErrorBar3d$logError3 = as.numeric(logErrorBar3d$logError3)
+logErrorBar3d$logError4 = as.numeric(logErrorBar3d$logError4)
+logErrorBar3d = na.omit(logErrorBar3d)
+logErrorBar3d$mean <- rowMeans(logErrorBar3d[,c('logError3', 'logError4')], na.rm=TRUE)
+logErrorBar3d$test = "bar3d"
+logErrorBar3d = logErrorBar3d[,c(2,5)]
+
+# pie
+
+logError5 = df[,c(17,8)]
+colnames(logError5)[1] = "logError5"
+logError5$test = "pie2d_1"
+logError5 = logError5[,-2]
+
+logError6 = df[,c(21,8)]
+colnames(logError6)[1] = "logError6"
+logError6$test = "pie2d_2"
+logError6 = logError6[,-2]
+
+logError5$logError5 = replace(logError5$logError5, logError5$logError5==-3, 0)
+logError6$logError6 = replace(logError6$logError6, logError6$logError6==-3, 0)
+
+logErrorPie2d = cbind(logError5, logError6)
+logErrorPie2d$logError5 = as.numeric(logErrorPie2d$logError5)
+logErrorPie2d$logError6 = as.numeric(logErrorPie2d$logError6)
+logErrorPie2d = na.omit(logErrorPie2d)
+logErrorPie2d$mean <- rowMeans(logErrorPie2d[,c('logError5', 'logError6')], na.rm=TRUE)
+logErrorPie2d$test = "pie2d"
+logErrorPie2d = logErrorPie2d[,c(2,5)]
+
+logError7 = df[,c(25,8)]
+colnames(logError7)[1] = "logError7"
+logError7$test = "pie3d_1"
+logError7 = logError7[,-2]
+
+logError8 = df[,c(29,8)]
+colnames(logError8)[1] = "logError8"
+logError8$test = "pie3d_2"
+logError8 = logError8[,-2]
+
+logError7$logError7 = replace(logError7$logError7, logError7$logError7==-3, 0)
+logError8$logError8 = replace(logError8$logError8, logError8$logError8==-3, 0)
+
+logErrorPie3d = cbind(logError7, logError8)
+logErrorPie3d$logError7 = as.numeric(logErrorPie3d$logError7)
+logErrorPie3d$logError8 = as.numeric(logErrorPie3d$logError8)
+logErrorPie3d = na.omit(logErrorPie3d)
+logErrorPie3d$mean <- rowMeans(logErrorPie3d[,c('logError7', 'logError8')], na.rm=TRUE)
+logErrorPie3d$test = "pie3d"
+logErrorPie3d = logErrorPie3d[,c(2,5)]
+
+# heat
+
+logError9 = df[,c(33,8)]
+colnames(logError9)[1] = "logError9"
+logError9$test = "heat2d_1"
+logError9 = logError9[,-2]
+
+logError10 = df[,c(37,8)]
+colnames(logError10)[1] = "logError10"
+logError10$test = "heat2d_2"
+logError10 = logError10[,-2]
+
+logError9$logError9 = replace(logError9$logError9, logError9$logError9==-3, 0)
+logError10$logError10 = replace(logError10$logError10, logError10$logError10==-3, 0)
+
+logErrorHeat2d = cbind(logError9, logError10)
+logErrorHeat2d$logError9 = as.numeric(logErrorHeat2d$logError9)
+logErrorHeat2d$logError10 = as.numeric(logErrorHeat2d$logError10)
+logErrorHeat2d = na.omit(logErrorHeat2d)
+logErrorHeat2d$mean <- rowMeans(logErrorHeat2d[,c('logError9', 'logError10')], na.rm=TRUE)
+logErrorHeat2d$test = "heat2d"
+logErrorHeat2d = logErrorHeat2d[,c(2,5)]
+
+logError11 = df[,c(41,8)]
+colnames(logError11)[1] = "logError11"
+logError11$test = "heat3d_1"
+logError11 = logError11[,-2]
+
+logError12 = df[,c(45,8)]
+colnames(logError12)[1] = "logError12"
+logError12$test = "heat3d_2"
+logError12 = logError12[,-2]
+
+logError11$logError11 = replace(logError11$logError11, logError11$logError11==-3, 0)
+logError12$logError12 = replace(logError12$logError12, logError12$logError12==-3, 0)
+
+logErrorHeat3d = cbind(logError11, logError12)
+logErrorHeat3d$logError11 = as.numeric(logErrorHeat3d$logError11)
+logErrorHeat3d$logError12 = as.numeric(logErrorHeat3d$logError12)
+logErrorHeat3d = na.omit(logErrorHeat3d)
+logErrorHeat3d$mean <- rowMeans(logErrorHeat3d[,c('logError11', 'logError12')], na.rm=TRUE)
+logErrorHeat3d$test = "heat3d"
+logErrorHeat3d = logErrorHeat3d[,c(2,5)]
+
+data = rbind(logErrorBar2d, logErrorBar3d, logErrorPie2d, logErrorPie3d, logErrorHeat2d, logErrorHeat3d)
+# data$logError = replace(data$logError, data$logError==-3, 0)
+```
+
+Use Bootstrapped 95% confidence intervals for your error upper and lower bounds. Include these in your figures. Bootstrapped confidence intervals are easily implemented in R + ggplot2 using the stat_summary geom. You can also use Excel, Python, or many many other tools. Bootstrapped 95% CIs are very useful in modern experiment practice.
+
+```{r}
+library(ggplot2)
+library(dplyr)
+library(Hmisc)
+
+# data$logError = as.numeric(data$logError)
+# data = na.omit(data)
+# data %>% mutate(bin = cut(logError, breaks = c(0,1,3,8)))
+
+# d = ggplot(data, aes(x = test, y = logError)) +
+#   geom_boxplot(notch=FALSE, outlier.shape=NA, fill="red", alpha=0.1) + 
+#   theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1)) +
+#   coord_flip() ; d
+# ggsave("log2Error.png")
+
+
+t = ggplot(data, aes(x = reorder(test, -mean), y = mean)) +
+  theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1)) +
+  coord_flip() +
+  xlab("Experiments") + ylab("Log Error") + 
+  stat_summary(fun.data = "mean_cl_boot", geom = "pointrange",fun.args=list(conf.int=.95)); t
+ggsave("log2Error.png"); t
+
+```
+
+Include example images of each visualization as they appeared in your experiment (i.e. if you used a pie chart show the actual pie chart you used in the experiment along with the markings, not an example from Google Images).
+
+

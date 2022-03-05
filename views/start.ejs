@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include("./partials/head.ejs") %>
+
+<body>
+
+
+<div class="experiment-container">
+    <div class="experiment experiment--0">
+        <div class="experiment__viz d-flex align-items-center justify-content-center w-100">
+            <div class="text-center">
+                <p><strong>Visualization Experiment</strong></p>
+                <p>In this experiment you will be asked to judge the percentage of smaller value to larger value.</p>
+                <p>
+                    There are 18 questions and you will take an estimate of 10
+                    minutes to complete this experiment.
+                </p>
+                <p>
+                    We won't record any information except your answers. Click "Next"
+                    to begin the experiment.
+                </p>
+                <form id="formExperiment" action='/test1' method='POST'>
+                    <input type='hidden' name='userId' placeholder="Username" >
+                    <br>
+                    <input class="btn btn-primary experiment__btn-next" type='submit' value="Next">
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $('#formExperiment').submit(function() {
+        const userId = (Math.random() + 1).toString(36).substring(2) + (Math.random() + 1).toString(36).substring(2);
+        $('[name="userId"]').val(userId);
+        return true;
+    });
+    
+</script>
+
+</body>
+</html>

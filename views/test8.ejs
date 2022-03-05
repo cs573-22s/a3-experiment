@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include("./partials/head.ejs") %>
+
+<body>
+<style>
+    #chartdiv3dPie {
+        width: 100%;
+        height: 500px;
+    }
+
+</style>
+<div class="experiment experiment--8">
+    <div class="experiment__viz">
+        <p><strong>Experiment 8</strong></p>
+        <div id="chartdiv3dPie"></div>
+
+    </div>
+    <div class="experiment__qa">
+        <form action='/test9' method='POST'>
+            <p>What percent is blue slice of the red slice?</p>
+            <input type='number' name='input1' class="form-control mb-1"  required>
+            <input id="userTime" type='hidden' name='time' class="form-control mb-1">
+            <input id="userTime" type='hidden' name='time' class="form-control mb-1">
+            <br>
+            <br>
+            <input class="btn btn-primary experiment__btn-next" type='submit'>
+        </form>
+    </div>
+</div>
+<script defer>
+
+    (() => {
+        am4core.ready(function() {
+
+            // Themes begin
+            am4core.useTheme(am4themes_animated);
+            // Themes end
+
+            var chart = am4core.create("chartdiv3dPie", am4charts.PieChart3D);
+            // chart.hiddenState.properties.opacity = 0; // this creates initial fade-in
+
+            chart.data = [
+                {
+                    country: "Lithuania",
+                    litres: 237,
+                    color: am4core.color("red")
+                },
+                {
+                    country: "Czech Republic",
+                    litres: 178,
+                    color: am4core.color("#555")
+                },
+                {
+                    country: "Ireland",
+                    litres: 200,
+                    color: am4core.color("#666")
+                },
+                {
+                    country: "Germany",
+                    litres: 99,
+                    color: am4core.color("blue")
+                },
+                {
+                    country: "Australia",
+                    litres: 139.9,
+                    color: am4core.color("#777")
+                },
+                {
+                    country: "Austria",
+                    litres: 157,
+                    color: am4core.color("#888")
+                }
+            ];
+
+            // chart.innerRadius = am4core.percent(40);
+            chart.depth = 50
+            chart.angle = 40
+
+            var series = chart.series.push(new am4charts.PieSeries3D());
+            series.dataFields.value = "litres";
+            series.dataFields.category = "country";
+            series.slices.template.cornerRadius = 5;
+            series.slices.template.propertyFields.fill = "color";
+
+            series.colors.step = 3;
+            series.labels.template.disabled = true;
+            series.ticks.template.disabled = true;
+            series.slices.template.tooltipText = "";
+
+        }); // end am4core.ready()
+    })();
+
+</script>
+</body>
+</html>

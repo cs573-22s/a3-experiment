@@ -1,0 +1,517 @@
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js" integrity="sha512-H6cPm97FAsgIKmlBA4s774vqoN24V5gSQL4yBTDOY2su2DeXZVhQPxFK4P6GPdnZqM9fg1G3cMv5wD7e6cFLZQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/lodash.js/2.4.1/lodash.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/three@0.101.1/examples/js/controls/OrbitControls.js"></script>
+<script src="https://cdn.skypack.dev/pin/three@v0.137.5-HJEdoVYPhjkiJWkt6XIa/mode=imports/optimized/three.js"></script>
+
+
+<script defer>
+
+    (() => {
+        // let dataset =  [73, 18, 56, 38, 4]
+        let dataset3dBar1 = dataset1; // change to dataset you want to use
+        let firstBar = bar1; // change to blue bar
+        let secondBar = bar2; // change to red bar
+
+
+    let colors = ['grey', 'grey', 'grey', 'grey', 'grey'] // color scheme for bars
+
+    function setColors(index1, index2) {
+        colors[index1] = 'blue';
+        colors[index2] = 'red';
+    }
+    setColors(firstBar, secondBar);
+
+    // Values
+    var tick = 0;
+    var size = 0.25;
+
+
+    // Arrays
+    var bar = new Array();
+
+    var camera;
+    // var scene;
+
+    ///////////////////////
+    // Initial Setup     //
+    ///////////////////////
+
+    init3D();
+
+    function init3D() {
+        init3DScene();
+        initListeners();
+
+    }
+
+    function initListeners() {
+        //window.onWindowResize()
+        //(window).resize(onWindowResize);
+    }
+
+    function init3DScene() {
+
+        // Setup Scene / Camera
+        scene = new THREE.Scene();
+        camera = new THREE.PerspectiveCamera(35, window.innerWidth / window.innerHeight, 0.1, 2000);
+
+        camera.position.set(100, 100, 300);
+        camera.lookAt(new THREE.Vector3(20, 40, 0));
+
+        // Setup Renderer
+        renderer = new THREE.WebGLRenderer({
+            antialias: true
+        });
+
+        renderer.shadowMap.enabled = true;
+        renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+
+        renderer.setSize(window.innerWidth / 2, window.innerHeight);
+        renderer.render(scene, camera);
+
+
+
+        document.getElementById('webGL-container1').append(renderer.domElement)
+        //$("#webGL-container").append(renderer.domElement);
+        controls = new THREE.OrbitControls (camera, renderer.domElement);
+        controls.noPan = true;
+
+        // var gridXZ = new THREE.GridHelper(100, 10);
+        // gridXZ.setColors( new THREE.Color(0xff0000), new THREE.Color(0xffffff) );
+        // scene.add(gridXZ);
+
+        let gXY = new THREE.PlaneGeometry(3, 10, 1, 10);
+        ToQuads(gXY);
+        let mXY = new THREE.LineBasicMaterial({color: "black"});
+        let grXY = new THREE.LineSegments(gXY, mXY);
+        grXY.scale.set(10, 8, 1);
+        grXY.position.set(6, 40, -2.5);
+        scene.add(grXY);
+
+        // let gXZ = new THREE.PlaneGeometry(1, 1, 3, 10);
+        // ToQuads(gXZ);
+        // let mXZ = new THREE.LineBasicMaterial({color: "black"});
+        // let grXZ = new THREE.LineSegments(gXZ, mXZ);
+        // grXZ.scale.set(10, 4, 1);
+        // grXZ.rotation.x = Math.PI * -0.5;
+        // grXZ.position.set(0, 0, 0);
+        // scene.add(grXZ);
+
+        // let gYZ = new THREE.PlaneGeometry(10, 3, 10, 1);
+        // ToQuads(gYZ);
+        // let mYZ = new THREE.LineBasicMaterial({color: "black"});
+        // let grYZ = new THREE.LineSegments(gYZ, mYZ);
+        // grYZ.scale.set(8, 10, 1);
+        // grYZ.rotation.x = Math.PI * -0.5;
+        // grYZ.rotation.y = Math.PI / 2;
+        // grYZ.position.set(21, 40, -12.5);
+        // scene.add(grYZ);
+
+        init3DElementBar()
+
+
+    }
+
+    function ToQuads(g) {
+        let p = g.parameters;
+        let segmentsX = (g.type == "TorusBufferGeometry" ? p.tubularSegments : p.radialSegments) || p.widthSegments || p.thetaSegments || (p.points.length - 1) || 1;
+        let segmentsY = (g.type == "TorusBufferGeometry" ? p.radialSegments : p.tubularSegments) || p.heightSegments || p.phiSegments || p.segments || 1;
+        let indices = [];
+        for (let i = 0; i < segmentsY + 1; i++) {
+            let index11 = 0;
+            let index12 = 0;
+            for (let j = 0; j < segmentsX; j++) {
+                index11 = (segmentsX + 1) * i + j;
+                index12 = index11 + 1;
+                let index21 = index11;
+                let index22 = index11 + (segmentsX + 1);
+                indices.push(index11, index12);
+                if (index22 < ((segmentsX + 1) * (segmentsY + 1) - 1)) {
+                    indices.push(index21, index22);
+                }
+            }
+            if ((index12 + segmentsX + 1) <= ((segmentsX + 1) * (segmentsY + 1) - 1)) {
+                indices.push(index12, index12 + segmentsX + 1);
+            }
+        }
+        g.setIndex(indices);
+    }
+
+
+    function init3DElementBar() {
+
+        createFloor();
+
+        //createBar(5, -25, red);
+        createBar(0)
+
+        createLight();
+    }
+
+    ///////////////////////
+    // Interactions      //
+    ///////////////////////
+
+    function onWindowResize() {
+
+        windowHalfX = window.innerWidth / 2;
+        windowHalfY = window.innerHeight / 2;
+
+        camera.aspect = window.innerWidth / window.innerHeight;
+        camera.updateProjectionMatrix();
+        renderer.setSize(window.innerWidth, window.innerHeight);
+    }
+
+    ///////////////////////
+    // Create Elements   //
+    ///////////////////////
+
+    function createLight() {
+
+        var ambient = new THREE.AmbientLight(0x999999);
+        var spot = new THREE.SpotLight({
+            color: 0xffffff,
+            intensity: 0.1
+        });
+
+        spot.position.set(-50, 100, 100);
+        spot.castShadow = true;
+        //spot.shadowDarkness = 0.2;
+
+        scene.add(ambient, spot);
+    }
+
+    function createBar(z) {
+
+        for (var i = 0; i < dataset3dBar1.length; i += 1) {
+
+            var geometry = new THREE.BoxGeometry(2, 2, 2);
+            geometry.applyMatrix(new THREE.Matrix4().makeTranslation(0, 1, z));
+
+            var material = new THREE.MeshPhongMaterial({
+                color: colors[i]
+            });
+
+            id = new THREE.Mesh(geometry, material);
+
+            id.position.x = i * 5;
+            id.name = "bar1-" + i;
+            id.castShadow = true;
+            id.receiveShadow = true;
+
+            scene.add(id);
+            bar.push(id);
+
+            selectedBar = bar[Math.floor(bar.length / 2)];
+        }
+
+        for (var i = 0; i < bar.length; i++) {
+
+            var tween = new TweenMax.to(bar[i].scale, 1, {
+
+                ease: Elastic.easeOut.config(1, 1),
+
+                y: dataset3dBar1[i] / 3, // might need to change scaling depending on data sent
+                delay: i * 0.25
+
+            });
+        }
+
+
+    }
+
+    function createFloor() {
+
+        var geometry = new THREE.BoxGeometry(2000, 2000, 2000);
+        var material = new THREE.MeshPhongMaterial({
+            color: 0xcccccc,
+            shininess: 20
+        });
+        material.side = THREE.BackSide
+
+        floor = new THREE.Mesh(geometry, material);
+
+        floor.position.set(0, 1000, 0);
+        floor.rotation.x = THREE.Math.degToRad(-90);
+
+        floor.receiveShadow = true;
+
+        scene.add(floor);
+    }
+
+    ///////////////////////
+    // Render            //
+    ///////////////////////
+
+    function render() {
+
+        tick++;
+
+        requestAnimationFrame(render);
+        renderer.render(scene, camera);
+    };
+
+    function animate() {
+        controls.update();
+        requestAnimationFrame( animate );
+        renderer.render( scene, camera );
+    }
+
+
+    setInterval(function(){
+
+        scene.rotation.y += 0.0003;
+    }, 5);
+
+    render();
+    animate();
+    })();
+
+</script>
+<!--<script defer defer>
+
+
+    (() => {
+        // let dataset =  [73, 18, 56, 38, 4]
+        let dataset3dBar2 = dataset2; // change to dataset you want to use
+        let firstBar2 = bar1; // change to blue bar
+        let secondBar2 = bar2; // change to red bar
+
+
+        let colors = ['grey', 'grey', 'grey', 'grey', 'grey'] // color scheme for bars
+
+        function setColors(index1, index2) {
+            colors[index1] = 'blue';
+            colors[index2] = 'red';
+        }
+        setColors(firstBar2, secondBar2);
+
+        // Values
+        var tick2 = 0;
+        var size = 0.25;
+
+
+        // Arrays
+        var bar2 = new Array();
+
+        var camera2;
+        var scene2;
+
+        ///////////////////////
+        // Initial Setup     //
+        ///////////////////////
+
+        init3D();
+
+        function init3D() {
+            init3DScene();
+            initListeners();
+
+        }
+
+        function initListeners() {
+            //window.onWindowResize()
+            //(window).resize(onWindowResize);
+        }
+
+        function init3DScene() {
+
+            // Setup Scene / Camera
+            scene2 = new THREE.Scene();
+            camera2 = new THREE.PerspectiveCamera(35, window.innerWidth / window.innerHeight, 0.1, 2000);
+
+            camera2.position.set(100, 100, 300);
+            camera2.lookAt(new THREE.Vector3(20, 40, 0));
+
+            // Setup Renderer
+            renderer = new THREE.WebGLRenderer({
+                antialias: true
+            });
+
+            renderer.shadowMap.enabled = true;
+            renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+
+            renderer.setSize(window.innerWidth, window.innerHeight);
+            renderer.render(scene2, camera2);
+
+
+
+            document.getElementById('webGL-container2').append(renderer.domElement)
+            //$("#webGL-container").append(renderer.domElement);
+            controls = new THREE.OrbitControls (camera2, renderer.domElement);
+
+            // var gridXZ = new THREE.GridHelper(100, 10);
+            // gridXZ.setColors( new THREE.Color(0xff0000), new THREE.Color(0xffffff) );
+            // scene.add(gridXZ);
+
+            let gXY = new THREE.PlaneGeometry(3, 10, 1, 10);
+            ToQuads(gXY);
+            let mXY = new THREE.LineBasicMaterial({color: "black"});
+            let grXY = new THREE.LineSegments(gXY, mXY);
+            grXY.scale.set(10, 8, 1);
+            grXY.position.set(6, 40, -2.5);
+            scene.add(grXY);
+
+
+            init3DElementBar()
+
+
+        }
+
+        function ToQuads(g) {
+            let p = g.parameters;
+            let segmentsX = (g.type == "TorusBufferGeometry" ? p.tubularSegments : p.radialSegments) || p.widthSegments || p.thetaSegments || (p.points.length - 1) || 1;
+            let segmentsY = (g.type == "TorusBufferGeometry" ? p.radialSegments : p.tubularSegments) || p.heightSegments || p.phiSegments || p.segments || 1;
+            let indices = [];
+            for (let i = 0; i < segmentsY + 1; i++) {
+                let index11 = 0;
+                let index12 = 0;
+                for (let j = 0; j < segmentsX; j++) {
+                    index11 = (segmentsX + 1) * i + j;
+                    index12 = index11 + 1;
+                    let index21 = index11;
+                    let index22 = index11 + (segmentsX + 1);
+                    indices.push(index11, index12);
+                    if (index22 < ((segmentsX + 1) * (segmentsY + 1) - 1)) {
+                        indices.push(index21, index22);
+                    }
+                }
+                if ((index12 + segmentsX + 1) <= ((segmentsX + 1) * (segmentsY + 1) - 1)) {
+                    indices.push(index12, index12 + segmentsX + 1);
+                }
+            }
+            g.setIndex(indices);
+        }
+
+
+        function init3DElementBar() {
+
+            createFloor();
+
+            //createBar(5, -25, red);
+            createBar(0)
+
+            createLight();
+        }
+
+        ///////////////////////
+        // Interactions      //
+        ///////////////////////
+
+        function onWindowResize() {
+
+            windowHalfX = window.innerWidth / 2;
+            windowHalfY = window.innerHeight / 2;
+
+            camera2.aspect = window.innerWidth / window.innerHeight;
+            camera2.updateProjectionMatrix();
+            renderer.setSize(window.innerWidth, window.innerHeight);
+        }
+
+        ///////////////////////
+        // Create Elements   //
+        ///////////////////////
+
+        function createLight() {
+
+            var ambient = new THREE.AmbientLight(0x999999);
+            var spot = new THREE.SpotLight({
+                color: 0xffffff,
+                intensity: 0.1
+            });
+
+            spot.position.set(-50, 100, 100);
+            spot.castShadow = true;
+            //spot.shadowDarkness = 0.2;
+
+            scene2.add(ambient, spot);
+        }
+
+        function createBar(z) {
+
+            for (var i = 0; i < dataset3dBar2.length; i += 1) {
+
+                var geometry = new THREE.BoxGeometry(2, 2, 2);
+                geometry.applyMatrix(new THREE.Matrix4().makeTranslation(0, 1, z));
+
+                var material = new THREE.MeshPhongMaterial({
+                    color: colors[i]
+                });
+
+                id = new THREE.Mesh(geometry, material);
+
+                id.position.x = i * 5;
+                id.name = "bar2-" + i;
+                id.castShadow = true;
+                id.receiveShadow = true;
+
+                scene2.add(id);
+                bar2.push(id);
+
+                selectedBar = bar2[Math.floor(bar2.length / 2)];
+            }
+
+            for (var i = 0; i < bar2.length; i++) {
+
+                var tween = new TweenMax.to(bar2[i].scale, 1, {
+
+                    ease: Elastic.easeOut.config(1, 1),
+
+                    y: dataset3dBar2[i] / 3, // might need to change scaling depending on data sent
+                    delay: i * 0.25
+
+                });
+            }
+
+
+        }
+
+        function createFloor() {
+
+            var geometry = new THREE.BoxGeometry(2000, 2000, 2000);
+            var material = new THREE.MeshPhongMaterial({
+                color: 0xcccccc,
+                shininess: 20
+            });
+            material.side = THREE.BackSide
+
+            floor = new THREE.Mesh(geometry, material);
+
+            floor.position.set(0, 1000, 0);
+            floor.rotation.x = THREE.Math.degToRad(-90);
+
+            floor.receiveShadow = true;
+
+            scene2.add(floor);
+        }
+
+        ///////////////////////
+        // Render            //
+        ///////////////////////
+
+        function render() {
+
+            tick2++;
+
+            requestAnimationFrame(render);
+            renderer.autoClear = false;
+            renderer.render(scene2, camera2);
+        };
+
+        function animate() {
+            controls.update();
+            requestAnimationFrame( animate );
+            renderer.render( scene2, camera2 );
+        }
+
+
+        setInterval(function(){
+
+            scene2.rotation.y += 0.0003;
+        }, 5);
+
+        render();
+        animate();
+    })();
+
+</script>-->
