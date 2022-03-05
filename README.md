@@ -76,16 +76,19 @@ Thus this type of visualization not ideal for presenting the relative sizes of d
 Based on our results, we see that radar graphs returns the lowest mean log error which confirming our hypothesis that radar visualizations are more effective for determining relative size. 
 
 Our radar charts has the quantile line which give the participant a general ideal of what percentage it is, it helps the participant of our survey to determine the size and improved its result.
+
 <img src="https://github.com/ColdCode0214/a3-experiment/blob/main/img/Log%20Scale%20of%20Error.png" width = "300" height = "250" alt="" align=center />
 
 ## Mean Score By Major
 According to the graph, there is no significant difference of mean error rate in different major.
 
 In fact, this result is beyond our expection. Before the experiment, we guessed that some major may make the students be good at observing the figures. However, according to the data we received, we couldn't draw that conclusion. One possible reason may be the data set size is too small and it only contained four majors.
+
 <img src="https://github.com/ColdCode0214/a3-experiment/blob/main/img/Mean%20score%20by%20major.png" width = "300" height = "250" alt="" align=center />
 
 ## Mean Score By Age
 According to the graph, there is no significant difference in mean error in term of age.
+
 <img src="https://github.com/ColdCode0214/a3-experiment/blob/main/img/Mean%20score%20by%20age.png" width = "300" height = "250" alt="" align=center />
 
 ## Mean Score By Country
@@ -110,16 +113,22 @@ According to the graph, there is no significant difference of mean error rate in
 
 
 # Technical Achievements
-1. **增加不合法数据校验** - 提交结果时如有不合法数据，例如‘-0.5’, 'abc'， ‘100’等，将  有弹窗提醒
-1.	Increase the charts number from 3 to 5, including: Bar Chart, Line Chart, Bubble chart, Radar chart, Circle bar chart
+1. Increase the charts number from 3 to 5, including: Bar Chart, Line Chart, Bubble chart, Radar chart, Circle bar chart.
 
-2.	Data Validation – When inputting data, the system will check if the information format is legal and if it violates the not-null constrains.
+over view of all the 5 charts
+<img src="https://github.com/ColdCode0214/a3-experiment/blob/main/img/Thank%20You%20Page.png" width = "250" height = "400" alt="" align=center />
 
-3.	Adding more attributes to analyze – We added new dimensions such as ages, majors and gender , in our analyze we can see our stats numbers from different dimensions.
+2.	Data Validation : When inputting data, the system will check if the information format is legal and if it violates the not-null constrains.
+
+3.	Adding more attributes to analyze : We added new dimensions such as ages, majors and gender , in our analyze we can see our stats numbers from different dimensions.
 
 
 # Design Achievements
-1. **增加背景颜色**
+1.  Use of Color : We use pink as main background color to add humor and funny elements for the whole website. 
+    In addition, we also use gradient pink as the color style in order to avoid monotonous color problem.
+2.	Modern Font : The font we are using is Jokerman, which adding the website more Halloween. 
+    Moreover, the font matches the pink background well.
+
 
 # References
 
