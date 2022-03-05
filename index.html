@@ -1,13 +1,895 @@
-<script src="https://d3js.org/d3.v4.min.js"></script>
+<!DOCTYPE html>
+<html>
+<head>
+    <title>CS573 A3 Experiment</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Raleway&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Open+Sans" /><link rel='stylesheet' href='//fonts.googleapis.com/css?family=Raleway' type='text/css' />
+    <script src="https://d3js.org/d3.v4.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/holtzy/D3-graph-gallery@master/LIB/d3-scale-radial.js"></script>
+    <style>
+    html, body{
+        background-image: linear-gradient(#f0dce8, #ec70b4);
+        height:100%;
+    }
+    
+    .div{
+        flex-direction: column;
+        margin: 0 auto;
+        background-image: linear-gradient(#f0dce8);
+        width: 550px;
+        padding: 10px;
+        text-align: left;
+        margin-top: 10px;
+    }
+  
+    .header{
+        margin-top: 30px;
+        font-family: "Jokerman";
+    }
+    h1{
+        color:rgb(0, 0, 0);
+        font-weight: 100;
+        letter-spacing: 5px;
+        text-shadow: 4px 4px #00000010;
+        font-size: 56px;
+        margin: 0.1em;
+    }
+    h2{
+        color:#414141;
+        text-shadow: 2px 2px #00000010;
+        font-size: 14px;
+    }
+    p, form{
+        margin: 20px 40px;
+        font-family: "Bradley Hand ITC";
+        font-size: 16px;
+        line-height: 140%;
+    }
+    option{
+        font-family: "Open Sans";
+        font-size: 12px
+    }
 
+    .button{
+        margin: 0.75em;
+        width: 8.5rem;
+        height: 3rem;
+        font-family: "Jokerman";
+        font-size: 24px;
+        color: white;
+        background-color:#f84747;
+        border-radius: 10px;
+        border: none;
+        box-shadow: 2px 2px #ff00001a;
+    }
+    .button:focus { outline:0; }
+    .button:hover { background-color: #c100fc;}
+    .button:active{ transform: translateY(2px); }
+    #get-results{
+        width:9rem;
+        height:3.5rem;
+    }
 
-<style>
-</style>
-
+    </style>
+</head>
 <body>
-  <h1> Experiment </h1>
+    <div id="welcome-screen" style="display:block">
+        <div class="div header">
+            <h2>CS573 Data Visualization</h2>
+            <h1>Welcome</h1>
+        </div>
+        <div class="div" id="instructions">
+            <p>Thank you very much for participating in our study!</p>
+            <p>This is a homework assignment for a data visualization course (CS573), 
+              and is being conducted by Yujun Mao, Jiani Wang, Ziyang Xu and Yan Zhang.</p>
+            <p>Press the start button to continue.</p>
+            
+            <button class="button" id="start" onclick="return show('welcome-screen','introduction')">Start</button>
+        </div>
+    </div>
+
+    <div id="introduction" style="display:none">
+      <div class="div header">
+          <h2>CS573 Data Visualization</h2>
+          <h1>Introduction of the experiment</h1>
+      </div>
+      <div class="div" id="intro">
+        <p>The original thought of this experiment came from William Cleveland and Robert McGill's paper in 1984 
+          published the results of several controlled experiments that pitted bar charts against pies and stacked-bar variants. </p>
+        <p>In this experiment, You will be given a different type of data visualizations per question. 
+          For each question, you are asked to estimate the proportion of a smaller shape to the larger one. 
+          You are not supposed to use measurement tools, 
+          but just make a quickly estimate and fill in your guess for the proportion and move on to the next question. 
+          For a better experience, please use a laptop or computer instead of of a mobile device. 
+          The test will take approximately 10-15 minutes. 
+          We guarantee that all data will be used only for result analysis and will not be used anywhere outside the course.</p> 
+        <p>When you are ready, please click the start button. Thank you again for your participation.</p>
+        <p>If you have any trouble when finishing this survey, please connect jwang21@wpi.edu</p>
+          <button class="button" id="back2wel" onclick="return show('introduction', 'welcome-screen')">Back</button>
+          <button class="button" id="next" onclick="return show('introduction', 'bkgd-info')">Next</button>
+          
+      </div>
+    </div>
+
+    <div id="bkgd-info" style="display:none">      
+        <div class="div header">
+            <h2>CS573 Data Visualization</h2>
+            <h1>Background Survey</h1>
+        </div>
+        <div class="div" id="form">
+            <form name="bkgd-form">
+                <p>These information will be only use to do the data analysis, we will keep it strictly confidential </p>
+                <p>Name</p>
+                <input id='name' name= "name">
+                <p>Gender</p>
+                <select id="gender" name = "gender">
+                    <option value="blank"> </option>
+                    <option value="female">Female</option>
+                    <option value="male">Male</option>
+                    <option value="other">Other</option>
+                    <option value="prefer not to say">Prefer Not to Say</option>
+                </select>
+                <p>Age</p>
+                <input id='age' name= "age">
+                <p>Country</p>
+                <input id='country' name= "country">
+                <p>Major</p>
+                <select id="major" name = "gender">
+                  <option value="blank"> </option>
+                  <option value="Aerospace Engineering">Aerospace Engineering</option>
+                  <option value="Biology & Biotechnology">Biology & Biotechnology</option>
+                  <option value="Biomedical Engineering">Biomedical Engineering</option>
+                  <option value="Business">Business</option>
+                  <option value="Chemical Engineering">Chemical Engineering</option>
+                  <option value="Chemistry & Biochemistry">Chemistry & Biochemistry</option>
+                  <option value="Civil, Environmental, & Architectural Engineering">Civil, Environmental, & Architectural Engineering</option>
+                  <option value="Computer Science">Computer Science</option>
+                  <option value="Electrical & Computer Engineering">Electrical & Computer Engineering</option>
+                  <option value="Fire Protection Engineering">Fire Protection Engineering</option>
+                  <option value="Humanities & Arts">Humanities & Arts</option>
+                  <option value="Integrative & Global Studies">Integrative & Global Studies</option>
+                  <option value="Mathematical Sciences">Mathematical Sciences</option>
+                  <option value="Mechanical & Materials Engineering">Mechanical & Materials Engineering</option>
+                  <option value="Physical Education">Physical Education</option>
+                  <option value="Physics">Physics</option>
+                  <option value="Robotics Engineering">Robotics Engineering</option>
+                  <option value="Social Science & Policy Studies">Social Science & Policy Studies</option>
+              </select>
+                <p>Email</p>
+                <input id='email' name= "email">
+            </form>
+            <button class="button" id="back2intro" onclick="return show('bkgd-info', 'introduction')">Back</button>
+            <button class="button" onclick="return checkForm()">Submit</button>
+            
+        </div>
+    </div>
+
+    <div id="testing" style="display:none">
+        <div class="div header">
+            <h2>CS573 Data Visualization</h2>
+            <p id=question-count-text>Question ?/60</p>
+        </div>
+        <div class="div" id="experiment">
+            <div id="vis"></div>
+            <p id="question-text">Please enter the percentage of the smaller data point to the larger data point.</p>
+            <p>ex: If A is 50% of B, please enter 0.5 in the box.</p>
+            <input type="text" id="guess" name="guess" value=""></input><br>
+            <button class="button" id="submit-answer" onclick="submitAnswer()">Submit</button>
+        </div>
+    </div>
+
+    <div id="end-screen" style="display:none">
+        <div class="div header">
+            <h2>CS573 Data Visualization</h2>
+            <h1>Thank You!</h1>
+        </div>
+        <div class="div" id="instructions">
+            <p>Congratulations!</p>
+            <p>You have already finished all queations. Now, please download the result and send it to any of the following organizers:</p>
+            <p>jwang21@wpi.edu</p>
+            <p>yzhang41@wpi.edu</p>
+            <p>zxu9@wpi.edu</p>
+            <p>ymao4@wpi.edu</p>
+            <p></p>
+            <p>If a print prompt pops up after clicking the download button, please click Cancel, and the system will continue the download process</p>
+            <p>Thank again for your participation!</p>
+            <p>Team: MadMen</p>
+            <p>Member: Ziyang Xu, Jiani Wang, Yujun Mao, Yan Zhang</p>
+            <button class="button" id="get-results" onclick="getResults()">Download</button>
+        </div>
+    </div>
+
 </body>
+</html>
 
 <script>
-  console.log(d3); // test if d3 is loaded
+    // Switches between the different pages
+    function show(current, next){
+        document.getElementById(next).style.display='block';
+        document.getElementById(current).style.display='none';
+        if (next == "testing") {
+            start()
+        }
+        return false;
+    }
+
+    // Checks forms
+    function checkForm(){
+      //console.log("checking form");
+      var form = document.forms["bkgd-form"];
+      var gender = form["gender"].value;
+      var age = form["age"].value;
+      console.log(!isNaN(age))
+      if ( gender == "blank"){
+        alert("Please check your gender and fill out form.");
+        return false;
+      }
+      else if (isNaN(age) || age == "" || age<0){
+        alert("Please check your age and fill out form.");
+        return false;
+      }
+      show('bkgd-info','testing')
+
+    }
+</script>
+
+<script>
+    console.log(d3);
+
+    function generateDataset() {
+      //choose size of data set between 5-10
+      let datasetCount = Math.floor(Math.random() * 6) + 5;
+
+      //choose two random data points
+      let chosenPoint1 = Math.floor(Math.random() * datasetCount);
+      let chosenPoint2 = Math.floor(Math.random() * datasetCount);
+      while (chosenPoint1 == chosenPoint2) { 
+        chosenPoint2 = Math.floor(Math.random() * datasetCount);//保证选择标记数据时不会把同一个数据选择两次
+      }
+
+      //create dataset
+      let myDataset = Array.from({length: datasetCount}, () => Math.floor(Math.random() * 101));
+
+      var letterData = [
+          {letter: "A", frequency: myDataset[0]},
+          {letter: "B", frequency: myDataset[1]},
+          {letter: "C", frequency: myDataset[2]},
+          {letter: "D", frequency: myDataset[3]},
+          {letter: "E", frequency: myDataset[4]},
+          {letter: "F", frequency: myDataset[5]},
+          {letter: "G", frequency: myDataset[6]},
+          {letter: "H", frequency: myDataset[7]},
+          {letter: "I", frequency: myDataset[8]},
+          {letter: "J", frequency: myDataset[9]}
+      ];
+
+      //实际生成的数据是5-10之间任意的数量，故需要将实际使用的letter缩减至与实际数据量一致
+      letterData.length = datasetCount; 
+
+      //create struct
+      var data = {
+        mark1: chosenPoint1,
+        mark2: chosenPoint2,
+        dataset: letterData
+      };
+
+      return data;
+    }
+
+</script>
+
+<script>
+    //生成测试题的类型的顺序
+    function generateVisOrder() {
+      // 60 visualizations
+      // 20 per visualization type
+      let order = []
+      let radarCount = 0;
+      let bargraphCount = 0;
+      let circularbarplotCount = 0;
+      let bubblechartCount = 0;
+      let linechartCount = 0;
+
+      //while (order.length < 60) 
+      while (order.length < 50)//一共五种图，每种图有10道题，一共50道题
+      {
+        let randomNum = Math.floor(Math.random()*5)
+
+        if (randomNum == 0) 
+        {
+          if (radarCount >= 10)
+            continue;
+          else
+            radarCount++
+        } 
+        else if (randomNum == 1) 
+        {
+          if (bargraphCount >=10)
+            continue;
+          else
+            bargraphCount++
+        } 
+        else if(randomNum == 2)
+        {
+          if (circularbarplotCount >= 10)
+            continue;
+          else
+            circularbarplotCount++
+        }
+        else if(randomNum == 3)
+        {
+          if (bubblechartCount >= 10)
+            continue;
+          else
+          bubblechartCount++
+        }
+        else if(randomNum == 4)
+        {
+          if (linechartCount >= 10)
+            continue;
+          else
+          linechartCount++
+        }
+        /*
+        else if(randomNum == 5)
+        {
+          if (bar2Count >= 5)
+            continue;
+          else
+          bar2Count++
+        }*/
+        order.push(randomNum)
+      }
+
+      return order;
+    }
+
+</script>
+
+<!--Circular bar chart-->
+<script>
+
+    console.log(d3);
+
+    function generateCircularBarplot(data) {
+
+        var margin = { top: 190, right: 0, bottom: 0, left: 200 },
+        width = 450 - margin.left - margin.right,
+        height = 450 - margin.top - margin.bottom,
+        innerRadius = 40,
+        outerRadius = Math.min(width, height) / 2;
+
+        var svg = d3.select('div#vis').append('svg')
+            .attr('viewBox', '0 0 390 350')
+            .attr('preserveAspectRatio', 'xMinYMin meet')
+            .classed('svg-content', true)
+
+        console.log(data)
+
+        // Scales
+        var x = d3.scaleBand()
+            .range([0, 2 * Math.PI])
+            .domain(data.map(function(d) { return d.letter; })); 
+        var y = d3.scaleRadial()
+            .range([innerRadius, outerRadius])
+            .domain([0, 100]); 
+
+        // Add the bars
+        svg.append("g")
+        .attr('transform', 'translate(' + margin.left + ',' + margin.top + ')')
+        .selectAll("path")
+        .data(data)
+        .enter()
+        .append("path")
+            .attr('fill', '#f0dce8')
+            .style("fill-opacity", .6)
+            .attr("stroke", "black")
+            .style('fill-stroke', .4)
+            .attr("d", d3.arc()     
+                .innerRadius(innerRadius)
+                .outerRadius(function(d) {
+                    console.log(d);
+                    return y(d['frequency']); })
+                .startAngle(function(d) { return x(d.letter); })
+                .endAngle(function(d) { return x(d.letter) + x.bandwidth(); })
+                .padAngle(0.01)
+                .padRadius(innerRadius))
+
+        // Add the labels
+        svg.append("g")
+            .attr('transform', 'translate(' + margin.left + ',' + margin.top + ')')
+            .selectAll("g")
+            .data(data)
+            .enter()
+            .append("g")
+            .attr("text-anchor", function(d) { return (x(d.letter) + x.bandwidth() / 2 + Math.PI) % (2 * Math.PI) < Math.PI ? "end" : "start"; })
+            .attr("transform", function(d) { return "rotate(" + ((x(d.letter) + x.bandwidth() / 2) * 180 / Math.PI - 90) + ")"+"translate(" + (y(d['frequency'])+10) + ",0)"; })
+            .append("text")
+            .text(function(d){return(d.letter)})
+            .attr("transform", function(d) { return (x(d.letter) + x.bandwidth() / 2 + Math.PI) % (2 * Math.PI) < Math.PI ? "rotate(180)" : "rotate(0)"; })
+            .style("font-size", "13px")
+            .attr("alignment-baseline", "middle")
+    }
+
+</script>
+
+<!--Bar Chart-->
+<script>
+
+    function buildBarChart(data){
+
+      // establishing variables
+      var margin = 50,
+      width = 500 - 2 * margin,
+      height = 500 - 2 * margin;
+
+      // creating svg
+      var svg = d3.select("div#vis").append('svg')
+      .attr("width", width + 2 * margin)
+      .attr("height", height + 2 * margin)
+      .attr("transform", "translate(" + margin + ", " + margin + ")")
+
+      var d = data.dataset,
+      mark1 = data.mark1,
+      mark2 = data.mark2;
+
+      // scaling
+      var xscale = d3.scaleBand()
+        .domain(d.map(function(d){ return (d.letter) }))
+        .range( [0, width])
+        .padding(0.4);
+
+      var yscale = d3.scaleLinear()
+        .domain([0, 105])    
+        .range( [height, 0] );
+      console.log(d3.max(d, d.frequency));
+
+      // Add X axis
+      var x_axis = d3.axisBottom()
+      .scale(xscale)
+      svg.append("g")
+        .attr("transform", "translate(" + margin + "," + height + ")")
+        .call(x_axis)
+        .attr("class", "xAxis")
+
+      // Add Y axis
+      var y_axis = d3.axisLeft()
+        .scale(yscale)
+        .tickValues([])
+      svg.append("g")
+        .attr("transform", "translate(" + margin + ", 0 )")
+        .call(y_axis)
+        .attr("class", "yAxis")
+
+      // Add X axis label
+      svg.append("text")
+        .attr("text-anchor", "middle")
+        .attr("x", width/2 + margin)
+        .attr("y", height + 40)
+        .text("X");
+
+      // Add Y axis label
+      svg.append("text")
+        .attr("text-anchor", "middle")
+        .attr("x", -(height/2))
+        .attr("y", 0)
+        .attr("dy", ".75em")
+        .attr("transform", "rotate(-90)")
+        .text("Y");
+
+      // Add Bars
+      var bars = svg.selectAll(".bar")
+        .data(d)
+        .enter().append("rect")
+        .attr("class", "bar")
+        .attr("x", function(d){ return xscale(d.letter) + margin })
+        .attr("y", function(d){ return yscale(d.frequency) })
+        .attr("height", function(d){ return height - yscale(d.frequency) })
+        .attr("width", function(d){ return xscale.bandwidth() })
+        .attr('fill', '#f0dce8')
+        .style("fill-opacity", .6)
+        .attr("stroke", "black")
+        .style('fill-stroke', .4)        
+    }
+</script>
+
+<!--Radar Chart-->
+<script>
+
+    let radialScale = d3.scaleLinear()
+        .domain([0,11])
+        .range([0,250]);
+
+    function angleToCoordinate(angle, value){
+      let x = Math.cos(angle) * radialScale(value);
+      let y = Math.sin(angle) * radialScale(value);
+      return {"x": 250 + x, "y": 250 - y};
+    }
+
+    function getPathCoordinates(data_point){
+      let coordinates = [];
+      for (var i = 0; i < data_point.length; i++){
+        let point = data_point[i];
+        let ft_name = point.letter;
+        let angle = (Math.PI / 2) + (2 * Math.PI * i / data_point.length);
+        coordinates.push(angleToCoordinate(angle, (point.frequency / 10)));
+      }
+      return coordinates;
+    }
+
+    function generateRadar(dataset){
+      let svg = d3.select("div#vis").append("svg")
+          .attr("width", 500)
+          .attr("height", 500);
+
+      let ticks = [2,4,6,8,10];
+
+      ticks.forEach(t =>
+            svg.append("circle")
+            .attr("cx", 250)
+            .attr("cy", 250)
+            .attr("fill", "none")
+            .attr("stroke", "black")
+            .style("stroke-opacity", 0.3)
+            .attr("r", radialScale(t))
+      );
+
+      for (var i = 0; i < dataset.length; i++) {
+        let ft_name = dataset[i].letter;
+        let angle = (Math.PI / 2) + (2 * Math.PI * i / dataset.length);
+        let line_coordinate = angleToCoordinate(angle, 10);
+        let label_coordinate = angleToCoordinate(angle, 10.5);
+
+        //draw axis line
+        svg.append("line")
+        .attr("x1", 250)
+        .attr("y1", 250)
+        .attr("x2", line_coordinate.x)
+        .attr("y2", line_coordinate.y)
+        .attr("stroke","black")
+        .style("stroke-opacity", 0.3);
+
+        //draw axis label
+        svg.append("text")
+        .attr("x", label_coordinate.x - 5)
+        .attr("y", label_coordinate.y + 5)
+        .text(ft_name);
+      }
+
+      let line = d3.line()
+          .x(d => d.x)
+          .y(d => d.y);
+
+      let coordinates = getPathCoordinates(dataset);
+
+      //draw the path element
+      svg.append("path")
+      .datum(coordinates)
+      .attr("d",line)
+      .attr('fill', '#f0dce8')
+      .style("fill-opacity", .7)
+    }
+
+</script>
+
+<!--Bubble Chart-->
+<script>
+
+  function buildBubbleChart(data){
+
+    // establishing variables
+    var margin = 50,
+    width = 500 - 2 * margin,
+    height = 500 - 2 * margin;
+
+    // creating svg
+    var svg = d3.select("div#vis").append('svg')
+    .attr("width", width + 2 * margin)
+    .attr("height", height + 2 * margin)
+    .attr("transform", "translate(" + margin + ", " + margin + ")")
+
+    var d = data.dataset,
+    mark1 = data.mark1,
+    mark2 = data.mark2;
+
+    // scaling
+    var xscale = d3.scaleBand()
+      .domain(d.map(function(d){ return (d.letter) }))
+      .range( [0, width])
+      .padding(0.4);
+
+    var yscale = d3.scaleLinear()
+      .domain([0, 105])   
+      .range( [height, 0] );
+    console.log(d3.max(d, d.frequency));
+
+    // Add X axis
+    var x_axis = d3.axisBottom()
+    .scale(xscale)
+    svg.append("g")
+      .attr("transform", "translate(" + margin + "," + height + ")")
+      .call(x_axis)
+      .attr("class", "xAxis")
+
+    // Add X axis label
+    svg.append("text")
+      .attr("text-anchor", "middle")
+      .attr("x", width/2 + margin)
+      .attr("y", height + 40)
+      .text("X");
+
+    // Add Bubbles
+    var bubbles = svg.selectAll(".bubble")
+      .data(d)
+      .enter().append("circle")
+      .attr("class", "circle")
+      .attr("cx", function(d){ return xscale(d.letter) + margin + 15 })
+      .attr("cy", height/2)
+      .attr("r", function(d){ return (height - yscale(d.frequency))/5 })
+      .attr('fill', '#f0dce8')
+      .style("fill-opacity", .4)
+  }
+</script>
+
+<script>
+
+  /*-----------------------Line Chart--------------------------
+  ** When you need to create a bar chart with a given data set, use
+  ** buildLineChart(d) where d is the data returned from generateDataset()
+  */
+  
+  function buildLineChart(data){
+  
+        // establishing variables
+        var margin = 50,
+        width = 500 - 2 * margin,
+        height = 500 - 2 * margin;
+  
+        // creating svg
+        var svg = d3.select("div#vis").append('svg')
+          .attr("width", width + 2 * margin)
+          .attr("height", height + 2 * margin)
+          .attr("transform", "translate(" + margin + ", " + margin + ")")
+  
+        var d = data.dataset,
+        mark1 = data.mark1,
+        mark2 = data.mark2;
+        //console.log(d);
+  
+        // scaling
+        var xscale = d3.scaleBand()
+          .domain(d.map(function(d){ return (d.letter) }))
+          .range( [0, width])
+          .padding(0.4);
+  
+        var yscale = d3.scaleLinear()
+          .domain([0, 105])    //d3.max(d, function(d){return d.frequency;}
+          //.domain(d.map(function(d){ return (d.letter) }))
+          .range( [height, 0] );
+        console.log(d3.max(d, d.frequency));
+
+  
+        // Add X axis
+        var x_axis = d3.axisBottom()
+          .scale(xscale)
+        svg.append("g")
+          .attr("transform", "translate(" + margin + "," + height + ")")
+          .call(x_axis)
+          .attr("class", "xAxis")
+  
+  
+        // Add Y axis
+        var y_axis = d3.axisLeft()
+          .scale(yscale)
+          .tickValues([])
+        svg.append("g")
+          .attr("transform", "translate(" + margin + ", 0 )")
+          .call(y_axis)
+          .attr("class", "yAxis")
+
+  
+        // Add X axis label
+        svg.append("text")
+          .attr("text-anchor", "middle")
+          .attr("x", width/2 + margin)
+          .attr("y", height + 40)
+          .text("X");
+
+
+  
+        // Add Y axis label
+        svg.append("text")
+          .attr("text-anchor", "middle")
+          .attr("x", -(height/2))
+          .attr("y", 0)
+          .attr("dy", ".75em")
+          .attr("transform", "rotate(-90)")
+          .text("Y");
+        
+        //add lines
+        var lines = svg.selectAll(".line")
+          .data(d)
+          .enter().append("line")
+          //.datum(coordinates)
+          .attr("x1", function(d){ return xscale(d.letter) + margin })
+          .attr("y1", function(d){ return (height + yscale(d.frequency))/5 })
+          .attr("x2", function(d){ return xscale(d.letter) + margin + 30 })
+          .attr("y2", function(d){ return (height + yscale(d.frequency))/5 })
+          .attr("stroke", "black")
+        
+        //add circle
+        var lines = svg.selectAll(".line")
+        .data(d)
+        .enter().append("circle")
+        .attr("class", "circle")
+        .attr("cx", function(d){ return xscale(d.letter) + margin + 15 })
+        .attr("cy", function(d){ return (height + yscale(d.frequency))/5 })
+        .attr("r",4)
+        .attr('fill', 'black')
+        .style("fill-opacity", 1)
+  }
+  
+  </script>
+
+<script>
+    var visOrder = []
+    var trialCount = 0 // will iterate after each press of the submission button except the first
+    var results = []
+    var data = null
+    var name = null
+    var gender = null
+    var age = null
+    var major = null
+    var email = null
+    var percentActual = null
+
+    // press button to start program
+    function start() {
+      visOrder = generateVisOrder()
+      generateNextTrial(trialCount)
+      console.log(visOrder)
+    }
+
+    async function generateNextTrial(trialNum) {
+      // remove existing vis
+      var currentSvg = d3.select("div#vis").select('svg')
+      currentSvg.remove()
+      let visType = visOrder[trialNum]
+      // randomly generate data
+      data = generateDataset()
+      if (visType == 0) { // radar
+        generateRadar(data.dataset)
+      } else if (visType == 1) { // bargraph
+        buildBarChart(data)
+      } else if (visType == 2){ // circular barplot
+        generateCircularBarplot(data.dataset)
+      } else if (visType == 3){ // bubble chart
+        buildBubbleChart(data)
+      } else if (visType == 4){ // line chart
+        buildLineChart(data)
+      } /*else if (visType == 5){ // bar chart2
+        buildBarChart2(data)
+      }*/
+
+
+    let smallerLetter = ""
+    let biggerLetter = ""
+
+    // decide which letter is the bigger or smaller letter
+    if (data.dataset[data.mark1].frequency >= data.dataset[data.mark2].frequency) {
+        smallerLetter = data.dataset[data.mark2].letter
+        biggerLetter = data.dataset[data.mark1].letter
+        percentActual = data.dataset[data.mark2].frequency/data.dataset[data.mark1].frequency
+    } else {
+        smallerLetter = data.dataset[data.mark1].letter
+        biggerLetter = data.dataset[data.mark2].letter
+        percentActual = data.dataset[data.mark1].frequency/data.dataset[data.mark2].frequency
+    }
+    
+    document.getElementById('question-count-text').innerHTML = "Question " + (trialCount+1) + "/50"
+    document.getElementById('question-text').innerHTML = "Please enter the percentage of " + smallerLetter + " to " + biggerLetter
+    }
+
+    async function submitAnswer() {
+      var guess = document.getElementById('guess').value
+      // checks for valid answer
+      console.log(guess)
+      // checks if guess is valid
+      if (guess>1 || guess<0){
+        alert("Please check the value of your answer.");
+        return false;
+      }
+      else if(isNaN(guess) || guess=="" ){
+        alert("The answer can't be null.");
+        return false;
+      }
+
+      // send answer to storage
+      var tempResult = {
+        'trialNum': trialCount,
+        'visType': visOrder[trialCount],
+        'percentGuessed': guess,
+        'percentActual': percentActual,
+        'name': document.getElementById("name").value,
+        'gender': document.getElementById("gender").value,
+        'age': document.getElementById("age").value,
+        'country': document.getElementById("country").value,
+        'major': document.getElementById("major").value,
+        'email': document.getElementById("email").value
+      }
+      results.push(tempResult)
+
+      // clear input field
+      document.getElementById('guess').value = ""
+      console.log("sending answer to storage")
+
+      trialCount = trialCount + 1
+      console.log(trialCount)
+      //if (trialCount == 60) {
+      if (trialCount == 50) {//测试时临时降低题量
+        show('testing','end-screen')
+      } else {
+        generateNextTrial(trialCount)
+      }
+
+      console.log(results)
+    }
+
+    function exportToCsv(filename, rows) {
+    var processRow = function (row) {
+        var finalVal = '';
+        for (var j = 0; j < row.length; j++) {
+            var innerValue = row[j] === null ? '' : row[j].toString();
+            if (row[j] instanceof Date) {
+                innerValue = row[j].toLocaleString();
+            };
+            var result = innerValue.replace(/"/g, '""');
+            if (result.search(/("|,|\n)/g) >= 0)
+                result = '"' + result + '"';
+            if (j > 0)
+                finalVal += ',';
+            finalVal += result;
+        }
+        return finalVal + '\n';
+    };
+
+    var csvFile = '';
+    for (var i = 0; i < rows.length; i++) {
+        csvFile += processRow(rows[i]);
+    }
+
+    var blob = new Blob([csvFile], { type: 'text/csv;charset=utf-8;' });
+    if (navigator.msSaveBlob) { // IE 10+
+        navigator.msSaveBlob(blob, filename);
+    } else {
+        var link = document.createElement("a");
+        if (link.download !== undefined) { // feature detection
+            // Browsers that support HTML5 download attribute
+            var url = URL.createObjectURL(blob);
+            link.setAttribute("href", url);
+            link.setAttribute("download", filename);
+            link.style.visibility = 'hidden';
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+          }
+      }
+    }
+
+    function exportData(dataStructsArray) {
+        var rows = [];
+        for (var i = 0; i < dataStructsArray.length; i++) {
+          rows[i] = [dataStructsArray[i].trialNum, dataStructsArray[i].name, dataStructsArray[i].gender, dataStructsArray[i].age, dataStructsArray[i].country, 
+          dataStructsArray[i].major, dataStructsArray[i].visType, dataStructsArray[i].percentGuessed, dataStructsArray[i].percentActual, dataStructsArray[i].email,]
+        }
+        print(rows);
+        exportToCsv('data.csv', rows);
+
+    }
+
+    function getResults() {
+      exportData(results);
+    }
+
 </script>

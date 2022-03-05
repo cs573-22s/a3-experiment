@@ -1,106 +1,173 @@
 Assignment 3 - Replicating a Classic Experiment  
 ===
 
-For the scope of this project, assume the role of a scientist who runs experiments for a living.
+Team Name: MadMen
 
-Q: How do we know that bar charts are "better" than pie charts?  
-A: Controlled experiments!
+Team Member: Jiani Wang, Yujun Mao, Yan Zhang, Ziyang Xu
 
-In this assignment you'll implement a simple controlled experiment using some of the visualizations you’ve been building in this class. 
-You'll need to develop support code for the experiment sequence, results file output, and other experiment components. 
-(These are all simple with Javascript buttons and forms.)
-The main goals for you are to a) test three competing visualizations, b) implement data generation and error calculation functions inspired by Cleveland and McGill's 1984 paper, c) run the experiment with 10 participants (or a trial equivalent), and d) do some basic analysis and reporting of the results.
+Link to Experiment: https://coldcode0214.github.io/a3-experiment/
 
-For this assignment you should aim to write everything from scratch. For experimentation it is often necessary to control all elements of the chart.
-You should definitely *reference* demo programs from books or the web, and if you do please provide a References section with links at the end of your Readme.
+Overview
+===
+- Hypothesis
+- Charts
+- Result
+- Other Pages
+- Technical Achievement
+- Design Achievement
+- References
 
-Going Beyond Cleveland-McGill
----
+# Hypothesis
+The question we attempted to answer in this experiment was: How effective are radial visualizations compared to rectilinear visualizations, dot visualization, and line visualization in determining relative size? 
 
-Several have expressed interest in conducting surveys of various sorts. I encourage you go move beyond Cleveland and McGill if you can think of other interesting visualization experiment designs and corresponding analyses. 
+Our hypothesis was that radial visualizations are more effective for determining relative size among all other visualizations. 
 
-You might study how people interpret COVID visualizations, for example.
-If you decide to go in a custom route, simply contact staff so we can help you set acceptable parameters.
-Basically, we still want you to do a multi-trial study with each participant, to raise the chance that you get solid results.
-How you measure "error" and similar facets also matter. But you can't go wrong with finding a visualization study online to start from :)
+To test our hypothesis, we created five different types of visualizations using our data generation function (see code for data generation function) and asked participants to look at instances of each visualization to determine the relative size. 
+We created one rectilinear visualization (a bar graph), two radial visualizations (a radar chart and a circular bar plot), one bubble chart and one line chart. 
 
-Requirements
----
+Our goal was to prove that the radar graph was the best for determining relative size.
 
-- Look it over Cleveland and McGill's original experiment (see the section below) and [watch this video](experiment-example.mp4) to get a sense of the experiment structure and where your visualizations will go.
-- When viewing the example experiment video, note the following:
-    - Trials are in random order.  
-    - Each trial has a randomly generated set of 5-10 data points.  
-    - Two of these data points are marked.  
-    - (Note: the experiment UI and User Experience could be better. Plenty of design achievements here).
-- Implement the data generation code **as described in the Cleveland & McGill paper**. 
-    - The goal is to generate a set of random datapoints (usually 5 or 10, with values be between 0 and 100) and to mark two of them for comparison in the trial. 
-- Add 3 visualizations (i.e. conditions) to your experiment. When you are adding these visualizations, think about *why* these visualizations are interesting to test. In other words, keep in mind a *testable hypothesis* for each of the added visualization. Some good options include bar charts, pie charts, stacked-bar charts, and treemaps. You can also rotate your bar chart to be horizontal or upside-down as one of your conditions. You are encouraged to test unorthodox charts -- radar charts come to mind, but there are MANY possibilities here-- feel free to be creative!
-    - Follow the style from Cleveland and McGill closely (e.g. no color, simple lines) unless you are specifically testing a hypothesis (e.g. color versus no color). Pay attention to spacing between elements like bars. Do not mark bars for comparison using color-- this makes the perceptual task too easy.
-- After each trial, implement code that grades and stores participant’s responses.
-- At the end of the experiment, to get the data, one easy option use Javascript to show the data from the current experiment\* (i.e. a comma separated list in a text box) and copy it into your master datafile. See the Background section below for an example of what this file should look like. (\*Alternately implement a server, if you're experienced with that sort of thing.)
+# Charts
 
-- Figure out how to calculate "Error", the difference between the true percentage and the reported percentage.
-- Scale this error using Cleveland and McGill’s log-base-2 error equation. For details, see the background section (there’s a figure with the equation). This becomes your “Error” column in the output. Make sure you use whole percentages (not decimal) in the log-base-2 equation. Make sure you handle the case of when a person gets the exact percentage correct (log-base-2 of 1/8 is -3, it is better to set this to 0). 
-- Run your experiment with 10 or more participants, or-- make sure you get at least 200 trials **per visualization type** in total.  
-    - Grab friends or people in the class.   
-    - Run at least 20 trials per visualization type, per participant. This is to ensure that you cover the range of possible answers (e.g. 5%, 10%, ..., 95%)
-- Make sure to save the resulting CSV after each participant. Compile the results into a master csv file (all participants, all trials).
-- Produce a README with figures that shows the visualizations you tested and results, ordered by best performance to worst performance. Follow the modern Cleveland-McGill figure below -- though note that using names instead of icons is fine.
-- To obtain the ranking, calculate and report the average log2Error for each visualization across all trials and participants. This should be straightforward to do in a spreadsheet.
-- Use Bootstrapped 95\% confidence intervals for your error upper and lower bounds. Include these in your figures. Bootstrapped confidence intervals are easily implemented in R + ggplot2 using the `stat_summary` geom. You can also use Excel, Python, or many many other tools. Bootstrapped 95% CIs are **very** useful in modern experiment practice.
-- Include example images of each visualization as they appeared in your experiment (i.e. if you used a pie chart show the actual pie chart you used in the experiment along with the markings, not an example from Google Images).
+## Radar Chart
+The radar charts produced a log error of 1.23590300142317. 
 
-## General Requirements
+Radar charts performs the best out of all five types of visualizations. 
+This observation may be due to radar chart's concentric radar lines as they act as markers for relative distances.
 
-0. Your code should be forked from the GitHub repo and linked using GitHub pages.
-2. Your project should use d3 to build visualizations. 
-3. Your writeup (readme.md in the repo) should contain the following:
+<img src="https://github.com/ColdCode0214/a3-experiment/blob/main/img/radar%20chart.png" width = "623" height = "584" alt="" align=center />
 
-- Working link to the experiment hosted on gh-pages or some other site.
-- Concise description and screenshot of your experiment.
-- Description of the technical achievements you attempted with this project.
-- Description of the design achievements you attempted with this project.
 
-Background
----
+## Bar Chart
+The bar graph is relatively easy to interpret since one can easily gauge the proportion by looking at the relative height of bars. 
 
-In 1984, William Cleveland and Robert McGill published the results of several controlled experiments that pitted bar charts against pies and stacked-bar variants. 
-Their paper (http://www.cs.ubc.ca/~tmm/courses/cpsc533c-04-spr/readings/cleveland.pdf) (http://info.slis.indiana.edu/~katy/S637-S11/cleveland84.pdf) is considered a seminal paper in data visualization.
-In particular, they ran a psychology-style experiment where users were shown a series of randomly-generated charts with two graphical elements marked like this:
+We determined a log error of 2.47374647741578 which is higher than both the Cleveland & McGill and Crowdsourced Results. 
 
-![cleveland bar chart](img/cleveland-bar.png)
+Even so, the bar graphs performed the 2nd best out of all 5 types of visualizations that we generated.
 
-Participants were then asked, "What percentage is the smaller of the larger?". 
-This was repeated hundreds of time with varying data and charts. 
-By the end of the study, Cleveland and McGill had amassed a large dataset that looked like this:
+<img src="https://github.com/ColdCode0214/a3-experiment/blob/main/img/bar%20chart.png" width = "561" height = "539" alt="" align=center />
 
-![cleveland table](img/cleveland-table.png)
 
-__Log-base-2 or "cm-error"__: The true percent is the actual percentage of the smaller to the larger, while the reported percent is what participants reported. 
-Cleveland and McGill recognized that their analyses would be biased if they took `abs(ReportedPercent – TruePercent)` as their score for error. 
-To compensate, they came up with a logarithmic scale for error with this equation:
+## Circular Bar Chart
+Of all the visualizations tested, circular bar plot’s performance is in the middle with a log error of 3.22578935697085. 
 
-![cleveland equation](img/cleveland-equation.png)
+For the circular bar plot, the proportion is gauged by looking at the area of the section of the graph. But the relative sizes of such fan shapes are harder to gauge than the bar charts, hence the higher error rate.
 
-You’ll be implementing this error score as part of the lab. 
-(Hint: it’s not a trick question, this is just to familiarize you with the experiment protocol). 
-With this Cleveland-McGill error score you can better compare the performance of the charts you test to figure out which one performs the best.
+<img src="https://github.com/ColdCode0214/a3-experiment/blob/main/img/circular%20bar%20chart.png" width = "474" height = "420" alt="" align=center />
 
-As a baseline, compare your average Error scores to the following chart, which include both Cleveland and McGill’s results as well as more recent extensions of this experiment (lower error indicates better performance, and error bars are bootstrapped 95% confidence intervals (`http://en.wikipedia.org/wiki/Confidence_interval#Meaning_and_interpretation`)):
 
-![cleveland results](img/cleveland-results.png)
+## Line Chart
+The line chart has a log error of 3.59026382686615. 
 
-GitHub Details
----
+It is relatively high since the audience cannot easily tell the relative proportions between data points by looking at individual dots.
 
-- Fork the GitHub Repository. You now have a copy associated with your username.
-- Make changes to index.html to fulfill the project requirements. 
-- Make sure your "master" branch matches your "gh-pages" branch. See the GitHub Guides referenced above if you need help.
-- Edit this README.md with a link to your gh-pages site: e.g. http://YourUsernameGoesHere.github.io/Experiment/index.html
-- Replace this file (README.md) with your writeup and Design/Technical achievements.
-- To submit, make a [Pull Request](https://help.github.com/articles/using-pull-requests/) on the original repository.
-- Name your submission using the following scheme: 
-```
-a3-FirstLastnameMember1-FirstLastnameMember2-FirstLastnameMember3-...
-```
+<img src="https://github.com/ColdCode0214/a3-experiment/blob/main/img/line%20chart.png" width = "571" height = "538" alt="" align=center />
+
+
+## Bubble Chart
+Bubble chart has a log error of 4.21663185791238. 
+
+It has the largest error of all 5 types of visualizations. 
+By simply looking at the relative sizes of the bubbles, it is very difficult to tell the relative proportions of the sizes of the bubbles. 
+Thus this type of visualization not ideal for presenting the relative sizes of data points.
+
+<img src="https://github.com/ColdCode0214/a3-experiment/blob/main/img/bubble%20chart.png" width = "560" height = "422" alt="" align=center />
+
+
+# Results
+
+## Log Scale of Error
+Based on our results, we see that radar graphs returns the lowest mean log error which confirming our hypothesis that radar visualizations are more effective for determining relative size. 
+
+Our radar charts has the quantile line which give the participant a general ideal of what percentage it is, it helps the participant of our survey to determine the size and improved its result.
+
+<img src="https://github.com/ColdCode0214/a3-experiment/blob/main/img/Log%20Scale%20of%20Error.png" width = "640" height = "564" alt="" align=center />
+
+## Mean Score By Major
+According to the graph, there is no significant difference of mean error rate in different major.
+
+In fact, this result is beyond our expection. Before the experiment, we guessed that some major may make the students be good at observing the figures. However, according to the data we received, we couldn't draw that conclusion. One possible reason may be the data set size is too small and it only contained four majors.
+
+<img src="https://github.com/ColdCode0214/a3-experiment/blob/main/img/Mean%20score%20by%20major.png" width = "515" height = "301" alt="" align=center />
+
+## Mean Score By Age
+According to the graph, there is no significant difference in mean error in term of age.
+
+<img src="https://github.com/ColdCode0214/a3-experiment/blob/main/img/Mean%20score%20by%20age.png" width = "560" height = "326" alt="" align=center />
+
+## Mean Score By Country
+According to the graph, there is no significant difference of mean error rate in different country group.
+
+<img src="https://github.com/ColdCode0214/a3-experiment/blob/main/img/Mean%20score%20by%20country.png" width = "508" height = "305" alt="" align=center />
+
+
+# Other Pages
+
+### Welcome Page
+<img src="https://github.com/ColdCode0214/a3-experiment/blob/main/img/welcome%20page.png" width = "606" height = "495" alt="" align=center />
+
+### Introduction Page
+<img src="https://github.com/ColdCode0214/a3-experiment/blob/main/img/Introduction%20Page.png" width = "672" height = "928" alt="" align=center />
+
+### Background Survey Page
+<img src="https://github.com/ColdCode0214/a3-experiment/blob/main/img/Survey%20Page.png" width = "535" height = "942" alt="" align=center />
+
+### Thank you Page
+<img src="https://github.com/ColdCode0214/a3-experiment/blob/main/img/Thank%20You%20Page.png" width = "615" height = "841" alt="" align=center />
+
+
+# Technical Achievements
+### 1. Adding more visualizations
+
+Increase the charts number from 3 to 5, including: Bar Chart, Line Chart, Bubble chart, Radar chart, Circle bar chart.
+
+Overview of all the 5 charts
+
+<img src="https://github.com/ColdCode0214/a3-experiment/blob/main/img/Overview%20of%20the%205%20charts.png" width = "914" height = "583" alt="" align=center />
+
+### 2. Data Validation
+
+When inputting data, the system will check if the information format is legal and if it violates the not-null constrains.
+
+### 3. Adding more attributes to analyze 
+
+We added new dimensions such as ages, majors and gender , in our analyze we can see our stats numbers from different dimensions.
+
+
+# Design Achievements
+### 1. Adding friendly interactive prompt
+
+We add the example in the testing page, so that the participants can easily take the experiment.
+
+### 2. Colored Background
+
+We use pink as main background color to add humor and funny elements for the whole website. 
+In addition, we also use gradient pink as the color style in order to avoid monotonous color problem.
+
+### 3. Artistic Font
+
+The font we are using is Jokerman, which adding the website more Halloween and more artistic. 
+Moreover, the font matches the pink background well.
+
+### 4. Adding the introduction page
+
+The participations can know more about this experiment especially about its goal and aim by reading the introduction page.
+
+### 5. Provide the connection information
+
+We provide the connection information and the email in case the participants may have some problems when they taking the experiment.
+
+### 6. Button
+
+We make the button change the color when you move the mouse over it, in order to make it more attractive.
+
+
+# References
+
+- The link of the paper: https://info.luddy.indiana.edu/~katy/S637-S11/cleveland84.pdf
+- How to draw a bar chart: https://blog.csdn.net/moon_sky1999/article/details/104740686
+- How to draw a sector: https://blog.csdn.net/mr_poppy/article/details/81636751
+- How to use form: https://www.cnblogs.com/mingerlcm/p/10637234.html
+- How to draw a radar chart: https://www.cnblogs.com/zfyouxi/p/5274514.html
+
+
