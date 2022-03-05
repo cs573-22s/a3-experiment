@@ -5,9 +5,17 @@ Team Name: MadMen
 
 Team Member: Jiani Wang, Yujun Mao, Yan Zhang, Ziyang Xu
 
-Experiment
-===
 Link to Experiment: https://coldcode0214.github.io/a3-experiment/
+
+Overview
+===
+- Hypothesis
+- Charts
+- Result
+- Other Pages
+- Technical Achievement
+- Design Achievement
+- References
 
 ## Error Barchart with 95% CIs
 ![Log Error](img/logError.png)
