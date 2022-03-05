@@ -3,6 +3,7 @@ import SurveyForm, { FormAnswer } from 'Pages/SurveyPage/SurveyForm'
 import React, { useEffect, useRef, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import Box from '@mui/material/Box'
+import Container from '@mui/material/Container'
 import Splitter, { SplitDirection } from '@devbookhq/splitter'
 import Paper from '@mui/material/Paper'
 import { Typography } from '@mui/material'
@@ -71,7 +72,7 @@ export default function SurveyPage () {
                 height: '90vh'
               } }>
               <Splitter minHeights={[100, 100]} direction={ SplitDirection.Vertical }>
-                <Box sx={ { width: '100%', height: '100%', overflow: 'auto' } }>
+                <Container sx={ { width: '100%', height: '100%', overflow: 'auto' } }>
                   <Paper elevation={5} sx = { { margin: 3, padding: 3 } }>
                     {(() => {
                       if (dataset.current[questionNum].type === 'bar') {
@@ -87,7 +88,7 @@ export default function SurveyPage () {
                       }
                     })()}
                   </Paper>
-                </Box>
+                </Container>
                 <Box sx= { { width: '100%', height: '100%', overflow: 'auto' } } >
                   <SurveyForm
                     questionNum={questionNum}

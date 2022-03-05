@@ -103,6 +103,8 @@ export default function TopographicChart ({ data } : TopographicChartProps) {
     <FormVisualization
       data={data}
       visualizationFunction={drawTopographicChart}
-    />
+    >
+      <img src='/assets/brain_regions.svg' alt='Brain Regions' />
+    </FormVisualization>
   )
 }

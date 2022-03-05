@@ -44,6 +44,8 @@ app.use(session({
 
 app.use('/static', express.static(path.join(__dirname, 'survey_frontend', 'build', 'static')));
 
+app.use('/assets', express.static(path.join(__dirname, 'assets')));
+
 // This displays message that the server running and listening to specified port
 app.listen(port, () => console.log(`Listening on port ${port}`));
 
@@ -81,7 +83,7 @@ app.get('/api/dataset', (req, res) => {
   }
   
   let finalDataset = [];
-  for (const trial of ['brain', 'topographic', 'bar']) {
+  for (const trial of ['bar', 'topographic', 'brain']) {
     const randomizedDataset = shuffle(dataset);
     finalDataset = [...finalDataset, ...randomizedDataset.map(elt => { return {...elt, type: trial} } )]
   }

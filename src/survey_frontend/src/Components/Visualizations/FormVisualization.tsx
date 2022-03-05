@@ -5,11 +5,12 @@ import { Dataset } from 'Types/Dataset'
 import { DatasetRow } from 'Types/DatasetRow'
 
 type FormVisualizationProps = {
+  children? : React.ReactNode
   data : Dataset // Data to be taken in by the bar chart
   visualizationFunction : (rootDOM : HTMLDivElement, data : DatasetRow[], condition : string) => void
 }
 
-export default function FormVisualization ({ data, visualizationFunction } : FormVisualizationProps) {
+export default function FormVisualization ({ children, data, visualizationFunction } : FormVisualizationProps) {
   // Root of the d3 svg component
   const rootDOM = useRef(null)
   const [condition, setCondition] = useState(data.data[0].Condition)
@@ -22,7 +23,7 @@ export default function FormVisualization ({ data, visualizationFunction } : For
   }, [data.id, condition])
 
   return (
-    <Container fixed ref={rootDOM} maxWidth='xl' sx = { { alignItems: 'center', justifyContent: 'center', padding: 2, width: '100%', height: '100%' } }>
+    <Container ref={rootDOM} maxWidth='xl' sx={ { alignItems: 'center', justifyContent: 'center', padding: 2, width: '100%', height: '100%' } }>
       <ButtonGroup fullWidth>
         {(() => {
           const conditions = Array.from(new Set(data.data.map(elt => elt.Condition)))
@@ -40,6 +41,7 @@ export default function FormVisualization ({ data, visualizationFunction } : For
           })
         })()}
       </ButtonGroup>
+      { children }
     </Container>
   )
 }

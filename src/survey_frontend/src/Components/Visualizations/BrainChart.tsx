@@ -71,38 +71,15 @@ export default function BrainChart ({ data } : BrainChartProps) {
       })
       .attr('r', 20)
       .attr('fill', 'black')
-      .attr('opacity', d => d.Signal / 10) // set to signal strength, Signal/10?
-
-    selection
-      .selectAll('text')
-      .data(filteredData)
-      .join('text')
-      .attr('x', d => {
-        const xCoord = brainCoordinates.get(d.Region)
-        console.log(xCoord)
-        if (xCoord) {
-          return xCoord.x
-        } else {
-          return null
-        }
-      })
-      .attr('y', d => {
-        const xCoord = brainCoordinates.get(d.Region)
-        console.log(xCoord)
-        if (xCoord) {
-          return xCoord.y + 40
-        } else {
-          return null
-        }
-      })
-      .style('fill', 'black')
-      .text(d => d.Region)
+      .attr('opacity', d => d.Signal / 100) // set to signal strength, Signal/10?
   }
 
   return (
     <FormVisualization
       data={data}
       visualizationFunction={drawBrainChart}
-    />
+    >
+      <img src='/assets/brain_regions.svg' alt='Brain Regions' />
+    </FormVisualization>
   )
 }

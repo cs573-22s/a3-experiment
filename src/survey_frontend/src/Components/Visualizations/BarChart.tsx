@@ -10,15 +10,31 @@ type BarChartProps = {
 }
 
 export default function BarChart ({ data } : BarChartProps) {
+  const getRegionLabel = (region : string) => {
+    const regions = new Map<string, string>()
+    regions.set('A', 'G. frontalis medius')
+    regions.set('B', 'Gyrus praecentralis')
+    regions.set('C', 'Occupitales')
+    regions.set('D', 'G. temporalis medius')
+    regions.set('E', 'G. supra marginalis')
+    if (regions.has(region)) {
+      return regions.get(region) as string
+    } else {
+      return ''
+    }
+  }
+
   const drawBarChart = (rootDOM : HTMLDivElement, data : DatasetRow[], condition : string) => {
     // Redraw the svg
-    const filteredData = data.filter(row => row.Condition === condition)
+    const filteredData = data.filter(row => row.Condition === condition).map(row => {
+      return { Condition: row.Condition, Signal: row.Signal, Region: getRegionLabel(row.Region) } as DatasetRow
+    })
 
     console.log(filteredData)
     d3.select(rootDOM).selectAll('svg').remove()
 
     const margin = { top: 30, right: 30, bottom: 70, left: 60 }
-    const width = 460 - margin.left - margin.right
+    const width = 800 - margin.left - margin.right
     const height = 400 - margin.top - margin.bottom
     // append the svg object to the body of the page
     const svg = d3.select(rootDOM)
@@ -31,7 +47,7 @@ export default function BarChart ({ data } : BarChartProps) {
     // X axis
     const x = d3.scaleBand()
       .range([0, width])
-      .domain(data.map(d => d.Region))
+      .domain(filteredData.map(d => d.Region))
       .padding(0.2)
 
     svg.append('g')
@@ -40,7 +56,7 @@ export default function BarChart ({ data } : BarChartProps) {
 
     // Add Y axis
     const y = d3.scaleLinear()
-      .domain([0, 20])
+      .domain([0, 110])
       .range([height, 0])
 
     svg.append('g')

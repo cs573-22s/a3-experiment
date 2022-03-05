@@ -111,7 +111,7 @@ export default function SurveyForm (props: SurveyFormProps) {
   }, [props.questionNum])
 
   return (
-    <Container fixed sx = { { padding: 2, width: '100vw', height: '100%' } }>
+    <Container fixed sx = { { padding: 2, width: '100%', height: '100%' } }>
       <Paper elevation={5} sx = { { margin: 1, padding: 3 } }>
         <Stack spacing={3}>
           {tasks.map((task, index) => {
