@@ -5,7 +5,7 @@ import { Dataset } from 'Types/Dataset'
 import { DatasetRow } from 'Types/DatasetRow'
 import FormVisualization from './FormVisualization'
 
-type BrainChartProps = {
+type TopographicChartProps = {
   data : Dataset // Data to be taken in by the bar chart
 }
 
@@ -14,8 +14,8 @@ type Coordinate = {
   y : number
 }
 
-export default function BrainChart ({ data } : BrainChartProps) {
-  const drawBrainChart = (rootDOM : HTMLDivElement, data : DatasetRow[], condition : string) => {
+export default function TopographicChart ({ data } : TopographicChartProps) {
+  const drawTopographicChart = (rootDOM : HTMLDivElement, data : DatasetRow[], condition : string) => {
     const brainCoordinates = new Map<string, Coordinate>()
     brainCoordinates.set('A', { x: 300, y: 200 })
     brainCoordinates.set('B', { x: 240, y: 160 })
@@ -43,7 +43,7 @@ export default function BrainChart ({ data } : BrainChartProps) {
 
     selection
       .append('path')
-      .attr('d', 'M 220 230 C 240 210 290 250 300 260 C 290 270 270 300 260 290 C 200 270 190 280 130 280 C 120 290 110 290 80 270 C 100 80 320 80 360 260 C 330 280 330 280 300 260 C 290 250 240 210 220 230 Z')
+      .attr('d', 'M 300 260 L 260 290 L 130 280 L 80 230 L 150 130 L 300 130 L 360 260 L 300 260 Z')
       .attr('stroke', 'black')
       .attr('fill', 'white')
 
@@ -102,7 +102,7 @@ export default function BrainChart ({ data } : BrainChartProps) {
   return (
     <FormVisualization
       data={data}
-      visualizationFunction={drawBrainChart}
+      visualizationFunction={drawTopographicChart}
     />
   )
 }
