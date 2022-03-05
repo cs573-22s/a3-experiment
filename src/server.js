@@ -14,6 +14,7 @@ import cookieParser from 'cookie-parser';
 import session from 'express-session';
 import { dirname, join } from 'path';
 import { JSONFile, Low }  from 'lowdb';
+import 'dotenv/config';
 
 const __dirname = dirname(fileURLToPath(import.meta.url))
 const app = express();
@@ -36,11 +37,10 @@ app.use(cookieParser());
 app.use(express.json());
 
 app.use(session({
-  secret:"whatever",
+  secret:process.env.SECRET_KEY,
   resave: false,
   saveUninitialized: true
 }))
-
 
 app.use('/static', express.static(path.join(__dirname, 'survey_frontend', 'build', 'static')));
 
@@ -50,7 +50,6 @@ app.use('/assets', express.static(path.join(__dirname, 'assets')));
 app.listen(port, () => console.log(`Listening on port ${port}`));
 
 app.get('/', function (req, res) {
-  console.log(req.sessionID)
   res.sendFile('index.html', {root:path.join(__dirname, 'survey_frontend', 'build/')});
 });
 
