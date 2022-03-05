@@ -167,7 +167,7 @@ We make the button change the color when you move the mouse over it, in order to
 - The link of the paper: https://info.luddy.indiana.edu/~katy/S637-S11/cleveland84.pdf
 - How to draw a bar chart: https://blog.csdn.net/moon_sky1999/article/details/104740686
 - How to draw a sector: https://blog.csdn.net/mr_poppy/article/details/81636751
-- HOw to use form: https://www.cnblogs.com/mingerlcm/p/10637234.html
+- How to use form: https://www.cnblogs.com/mingerlcm/p/10637234.html
 - How to draw a radar chart: https://www.cnblogs.com/zfyouxi/p/5274514.html
 
 
