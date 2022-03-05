@@ -17,10 +17,10 @@ Overview
 - Design Achievement
 - References
 
-### Hypothesis
+# Hypothesis
 
 
-### Charts
+# Charts
 
 ## Radar Chart
 
@@ -33,8 +33,10 @@ Overview
 ## Bubble Chart
 
 
+# Results
 
-### Other Pages
+
+# Other Pages
 
 ### Welcome Page
 <img src="https://github.com/ColdCode0214/a3-experiment/blob/main/img/welcome%20page.png" width = "300" height = "250" alt="" align=center />
@@ -49,9 +51,7 @@ Overview
 <img src="https://github.com/ColdCode0214/a3-experiment/blob/main/img/Thank%20You%20Page.png" width = "250" height = "400" alt="" align=center />
 
 
-Achievements
-===
-## Technical Achievements
+# Technical Achievements
 1. **增加不合法数据校验** - 提交结果时如有不合法数据，例如‘-0.5’, 'abc'， ‘100’等，将  有弹窗提醒
 1.	Increase the charts number from 3 to 5, including: Bar Chart, Line Chart, Bubble chart, Radar chart, Circle bar chart
 
@@ -60,15 +60,15 @@ Achievements
 3.	Adding more attributes to analyze – We added new dimensions such as ages, majors and gender , in our analyze we can see our stats numbers from different dimensions.
 
 
-## Design Achievements
+# Design Achievements
 1. **增加背景颜色**
 
-References
-===
-- https://info.luddy.indiana.edu/~katy/S637-S11/cleveland84.pdf
+# References
 
-## Radar Chart
-https://yangdanny97.github.io/blog/2019/03/01/D3-Spider-Chart
+- The link of the paper: https://info.luddy.indiana.edu/~katy/S637-S11/cleveland84.pdf
+- How to draw a bar chart: https://blog.csdn.net/moon_sky1999/article/details/104740686
+- How to draw a sector: https://blog.csdn.net/mr_poppy/article/details/81636751
+- HOw to use form: https://www.cnblogs.com/mingerlcm/p/10637234.html
+- How to draw a radar chart: https://www.cnblogs.com/zfyouxi/p/5274514.html
 
-## Bar Graph
-https://www.tutorialsteacher.com/d3js/create-bar-chart-using-d3js
+
