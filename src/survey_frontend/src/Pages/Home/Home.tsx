@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import Paper from '@mui/material/Paper'
 import TopMenuBar from 'Components/TopMenuBar'
 import { Button, Container, Typography } from '@mui/material'
