@@ -72,7 +72,7 @@ The true value was 3.64385619; therefore, the pie chart was the least misleading
 
 <img src="Bootstrap.PNG" width="600" height="400">
 <img src="Intervals.png" width="600" height="200">
->In the picture above, [,1] refers to the mean for each graph type, [,2] refers to the lower bound, and [,3] refers to the upper bound of each confidence interval.
+In the picture above, [,1] refers to the mean for each graph type, [,2] refers to the lower bound, and [,3] refers to the upper bound of each confidence interval.
 
 
 When participants were able to identify the graph as misleading, they generally had the correct explanation for as to why the graph was misleading. For example, one participant gave the following response for as to why the scatterplot was misleading:
