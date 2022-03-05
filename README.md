@@ -70,7 +70,7 @@ Using Cleveland and McGill's logarithmic error function, we computed the log2Err
 
 The true value was 3.64385619; therefore, the pie chart was the least misleading and the scatterplot was the most misleading. This confirms our hypothesis that participants would find it most difficult to correctly interpret the scatterplot. 
 
-<img src="Bootstrap.PNG" width="600" height="400">
+<img src="errorBars.png" width="600" height="400">
 <img src="Intervals.png" width="600" height="200">
 In the picture above, [,1] refers to the mean for each graph type, [,2] refers to the lower bound, and [,3] refers to the upper bound of each confidence interval.
 
