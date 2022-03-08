@@ -28,6 +28,7 @@ export default function SurveyPage () {
     fetch('/api/dataset')
       .then(res => res.json())
       .then(data => {
+        console.log(data)
         dataset.current = data as Dataset[]
         console.log('Dataset loaded!')
         setLoaded(true)
@@ -76,12 +77,12 @@ export default function SurveyPage () {
                 <Container sx={ { width: '100%', height: '100%', overflow: 'auto' } }>
                   <Paper elevation={5} sx = { { margin: 3, padding: 3 } }>
                     {(() => {
-                      if (dataset.current[questionNum].type === 'bar') {
-                        return <BarChart data={dataset.current[questionNum]} />
-                      } else if (dataset.current[questionNum].type === 'brain') {
-                        return <BrainChart data={dataset.current[questionNum]} />
-                      } else if (dataset.current[questionNum].type === 'topographic') {
-                        return <TopographicChart data={dataset.current[questionNum]} />
+                      if (dataset.current[questionNum - 1].type === 'bar') {
+                        return <BarChart data={dataset.current[questionNum - 1]} />
+                      } else if (dataset.current[questionNum - 1].type === 'brain') {
+                        return <BrainChart data={dataset.current[questionNum - 1]} />
+                      } else if (dataset.current[questionNum - 1].type === 'topographic') {
+                        return <TopographicChart data={dataset.current[questionNum - 1]} />
                       } else {
                         return (
                           <Typography variant="h2" component="div" gutterBottom>
