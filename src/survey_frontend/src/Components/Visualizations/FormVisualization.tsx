@@ -15,7 +15,12 @@ export default function FormVisualization ({ children, data, visualizationFuncti
   const rootDOM = useRef(null)
   const [condition, setCondition] = useState(data.data[0].Condition)
 
-  // set the dimensions and margins of the graph
+  // Set the current button state to a valid choice
+  useEffect(() => {
+    setCondition(data.data[0].Condition)
+  }, [data.id])
+
+  // Update the visualization every time the condition or question changes
   useEffect(() => {
     if (rootDOM.current) {
       visualizationFunction(rootDOM.current, data.data, condition)

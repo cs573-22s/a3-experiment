@@ -51,16 +51,13 @@ export default function BarChart ({ data } : BarChartProps) {
 
     svg.append('g')
       .attr('transform', `translate(0,${height})`)
+      .style('font-size', '10pt')
       .call(d3.axisBottom(x))
 
     // Add Y axis
     const y = d3.scaleLinear()
       .domain([0, 110])
       .range([height, 0])
-
-    svg.append('g')
-      .attr('class', 'Signal')
-      .call(d3.axisLeft(y))
 
     // A function that create / update the plot for a given variable:
     function update (data : DatasetRow[]) {

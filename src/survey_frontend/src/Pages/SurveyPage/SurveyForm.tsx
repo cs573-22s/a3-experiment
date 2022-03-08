@@ -44,8 +44,7 @@ const tasks = [
   'Which region-condition combination is most active?',
   'Which region-condition combination is least active?',
   'Which regions have similar activation, regardless of condition?',
-  'Which conditions have similar activation, regardless of region?',
-  'Summarize the activation patterns in this set of data.'
+  'Which conditions have similar activation, regardless of region?'
 ]
 
 export default function SurveyForm (props: SurveyFormProps) {
@@ -105,7 +104,7 @@ export default function SurveyForm (props: SurveyFormProps) {
   // When moving to a new quesiton or going back, delete the entry
   useEffect(() => {
     dispatch({ type: 'delete' })
-    setCompleteArray([false, false, false, false, false])
+    setCompleteArray(tasks.map(_ => false))
     console.log(formData)
   }, [props.questionNum])
 

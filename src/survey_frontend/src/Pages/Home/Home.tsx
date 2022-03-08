@@ -32,7 +32,7 @@ function Home () {
           </Typography>
           <Typography variant="body1" component="div" gutterBottom>
             The survey should take no longer than one hour. You can revisit previous questions using the back button on the survey page.
-            Please do not use the back/forward button in your browser window. When you revisit previous questions, it will reset your
+            Please do not use the back/forward/refresh button in your browser window. When you revisit previous questions, it will reset your
             responses for any question you pass through, so you will need to reanswer them. There is a submit button at the end of
             the survey to save your responses. Thank you again for participating in our survey!
           </Typography>

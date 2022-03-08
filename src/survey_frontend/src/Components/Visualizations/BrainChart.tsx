@@ -77,7 +77,7 @@ export default function BrainChart ({ data } : BrainChartProps) {
       data={data}
       visualizationFunction={drawBrainChart}
     >
-      <img src='/assets/brain_regions.svg' alt='Brain Regions' />
+      <img src='/assets/brain_regions.png' alt='Brain Regions' />
     </FormVisualization>
   )
 }

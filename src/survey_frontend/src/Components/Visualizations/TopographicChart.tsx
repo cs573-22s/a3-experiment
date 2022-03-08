@@ -69,7 +69,7 @@ export default function TopographicChart ({ data } : TopographicChartProps) {
       })
       .attr('r', 20)
       .attr('fill', 'black')
-      .attr('opacity', d => d.Signal / 10) // set to signal strength, Signal/10?
+      .attr('opacity', d => d.Signal / 100) // set to signal strength, Signal/10?
   }
 
   return (
@@ -77,7 +77,7 @@ export default function TopographicChart ({ data } : TopographicChartProps) {
       data={data}
       visualizationFunction={drawTopographicChart}
     >
-      <img src='/assets/brain_regions.svg' alt='Brain Regions' />
+      <img src='/assets/brain_regions.png' alt='Brain Regions' />
     </FormVisualization>
   )
 }
