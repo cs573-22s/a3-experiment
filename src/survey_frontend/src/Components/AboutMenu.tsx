@@ -25,7 +25,7 @@ export default function AboutMenu ({ open, onClose } : AboutMenuProps) {
         aria-describedby="alert-dialog-description"
       >
         <DialogTitle id="alert-dialog-title">
-            CS573 Survey App v0.0.1
+            CS573 Survey App v1.0.0
         </DialogTitle>
         <DialogContent dividers>
           <DialogContentText id="alert-dialog-description">
