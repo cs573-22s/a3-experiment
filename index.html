@@ -15,6 +15,9 @@
   <!-- Load d3-pie -->
   <script src="https://cdn.jsdelivr.net/npm/random-color-array-generator@1.0.3/ColorGeneratorCDN.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/random-color-array-generator@1.0.3/ColorGeneratorCDN.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script src="js/kickstart.js"></script> <!-- KICKSTART -->
+  <link rel="stylesheet" href="css/kickstart.css" media="all" /> <!-- KICKSTART -->
 
   <style>
 	
@@ -23,25 +26,26 @@
 
 <body>
 	<div id="welcome-screen">
-        <div class="div header">
-            <h2>CS573 Data Visualization</h2>
+        <div class="div header" style="padding-top: 10%;margin-left: 100px;margin-right: 100px;" >
+            <h3>CS573 Data Visualization</h3><hr>
         </div>
-        <div class="div" id="instructions">
+        <div class="div" id="instructions" style="margin-left: 100px;margin-right: 100px;">
           <p>This is an experiment on graphical perception, which aims to investigate the impact of different data visualizations on users' access to data information.</p>
           <p>There are seven charts in this questionnaire that show the monthly stanard membership costs for Netflix in different countries. For each chart, minimum and maximum costs are included in the chart and based on this information, you will be asked to estimate the average cost for the countries in the chart.</p>
           <p>You will be presented with 70 diagrams. After selecting your answer, please click the SUBMIT button to confirm the number and then click the NEXT button for the next question.</p>
           <p>This experiment was implemented by Yufei Lin, Mingjie Zeng and Botao Han, based on the Netflix subscription fee dataset.</p>
           <p>Sincere thanks for your participation!</p>
-          <button class="button" id="start" onclick="return show('welcome-screen', 'background')">Start</button>
+          <button class="pill" id="start" style="float: right;" onclick="return show('welcome-screen', 'background')">Start</button>
         </div>
     </div>
 
     <div id="background" style="display:none">
-      <div class="div header">
-          <h2>CS573 Data Visualization</h2>
-          <h1>Background Information</h1>
+      <div class="div header" style="padding-top: 10%;margin-left: 100px;margin-right: 100px;">
+          <h3>CS573 Data Visualization</h3>
+          <hr>
+          <h5>Background Information</h5>
       </div>
-      <div class="div" id="form">
+      <div class="div" id="form" style="margin-left: 100px;margin-right: 100px;">
           <form name="bkgd-form">
               <p>Gender</p>
               <select id="gender" name = "gender">
@@ -61,19 +65,21 @@
             </select>
           </form>
           <p> </p>
-          <button class="button" onclick="return checkBackground()">Next</button>
+          <button class="pill" style="float: right;" onclick="return checkBackground()">Next</button>
       </div>
     </div>
 
     <div id="testing" style="display:none">
-        <div class="div header">
-			  <h2>CS573 Data Visualization</h2>
+        <div class="div header" style="padding-top: 10%;margin-left: 100px;margin-right: 100px;">
+			  <h3>CS573 Data Visualization</h3>
+        <hr>
             <p id="question-count-text">Question ?/70</p>
         </div>
-        <div class="div" id="experiment">
+        <div class="div" id="experiment" style="margin-left: 100px;margin-right: 100px;">
             <div class="vis" id="vis"></div>
-            <p id="question-text">Can you guess what is the average subscription fee per month?</p>
-            <div class="col-9">
+            <div class="col-9" style="align-content: center;">
+              <hr>
+              <p id="question-text">Can you guess what is the average subscription fee per month?</p>
               <p>There are data of Netflix monthly subscription fee of 10 countries($), can you guess their average?</p>
               <input type="range" id="avg" class="form-range" min="2.5" max="21" step="0.01" value="10"
                   style="width:300px;" oninput="chosen.value = this.value">
