@@ -57,6 +57,16 @@ And belows are the 7 visualizations we used to presernt the data. Every visualiz
 Results analysis
 ---
 
+The result is publically available here: https://docs.google.com/spreadsheets/d/1hz1yXFyTXAAYJk0zwet7VdDoUyjFtHCjp9KHwaTAiRE/edit?usp=sharing and the analysis is available in [ClearAndAnalyzeData.ipynb](https://github.com/YufeiLinUlysses/a3-experiment/blob/main/clean.ipynb)
+
+We look at the effectiveness of each different visualization by looking at how much the user misses from their guess and our actual average. We define the gap as the absolute value of the difference between the guessed and actual value and divde by the actual value. Then, we chooses to look at both a box plot and a bar chart to draw the conclusion. The result is as the following:
+![image](./img/Analysis1.png)
+
+From the graph we could see that on average, Bar chart, Horizontal Bar chart and Lollipop chart is easier for people to understand the average of the 10 random countries. 
+
+![image](./img/Analysis2.png)
+
+From this graph, we see the most effective graph is lollipop graph and choropleth map has the least effective performance. 
 
 Technical achievements
 ---
