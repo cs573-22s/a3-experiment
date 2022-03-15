@@ -1,6 +1,7 @@
 Assignment 3 - Replicating a Classic Experiment  
 ===
 Members: James Plante and Alicia Howell-Munson
+
 Group: fNIRS
 
 ([Link to the survey](http://66.175.208.236:5000/))
