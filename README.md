@@ -8,8 +8,11 @@ Group: fNIRS
 
 ## Scope
 For this assignment, we wanted to investigate which type of chart was best for interpreting brain data, such as that collected from functional near-infrared spectroscopy (fNIRS) studies. We found ([this paper](https://www.sciencedirect.com/science/article/pii/S0010027707002053?casa_token=a_abt9TJ1CEAAAAA:M-2qbKQcLnV26FrTPTFUMCSMnQci638uNQdnM93zlVpePp3G2ajHLRf4L5tYsxFOyMm-c6VW)) by McCabe & Castel that investigated how much a reader trusted the results of brain data experiments based upon how the visualizations were presented. We will use the same chart types they had used: bar chart, topographic brain chart, and an outlined brain chart. These chart types are typical for the domain and thus would emulate what would be presented in papers for interpretation. Below is an example of each chart type that the participants saw:
+
 ![Bar chart](https://github.com/jwplante/a3-experiment/tree/main/img/bar.PNG "Example of the bar chart")
+
 ![Topographic chart](https://github.com/jwplante/a3-experiment/tree/main/img/topo.PNG "Example of the topographic brain chart")
+
 ![Brain chart](https://github.com/jwplante/a3-experiment/tree/main/img/brain.PNG "Example of the outlined brain chart")
 
 The participants were asked the following questions about each chart:
