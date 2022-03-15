@@ -46,8 +46,12 @@ Finally, participants provided a "none" response the least frequently with the t
 Based upon this study, there is not a large impact on the responses that participants provide based upon the chart type. The biggest difference is in the accuracy at identifying the correct region, which the bar chart inately has an advantage with because of its labeled x axis. If researchers prefer to display their results with either the topographic or brain chart, they could overlay region names for their areas of interest or add detailed descriptions of the regions in the caption of their figure. In terms of interpretting the activation on the charts, there is no significant difference across chart type. This is caveated by the small sample size, simplistic design of the drawings, and mental workload challenges of the survey. Future renditions of this survey should remove the open-response option and have participants match region-condition pairs with multiple choice boxes to reduce their workload (typing out complex region names) along with other changes suggested by participants. Finally, there are other results that could be obtained from this data, such as if a certain chart was more suited towards a particular question (i.e. are brain charts best for comparing regions to each other, and bar charts for overall distribution of signal?) so there is potential for future work with more interesting results from this survey. 
 
 ## Design Achievements
+- **Material Design-like interface** - We used the MUI library to make our survey like an Android application.
 
 ## Technical Achievements
+- **Full-featured Frontend** - We decided to create a full multi-page frontend using React and TypeScript using the MIUI framework. This work included integrating d3 with React which can cause issues.
+- **Express backend** - We created an Express server using LowDB as a database to store responses. It uses
+middleware to track IDs of participants by creating sessions using a randomized ID per user, allowing us to see if the user submitted a form twice.
 
 ## Resources
 We used the code from ([Link to the survey](https://www.d3-graph-gallery.com/graph/barplot_button_data_simple.html)) as the foundation for building the bar chart in d3.
