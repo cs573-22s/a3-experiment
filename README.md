@@ -1,106 +1,57 @@
 Assignment 3 - Replicating a Classic Experiment  
 ===
+Members: James Plante and Alicia Howell-Munson
 
-For the scope of this project, assume the role of a scientist who runs experiments for a living.
+Group: fNIRS
 
-Q: How do we know that bar charts are "better" than pie charts?  
-A: Controlled experiments!
+([Link to the survey](http://66.175.208.236:5000/))
 
-In this assignment you'll implement a simple controlled experiment using some of the visualizations you’ve been building in this class. 
-You'll need to develop support code for the experiment sequence, results file output, and other experiment components. 
-(These are all simple with Javascript buttons and forms.)
-The main goals for you are to a) test three competing visualizations, b) implement data generation and error calculation functions inspired by Cleveland and McGill's 1984 paper, c) run the experiment with 10 participants (or a trial equivalent), and d) do some basic analysis and reporting of the results.
+## Scope
+For this assignment, we wanted to investigate which type of chart was best for interpreting brain data, such as that collected from functional near-infrared spectroscopy (fNIRS) studies. We found ([this paper](https://www.sciencedirect.com/science/article/pii/S0010027707002053?casa_token=a_abt9TJ1CEAAAAA:M-2qbKQcLnV26FrTPTFUMCSMnQci638uNQdnM93zlVpePp3G2ajHLRf4L5tYsxFOyMm-c6VW)) by McCabe & Castel that investigated how much a reader trusted the results of brain data experiments based upon how the visualizations were presented. We will use the same chart types they had used: bar chart, topographic brain chart, and an outlined brain chart. These chart types are typical for the domain and thus would emulate what would be presented in papers for interpretation. Each chart could contain up to five unique regions and four unique conditions to vary the complexity of the charts. Below is an example of each chart type that the participants saw:
 
-For this assignment you should aim to write everything from scratch. For experimentation it is often necessary to control all elements of the chart.
-You should definitely *reference* demo programs from books or the web, and if you do please provide a References section with links at the end of your Readme.
+![Bar chart](https://github.com/jwplante/a3-experiment/tree/main/img/bar.PNG "Example of the bar chart")
 
-Going Beyond Cleveland-McGill
----
+![Topographic chart](https://github.com/jwplante/a3-experiment/tree/main/img/topo.PNG "Example of the topographic brain chart")
 
-Several have expressed interest in conducting surveys of various sorts. I encourage you go move beyond Cleveland and McGill if you can think of other interesting visualization experiment designs and corresponding analyses. 
+![Brain chart](https://github.com/jwplante/a3-experiment/tree/main/img/brain.PNG "Example of the outlined brain chart")
 
-You might study how people interpret COVID visualizations, for example.
-If you decide to go in a custom route, simply contact staff so we can help you set acceptable parameters.
-Basically, we still want you to do a multi-trial study with each participant, to raise the chance that you get solid results.
-How you measure "error" and similar facets also matter. But you can't go wrong with finding a visualization study online to start from :)
+The participants were asked the following questions about each chart:
+* Which region-condition combination is most active?
+* Which region-condition combination is least active?
+* Which regions have similar activation, regardless of condition?
+* Which conditions have similar activation, regardless of region?
 
-Requirements
----
+We were interested a the following metrics: 1) how often did the participant select the correct region/condition? 2) what was the difference in signal between their selected region/condition and the correct answer? 3) did the chart type affect their ability to correctly identfy brain region names? and 4) did the chart type affect their ability to make a response (i.e. specifying a region/condition or responding with "no region/condition"). 
 
-- Look it over Cleveland and McGill's original experiment (see the section below) and [watch this video](experiment-example.mp4) to get a sense of the experiment structure and where your visualizations will go.
-- When viewing the example experiment video, note the following:
-    - Trials are in random order.  
-    - Each trial has a randomly generated set of 5-10 data points.  
-    - Two of these data points are marked.  
-    - (Note: the experiment UI and User Experience could be better. Plenty of design achievements here).
-- Implement the data generation code **as described in the Cleveland & McGill paper**. 
-    - The goal is to generate a set of random datapoints (usually 5 or 10, with values be between 0 and 100) and to mark two of them for comparison in the trial. 
-- Add 3 visualizations (i.e. conditions) to your experiment. When you are adding these visualizations, think about *why* these visualizations are interesting to test. In other words, keep in mind a *testable hypothesis* for each of the added visualization. Some good options include bar charts, pie charts, stacked-bar charts, and treemaps. You can also rotate your bar chart to be horizontal or upside-down as one of your conditions. You are encouraged to test unorthodox charts -- radar charts come to mind, but there are MANY possibilities here-- feel free to be creative!
-    - Follow the style from Cleveland and McGill closely (e.g. no color, simple lines) unless you are specifically testing a hypothesis (e.g. color versus no color). Pay attention to spacing between elements like bars. Do not mark bars for comparison using color-- this makes the perceptual task too easy.
-- After each trial, implement code that grades and stores participant’s responses.
-- At the end of the experiment, to get the data, one easy option use Javascript to show the data from the current experiment\* (i.e. a comma separated list in a text box) and copy it into your master datafile. See the Background section below for an example of what this file should look like. (\*Alternately implement a server, if you're experienced with that sort of thing.)
+## Results
 
-- Figure out how to calculate "Error", the difference between the true percentage and the reported percentage.
-- Scale this error using Cleveland and McGill’s log-base-2 error equation. For details, see the background section (there’s a figure with the equation). This becomes your “Error” column in the output. Make sure you use whole percentages (not decimal) in the log-base-2 equation. Make sure you handle the case of when a person gets the exact percentage correct (log-base-2 of 1/8 is -3, it is better to set this to 0). 
-- Run your experiment with 10 or more participants, or-- make sure you get at least 200 trials **per visualization type** in total.  
-    - Grab friends or people in the class.   
-    - Run at least 20 trials per visualization type, per participant. This is to ensure that you cover the range of possible answers (e.g. 5%, 10%, ..., 95%)
-- Make sure to save the resulting CSV after each participant. Compile the results into a master csv file (all participants, all trials).
-- Produce a README with figures that shows the visualizations you tested and results, ordered by best performance to worst performance. Follow the modern Cleveland-McGill figure below -- though note that using names instead of icons is fine.
-- To obtain the ranking, calculate and report the average log2Error for each visualization across all trials and participants. This should be straightforward to do in a spreadsheet.
-- Use Bootstrapped 95\% confidence intervals for your error upper and lower bounds. Include these in your figures. Bootstrapped confidence intervals are easily implemented in R + ggplot2 using the `stat_summary` geom. You can also use Excel, Python, or many many other tools. Bootstrapped 95% CIs are **very** useful in modern experiment practice.
-- Include example images of each visualization as they appeared in your experiment (i.e. if you used a pie chart show the actual pie chart you used in the experiment along with the markings, not an example from Google Images).
+From the ten participants who took our survey, two results needed to be discarded due to how the participants answered the questions (not fully answering them, responses that did not make sense). Participants were most correct across all questions with the topographic chart (77% accuracy), then the bar chart (76% accuracy), and finally the brain chart (75% accuracy). As the below figure shows, these results are not very different from each other and fall within similar confidence intervals.
 
-## General Requirements
+![correctness](https://github.com/jwplante/a3-experiment/tree/main/img/correctness.png "Correctness based on chart type with 95% confidence intervals")
 
-0. Your code should be forked from the GitHub repo and linked using GitHub pages.
-2. Your project should use d3 to build visualizations. 
-3. Your writeup (readme.md in the repo) should contain the following:
+Participants' answers were most similar to the true answer with bar charts (+/- 0.92 amplitude), then the topographic chart (+/- 1.368 amplitude) and finally the brain chart (+/- 1.374 amplitude). The brain and topographic chart performed very similarily to each other and have similar ranges for their 95% confidence intervals, however, the bar chart is set apart from them, though it's upper bound of the confidence interval does overlap with the lower-bound confidence interval of the other two charts.
 
-- Working link to the experiment hosted on gh-pages or some other site.
-- Concise description and screenshot of your experiment.
-- Description of the technical achievements you attempted with this project.
-- Description of the design achievements you attempted with this project.
+![margin of error](https://github.com/jwplante/a3-experiment/tree/main/img/diff.png "Margin of error based on chart type with 95% confidence intervals")
 
-Background
----
+Because the x-axis of the bar chart is labeled with the region name, participants had no errors in identifying the region for the bar chart. The participants on average had less difficulty identifying the correct region with the brain chart (7.6% error rate) than the topographic chart (9.1% error rate), though the 95% confidence interval for these have a large amount of overlap as well.
 
-In 1984, William Cleveland and Robert McGill published the results of several controlled experiments that pitted bar charts against pies and stacked-bar variants. 
-Their paper (http://www.cs.ubc.ca/~tmm/courses/cpsc533c-04-spr/readings/cleveland.pdf) (http://info.slis.indiana.edu/~katy/S637-S11/cleveland84.pdf) is considered a seminal paper in data visualization.
-In particular, they ran a psychology-style experiment where users were shown a series of randomly-generated charts with two graphical elements marked like this:
+![region accuracy](https://github.com/jwplante/a3-experiment/tree/main/img/diff_reg.png "Region accuracy based on chart type with 95% confidence intervals")
 
-![cleveland bar chart](img/cleveland-bar.png)
+Finally, participants provided a "none" response the least frequently with the topographic chart (11.4% of responses) and then the brain chart and bar chart are equal (12.0% of responses). While the topographic chart is slightly less frequent than the other two, the confidence intervals once again overlap significantly across conditions. 
 
-Participants were then asked, "What percentage is the smaller of the larger?". 
-This was repeated hundreds of time with varying data and charts. 
-By the end of the study, Cleveland and McGill had amassed a large dataset that looked like this:
+![response](https://github.com/jwplante/a3-experiment/tree/main/img/response.png "Frequency of none responses based on chart type with 95% confidence intervals")
 
-![cleveland table](img/cleveland-table.png)
+## Conclusion
 
-__Log-base-2 or "cm-error"__: The true percent is the actual percentage of the smaller to the larger, while the reported percent is what participants reported. 
-Cleveland and McGill recognized that their analyses would be biased if they took `abs(ReportedPercent – TruePercent)` as their score for error. 
-To compensate, they came up with a logarithmic scale for error with this equation:
+Based upon this study, there is not a large impact on the responses that participants provide based upon the chart type. The biggest difference is in the accuracy at identifying the correct region, which the bar chart inately has an advantage with because of its labeled x axis. If researchers prefer to display their results with either the topographic or brain chart, they could overlay region names for their areas of interest or add detailed descriptions of the regions in the caption of their figure. In terms of interpretting the activation on the charts, there is no significant difference across chart type. This is caveated by the small sample size, simplistic design of the drawings, and mental workload challenges of the survey. Future renditions of this survey should remove the open-response option and have participants match region-condition pairs with multiple choice boxes to reduce their workload (typing out complex region names) along with other changes suggested by participants. Finally, there are other results that could be obtained from this data, such as if a certain chart was more suited towards a particular question (i.e. are brain charts best for comparing regions to each other, and bar charts for overall distribution of signal?) so there is potential for future work with more interesting results from this survey. 
 
-![cleveland equation](img/cleveland-equation.png)
+## Design Achievements
+- **Material Design-like interface** - We used the MUI library to make our survey like an Android application.
 
-You’ll be implementing this error score as part of the lab. 
-(Hint: it’s not a trick question, this is just to familiarize you with the experiment protocol). 
-With this Cleveland-McGill error score you can better compare the performance of the charts you test to figure out which one performs the best.
+## Technical Achievements
+- **Full-featured Frontend** - We decided to create a full multi-page frontend using React and TypeScript using the MIUI framework. This work included integrating d3 with React which can cause issues.
+- **Express backend** - We created an Express server using LowDB as a database to store responses. It uses
+middleware to track IDs of participants by creating sessions using a randomized ID per user, allowing us to see if the user submitted a form twice.
 
-As a baseline, compare your average Error scores to the following chart, which include both Cleveland and McGill’s results as well as more recent extensions of this experiment (lower error indicates better performance, and error bars are bootstrapped 95% confidence intervals (`http://en.wikipedia.org/wiki/Confidence_interval#Meaning_and_interpretation`)):
-
-![cleveland results](img/cleveland-results.png)
-
-GitHub Details
----
-
-- Fork the GitHub Repository. You now have a copy associated with your username.
-- Make changes to index.html to fulfill the project requirements. 
-- Make sure your "master" branch matches your "gh-pages" branch. See the GitHub Guides referenced above if you need help.
-- Edit this README.md with a link to your gh-pages site: e.g. http://YourUsernameGoesHere.github.io/Experiment/index.html
-- Replace this file (README.md) with your writeup and Design/Technical achievements.
-- To submit, make a [Pull Request](https://help.github.com/articles/using-pull-requests/) on the original repository.
-- Name your submission using the following scheme: 
-```
-a3-FirstLastnameMember1-FirstLastnameMember2-FirstLastnameMember3-...
-```
+## Resources
+We used the code from ([Link to the survey](https://www.d3-graph-gallery.com/graph/barplot_button_data_simple.html)) as the foundation for building the bar chart in d3.
